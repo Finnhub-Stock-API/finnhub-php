@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Finnhub\Finnhub;
+namespace Finnhub\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
