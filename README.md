@@ -28,7 +28,7 @@ Then run `composer install`
 
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'brcevevrh5rap841k770');
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR API KEY');
 $client = new Finnhub\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
