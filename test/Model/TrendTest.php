@@ -84,4 +84,11 @@ class TrendTest extends TestCase
     public function testPropertyAdx()
     {
     }
+
+    /**
+     * Test attribute "trending"
+     */
+    public function testPropertyTrending()
+    {
+    }
 }

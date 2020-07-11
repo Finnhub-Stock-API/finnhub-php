@@ -4422,7 +4422,7 @@ class DefaultApi
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      * @param  string $symbol Filter by symbol: AAPL. (optional)
-     * @param  AnyType $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
+     * @param  bool $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4442,7 +4442,7 @@ class DefaultApi
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      * @param  string $symbol Filter by symbol: AAPL. (optional)
-     * @param  AnyType $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
+     * @param  bool $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4533,7 +4533,7 @@ class DefaultApi
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      * @param  string $symbol Filter by symbol: AAPL. (optional)
-     * @param  AnyType $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
+     * @param  bool $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4556,7 +4556,7 @@ class DefaultApi
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      * @param  string $symbol Filter by symbol: AAPL. (optional)
-     * @param  AnyType $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
+     * @param  bool $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4606,7 +4606,7 @@ class DefaultApi
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      * @param  string $symbol Filter by symbol: AAPL. (optional)
-     * @param  AnyType $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
+     * @param  bool $international Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

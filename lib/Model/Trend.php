@@ -57,7 +57,8 @@ class Trend implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'adx' => 'float'
+        'adx' => 'float',
+        'trending' => 'bool'
     ];
 
     /**
@@ -66,7 +67,8 @@ class Trend implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'adx' => 'float'
+        'adx' => 'float',
+        'trending' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class Trend implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'adx' => 'adx'
+        'adx' => 'adx',
+        'trending' => 'trending'
     ];
 
     /**
@@ -105,7 +108,8 @@ class Trend implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'adx' => 'setAdx'
+        'adx' => 'setAdx',
+        'trending' => 'setTrending'
     ];
 
     /**
@@ -114,7 +118,8 @@ class Trend implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'adx' => 'getAdx'
+        'adx' => 'getAdx',
+        'trending' => 'getTrending'
     ];
 
     /**
@@ -178,6 +183,7 @@ class Trend implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['adx'] = isset($data['adx']) ? $data['adx'] : null;
+        $this->container['trending'] = isset($data['trending']) ? $data['trending'] : null;
     }
 
     /**
@@ -224,6 +230,30 @@ class Trend implements ModelInterface, ArrayAccess
     public function setAdx($adx)
     {
         $this->container['adx'] = $adx;
+
+        return $this;
+    }
+
+    /**
+     * Gets trending
+     *
+     * @return bool|null
+     */
+    public function getTrending()
+    {
+        return $this->container['trending'];
+    }
+
+    /**
+     * Sets trending
+     *
+     * @param bool|null $trending Whether market is trending or going sideway
+     *
+     * @return $this
+     */
+    public function setTrending($trending)
+    {
+        $this->container['trending'] = $trending;
 
         return $this;
     }

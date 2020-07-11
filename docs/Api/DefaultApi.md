@@ -1044,7 +1044,7 @@ $apiInstance = new Finnhub\Api\DefaultApi(
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date: 2020-03-15.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date: 2020-03-16.
 $symbol = 'symbol_example'; // string | Filter by symbol: AAPL.
-$international = new \Finnhub\Model\AnyType(); // AnyType | Set to <code>true</code> to include international markets. Default value is <code>false</code>
+$international = True; // bool | Set to <code>true</code> to include international markets. Default value is <code>false</code>
 
 try {
     $result = $apiInstance->earningsCalendar($from, $to, $symbol, $international);
@@ -1063,7 +1063,7 @@ Name | Type | Description  | Notes
  **from** | **\DateTime**| From date: 2020-03-15. | [optional]
  **to** | **\DateTime**| To date: 2020-03-16. | [optional]
  **symbol** | **string**| Filter by symbol: AAPL. | [optional]
- **international** | [**AnyType**](../Model/.md)| Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; | [optional]
+ **international** | **bool**| Set to &lt;code&gt;true&lt;/code&gt; to include international markets. Default value is &lt;code&gt;false&lt;/code&gt; | [optional]
 
 ### Return type
 
