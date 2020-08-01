@@ -1,6 +1,6 @@
 <?php
 /**
- * StockTest
+ * IndicesHistoricalConstituentsTest
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ namespace Finnhub;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StockTest Class Doc Comment
+ * IndicesHistoricalConstituentsTest Class Doc Comment
  *
  * @category    Class
- * @description Stock
+ * @description IndicesHistoricalConstituents
  * @package     Finnhub
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class StockTest extends TestCase
+class IndicesHistoricalConstituentsTest extends TestCase
 {
 
     /**
@@ -72,23 +72,9 @@ class StockTest extends TestCase
     }
 
     /**
-     * Test "Stock"
+     * Test "IndicesHistoricalConstituents"
      */
-    public function testStock()
-    {
-    }
-
-    /**
-     * Test attribute "description"
-     */
-    public function testPropertyDescription()
-    {
-    }
-
-    /**
-     * Test attribute "display_symbol"
-     */
-    public function testPropertyDisplaySymbol()
+    public function testIndicesHistoricalConstituents()
     {
     }
 
@@ -100,16 +86,9 @@ class StockTest extends TestCase
     }
 
     /**
-     * Test attribute "type"
+     * Test attribute "historical_constituents"
      */
-    public function testPropertyType()
-    {
-    }
-
-    /**
-     * Test attribute "currency"
-     */
-    public function testPropertyCurrency()
+    public function testPropertyHistoricalConstituents()
     {
     }
 }

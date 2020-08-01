@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **country** | **string** | Country of company&#39;s headquarter. | [optional] 
 **currency** | **string** | Currency used in company filings. | [optional] 
 **cusip** | **string** | CUSIP number. | [optional] 
-**sedol** | **int** | Sedol number. | [optional] 
+**sedol** | **string** | Sedol number. | [optional] 
 **description** | **string** | Company business summary. | [optional] 
 **exchange** | **string** | Listed exchange. | [optional] 
 **ggroup** | **string** | GICS industry group. | [optional] 

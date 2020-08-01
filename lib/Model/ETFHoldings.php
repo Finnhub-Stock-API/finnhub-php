@@ -1,6 +1,6 @@
 <?php
 /**
- * Stock
+ * ETFHoldings
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Stock Class Doc Comment
+ * ETFHoldings Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class Stock implements ModelInterface, ArrayAccess
+class ETFHoldings implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Stock implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Stock';
+    protected static $openAPIModelName = 'ETFHoldings';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,9 @@ class Stock implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'description' => 'string',
-        'display_symbol' => 'string',
         'symbol' => 'string',
-        'type' => 'string',
-        'currency' => 'string'
+        'share' => 'float',
+        'percent' => 'float'
     ];
 
     /**
@@ -70,11 +68,9 @@ class Stock implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'description' => null,
-        'display_symbol' => null,
         'symbol' => null,
-        'type' => null,
-        'currency' => null
+        'share' => 'float',
+        'percent' => 'float'
     ];
 
     /**
@@ -104,11 +100,9 @@ class Stock implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'description' => 'description',
-        'display_symbol' => 'displaySymbol',
         'symbol' => 'symbol',
-        'type' => 'type',
-        'currency' => 'currency'
+        'share' => 'share',
+        'percent' => 'percent'
     ];
 
     /**
@@ -117,11 +111,9 @@ class Stock implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'description' => 'setDescription',
-        'display_symbol' => 'setDisplaySymbol',
         'symbol' => 'setSymbol',
-        'type' => 'setType',
-        'currency' => 'setCurrency'
+        'share' => 'setShare',
+        'percent' => 'setPercent'
     ];
 
     /**
@@ -130,11 +122,9 @@ class Stock implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'description' => 'getDescription',
-        'display_symbol' => 'getDisplaySymbol',
         'symbol' => 'getSymbol',
-        'type' => 'getType',
-        'currency' => 'getCurrency'
+        'share' => 'getShare',
+        'percent' => 'getPercent'
     ];
 
     /**
@@ -197,11 +187,9 @@ class Stock implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['display_symbol'] = isset($data['display_symbol']) ? $data['display_symbol'] : null;
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['share'] = isset($data['share']) ? $data['share'] : null;
+        $this->container['percent'] = isset($data['percent']) ? $data['percent'] : null;
     }
 
     /**
@@ -229,54 +217,6 @@ class Stock implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Symbol description
-     *
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_symbol
-     *
-     * @return string|null
-     */
-    public function getDisplaySymbol()
-    {
-        return $this->container['display_symbol'];
-    }
-
-    /**
-     * Sets display_symbol
-     *
-     * @param string|null $display_symbol Display symbol name.
-     *
-     * @return $this
-     */
-    public function setDisplaySymbol($display_symbol)
-    {
-        $this->container['display_symbol'] = $display_symbol;
-
-        return $this;
-    }
-
-    /**
      * Gets symbol
      *
      * @return string|null
@@ -289,7 +229,7 @@ class Stock implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Unique symbol used to identify this symbol used in <code>/stock/candle</code> endpoint.
+     * @param string|null $symbol Symbol description
      *
      * @return $this
      */
@@ -301,49 +241,49 @@ class Stock implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets type
+     * Gets share
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getType()
+    public function getShare()
     {
-        return $this->container['type'];
+        return $this->container['share'];
     }
 
     /**
-     * Sets type
+     * Sets share
      *
-     * @param string|null $type Security type.
+     * @param float|null $share Number of shares owned by the ETF.
      *
      * @return $this
      */
-    public function setType($type)
+    public function setShare($share)
     {
-        $this->container['type'] = $type;
+        $this->container['share'] = $share;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets percent
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getCurrency()
+    public function getPercent()
     {
-        return $this->container['currency'];
+        return $this->container['percent'];
     }
 
     /**
-     * Sets currency
+     * Sets percent
      *
-     * @param string|null $currency Price's currency. This might be different from the reporting currency of fundamental data.
+     * @param float|null $percent Portfolio's percent
      *
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setPercent($percent)
     {
-        $this->container['currency'] = $currency;
+        $this->container['percent'] = $percent;
 
         return $this;
     }

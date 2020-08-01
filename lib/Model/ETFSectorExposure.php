@@ -1,6 +1,6 @@
 <?php
 /**
- * Stock
+ * ETFSectorExposure
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Stock Class Doc Comment
+ * ETFSectorExposure Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class Stock implements ModelInterface, ArrayAccess
+class ETFSectorExposure implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Stock implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Stock';
+    protected static $openAPIModelName = 'ETFSectorExposure';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class Stock implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'description' => 'string',
-        'display_symbol' => 'string',
-        'symbol' => 'string',
-        'type' => 'string',
-        'currency' => 'string'
+        'industry' => 'string',
+        'exposure' => 'string'
     ];
 
     /**
@@ -70,11 +67,8 @@ class Stock implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'description' => null,
-        'display_symbol' => null,
-        'symbol' => null,
-        'type' => null,
-        'currency' => null
+        'industry' => null,
+        'exposure' => null
     ];
 
     /**
@@ -104,11 +98,8 @@ class Stock implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'description' => 'description',
-        'display_symbol' => 'displaySymbol',
-        'symbol' => 'symbol',
-        'type' => 'type',
-        'currency' => 'currency'
+        'industry' => 'industry',
+        'exposure' => 'exposure'
     ];
 
     /**
@@ -117,11 +108,8 @@ class Stock implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'description' => 'setDescription',
-        'display_symbol' => 'setDisplaySymbol',
-        'symbol' => 'setSymbol',
-        'type' => 'setType',
-        'currency' => 'setCurrency'
+        'industry' => 'setIndustry',
+        'exposure' => 'setExposure'
     ];
 
     /**
@@ -130,11 +118,8 @@ class Stock implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'description' => 'getDescription',
-        'display_symbol' => 'getDisplaySymbol',
-        'symbol' => 'getSymbol',
-        'type' => 'getType',
-        'currency' => 'getCurrency'
+        'industry' => 'getIndustry',
+        'exposure' => 'getExposure'
     ];
 
     /**
@@ -197,11 +182,8 @@ class Stock implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['display_symbol'] = isset($data['display_symbol']) ? $data['display_symbol'] : null;
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['industry'] = isset($data['industry']) ? $data['industry'] : null;
+        $this->container['exposure'] = isset($data['exposure']) ? $data['exposure'] : null;
     }
 
     /**
@@ -229,121 +211,49 @@ class Stock implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets description
+     * Gets industry
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getIndustry()
     {
-        return $this->container['description'];
+        return $this->container['industry'];
     }
 
     /**
-     * Sets description
+     * Sets industry
      *
-     * @param string|null $description Symbol description
+     * @param string|null $industry Industry
      *
      * @return $this
      */
-    public function setDescription($description)
+    public function setIndustry($industry)
     {
-        $this->container['description'] = $description;
+        $this->container['industry'] = $industry;
 
         return $this;
     }
 
     /**
-     * Gets display_symbol
+     * Gets exposure
      *
      * @return string|null
      */
-    public function getDisplaySymbol()
+    public function getExposure()
     {
-        return $this->container['display_symbol'];
+        return $this->container['exposure'];
     }
 
     /**
-     * Sets display_symbol
+     * Sets exposure
      *
-     * @param string|null $display_symbol Display symbol name.
+     * @param string|null $exposure Percent of exposure.
      *
      * @return $this
      */
-    public function setDisplaySymbol($display_symbol)
+    public function setExposure($exposure)
     {
-        $this->container['display_symbol'] = $display_symbol;
-
-        return $this;
-    }
-
-    /**
-     * Gets symbol
-     *
-     * @return string|null
-     */
-    public function getSymbol()
-    {
-        return $this->container['symbol'];
-    }
-
-    /**
-     * Sets symbol
-     *
-     * @param string|null $symbol Unique symbol used to identify this symbol used in <code>/stock/candle</code> endpoint.
-     *
-     * @return $this
-     */
-    public function setSymbol($symbol)
-    {
-        $this->container['symbol'] = $symbol;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Security type.
-     *
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string|null
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string|null $currency Price's currency. This might be different from the reporting currency of fundamental data.
-     *
-     * @return $this
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
+        $this->container['exposure'] = $exposure;
 
         return $this;
     }

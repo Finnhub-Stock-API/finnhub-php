@@ -1,6 +1,6 @@
 <?php
 /**
- * StockTest
+ * SimilarityIndexTest
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ namespace Finnhub;
 use PHPUnit\Framework\TestCase;
 
 /**
- * StockTest Class Doc Comment
+ * SimilarityIndexTest Class Doc Comment
  *
  * @category    Class
- * @description Stock
+ * @description SimilarityIndex
  * @package     Finnhub
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class StockTest extends TestCase
+class SimilarityIndexTest extends TestCase
 {
 
     /**
@@ -72,23 +72,9 @@ class StockTest extends TestCase
     }
 
     /**
-     * Test "Stock"
+     * Test "SimilarityIndex"
      */
-    public function testStock()
-    {
-    }
-
-    /**
-     * Test attribute "description"
-     */
-    public function testPropertyDescription()
-    {
-    }
-
-    /**
-     * Test attribute "display_symbol"
-     */
-    public function testPropertyDisplaySymbol()
+    public function testSimilarityIndex()
     {
     }
 
@@ -100,16 +86,16 @@ class StockTest extends TestCase
     }
 
     /**
-     * Test attribute "type"
+     * Test attribute "cik"
      */
-    public function testPropertyType()
+    public function testPropertyCik()
     {
     }
 
     /**
-     * Test attribute "currency"
+     * Test attribute "similarity"
      */
-    public function testPropertyCurrency()
+    public function testPropertySimilarity()
     {
     }
 }

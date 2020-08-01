@@ -172,6 +172,24 @@ print_r($client->cryptoCandles('BINANCE:BTCUSDT', 'D', 1590988249, 1591852249));
 
 // Tick Data
 print_r($client->stockTick('AAPL', '2020-03-25', 500, 0));
+
+// Indices Constituents
+print_r($client.indicesConstituents("^GSPC"))
+
+// Indices Historical Constituents
+print_r($client->indicesHistoricalConstituents("^GSPC"))
+
+// ETFs Profile
+print_r($client->etfsProfile('SPY'))
+
+// ETFs Holdings
+print_r($client->etfsHoldings('SPY'))
+
+// ETFs Industry Exposure
+print_r($client->etfsIndustryExposure('SPY'))
+
+// ETFs Country Exposure
+print_r($client->etfsCountryExposure('SPY'))
 ?>
 ```
 

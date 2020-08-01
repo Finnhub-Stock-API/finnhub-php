@@ -22,6 +22,10 @@ Method | HTTP request | Description
 [**earningsCalendar**](DefaultApi.md#earningsCalendar) | **GET** /calendar/earnings | Earnings Calendar
 [**economicCode**](DefaultApi.md#economicCode) | **GET** /economic/code | Economic Code
 [**economicData**](DefaultApi.md#economicData) | **GET** /economic | Economic Data
+[**etfsCountryExposure**](DefaultApi.md#etfsCountryExposure) | **GET** /etf/country | ETFs Country Exposure
+[**etfsHoldings**](DefaultApi.md#etfsHoldings) | **GET** /etf/holdings | ETFs Holdings
+[**etfsIndustryExposure**](DefaultApi.md#etfsIndustryExposure) | **GET** /etf/sector | ETFs Industry Exposure
+[**etfsProfile**](DefaultApi.md#etfsProfile) | **GET** /etf/profile | ETFs Profile
 [**filings**](DefaultApi.md#filings) | **GET** /stock/filings | Filings
 [**financials**](DefaultApi.md#financials) | **GET** /stock/financials | Financial Statements
 [**financialsReported**](DefaultApi.md#financialsReported) | **GET** /stock/financials-reported | Financials As Reported
@@ -31,6 +35,8 @@ Method | HTTP request | Description
 [**forexSymbols**](DefaultApi.md#forexSymbols) | **GET** /forex/symbol | Forex Symbol
 [**fundOwnership**](DefaultApi.md#fundOwnership) | **GET** /stock/fund-ownership | Fund Ownership
 [**generalNews**](DefaultApi.md#generalNews) | **GET** /news | General News
+[**indicesConstituents**](DefaultApi.md#indicesConstituents) | **GET** /index/constituents | Indices Constituents
+[**indicesHistoricalConstituents**](DefaultApi.md#indicesHistoricalConstituents) | **GET** /index/historical-constituents | Indices Historical Constituents
 [**investorsOwnership**](DefaultApi.md#investorsOwnership) | **GET** /stock/investor-ownership | Investors Ownership
 [**ipoCalendar**](DefaultApi.md#ipoCalendar) | **GET** /calendar/ipo | IPO Calendar
 [**majorDevelopments**](DefaultApi.md#majorDevelopments) | **GET** /major-development | Major Developments
@@ -39,6 +45,7 @@ Method | HTTP request | Description
 [**priceTarget**](DefaultApi.md#priceTarget) | **GET** /stock/price-target | Price Target
 [**quote**](DefaultApi.md#quote) | **GET** /quote | Quote
 [**recommendationTrends**](DefaultApi.md#recommendationTrends) | **GET** /stock/recommendation | Recommendation Trends
+[**similarityIndex**](DefaultApi.md#similarityIndex) | **GET** /stock/similarity-index | Similarity Index
 [**stockBidask**](DefaultApi.md#stockBidask) | **GET** /stock/bidask | Last Bid-Ask
 [**stockCandles**](DefaultApi.md#stockCandles) | **GET** /stock/candle | Stock Candles
 [**stockDividends**](DefaultApi.md#stockDividends) | **GET** /stock/dividend | Dividends
@@ -1205,6 +1212,258 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
+## etfsCountryExposure
+
+> \Finnhub\Model\ETFsCountryExposure etfsCountryExposure($symbol)
+
+ETFs Country Exposure
+
+Get ETF country exposure data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | ETF symbol.
+
+try {
+    $result = $apiInstance->etfsCountryExposure($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->etfsCountryExposure: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| ETF symbol. |
+
+### Return type
+
+[**\Finnhub\Model\ETFsCountryExposure**](../Model/ETFsCountryExposure.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## etfsHoldings
+
+> \Finnhub\Model\ETFsHoldings etfsHoldings($symbol)
+
+ETFs Holdings
+
+Get current ETF holdings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | ETF symbol.
+
+try {
+    $result = $apiInstance->etfsHoldings($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->etfsHoldings: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| ETF symbol. |
+
+### Return type
+
+[**\Finnhub\Model\ETFsHoldings**](../Model/ETFsHoldings.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## etfsIndustryExposure
+
+> \Finnhub\Model\ETFsIndustryExposure etfsIndustryExposure($symbol)
+
+ETFs Industry Exposure
+
+Get ETF industry exposure data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | ETF symbol.
+
+try {
+    $result = $apiInstance->etfsIndustryExposure($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->etfsIndustryExposure: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| ETF symbol. |
+
+### Return type
+
+[**\Finnhub\Model\ETFsIndustryExposure**](../Model/ETFsIndustryExposure.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## etfsProfile
+
+> \Finnhub\Model\ETFsProfile etfsProfile($symbol)
+
+ETFs Profile
+
+Get ETF profile information. Currently support all US ETFs.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | ETF symbol.
+
+try {
+    $result = $apiInstance->etfsProfile($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->etfsProfile: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| ETF symbol. |
+
+### Return type
+
+[**\Finnhub\Model\ETFsProfile**](../Model/ETFsProfile.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## filings
 
 > \Finnhub\Model\Filing[] filings($symbol, $cik, $access_number, $form, $from, $to)
@@ -1798,6 +2057,132 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
+## indicesConstituents
+
+> \Finnhub\Model\IndicesConstituents indicesConstituents($symbol)
+
+Indices Constituents
+
+Get a list of index's constituents. Currently support <code>^GSPC (S&P 500)</code>, <code>^NDX (Nasdaq 100)</code>, <code>^DJI (Dow Jones)</code>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | symbol
+
+try {
+    $result = $apiInstance->indicesConstituents($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->indicesConstituents: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| symbol |
+
+### Return type
+
+[**\Finnhub\Model\IndicesConstituents**](../Model/IndicesConstituents.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
+## indicesHistoricalConstituents
+
+> \Finnhub\Model\IndicesHistoricalConstituents indicesHistoricalConstituents($symbol)
+
+Indices Historical Constituents
+
+Get full history of index's constituents including symbols and dates of joining and leaving the Index. Currently support <code>^GSPC (S&P 500)</code>, <code>^NDX (Nasdaq 100)</code>, <code>^DJI (Dow Jones)</code>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | symbol
+
+try {
+    $result = $apiInstance->indicesHistoricalConstituents($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->indicesHistoricalConstituents: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| symbol |
+
+### Return type
+
+[**\Finnhub\Model\IndicesHistoricalConstituents**](../Model/IndicesHistoricalConstituents.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## investorsOwnership
 
 > \Finnhub\Model\InvestorsOwnership investorsOwnership($symbol, $limit)
@@ -2312,6 +2697,73 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
+## similarityIndex
+
+> \Finnhub\Model\SimilarityIndex similarityIndex($symbol, $cik, $freq)
+
+Similarity Index
+
+<p>Calculate the textual difference between a company's 10-K / 10-Q reports and the same type of report in the previous year using Cosine Similarity. For example, this endpoint compares 2019's 10-K with 2018's 10-K. Companies breaking from its routines in disclosure of financial condition and risk analysis section can signal a significant change in the company's stock price in the upcoming 4 quarters.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol. Required if cik is empty
+$cik = 'cik_example'; // string | CIK. Required if symbol is empty
+$freq = 'freq_example'; // string | <code>annual</code> or <code>quarterly</code>. Default to <code>annual</code>
+
+try {
+    $result = $apiInstance->similarityIndex($symbol, $cik, $freq);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->similarityIndex: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. Required if cik is empty | [optional]
+ **cik** | **string**| CIK. Required if symbol is empty | [optional]
+ **freq** | **string**| &lt;code&gt;annual&lt;/code&gt; or &lt;code&gt;quarterly&lt;/code&gt;. Default to &lt;code&gt;annual&lt;/code&gt; | [optional]
+
+### Return type
+
+[**\Finnhub\Model\SimilarityIndex**](../Model/SimilarityIndex.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## stockBidask
 
 > \Finnhub\Model\LastBidAsk stockBidask($symbol)
@@ -2586,7 +3038,7 @@ Name | Type | Description  | Notes
 
 Stock Symbol
 
-List supported stocks.
+List supported stocks. A list of supported CFD Indices can be found <a href=\"https://docs.google.com/spreadsheets/d/1BAbIXBgl405fj0oHeEyRFEu8mW4QD1PhvtaBATLoR14/edit?usp=sharing\" target=\"_blank\">here</a>.
 
 ### Example
 

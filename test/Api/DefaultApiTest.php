@@ -253,6 +253,46 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for etfsCountryExposure
+     *
+     * ETFs Country Exposure.
+     *
+     */
+    public function testEtfsCountryExposure()
+    {
+    }
+
+    /**
+     * Test case for etfsHoldings
+     *
+     * ETFs Holdings.
+     *
+     */
+    public function testEtfsHoldings()
+    {
+    }
+
+    /**
+     * Test case for etfsIndustryExposure
+     *
+     * ETFs Industry Exposure.
+     *
+     */
+    public function testEtfsIndustryExposure()
+    {
+    }
+
+    /**
+     * Test case for etfsProfile
+     *
+     * ETFs Profile.
+     *
+     */
+    public function testEtfsProfile()
+    {
+    }
+
+    /**
      * Test case for filings
      *
      * Filings.
@@ -343,6 +383,26 @@ class DefaultApiTest extends TestCase
     }
 
     /**
+     * Test case for indicesConstituents
+     *
+     * Indices Constituents.
+     *
+     */
+    public function testIndicesConstituents()
+    {
+    }
+
+    /**
+     * Test case for indicesHistoricalConstituents
+     *
+     * Indices Historical Constituents.
+     *
+     */
+    public function testIndicesHistoricalConstituents()
+    {
+    }
+
+    /**
      * Test case for investorsOwnership
      *
      * Investors Ownership.
@@ -419,6 +479,16 @@ class DefaultApiTest extends TestCase
      *
      */
     public function testRecommendationTrends()
+    {
+    }
+
+    /**
+     * Test case for similarityIndex
+     *
+     * Similarity Index.
+     *
+     */
+    public function testSimilarityIndex()
     {
     }
 

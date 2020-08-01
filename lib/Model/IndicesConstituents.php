@@ -1,6 +1,6 @@
 <?php
 /**
- * Stock
+ * IndicesConstituents
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Stock Class Doc Comment
+ * IndicesConstituents Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class Stock implements ModelInterface, ArrayAccess
+class IndicesConstituents implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Stock implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Stock';
+    protected static $openAPIModelName = 'IndicesConstituents';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class Stock implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'description' => 'string',
-        'display_symbol' => 'string',
         'symbol' => 'string',
-        'type' => 'string',
-        'currency' => 'string'
+        'constituents' => 'string[]'
     ];
 
     /**
@@ -70,11 +67,8 @@ class Stock implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'description' => null,
-        'display_symbol' => null,
         'symbol' => null,
-        'type' => null,
-        'currency' => null
+        'constituents' => null
     ];
 
     /**
@@ -104,11 +98,8 @@ class Stock implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'description' => 'description',
-        'display_symbol' => 'displaySymbol',
         'symbol' => 'symbol',
-        'type' => 'type',
-        'currency' => 'currency'
+        'constituents' => 'constituents'
     ];
 
     /**
@@ -117,11 +108,8 @@ class Stock implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'description' => 'setDescription',
-        'display_symbol' => 'setDisplaySymbol',
         'symbol' => 'setSymbol',
-        'type' => 'setType',
-        'currency' => 'setCurrency'
+        'constituents' => 'setConstituents'
     ];
 
     /**
@@ -130,11 +118,8 @@ class Stock implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'description' => 'getDescription',
-        'display_symbol' => 'getDisplaySymbol',
         'symbol' => 'getSymbol',
-        'type' => 'getType',
-        'currency' => 'getCurrency'
+        'constituents' => 'getConstituents'
     ];
 
     /**
@@ -197,11 +182,8 @@ class Stock implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['display_symbol'] = isset($data['display_symbol']) ? $data['display_symbol'] : null;
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['constituents'] = isset($data['constituents']) ? $data['constituents'] : null;
     }
 
     /**
@@ -229,54 +211,6 @@ class Stock implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Symbol description
-     *
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_symbol
-     *
-     * @return string|null
-     */
-    public function getDisplaySymbol()
-    {
-        return $this->container['display_symbol'];
-    }
-
-    /**
-     * Sets display_symbol
-     *
-     * @param string|null $display_symbol Display symbol name.
-     *
-     * @return $this
-     */
-    public function setDisplaySymbol($display_symbol)
-    {
-        $this->container['display_symbol'] = $display_symbol;
-
-        return $this;
-    }
-
-    /**
      * Gets symbol
      *
      * @return string|null
@@ -289,7 +223,7 @@ class Stock implements ModelInterface, ArrayAccess
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Unique symbol used to identify this symbol used in <code>/stock/candle</code> endpoint.
+     * @param string|null $symbol Index's symbol.
      *
      * @return $this
      */
@@ -301,49 +235,25 @@ class Stock implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets type
+     * Gets constituents
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getType()
+    public function getConstituents()
     {
-        return $this->container['type'];
+        return $this->container['constituents'];
     }
 
     /**
-     * Sets type
+     * Sets constituents
      *
-     * @param string|null $type Security type.
+     * @param string[]|null $constituents Array of constituents.
      *
      * @return $this
      */
-    public function setType($type)
+    public function setConstituents($constituents)
     {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string|null
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string|null $currency Price's currency. This might be different from the reporting currency of fundamental data.
-     *
-     * @return $this
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
+        $this->container['constituents'] = $constituents;
 
         return $this;
     }

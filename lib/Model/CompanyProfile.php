@@ -62,7 +62,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess
         'country' => 'string',
         'currency' => 'string',
         'cusip' => 'string',
-        'sedol' => 'int',
+        'sedol' => 'string',
         'description' => 'string',
         'exchange' => 'string',
         'ggroup' => 'string',
@@ -98,7 +98,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess
         'country' => null,
         'currency' => null,
         'cusip' => null,
-        'sedol' => 'int64',
+        'sedol' => null,
         'description' => null,
         'exchange' => null,
         'ggroup' => null,
@@ -489,7 +489,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess
     /**
      * Gets sedol
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSedol()
     {
@@ -499,7 +499,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess
     /**
      * Sets sedol
      *
-     * @param int|null $sedol Sedol number.
+     * @param string|null $sedol Sedol number.
      *
      * @return $this
      */
