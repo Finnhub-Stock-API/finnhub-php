@@ -1,7 +1,7 @@
 # Finnhub
 - Finnhub php api clent
 - API version: 1.0.0
-- Package version: 1.0.0
+- Package version: 1.1.0
 
 ## Requirements
 
