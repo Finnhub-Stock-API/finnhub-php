@@ -1,6 +1,6 @@
 <?php
 /**
- * ETFHoldings
+ * ETFSectorExposureData
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * ETFHoldings Class Doc Comment
+ * ETFSectorExposureData Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ETFHoldings implements ModelInterface, ArrayAccess
+class ETFSectorExposureData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ETFHoldings implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ETFHoldings';
+    protected static $openAPIModelName = 'ETFSectorExposureData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,8 @@ class ETFHoldings implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'share' => 'float',
-        'percent' => 'float'
+        'industry' => 'string',
+        'exposure' => 'string'
     ];
 
     /**
@@ -68,9 +67,8 @@ class ETFHoldings implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'share' => 'float',
-        'percent' => 'float'
+        'industry' => null,
+        'exposure' => null
     ];
 
     /**
@@ -100,9 +98,8 @@ class ETFHoldings implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'share' => 'share',
-        'percent' => 'percent'
+        'industry' => 'industry',
+        'exposure' => 'exposure'
     ];
 
     /**
@@ -111,9 +108,8 @@ class ETFHoldings implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'share' => 'setShare',
-        'percent' => 'setPercent'
+        'industry' => 'setIndustry',
+        'exposure' => 'setExposure'
     ];
 
     /**
@@ -122,9 +118,8 @@ class ETFHoldings implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'share' => 'getShare',
-        'percent' => 'getPercent'
+        'industry' => 'getIndustry',
+        'exposure' => 'getExposure'
     ];
 
     /**
@@ -187,9 +182,8 @@ class ETFHoldings implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['share'] = isset($data['share']) ? $data['share'] : null;
-        $this->container['percent'] = isset($data['percent']) ? $data['percent'] : null;
+        $this->container['industry'] = isset($data['industry']) ? $data['industry'] : null;
+        $this->container['exposure'] = isset($data['exposure']) ? $data['exposure'] : null;
     }
 
     /**
@@ -217,73 +211,49 @@ class ETFHoldings implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets symbol
+     * Gets industry
      *
      * @return string|null
      */
-    public function getSymbol()
+    public function getIndustry()
     {
-        return $this->container['symbol'];
+        return $this->container['industry'];
     }
 
     /**
-     * Sets symbol
+     * Sets industry
      *
-     * @param string|null $symbol Symbol description
+     * @param string|null $industry Industry
      *
      * @return $this
      */
-    public function setSymbol($symbol)
+    public function setIndustry($industry)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['industry'] = $industry;
 
         return $this;
     }
 
     /**
-     * Gets share
+     * Gets exposure
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getShare()
+    public function getExposure()
     {
-        return $this->container['share'];
+        return $this->container['exposure'];
     }
 
     /**
-     * Sets share
+     * Sets exposure
      *
-     * @param float|null $share Number of shares owned by the ETF.
+     * @param string|null $exposure Percent of exposure.
      *
      * @return $this
      */
-    public function setShare($share)
+    public function setExposure($exposure)
     {
-        $this->container['share'] = $share;
-
-        return $this;
-    }
-
-    /**
-     * Gets percent
-     *
-     * @return float|null
-     */
-    public function getPercent()
-    {
-        return $this->container['percent'];
-    }
-
-    /**
-     * Sets percent
-     *
-     * @param float|null $percent Portfolio's percent
-     *
-     * @return $this
-     */
-    public function setPercent($percent)
-    {
-        $this->container['percent'] = $percent;
+        $this->container['exposure'] = $exposure;
 
         return $this;
     }

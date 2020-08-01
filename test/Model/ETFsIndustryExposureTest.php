@@ -86,9 +86,9 @@ class ETFsIndustryExposureTest extends TestCase
     }
 
     /**
-     * Test attribute "holdings"
+     * Test attribute "sector_exposure"
      */
-    public function testPropertyHoldings()
+    public function testPropertySectorExposure()
     {
     }
 }

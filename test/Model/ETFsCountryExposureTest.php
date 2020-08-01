@@ -86,9 +86,9 @@ class ETFsCountryExposureTest extends TestCase
     }
 
     /**
-     * Test attribute "holdings"
+     * Test attribute "country_exposure"
      */
-    public function testPropertyHoldings()
+    public function testPropertyCountryExposure()
     {
     }
 }

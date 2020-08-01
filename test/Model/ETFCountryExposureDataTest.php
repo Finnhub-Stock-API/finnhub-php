@@ -1,6 +1,6 @@
 <?php
 /**
- * ETFHoldingsTest
+ * ETFCountryExposureDataTest
  *
  * PHP version 5
  *
@@ -32,15 +32,15 @@ namespace Finnhub;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ETFHoldingsTest Class Doc Comment
+ * ETFCountryExposureDataTest Class Doc Comment
  *
  * @category    Class
- * @description ETFHoldings
+ * @description ETFCountryExposureData
  * @package     Finnhub
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ETFHoldingsTest extends TestCase
+class ETFCountryExposureDataTest extends TestCase
 {
 
     /**
@@ -72,30 +72,23 @@ class ETFHoldingsTest extends TestCase
     }
 
     /**
-     * Test "ETFHoldings"
+     * Test "ETFCountryExposureData"
      */
-    public function testETFHoldings()
+    public function testETFCountryExposureData()
     {
     }
 
     /**
-     * Test attribute "symbol"
+     * Test attribute "country"
      */
-    public function testPropertySymbol()
+    public function testPropertyCountry()
     {
     }
 
     /**
-     * Test attribute "share"
+     * Test attribute "exposure"
      */
-    public function testPropertyShare()
-    {
-    }
-
-    /**
-     * Test attribute "percent"
-     */
-    public function testPropertyPercent()
+    public function testPropertyExposure()
     {
     }
 }

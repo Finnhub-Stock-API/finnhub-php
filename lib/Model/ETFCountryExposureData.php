@@ -1,6 +1,6 @@
 <?php
 /**
- * ETFCountryExposure
+ * ETFCountryExposureData
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * ETFCountryExposure Class Doc Comment
+ * ETFCountryExposureData Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ETFCountryExposure implements ModelInterface, ArrayAccess
+class ETFCountryExposureData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ETFCountryExposure implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ETFCountryExposure';
+    protected static $openAPIModelName = 'ETFCountryExposureData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

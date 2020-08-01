@@ -58,7 +58,7 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'holdings' => 'object[]'
+        'country_exposure' => 'object[]'
     ];
 
     /**
@@ -68,7 +68,7 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'holdings' => null
+        'country_exposure' => null
     ];
 
     /**
@@ -99,7 +99,7 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
-        'holdings' => 'holdings'
+        'country_exposure' => 'countryExposure'
     ];
 
     /**
@@ -109,7 +109,7 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
-        'holdings' => 'setHoldings'
+        'country_exposure' => 'setCountryExposure'
     ];
 
     /**
@@ -119,7 +119,7 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
-        'holdings' => 'getHoldings'
+        'country_exposure' => 'getCountryExposure'
     ];
 
     /**
@@ -183,7 +183,7 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['holdings'] = isset($data['holdings']) ? $data['holdings'] : null;
+        $this->container['country_exposure'] = isset($data['country_exposure']) ? $data['country_exposure'] : null;
     }
 
     /**
@@ -235,25 +235,25 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets holdings
+     * Gets country_exposure
      *
      * @return object[]|null
      */
-    public function getHoldings()
+    public function getCountryExposure()
     {
-        return $this->container['holdings'];
+        return $this->container['country_exposure'];
     }
 
     /**
-     * Sets holdings
+     * Sets country_exposure
      *
-     * @param object[]|null $holdings Array of countries and and exposure levels.
+     * @param object[]|null $country_exposure Array of countries and and exposure levels.
      *
      * @return $this
      */
-    public function setHoldings($holdings)
+    public function setCountryExposure($country_exposure)
     {
-        $this->container['holdings'] = $holdings;
+        $this->container['country_exposure'] = $country_exposure;
 
         return $this;
     }

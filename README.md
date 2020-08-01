@@ -1,7 +1,7 @@
 # Finnhub
 - Finnhub php api clent
 - API version: 1.0.0
-- Package version: 1.1.0
+- Package version: 1.1.1
 
 ## Requirements
 
@@ -14,7 +14,7 @@ PHP 5.5 and later
 ```json
 {
   "require": {
-    "finnhub/client": "1.0.0"
+    "finnhub/client": "1.1.1"
   }
 }
 ```

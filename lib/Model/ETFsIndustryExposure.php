@@ -58,7 +58,7 @@ class ETFsIndustryExposure implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'holdings' => 'object[]'
+        'sector_exposure' => 'object[]'
     ];
 
     /**
@@ -68,7 +68,7 @@ class ETFsIndustryExposure implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'holdings' => null
+        'sector_exposure' => null
     ];
 
     /**
@@ -99,7 +99,7 @@ class ETFsIndustryExposure implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
-        'holdings' => 'holdings'
+        'sector_exposure' => 'sectorExposure'
     ];
 
     /**
@@ -109,7 +109,7 @@ class ETFsIndustryExposure implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
-        'holdings' => 'setHoldings'
+        'sector_exposure' => 'setSectorExposure'
     ];
 
     /**
@@ -119,7 +119,7 @@ class ETFsIndustryExposure implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
-        'holdings' => 'getHoldings'
+        'sector_exposure' => 'getSectorExposure'
     ];
 
     /**
@@ -183,7 +183,7 @@ class ETFsIndustryExposure implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = isset($data['symbol']) ? $data['symbol'] : null;
-        $this->container['holdings'] = isset($data['holdings']) ? $data['holdings'] : null;
+        $this->container['sector_exposure'] = isset($data['sector_exposure']) ? $data['sector_exposure'] : null;
     }
 
     /**
@@ -235,25 +235,25 @@ class ETFsIndustryExposure implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets holdings
+     * Gets sector_exposure
      *
      * @return object[]|null
      */
-    public function getHoldings()
+    public function getSectorExposure()
     {
-        return $this->container['holdings'];
+        return $this->container['sector_exposure'];
     }
 
     /**
-     * Sets holdings
+     * Sets sector_exposure
      *
-     * @param object[]|null $holdings Array of industries and exposure levels.
+     * @param object[]|null $sector_exposure Array of industries and exposure levels.
      *
      * @return $this
      */
-    public function setHoldings($holdings)
+    public function setSectorExposure($sector_exposure)
     {
-        $this->container['holdings'] = $holdings;
+        $this->container['sector_exposure'] = $sector_exposure;
 
         return $this;
     }
