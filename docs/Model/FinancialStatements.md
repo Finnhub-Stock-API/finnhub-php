@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** | Symbol of the company. | [optional] 
-**financials** | **object[]** | An array of map of key, value pairs containing the data for each period. | [optional] 
+**symbol** | **string** | Symbol of the company. | [optional]
+**financials** | **object[]** | An array of map of key, value pairs containing the data for each period. | [optional]
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-
-
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

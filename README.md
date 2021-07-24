@@ -1,7 +1,7 @@
 # Finnhub
 - Finnhub php api clent
 - API version: 1.0.0
-- Package version: 1.1.0
+- Package version: 1.1.2
 
 ## Requirements
 
@@ -103,7 +103,7 @@ print_r($client->forexSymbols('OANDA'));
 print_r($client->fundOwnership('AMZN', 5));
 
 // General news
-print_r($client->generalNews('forex', 0));
+print_r($client->marketNews('forex', 0));
 
 // Investors ownership
 print_r($client->investorsOwnership('AAPL', 5));
@@ -112,7 +112,7 @@ print_r($client->investorsOwnership('AAPL', 5));
 print_r($client->ipoCalendar("2020-05-01", "2020-06-01"));
 
 // Major developments
-print_r($client->majorDevelopments('AAPL', "2020-01-01", "2020-12-31"));
+print_r($client->pressReleases('AAPL', "2020-01-01", "2020-12-31"));
 
 // News sentiment
 print_r($client->newsSentiment('AAPL'));
@@ -186,10 +186,23 @@ print_r($client->etfsProfile('SPY'))
 print_r($client->etfsHoldings('SPY'))
 
 // ETFs Industry Exposure
-print_r($client->etfsIndustryExposure('SPY'))
+print_r($client->etfsSectorExposure('SPY'))
 
 // ETFs Country Exposure
 print_r($client->etfsCountryExposure('SPY'))
+
+// Mutual Fund Profile
+print_r($client->mutualFundProfile('VTSAX'))
+
+// Mutual Fund Holdings
+print_r($client->mutualFundHoldings('VTSAX'))
+
+// Mutual Fund Sector Exposure
+print_r($client->mutualFundSectorExposure('VTSAX'))
+
+// Mutual Fund Country Exposure
+print_r($client->mutualFundCountryExposure('VTSAX'))
+
 ?>
 ```
 

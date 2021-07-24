@@ -1,68 +1,84 @@
 # Finnhub\DefaultApi
 
-All URIs are relative to *https://finnhub.io/api/v1*
+All URIs are relative to https://finnhub.io/api/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**aggregateIndicator**](DefaultApi.md#aggregateIndicator) | **GET** /scan/technical-indicator | Aggregate Indicators
-[**companyBasicFinancials**](DefaultApi.md#companyBasicFinancials) | **GET** /stock/metric | Basic Financials
-[**companyEarnings**](DefaultApi.md#companyEarnings) | **GET** /stock/earnings | Earnings Surprises
-[**companyEpsEstimates**](DefaultApi.md#companyEpsEstimates) | **GET** /stock/eps-estimate | Earnings Estimates
-[**companyExecutive**](DefaultApi.md#companyExecutive) | **GET** /stock/executive | Company Executive
-[**companyNews**](DefaultApi.md#companyNews) | **GET** /company-news | Company News
-[**companyPeers**](DefaultApi.md#companyPeers) | **GET** /stock/peers | Peers
-[**companyProfile**](DefaultApi.md#companyProfile) | **GET** /stock/profile | Company Profile
-[**companyProfile2**](DefaultApi.md#companyProfile2) | **GET** /stock/profile2 | Company Profile 2
-[**companyRevenueEstimates**](DefaultApi.md#companyRevenueEstimates) | **GET** /stock/revenue-estimate | Revenue Estimates
-[**country**](DefaultApi.md#country) | **GET** /country | Country Metadata
-[**covid19**](DefaultApi.md#covid19) | **GET** /covid19/us | COVID-19
-[**cryptoCandles**](DefaultApi.md#cryptoCandles) | **GET** /crypto/candle | Crypto Candles
-[**cryptoExchanges**](DefaultApi.md#cryptoExchanges) | **GET** /crypto/exchange | Crypto Exchanges
-[**cryptoSymbols**](DefaultApi.md#cryptoSymbols) | **GET** /crypto/symbol | Crypto Symbol
-[**earningsCalendar**](DefaultApi.md#earningsCalendar) | **GET** /calendar/earnings | Earnings Calendar
-[**economicCode**](DefaultApi.md#economicCode) | **GET** /economic/code | Economic Code
-[**economicData**](DefaultApi.md#economicData) | **GET** /economic | Economic Data
-[**etfsCountryExposure**](DefaultApi.md#etfsCountryExposure) | **GET** /etf/country | ETFs Country Exposure
-[**etfsHoldings**](DefaultApi.md#etfsHoldings) | **GET** /etf/holdings | ETFs Holdings
-[**etfsIndustryExposure**](DefaultApi.md#etfsIndustryExposure) | **GET** /etf/sector | ETFs Industry Exposure
-[**etfsProfile**](DefaultApi.md#etfsProfile) | **GET** /etf/profile | ETFs Profile
-[**filings**](DefaultApi.md#filings) | **GET** /stock/filings | Filings
-[**financials**](DefaultApi.md#financials) | **GET** /stock/financials | Financial Statements
-[**financialsReported**](DefaultApi.md#financialsReported) | **GET** /stock/financials-reported | Financials As Reported
-[**forexCandles**](DefaultApi.md#forexCandles) | **GET** /forex/candle | Forex Candles
-[**forexExchanges**](DefaultApi.md#forexExchanges) | **GET** /forex/exchange | Forex Exchanges
-[**forexRates**](DefaultApi.md#forexRates) | **GET** /forex/rates | Forex rates
-[**forexSymbols**](DefaultApi.md#forexSymbols) | **GET** /forex/symbol | Forex Symbol
-[**fundOwnership**](DefaultApi.md#fundOwnership) | **GET** /stock/fund-ownership | Fund Ownership
-[**generalNews**](DefaultApi.md#generalNews) | **GET** /news | General News
-[**indicesConstituents**](DefaultApi.md#indicesConstituents) | **GET** /index/constituents | Indices Constituents
-[**indicesHistoricalConstituents**](DefaultApi.md#indicesHistoricalConstituents) | **GET** /index/historical-constituents | Indices Historical Constituents
-[**investorsOwnership**](DefaultApi.md#investorsOwnership) | **GET** /stock/investor-ownership | Investors Ownership
-[**ipoCalendar**](DefaultApi.md#ipoCalendar) | **GET** /calendar/ipo | IPO Calendar
-[**majorDevelopments**](DefaultApi.md#majorDevelopments) | **GET** /major-development | Major Developments
-[**newsSentiment**](DefaultApi.md#newsSentiment) | **GET** /news-sentiment | News Sentiment
-[**patternRecognition**](DefaultApi.md#patternRecognition) | **GET** /scan/pattern | Pattern Recognition
-[**priceTarget**](DefaultApi.md#priceTarget) | **GET** /stock/price-target | Price Target
-[**quote**](DefaultApi.md#quote) | **GET** /quote | Quote
-[**recommendationTrends**](DefaultApi.md#recommendationTrends) | **GET** /stock/recommendation | Recommendation Trends
-[**similarityIndex**](DefaultApi.md#similarityIndex) | **GET** /stock/similarity-index | Similarity Index
-[**stockBidask**](DefaultApi.md#stockBidask) | **GET** /stock/bidask | Last Bid-Ask
-[**stockCandles**](DefaultApi.md#stockCandles) | **GET** /stock/candle | Stock Candles
-[**stockDividends**](DefaultApi.md#stockDividends) | **GET** /stock/dividend | Dividends
-[**stockSplits**](DefaultApi.md#stockSplits) | **GET** /stock/split | Splits
-[**stockSymbols**](DefaultApi.md#stockSymbols) | **GET** /stock/symbol | Stock Symbol
-[**stockTick**](DefaultApi.md#stockTick) | **GET** /stock/tick | Tick Data
-[**supportResistance**](DefaultApi.md#supportResistance) | **GET** /scan/support-resistance | Support/Resistance
-[**technicalIndicator**](DefaultApi.md#technicalIndicator) | **POST** /indicator | Technical Indicators
-[**transcripts**](DefaultApi.md#transcripts) | **GET** /stock/transcripts | Earnings Call Transcripts
-[**transcriptsList**](DefaultApi.md#transcriptsList) | **GET** /stock/transcripts/list | Earnings Call Transcripts List
-[**upgradeDowngrade**](DefaultApi.md#upgradeDowngrade) | **GET** /stock/upgrade-downgrade | Stock Upgrade/Downgrade
+[**aggregateIndicator()**](DefaultApi.md#aggregateIndicator) | **GET** /scan/technical-indicator | Aggregate Indicators
+[**companyBasicFinancials()**](DefaultApi.md#companyBasicFinancials) | **GET** /stock/metric | Basic Financials
+[**companyEarnings()**](DefaultApi.md#companyEarnings) | **GET** /stock/earnings | Earnings Surprises
+[**companyEpsEstimates()**](DefaultApi.md#companyEpsEstimates) | **GET** /stock/eps-estimate | Earnings Estimates
+[**companyExecutive()**](DefaultApi.md#companyExecutive) | **GET** /stock/executive | Company Executive
+[**companyNews()**](DefaultApi.md#companyNews) | **GET** /company-news | Company News
+[**companyPeers()**](DefaultApi.md#companyPeers) | **GET** /stock/peers | Peers
+[**companyProfile()**](DefaultApi.md#companyProfile) | **GET** /stock/profile | Company Profile
+[**companyProfile2()**](DefaultApi.md#companyProfile2) | **GET** /stock/profile2 | Company Profile 2
+[**companyRevenueEstimates()**](DefaultApi.md#companyRevenueEstimates) | **GET** /stock/revenue-estimate | Revenue Estimates
+[**country()**](DefaultApi.md#country) | **GET** /country | Country Metadata
+[**covid19()**](DefaultApi.md#covid19) | **GET** /covid19/us | COVID-19
+[**cryptoCandles()**](DefaultApi.md#cryptoCandles) | **GET** /crypto/candle | Crypto Candles
+[**cryptoExchanges()**](DefaultApi.md#cryptoExchanges) | **GET** /crypto/exchange | Crypto Exchanges
+[**cryptoSymbols()**](DefaultApi.md#cryptoSymbols) | **GET** /crypto/symbol | Crypto Symbol
+[**earningsCalendar()**](DefaultApi.md#earningsCalendar) | **GET** /calendar/earnings | Earnings Calendar
+[**earningsCallTranscriptsApi()**](DefaultApi.md#earningsCallTranscriptsApi) | **GET** /stock/transcripts | Earnings Call Transcripts
+[**economicCode()**](DefaultApi.md#economicCode) | **GET** /economic/code | Economic Code
+[**economicData()**](DefaultApi.md#economicData) | **GET** /economic | Economic Data
+[**etfsCountryExposure()**](DefaultApi.md#etfsCountryExposure) | **GET** /etf/country | ETFs Country Exposure
+[**etfsHoldings()**](DefaultApi.md#etfsHoldings) | **GET** /etf/holdings | ETFs Holdings
+[**etfsProfile()**](DefaultApi.md#etfsProfile) | **GET** /etf/profile | ETFs Profile
+[**etfsSectorExposure()**](DefaultApi.md#etfsSectorExposure) | **GET** /etf/sector | ETFs Sector Exposure
+[**fdaCommitteeMeetingCalendar()**](DefaultApi.md#fdaCommitteeMeetingCalendar) | **GET** /fda-advisory-committee-calendar | FDA Committee Meeting Calendar
+[**filings()**](DefaultApi.md#filings) | **GET** /stock/filings | SEC Filings
+[**filingsSentiment()**](DefaultApi.md#filingsSentiment) | **GET** /stock/filings-sentiment | SEC Sentiment Analysis
+[**financials()**](DefaultApi.md#financials) | **GET** /stock/financials | Financial Statements
+[**financialsReported()**](DefaultApi.md#financialsReported) | **GET** /stock/financials-reported | Financials As Reported
+[**forexCandles()**](DefaultApi.md#forexCandles) | **GET** /forex/candle | Forex Candles
+[**forexExchanges()**](DefaultApi.md#forexExchanges) | **GET** /forex/exchange | Forex Exchanges
+[**forexRates()**](DefaultApi.md#forexRates) | **GET** /forex/rates | Forex rates
+[**forexSymbols()**](DefaultApi.md#forexSymbols) | **GET** /forex/symbol | Forex Symbol
+[**fundOwnership()**](DefaultApi.md#fundOwnership) | **GET** /stock/fund-ownership | Fund Ownership
+[**indicesConstituents()**](DefaultApi.md#indicesConstituents) | **GET** /index/constituents | Indices Constituents
+[**indicesHistoricalConstituents()**](DefaultApi.md#indicesHistoricalConstituents) | **GET** /index/historical-constituents | Indices Historical Constituents
+[**insiderTransactions()**](DefaultApi.md#insiderTransactions) | **GET** /stock/insider-transactions | Insider Transactions
+[**internationalFilings()**](DefaultApi.md#internationalFilings) | **GET** /stock/international-filings | International Filings
+[**investmentThemesThematicInvesting()**](DefaultApi.md#investmentThemesThematicInvesting) | **GET** /stock/investment-theme | Investment Themes (Thematic Investing)
+[**ipoCalendar()**](DefaultApi.md#ipoCalendar) | **GET** /calendar/ipo | IPO Calendar
+[**marketNews()**](DefaultApi.md#marketNews) | **GET** /news | Market News
+[**mutualFundCountryExposure()**](DefaultApi.md#mutualFundCountryExposure) | **GET** /mutual-fund/country | Mutual Funds Country Exposure
+[**mutualFundHoldings()**](DefaultApi.md#mutualFundHoldings) | **GET** /mutual-fund/holdings | Mutual Funds Holdings
+[**mutualFundProfile()**](DefaultApi.md#mutualFundProfile) | **GET** /mutual-fund/profile | Mutual Funds Profile
+[**mutualFundSectorExposure()**](DefaultApi.md#mutualFundSectorExposure) | **GET** /mutual-fund/sector | Mutual-fund Sector Exposure
+[**newsSentiment()**](DefaultApi.md#newsSentiment) | **GET** /news-sentiment | News Sentiment
+[**ownership()**](DefaultApi.md#ownership) | **GET** /stock/ownership | Ownership
+[**patternRecognition()**](DefaultApi.md#patternRecognition) | **GET** /scan/pattern | Pattern Recognition
+[**pressReleases()**](DefaultApi.md#pressReleases) | **GET** /press-releases | Major Press Releases
+[**priceTarget()**](DefaultApi.md#priceTarget) | **GET** /stock/price-target | Price Target
+[**quote()**](DefaultApi.md#quote) | **GET** /quote | Quote
+[**recommendationTrends()**](DefaultApi.md#recommendationTrends) | **GET** /stock/recommendation | Recommendation Trends
+[**revenueBreakdown()**](DefaultApi.md#revenueBreakdown) | **GET** /stock/revenue-breakdown | Revenue Breakdown
+[**similarityIndex()**](DefaultApi.md#similarityIndex) | **GET** /stock/similarity-index | Similarity Index
+[**socialSentiment()**](DefaultApi.md#socialSentiment) | **GET** /stock/social-sentiment | Social Sentiment
+[**stockBasicDividends()**](DefaultApi.md#stockBasicDividends) | **GET** /stock/dividend2 | Dividends 2 (Basic)
+[**stockBidask()**](DefaultApi.md#stockBidask) | **GET** /stock/bidask | Last Bid-Ask
+[**stockCandles()**](DefaultApi.md#stockCandles) | **GET** /stock/candle | Stock Candles
+[**stockDividends()**](DefaultApi.md#stockDividends) | **GET** /stock/dividend | Dividends
+[**stockNbbo()**](DefaultApi.md#stockNbbo) | **GET** /stock/bbo | Historical NBBO
+[**stockSplits()**](DefaultApi.md#stockSplits) | **GET** /stock/split | Splits
+[**stockSymbols()**](DefaultApi.md#stockSymbols) | **GET** /stock/symbol | Stock Symbol
+[**stockTick()**](DefaultApi.md#stockTick) | **GET** /stock/tick | Tick Data
+[**supplyChainRelationships()**](DefaultApi.md#supplyChainRelationships) | **GET** /stock/supply-chain | Supply Chain Relationships
+[**supportResistance()**](DefaultApi.md#supportResistance) | **GET** /scan/support-resistance | Support/Resistance
+[**symbolSearch()**](DefaultApi.md#symbolSearch) | **GET** /search | Symbol Lookup
+[**technicalIndicator()**](DefaultApi.md#technicalIndicator) | **POST** /indicator | Technical Indicators
+[**transcriptsList()**](DefaultApi.md#transcriptsList) | **GET** /stock/transcripts/list | Earnings Call Transcripts List
+[**upgradeDowngrade()**](DefaultApi.md#upgradeDowngrade) | **GET** /stock/upgrade-downgrade | Stock Upgrade/Downgrade
 
 
+## `aggregateIndicator()`
 
-## aggregateIndicator
-
-> \Finnhub\Model\AggregateIndicators aggregateIndicator($symbol, $resolution)
+```php
+aggregateIndicator($symbol, $resolution): \Finnhub\Model\AggregateIndicators
+```
 
 Aggregate Indicators
 
@@ -96,11 +112,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->aggregateIndicator: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -118,16 +132,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `companyBasicFinancials()`
 
-## companyBasicFinancials
-
-> \Finnhub\Model\BasicFinancials companyBasicFinancials($symbol, $metric)
+```php
+companyBasicFinancials($symbol, $metric): \Finnhub\Model\BasicFinancials
+```
 
 Basic Financials
 
@@ -153,7 +168,7 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
-$metric = 'metric_example'; // string | Metric type. Can be 1 of the following values <code>all, price, valuation, margin</code>
+$metric = 'metric_example'; // string | Metric type. Can be 1 of the following values <code>all</code>
 
 try {
     $result = $apiInstance->companyBasicFinancials($symbol, $metric);
@@ -161,16 +176,14 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyBasicFinancials: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **string**| Symbol of the company: AAPL. |
- **metric** | **string**| Metric type. Can be 1 of the following values &lt;code&gt;all, price, valuation, margin&lt;/code&gt; |
+ **metric** | **string**| Metric type. Can be 1 of the following values &lt;code&gt;all&lt;/code&gt; |
 
 ### Return type
 
@@ -183,16 +196,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `companyEarnings()`
 
-## companyEarnings
-
-> \Finnhub\Model\EarningResult[] companyEarnings($symbol, $limit)
+```php
+companyEarnings($symbol, $limit): \Finnhub\Model\EarningResult[]
+```
 
 Earnings Surprises
 
@@ -226,11 +240,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyEarnings: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -248,16 +260,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `companyEpsEstimates()`
 
-## companyEpsEstimates
-
-> \Finnhub\Model\EarningsEstimates companyEpsEstimates($symbol, $freq)
+```php
+companyEpsEstimates($symbol, $freq): \Finnhub\Model\EarningsEstimates
+```
 
 Earnings Estimates
 
@@ -291,11 +304,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyEpsEstimates: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -313,16 +324,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `companyExecutive()`
 
-## companyExecutive
-
-> \Finnhub\Model\CompanyExecutive companyExecutive($symbol)
+```php
+companyExecutive($symbol): \Finnhub\Model\CompanyExecutive
+```
 
 Company Executive
 
@@ -355,11 +367,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyExecutive: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -376,16 +386,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `companyNews()`
 
-## companyNews
-
-> \Finnhub\Model\News[] companyNews($symbol, $from, $to)
+```php
+companyNews($symbol, $from, $to): \Finnhub\Model\News[]
+```
 
 Company News
 
@@ -420,11 +431,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyNews: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -443,16 +452,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `companyPeers()`
 
-## companyPeers
-
-> string[] companyPeers($symbol)
+```php
+companyPeers($symbol): string[]
+```
 
 Peers
 
@@ -485,11 +495,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyPeers: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -506,16 +514,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `companyProfile()`
 
-## companyProfile
-
-> \Finnhub\Model\CompanyProfile companyProfile($symbol, $isin, $cusip)
+```php
+companyProfile($symbol, $isin, $cusip): \Finnhub\Model\CompanyProfile
+```
 
 Company Profile
 
@@ -550,11 +559,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyProfile: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -573,16 +580,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `companyProfile2()`
 
-## companyProfile2
-
-> \Finnhub\Model\CompanyProfile2 companyProfile2($symbol, $isin, $cusip)
+```php
+companyProfile2($symbol, $isin, $cusip): \Finnhub\Model\CompanyProfile2
+```
 
 Company Profile 2
 
@@ -617,11 +625,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyProfile2: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -640,16 +646,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `companyRevenueEstimates()`
 
-## companyRevenueEstimates
-
-> \Finnhub\Model\RevenueEstimates companyRevenueEstimates($symbol, $freq)
+```php
+companyRevenueEstimates($symbol, $freq): \Finnhub\Model\RevenueEstimates
+```
 
 Revenue Estimates
 
@@ -683,11 +690,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyRevenueEstimates: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -705,16 +710,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `country()`
 
-## country
-
-> \Finnhub\Model\CountryMetadata[] country()
+```php
+country(): \Finnhub\Model\CountryMetadata[]
+```
 
 Country Metadata
 
@@ -746,7 +752,6 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->country: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
@@ -764,16 +769,17 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `covid19()`
 
-## covid19
-
-> \Finnhub\Model\CovidInfo[] covid19()
+```php
+covid19(): \Finnhub\Model\CovidInfo[]
+```
 
 COVID-19
 
@@ -805,7 +811,6 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->covid19: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
@@ -823,16 +828,17 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `cryptoCandles()`
 
-## cryptoCandles
-
-> \Finnhub\Model\CryptoCandles cryptoCandles($symbol, $resolution, $from, $to)
+```php
+cryptoCandles($symbol, $resolution, $from, $to): \Finnhub\Model\CryptoCandles
+```
 
 Crypto Candles
 
@@ -868,11 +874,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->cryptoCandles: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -892,16 +896,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `cryptoExchanges()`
 
-## cryptoExchanges
-
-> string[] cryptoExchanges()
+```php
+cryptoExchanges(): string[]
+```
 
 Crypto Exchanges
 
@@ -933,7 +938,6 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->cryptoExchanges: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
@@ -951,16 +955,17 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `cryptoSymbols()`
 
-## cryptoSymbols
-
-> \Finnhub\Model\CryptoSymbol[] cryptoSymbols($exchange)
+```php
+cryptoSymbols($exchange): \Finnhub\Model\CryptoSymbol[]
+```
 
 Crypto Symbol
 
@@ -993,11 +998,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->cryptoSymbols: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1014,20 +1017,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `earningsCalendar()`
 
-## earningsCalendar
-
-> \Finnhub\Model\EarningsCalendar earningsCalendar($from, $to, $symbol, $international)
+```php
+earningsCalendar($from, $to, $symbol, $international): \Finnhub\Model\EarningsCalendar
+```
 
 Earnings Calendar
 
-Get historical and coming earnings release dating back to 2003. You can setup <a href=\"#webhook\">webhook</a> to receive real-time earnings update.
+Get historical and coming earnings release. EPS and Revenue in this endpoint are non-GAAP, which means they are adjusted to exclude some one-time or unusual items. This is the same data investors usually react to and talked about on the media. Estimates are sourced from both sell-side and buy-side analysts.
 
 ### Example
 
@@ -1059,11 +1063,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->earningsCalendar: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1083,16 +1085,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `earningsCallTranscriptsApi()`
 
-## economicCode
+```php
+earningsCallTranscriptsApi($id): \Finnhub\Model\EarningsCallTranscripts
+```
 
-> \Finnhub\Model\EconomicCode[] economicCode()
+Earnings Call Transcripts
+
+<p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US, UK, and Candian companies. <p>15+ years of data is available with 220,000+ audio which add up to 7TB in size.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | Transcript's id obtained with <a href=\"#transcripts-list\">Transcripts List endpoint</a>.
+
+try {
+    $result = $apiInstance->earningsCallTranscriptsApi($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->earningsCallTranscriptsApi: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\EarningsCallTranscripts**](../Model/EarningsCallTranscripts.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `economicCode()`
+
+```php
+economicCode(): \Finnhub\Model\EconomicCode[]
+```
 
 Economic Code
 
@@ -1124,7 +1189,6 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->economicCode: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
@@ -1142,16 +1206,17 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `economicData()`
 
-## economicData
-
-> \Finnhub\Model\EconomicData economicData($code)
+```php
+economicData($code): \Finnhub\Model\EconomicData
+```
 
 Economic Data
 
@@ -1184,11 +1249,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->economicData: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1205,16 +1268,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `etfsCountryExposure()`
 
-## etfsCountryExposure
-
-> \Finnhub\Model\ETFsCountryExposure etfsCountryExposure($symbol)
+```php
+etfsCountryExposure($symbol): \Finnhub\Model\ETFsCountryExposure
+```
 
 ETFs Country Exposure
 
@@ -1247,11 +1311,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->etfsCountryExposure: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1268,20 +1330,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `etfsHoldings()`
 
-## etfsHoldings
-
-> \Finnhub\Model\ETFsHoldings etfsHoldings($symbol)
+```php
+etfsHoldings($symbol, $isin, $skip): \Finnhub\Model\ETFsHoldings
+```
 
 ETFs Holdings
 
-Get current ETF holdings.
+Get full ETF holdings/constituents. This endpoint has global coverage. Widget only shows top 10 holdings.
 
 ### Example
 
@@ -1303,22 +1366,24 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | ETF symbol.
+$isin = 'isin_example'; // string | ETF isin.
+$skip = 56; // int | Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip=0 or not set.
 
 try {
-    $result = $apiInstance->etfsHoldings($symbol);
+    $result = $apiInstance->etfsHoldings($symbol, $isin, $skip);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->etfsHoldings: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| ETF symbol. |
+ **symbol** | **string**| ETF symbol. | [optional]
+ **isin** | **string**| ETF isin. | [optional]
+ **skip** | **int**| Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip&#x3D;0 or not set. | [optional]
 
 ### Return type
 
@@ -1331,83 +1396,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-
-## etfsIndustryExposure
-
-> \Finnhub\Model\ETFsIndustryExposure etfsIndustryExposure($symbol)
-
-ETFs Industry Exposure
-
-Get ETF industry exposure data.
-
-### Example
+## `etfsProfile()`
 
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: api_key
-$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
-
-
-$apiInstance = new Finnhub\Api\DefaultApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$symbol = 'symbol_example'; // string | ETF symbol.
-
-try {
-    $result = $apiInstance->etfsIndustryExposure($symbol);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->etfsIndustryExposure: ', $e->getMessage(), PHP_EOL;
-}
-?>
+etfsProfile($symbol, $isin): \Finnhub\Model\ETFsProfile
 ```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **symbol** | **string**| ETF symbol. |
-
-### Return type
-
-[**\Finnhub\Model\ETFsIndustryExposure**](../Model/ETFsIndustryExposure.md)
-
-### Authorization
-
-[api_key](../../README.md#api_key)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
-[[Back to README]](../../README.md)
-
-
-## etfsProfile
-
-> \Finnhub\Model\ETFsProfile etfsProfile($symbol)
 
 ETFs Profile
 
-Get ETF profile information. Currently support all US ETFs.
+Get ETF profile information. This endpoint has global coverage.
 
 ### Example
 
@@ -1429,22 +1432,22 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | ETF symbol.
+$isin = 'isin_example'; // string | ETF isin.
 
 try {
-    $result = $apiInstance->etfsProfile($symbol);
+    $result = $apiInstance->etfsProfile($symbol, $isin);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->etfsProfile: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| ETF symbol. |
+ **symbol** | **string**| ETF symbol. | [optional]
+ **isin** | **string**| ETF isin. | [optional]
 
 ### Return type
 
@@ -1457,18 +1460,140 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `etfsSectorExposure()`
 
-## filings
+```php
+etfsSectorExposure($symbol): \Finnhub\Model\ETFsSectorExposure
+```
 
-> \Finnhub\Model\Filing[] filings($symbol, $cik, $access_number, $form, $from, $to)
+ETFs Sector Exposure
 
-Filings
+Get ETF sector exposure data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | ETF symbol.
+
+try {
+    $result = $apiInstance->etfsSectorExposure($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->etfsSectorExposure: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| ETF symbol. |
+
+### Return type
+
+[**\Finnhub\Model\ETFsSectorExposure**](../Model/ETFsSectorExposure.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `fdaCommitteeMeetingCalendar()`
+
+```php
+fdaCommitteeMeetingCalendar(): \Finnhub\Model\FDAComitteeMeeting[]
+```
+
+FDA Committee Meeting Calendar
+
+FDA's advisory committees are established to provide functions which support the agency's mission of protecting and promoting the public health, while meeting the requirements set forth in the Federal Advisory Committee Act. Committees are either mandated by statute or established at the discretion of the Department of Health and Human Services. Each committee is subject to renewal at two-year intervals unless the committee charter states otherwise.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->fdaCommitteeMeetingCalendar();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->fdaCommitteeMeetingCalendar: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Finnhub\Model\FDAComitteeMeeting[]**](../Model/FDAComitteeMeeting.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `filings()`
+
+```php
+filings($symbol, $cik, $access_number, $form, $from, $to): \Finnhub\Model\Filing[]
+```
+
+SEC Filings
 
 List company's filing. Limit to 250 documents at a time. This data is available for bulk download on <a href=\"https://www.kaggle.com/finnhub/sec-filings\" target=\"_blank\">Kaggle SEC Filings database</a>.
 
@@ -1504,11 +1629,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->filings: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1530,20 +1653,83 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `filingsSentiment()`
 
-## financials
+```php
+filingsSentiment($access_number): \Finnhub\Model\SECSentimentAnalysis
+```
 
-> \Finnhub\Model\FinancialStatements financials($symbol, $statement, $freq)
+SEC Sentiment Analysis
+
+Get sentiment analysis of 10-K and 10-Q filings from SEC. An abnormal increase in the number of positive/negative words in filings can signal a significant change in the company's stock price in the upcoming 4 quarters. We make use of <a href= \"https://sraf.nd.edu/textual-analysis/resources/\" target=\"_blank\">Loughran and McDonald Sentiment Word Lists</a> to calculate the sentiment for each filing.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$access_number = 'access_number_example'; // string | Access number of a specific report you want to retrieve data from.
+
+try {
+    $result = $apiInstance->filingsSentiment($access_number);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->filingsSentiment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **access_number** | **string**| Access number of a specific report you want to retrieve data from. |
+
+### Return type
+
+[**\Finnhub\Model\SECSentimentAnalysis**](../Model/SECSentimentAnalysis.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `financials()`
+
+```php
+financials($symbol, $statement, $freq): \Finnhub\Model\FinancialStatements
+```
 
 Financial Statements
 
-Get standardized balance sheet, income statement and cash flow for global companies going back 30+ years.
+<p>Get standardized balance sheet, income statement and cash flow for global companies going back 30+ years. Data is sourced from original filings most of which made available through <a href=\"#filings\">SEC Filings</a> and <a href=\"#international-filings\">International Filings</a> endpoints.</p><p><i>Wondering why our standardized data is different from Bloomberg, Reuters, Factset, S&P or Yahoo Finance ? Check out our <a href=\"/faq\">FAQ page</a> to learn more</i></p>
 
 ### Example
 
@@ -1574,11 +1760,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->financials: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1597,16 +1781,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `financialsReported()`
 
-## financialsReported
-
-> \Finnhub\Model\FinancialsAsReported financialsReported($symbol, $cik, $access_number, $freq)
+```php
+financialsReported($symbol, $cik, $access_number, $freq): \Finnhub\Model\FinancialsAsReported
+```
 
 Financials As Reported
 
@@ -1642,11 +1827,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->financialsReported: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1666,16 +1849,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `forexCandles()`
 
-## forexCandles
-
-> \Finnhub\Model\ForexCandles forexCandles($symbol, $resolution, $from, $to)
+```php
+forexCandles($symbol, $resolution, $from, $to): \Finnhub\Model\ForexCandles
+```
 
 Forex Candles
 
@@ -1711,11 +1895,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->forexCandles: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1735,16 +1917,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `forexExchanges()`
 
-## forexExchanges
-
-> string[] forexExchanges()
+```php
+forexExchanges(): string[]
+```
 
 Forex Exchanges
 
@@ -1776,7 +1959,6 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->forexExchanges: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
@@ -1794,16 +1976,17 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `forexRates()`
 
-## forexRates
-
-> \Finnhub\Model\Forexrates forexRates($base)
+```php
+forexRates($base): \Finnhub\Model\Forexrates
+```
 
 Forex rates
 
@@ -1836,11 +2019,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->forexRates: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1857,16 +2038,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `forexSymbols()`
 
-## forexSymbols
-
-> \Finnhub\Model\ForexSymbol[] forexSymbols($exchange)
+```php
+forexSymbols($exchange): \Finnhub\Model\ForexSymbol[]
+```
 
 Forex Symbol
 
@@ -1899,11 +2081,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->forexSymbols: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1920,20 +2100,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `fundOwnership()`
 
-## fundOwnership
-
-> \Finnhub\Model\FundOwnership fundOwnership($symbol, $limit)
+```php
+fundOwnership($symbol, $limit): \Finnhub\Model\FundOwnership
+```
 
 Fund Ownership
 
-Get a full list fund and institutional investors of a company in descending order of the number of shares held.
+Get a full list fund and institutional investors of a company in descending order of the number of shares held. Data is sourced from <code>13F form</code>, <code>Schedule 13D</code> and <code>13G</code> for US market, <code>UK Share Register</code> for UK market, <code>SEDI</code> for Canadian market and equivalent filings for other international markets.
 
 ### Example
 
@@ -1963,11 +2144,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->fundOwnership: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1985,85 +2164,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-
-## generalNews
-
-> \Finnhub\Model\News[] generalNews($category, $min_id)
-
-General News
-
-Get latest market news.
-
-### Example
+## `indicesConstituents()`
 
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: api_key
-$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
-
-
-$apiInstance = new Finnhub\Api\DefaultApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$category = 'category_example'; // string | This parameter can be 1 of the following values <code>general, forex, crypto, merger</code>.
-$min_id = 'min_id_example'; // string | Use this field to get only news after this ID. Default to 0
-
-try {
-    $result = $apiInstance->generalNews($category, $min_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->generalNews: ', $e->getMessage(), PHP_EOL;
-}
-?>
+indicesConstituents($symbol): \Finnhub\Model\IndicesConstituents
 ```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **category** | **string**| This parameter can be 1 of the following values &lt;code&gt;general, forex, crypto, merger&lt;/code&gt;. |
- **min_id** | **string**| Use this field to get only news after this ID. Default to 0 | [optional]
-
-### Return type
-
-[**\Finnhub\Model\News[]**](../Model/News.md)
-
-### Authorization
-
-[api_key](../../README.md#api_key)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
-[[Back to README]](../../README.md)
-
-
-## indicesConstituents
-
-> \Finnhub\Model\IndicesConstituents indicesConstituents($symbol)
 
 Indices Constituents
 
-Get a list of index's constituents. Currently support <code>^GSPC (S&P 500)</code>, <code>^NDX (Nasdaq 100)</code>, <code>^DJI (Dow Jones)</code>
+Get a list of index's constituents. A list of supported indices for this endpoint can be found <a href=\"https://docs.google.com/spreadsheets/d/1Syr2eLielHWsorxkDEZXyc55d6bNx1M3ZeI4vdn7Qzo/edit?usp=sharing\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -2092,11 +2207,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->indicesConstituents: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2113,16 +2226,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `indicesHistoricalConstituents()`
 
-## indicesHistoricalConstituents
-
-> \Finnhub\Model\IndicesHistoricalConstituents indicesHistoricalConstituents($symbol)
+```php
+indicesHistoricalConstituents($symbol): \Finnhub\Model\IndicesHistoricalConstituents
+```
 
 Indices Historical Constituents
 
@@ -2155,11 +2269,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->indicesHistoricalConstituents: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2176,20 +2288,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `insiderTransactions()`
 
-## investorsOwnership
+```php
+insiderTransactions($symbol, $from, $to): \Finnhub\Model\InsiderTransactions
+```
 
-> \Finnhub\Model\InvestorsOwnership investorsOwnership($symbol, $limit)
+Insider Transactions
 
-Investors Ownership
-
-Get a full list of shareholders/investors of a company in descending order of the number of shares held.
+Company insider transactions data sourced from <code>Form 3,4,5</code>. This endpoint only covers US companies at the moment. Limit to 100 transactions per API call.
 
 ### Example
 
@@ -2211,28 +2324,28 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
-$limit = 56; // int | Limit number of results. Leave empty to get the full list.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date: 2020-03-15.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date: 2020-03-16.
 
 try {
-    $result = $apiInstance->investorsOwnership($symbol, $limit);
+    $result = $apiInstance->insiderTransactions($symbol, $from, $to);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->investorsOwnership: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->insiderTransactions: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **string**| Symbol of the company: AAPL. |
- **limit** | **int**| Limit number of results. Leave empty to get the full list. | [optional]
+ **from** | **\DateTime**| From date: 2020-03-15. | [optional]
+ **to** | **\DateTime**| To date: 2020-03-16. | [optional]
 
 ### Return type
 
-[**\Finnhub\Model\InvestorsOwnership**](../Model/InvestorsOwnership.md)
+[**\Finnhub\Model\InsiderTransactions**](../Model/InsiderTransactions.md)
 
 ### Authorization
 
@@ -2241,20 +2354,147 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `internationalFilings()`
 
-## ipoCalendar
+```php
+internationalFilings($symbol, $country): \Finnhub\Model\InternationalFiling[]
+```
 
-> \Finnhub\Model\IPOCalendar ipoCalendar($from, $to)
+International Filings
+
+List filings for international companies which covers 95%+ of global market cap. Limit to 250 documents at a time. These are the documents we use to source our fundamental data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol. Leave empty to list latest filings.
+$country = 'country_example'; // string | Filter by country using country's 2-letter code.
+
+try {
+    $result = $apiInstance->internationalFilings($symbol, $country);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->internationalFilings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. Leave empty to list latest filings. | [optional]
+ **country** | **string**| Filter by country using country&#39;s 2-letter code. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\InternationalFiling[]**](../Model/InternationalFiling.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `investmentThemesThematicInvesting()`
+
+```php
+investmentThemesThematicInvesting($theme): \Finnhub\Model\InvestmentThemesThematicInvesting
+```
+
+Investment Themes (Thematic Investing)
+
+<p>Thematic investing involves creating a portfolio (or portion of a portfolio) by gathering together a collection of companies involved in certain areas that you predict will generate above-market returns over the long term. Themes can be based on a concept such as ageing populations or a sub-sector such as robotics, and drones. Thematic investing focuses on predicted long-term trends rather than specific companies or sectors, enabling investors to access structural, one-off shifts that can change an entire industry.</p><p>This endpoint will help you get portfolios of different investment themes that are changing our life and are the way of the future.</p><p>A full list of themes supported can be found <a target=\"_blank\" href=\"https://docs.google.com/spreadsheets/d/1ULj9xDh4iPoQj279M084adZ2_S852ttRthKKJ7madYc/edit?usp=sharing\">here</a>. The theme coverage and portfolios are updated bi-weekly by our analysts. Our approach excludes penny, super-small cap and illiquid stocks.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$theme = 'theme_example'; // string | Investment theme. A full list of themes supported can be found <a target=\"_blank\" href=\"https://docs.google.com/spreadsheets/d/1ULj9xDh4iPoQj279M084adZ2_S852ttRthKKJ7madYc/edit?usp=sharing\">here</a>.
+
+try {
+    $result = $apiInstance->investmentThemesThematicInvesting($theme);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->investmentThemesThematicInvesting: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **theme** | **string**| Investment theme. A full list of themes supported can be found &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1ULj9xDh4iPoQj279M084adZ2_S852ttRthKKJ7madYc/edit?usp&#x3D;sharing\&quot;&gt;here&lt;/a&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\InvestmentThemesThematicInvesting**](../Model/InvestmentThemesThematicInvesting.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `ipoCalendar()`
+
+```php
+ipoCalendar($from, $to): \Finnhub\Model\IPOCalendar
+```
 
 IPO Calendar
 
-Get recent and coming IPO.
+Get recent and upcoming IPO.
 
 ### Example
 
@@ -2284,11 +2524,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->ipoCalendar: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2306,20 +2544,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `marketNews()`
 
-## majorDevelopments
+```php
+marketNews($category, $min_id): \Finnhub\Model\News[]
+```
 
-> \Finnhub\Model\MajorDevelopments majorDevelopments($symbol, $from, $to)
+Market News
 
-Major Developments
-
-List latest major developments of a company going back 20 years with 12M+ data points. This data can be used to highlight the most significant events.
+Get latest market news.
 
 ### Example
 
@@ -2340,31 +2579,27 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$symbol = 'symbol_example'; // string | Company symbol.
-$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From time: 2020-01-01.
-$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To time: 2020-01-05.
+$category = 'category_example'; // string | This parameter can be 1 of the following values <code>general, forex, crypto, merger</code>.
+$min_id = 'min_id_example'; // string | Use this field to get only news after this ID. Default to 0
 
 try {
-    $result = $apiInstance->majorDevelopments($symbol, $from, $to);
+    $result = $apiInstance->marketNews($category, $min_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->majorDevelopments: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->marketNews: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| Company symbol. |
- **from** | **\DateTime**| From time: 2020-01-01. | [optional]
- **to** | **\DateTime**| To time: 2020-01-05. | [optional]
+ **category** | **string**| This parameter can be 1 of the following values &lt;code&gt;general, forex, crypto, merger&lt;/code&gt;. |
+ **min_id** | **string**| Use this field to get only news after this ID. Default to 0 | [optional]
 
 ### Return type
 
-[**\Finnhub\Model\MajorDevelopments**](../Model/MajorDevelopments.md)
+[**\Finnhub\Model\News[]**](../Model/News.md)
 
 ### Authorization
 
@@ -2373,16 +2608,271 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `mutualFundCountryExposure()`
 
-## newsSentiment
+```php
+mutualFundCountryExposure($symbol): \Finnhub\Model\MutualFundsCountryExposure
+```
 
-> \Finnhub\Model\NewsSentiment newsSentiment($symbol)
+Mutual Funds Country Exposure
+
+Get Mutual Funds country exposure data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+
+try {
+    $result = $apiInstance->mutualFundCountryExposure($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->mutualFundCountryExposure: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+
+### Return type
+
+[**\Finnhub\Model\MutualFundsCountryExposure**](../Model/MutualFundsCountryExposure.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `mutualFundHoldings()`
+
+```php
+mutualFundHoldings($symbol, $isin, $skip): \Finnhub\Model\MutualFundsHoldings
+```
+
+Mutual Funds Holdings
+
+Get full Mutual Funds holdings/constituents.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Fund's symbol.
+$isin = 'isin_example'; // string | Fund's isin.
+$skip = 56; // int | Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip=0 or not set.
+
+try {
+    $result = $apiInstance->mutualFundHoldings($symbol, $isin, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->mutualFundHoldings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Fund&#39;s symbol. | [optional]
+ **isin** | **string**| Fund&#39;s isin. | [optional]
+ **skip** | **int**| Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip&#x3D;0 or not set. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\MutualFundsHoldings**](../Model/MutualFundsHoldings.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `mutualFundProfile()`
+
+```php
+mutualFundProfile($symbol, $isin): \Finnhub\Model\MutualFundsProfile
+```
+
+Mutual Funds Profile
+
+Get mutual funds profile information. This endpoint covers US mutual funds only.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Fund's symbol.
+$isin = 'isin_example'; // string | Fund's isin.
+
+try {
+    $result = $apiInstance->mutualFundProfile($symbol, $isin);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->mutualFundProfile: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Fund&#39;s symbol. | [optional]
+ **isin** | **string**| Fund&#39;s isin. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\MutualFundsProfile**](../Model/MutualFundsProfile.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `mutualFundSectorExposure()`
+
+```php
+mutualFundSectorExposure($symbol): \Finnhub\Model\MutualFundSectorExposure
+```
+
+Mutual-fund Sector Exposure
+
+Get Mutual Funds sector exposure data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Mutual Fund symbol.
+
+try {
+    $result = $apiInstance->mutualFundSectorExposure($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->mutualFundSectorExposure: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Mutual Fund symbol. |
+
+### Return type
+
+[**\Finnhub\Model\MutualFundSectorExposure**](../Model/MutualFundSectorExposure.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `newsSentiment()`
+
+```php
+newsSentiment($symbol): \Finnhub\Model\NewsSentiment
+```
 
 News Sentiment
 
@@ -2415,11 +2905,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->newsSentiment: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2436,16 +2924,81 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `ownership()`
 
-## patternRecognition
+```php
+ownership($symbol, $limit): \Finnhub\Model\Ownership
+```
 
-> \Finnhub\Model\PatternRecognition patternRecognition($symbol, $resolution)
+Ownership
+
+Get a full list of shareholders of a company in descending order of the number of shares held. Data is sourced from <code>13F form</code>, <code>Schedule 13D</code> and <code>13G</code> for US market, <code>UK Share Register</code> for UK market, <code>SEDI</code> for Canadian market and equivalent filings for other international markets.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
+$limit = 56; // int | Limit number of results. Leave empty to get the full list.
+
+try {
+    $result = $apiInstance->ownership($symbol, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->ownership: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol of the company: AAPL. |
+ **limit** | **int**| Limit number of results. Leave empty to get the full list. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\Ownership**](../Model/Ownership.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `patternRecognition()`
+
+```php
+patternRecognition($symbol, $resolution): \Finnhub\Model\PatternRecognition
+```
 
 Pattern Recognition
 
@@ -2479,11 +3032,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->patternRecognition: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2501,16 +3052,83 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `pressReleases()`
 
-## priceTarget
+```php
+pressReleases($symbol, $from, $to): \Finnhub\Model\MajorPressReleases
+```
 
-> \Finnhub\Model\PriceTarget priceTarget($symbol)
+Major Press Releases
+
+Get latest major press releases of a company. This data can be used to highlight the most significant events comprised of mostly press releases sourced from the exchanges, BusinessWire, AccessWire, GlobeNewswire, Newsfile, and PRNewswire.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Company symbol.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From time: 2020-01-01.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To time: 2020-01-05.
+
+try {
+    $result = $apiInstance->pressReleases($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->pressReleases: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Company symbol. |
+ **from** | **\DateTime**| From time: 2020-01-01. | [optional]
+ **to** | **\DateTime**| To time: 2020-01-05. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\MajorPressReleases**](../Model/MajorPressReleases.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `priceTarget()`
+
+```php
+priceTarget($symbol): \Finnhub\Model\PriceTarget
+```
 
 Price Target
 
@@ -2543,11 +3161,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->priceTarget: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2564,20 +3180,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `quote()`
 
-## quote
-
-> \Finnhub\Model\Quote quote($symbol)
+```php
+quote($symbol): \Finnhub\Model\Quote
+```
 
 Quote
 
-<p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
+<p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time updates.</p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
 
 ### Example
 
@@ -2606,11 +3223,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->quote: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2627,16 +3242,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `recommendationTrends()`
 
-## recommendationTrends
-
-> \Finnhub\Model\RecommendationTrend[] recommendationTrends($symbol)
+```php
+recommendationTrends($symbol): \Finnhub\Model\RecommendationTrend[]
+```
 
 Recommendation Trends
 
@@ -2669,11 +3285,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->recommendationTrends: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2690,16 +3304,81 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `revenueBreakdown()`
 
-## similarityIndex
+```php
+revenueBreakdown($symbol, $cik): \Finnhub\Model\RevenueBreakdown
+```
 
-> \Finnhub\Model\SimilarityIndex similarityIndex($symbol, $cik, $freq)
+Revenue Breakdown
+
+Get revenue breakdown by product. This dataset is only available for US companies which disclose their revenue breakdown in the annual or quarterly reports.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+$cik = 'cik_example'; // string | CIK.
+
+try {
+    $result = $apiInstance->revenueBreakdown($symbol, $cik);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->revenueBreakdown: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. | [optional]
+ **cik** | **string**| CIK. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\RevenueBreakdown**](../Model/RevenueBreakdown.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `similarityIndex()`
+
+```php
+similarityIndex($symbol, $cik, $freq): \Finnhub\Model\SimilarityIndex
+```
 
 Similarity Index
 
@@ -2734,11 +3413,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->similarityIndex: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2757,16 +3434,145 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `socialSentiment()`
 
-## stockBidask
+```php
+socialSentiment($symbol, $from, $to): \Finnhub\Model\SocialSentiment
+```
 
-> \Finnhub\Model\LastBidAsk stockBidask($symbol)
+Social Sentiment
+
+<p>Get social sentiment for stocks on Reddit and Twitter. This endpoint is currently in Beta.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Company symbol.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->socialSentiment($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->socialSentiment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Company symbol. |
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. | [optional]
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\SocialSentiment**](../Model/SocialSentiment.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `stockBasicDividends()`
+
+```php
+stockBasicDividends($symbol): \Finnhub\Model\Dividends2Basic
+```
+
+Dividends 2 (Basic)
+
+Get global dividends data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+
+try {
+    $result = $apiInstance->stockBasicDividends($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->stockBasicDividends: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+
+### Return type
+
+[**\Finnhub\Model\Dividends2Basic**](../Model/Dividends2Basic.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `stockBidask()`
+
+```php
+stockBidask($symbol): \Finnhub\Model\LastBidAsk
+```
 
 Last Bid-Ask
 
@@ -2799,11 +3605,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->stockBidask: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2820,20 +3624,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `stockCandles()`
 
-## stockCandles
-
-> \Finnhub\Model\StockCandles stockCandles($symbol, $resolution, $from, $to, $adjusted)
+```php
+stockCandles($symbol, $resolution, $from, $to, $adjusted): \Finnhub\Model\StockCandles
+```
 
 Stock Candles
 
-<p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
+<p>Get candlestick data (OHLCV) for stocks
 
 ### Example
 
@@ -2858,7 +3663,7 @@ $symbol = 'symbol_example'; // string | Symbol.
 $resolution = 'resolution_example'; // string | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
 $from = 56; // int | UNIX timestamp. Interval initial value.
 $to = 56; // int | UNIX timestamp. Interval end value.
-$adjusted = 'adjusted_example'; // string | By default, <code>adjusted=false</code>. Use <code>true</code> to get adjusted data.
+$adjusted = 'adjusted_example'; // string | DEPRECATED: this option has been deprecated. All Daily data will be adjusted for Splits and intraday data will remain unadjusted.
 
 try {
     $result = $apiInstance->stockCandles($symbol, $resolution, $from, $to, $adjusted);
@@ -2866,11 +3671,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->stockCandles: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2878,7 +3681,7 @@ Name | Type | Description  | Notes
  **resolution** | **string**| Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. |
  **from** | **int**| UNIX timestamp. Interval initial value. |
  **to** | **int**| UNIX timestamp. Interval end value. |
- **adjusted** | **string**| By default, &lt;code&gt;adjusted&#x3D;false&lt;/code&gt;. Use &lt;code&gt;true&lt;/code&gt; to get adjusted data. | [optional]
+ **adjusted** | **string**| DEPRECATED: this option has been deprecated. All Daily data will be adjusted for Splits and intraday data will remain unadjusted. | [optional]
 
 ### Return type
 
@@ -2891,16 +3694,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `stockDividends()`
 
-## stockDividends
-
-> \Finnhub\Model\Dividends[] stockDividends($symbol, $from, $to)
+```php
+stockDividends($symbol, $from, $to): \Finnhub\Model\Dividends[]
+```
 
 Dividends
 
@@ -2935,11 +3739,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->stockDividends: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2958,16 +3760,85 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `stockNbbo()`
 
-## stockSplits
+```php
+stockNbbo($symbol, $date, $limit, $skip): \Finnhub\Model\HistoricalNBBO
+```
 
-> \Finnhub\Model\Split[] stockSplits($symbol, $from, $to)
+Historical NBBO
+
+<p>Get historical best bid and offer for US stocks, LSE, TSX, Euronext and Deutsche Borse.</p><p>For US market, this endpoint only serves historical NBBO from the beginning of 2020. To download more historical data, please visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a>.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date: 2020-04-02.
+$limit = 56; // int | Limit number of ticks returned. Maximum value: <code>25000</code>
+$skip = 56; // int | Number of ticks to skip. Use this parameter to loop through the entire data.
+
+try {
+    $result = $apiInstance->stockNbbo($symbol, $date, $limit, $skip);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->stockNbbo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+ **date** | **\DateTime**| Date: 2020-04-02. |
+ **limit** | **int**| Limit number of ticks returned. Maximum value: &lt;code&gt;25000&lt;/code&gt; |
+ **skip** | **int**| Number of ticks to skip. Use this parameter to loop through the entire data. |
+
+### Return type
+
+[**\Finnhub\Model\HistoricalNBBO**](../Model/HistoricalNBBO.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `stockSplits()`
+
+```php
+stockSplits($symbol, $from, $to): \Finnhub\Model\Split[]
+```
 
 Splits
 
@@ -3002,11 +3873,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->stockSplits: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3025,20 +3894,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `stockSymbols()`
 
-## stockSymbols
-
-> \Finnhub\Model\Stock[] stockSymbols($exchange)
+```php
+stockSymbols($exchange, $mic, $security_type, $currency): \Finnhub\Model\Stock[]
+```
 
 Stock Symbol
 
-List supported stocks. A list of supported CFD Indices can be found <a href=\"https://docs.google.com/spreadsheets/d/1BAbIXBgl405fj0oHeEyRFEu8mW4QD1PhvtaBATLoR14/edit?usp=sharing\" target=\"_blank\">here</a>.
+List supported stocks. We use the following symbology to identify stocks on Finnhub <code>Exchange_Ticker.Exchange_Code</code>. A list of supported exchange codes can be found <a href=\"https://docs.google.com/spreadsheets/d/1I3pBxjfXB056-g_JYf_6o3Rns3BV2kMGG1nCatb91ls/edit?usp=sharing\" target=\"_blank\">here</a>. A list of supported CFD Indices can be found <a href=\"https://docs.google.com/spreadsheets/d/1BAbIXBgl405fj0oHeEyRFEu8mW4QD1PhvtaBATLoR14/edit?usp=sharing\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -3059,23 +3929,27 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$exchange = 'exchange_example'; // string | Exchange you want to get the list of symbols from. List of exchanges with fundamental data can be found <a href=\"https://docs.google.com/spreadsheets/d/1I3pBxjfXB056-g_JYf_6o3Rns3BV2kMGG1nCatb91ls/edit?usp=sharing\" target=\"_blank\">here</a>.
+$exchange = 'exchange_example'; // string | Exchange you want to get the list of symbols from. List of exchange codes can be found <a href=\"https://docs.google.com/spreadsheets/d/1I3pBxjfXB056-g_JYf_6o3Rns3BV2kMGG1nCatb91ls/edit?usp=sharing\" target=\"_blank\">here</a>.
+$mic = 'mic_example'; // string | Filter by MIC code.
+$security_type = 'security_type_example'; // string | Filter by security type used by OpenFigi standard.
+$currency = 'currency_example'; // string | Filter by currency.
 
 try {
-    $result = $apiInstance->stockSymbols($exchange);
+    $result = $apiInstance->stockSymbols($exchange, $mic, $security_type, $currency);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->stockSymbols: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange** | **string**| Exchange you want to get the list of symbols from. List of exchanges with fundamental data can be found &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1I3pBxjfXB056-g_JYf_6o3Rns3BV2kMGG1nCatb91ls/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt;. |
+ **exchange** | **string**| Exchange you want to get the list of symbols from. List of exchange codes can be found &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1I3pBxjfXB056-g_JYf_6o3Rns3BV2kMGG1nCatb91ls/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt;. |
+ **mic** | **string**| Filter by MIC code. | [optional]
+ **security_type** | **string**| Filter by security type used by OpenFigi standard. | [optional]
+ **currency** | **string**| Filter by currency. | [optional]
 
 ### Return type
 
@@ -3088,20 +3962,21 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `stockTick()`
 
-## stockTick
-
-> \Finnhub\Model\TickData stockTick($symbol, $date, $limit, $skip)
+```php
+stockTick($symbol, $date, $limit, $skip): \Finnhub\Model\TickData
+```
 
 Tick Data
 
-<p>Get historical tick data for US stocks from all 13 exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>
+<p>Get historical tick data for global exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server.</p><p>For US market, you can visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a> to speed up the download process.</p><p>Note that for Nasdaq Nordic and Baltic, you need to use ISIN instead of symbol to query tick data. </p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">US CTA/UTP</th>       <td>Full SIP</td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">TSX</th>       <td><ul><li>TSX</li><li>TSX Venture</li><li>Index</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">LSE</th>       <td><ul><li>London Stock Exchange (L)</li><li>LSE International (L)</li><li>LSE European (L)</li></ul></td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">Euronext</th>       <td><ul> <li>Euronext Paris (PA)</li> <li>Euronext Amsterdam (AS)</li> <li>Euronext Lisbon (LS)</li> <li>Euronext Brussels (BR)</li> <li>Euronext Oslo (OL)</li> <li>Euronext London (LN)</li> <li>Euronext Dublin (IR)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Deutsche Börse</th>       <td><ul> <li>Frankfurt (F)</li> <li>Xetra (DE)</li> <li>Duesseldorf (DU)</li> <li>Hamburg (HM)</li> <li>Berlin (BE)</li> <li>Hanover (HA)</li> <li>Stoxx (SX)</li> <li>TradeGate (TG)</li> <li>Zertifikate (SC)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Nasdaq Nordic & Baltic</th>       <td> <ul> <li>Copenhagen (CO)</li> <li>Stockholm (ST)</li> <li>Helsinki (HE)</li> <li>Iceland (IC)</li> <li>Riga (RG)</li> <li>Tallinn (TL)</li> <li>Vilnius(VS)</li> <li>Fixed Income</li> <li>Derivatives</li> <li>Commodities</li></ul></td>       <td>End-of-day</td>     </tr>   </tbody> </table>
 
 ### Example
 
@@ -3133,11 +4008,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->stockTick: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3157,16 +4030,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `supplyChainRelationships()`
 
-## supportResistance
+```php
+supplyChainRelationships($symbol): \Finnhub\Model\SupplyChainRelationships
+```
 
-> \Finnhub\Model\SupportResistance supportResistance($symbol, $resolution)
+Supply Chain Relationships
+
+<p>This endpoint provides an overall map of public companies' key customers and suppliers. The data offers a deeper look into a company's supply chain and how products are created. The data will help investors manage risk, limit exposure or generate alpha-generating ideas and trading insights.</p><p>We currently cover data for S&P500 and Nasdaq 100 companies.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+
+try {
+    $result = $apiInstance->supplyChainRelationships($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->supplyChainRelationships: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+
+### Return type
+
+[**\Finnhub\Model\SupplyChainRelationships**](../Model/SupplyChainRelationships.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `supportResistance()`
+
+```php
+supportResistance($symbol, $resolution): \Finnhub\Model\SupportResistance
+```
 
 Support/Resistance
 
@@ -3200,11 +4136,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->supportResistance: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3222,16 +4156,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `symbolSearch()`
 
-## technicalIndicator
+```php
+symbolSearch($q): \Finnhub\Model\SymbolLookup
+```
 
-> object technicalIndicator($symbol, $resolution, $from, $to, $indicator, $indicator_fields)
+Symbol Lookup
+
+Search for best-matching symbols based on your query. You can input anything from symbol, security's name to ISIN and Cusip.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$q = 'q_example'; // string | Query text can be symbol, name, isin, or cusip.
+
+try {
+    $result = $apiInstance->symbolSearch($q);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->symbolSearch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**| Query text can be symbol, name, isin, or cusip. |
+
+### Return type
+
+[**\Finnhub\Model\SymbolLookup**](../Model/SymbolLookup.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `technicalIndicator()`
+
+```php
+technicalIndicator($symbol, $resolution, $from, $to, $indicator, $indicator_fields): object
+```
 
 Technical Indicators
 
@@ -3269,11 +4266,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->technicalIndicator: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3294,84 +4289,22 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-
-## transcripts
-
-> \Finnhub\Model\EarningsCallTranscripts transcripts($id)
-
-Earnings Call Transcripts
-
-<p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. <p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>
-
-### Example
+## `transcriptsList()`
 
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: api_key
-$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
-
-
-$apiInstance = new Finnhub\Api\DefaultApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 'id_example'; // string | Transcript's id obtained with <a href=\"#transcripts-list\">Transcripts List endpoint</a>.
-
-try {
-    $result = $apiInstance->transcripts($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->transcripts: ', $e->getMessage(), PHP_EOL;
-}
-?>
+transcriptsList($symbol): \Finnhub\Model\EarningsCallTranscriptsList
 ```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. |
-
-### Return type
-
-[**\Finnhub\Model\EarningsCallTranscripts**](../Model/EarningsCallTranscripts.md)
-
-### Authorization
-
-[api_key](../../README.md#api_key)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
-[[Back to README]](../../README.md)
-
-
-## transcriptsList
-
-> \Finnhub\Model\EarningsCallTranscriptsList transcriptsList($symbol)
 
 Earnings Call Transcripts List
 
-List earnings call transcripts' metadata. This endpoint is only available for US companies.
+List earnings call transcripts' metadata. This endpoint is available for US, UK and Canadian companies.
 
 ### Example
 
@@ -3400,11 +4333,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->transcriptsList: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3421,16 +4352,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `upgradeDowngrade()`
 
-## upgradeDowngrade
-
-> \Finnhub\Model\UpgradeDowngrade[] upgradeDowngrade($symbol, $from, $to)
+```php
+upgradeDowngrade($symbol, $from, $to): \Finnhub\Model\UpgradeDowngrade[]
+```
 
 Stock Upgrade/Downgrade
 
@@ -3465,11 +4397,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->upgradeDowngrade: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3488,9 +4418,8 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-

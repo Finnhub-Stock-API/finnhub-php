@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**symbol** | **string** | Company symbol. | [optional] 
-**executive** | **object[]** | Array of company&#39;s executives and members of the Board. | [optional] 
+**symbol** | **string** | Company symbol. | [optional]
+**executive** | **object[]** | Array of company&#39;s executives and members of the Board. | [optional]
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-
-
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
