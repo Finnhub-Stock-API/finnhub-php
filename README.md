@@ -215,6 +215,9 @@ print_r($client->investmentThemes('financialExchangesData'))
 // Supply Chain
 print_r($client->supplyChainRelationships('AAPL'))
 
+// Insider Transactions
+print_r($client->insiderTransactions('AAPL', '2021-01-01', '2021-03-01'));
+
 ?>
 ```
 
