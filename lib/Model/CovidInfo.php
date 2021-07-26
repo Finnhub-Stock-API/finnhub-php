@@ -62,7 +62,7 @@ class CovidInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'string',
         'case' => 'float',
         'death' => 'float',
-        'updated' => '\DateTime'
+        'updated' => 'string'
     ];
 
     /**
@@ -76,7 +76,7 @@ class CovidInfo implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => null,
         'case' => 'float',
         'death' => 'float',
-        'updated' => 'date-time'
+        'updated' => null
     ];
 
     /**
@@ -298,7 +298,7 @@ class CovidInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getUpdated()
     {
@@ -308,7 +308,7 @@ class CovidInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated
      *
-     * @param \DateTime|null $updated Updated time.
+     * @param string|null $updated Updated time.
      *
      * @return self
      */

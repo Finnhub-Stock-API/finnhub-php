@@ -1,7 +1,7 @@
 # Finnhub
 - Finnhub php api clent
 - API version: 1.0.0
-- Package version: 1.1.2
+- Package version: 1.1.3
 
 ## Requirements
 
@@ -202,6 +202,18 @@ print_r($client->mutualFundSectorExposure('VTSAX'))
 
 // Mutual Fund Country Exposure
 print_r($client->mutualFundCountryExposure('VTSAX'))
+
+// Revenue Breakdown
+print_r($client->revenueBreakdown('AAPL'))
+
+// Social sentiment
+print_r($client->socialSentiment('GME'))
+
+// Investment themes
+print_r($client->investmentThemes('financialExchangesData'))
+
+// Supply Chain
+print_r($client->supplyChainRelationships('AAPL'))
 
 ?>
 ```

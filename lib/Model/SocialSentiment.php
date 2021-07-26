@@ -60,8 +60,8 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'reddit' => 'object[]',
-        'twitter' => 'object[]'
+        'reddit' => '\Finnhub\Model\RedditSentimentContent[]',
+        'twitter' => '\Finnhub\Model\TwitterSentimentContent[]'
     ];
 
     /**
@@ -244,7 +244,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets reddit
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\RedditSentimentContent[]|null
      */
     public function getReddit()
     {
@@ -254,7 +254,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reddit
      *
-     * @param object[]|null $reddit Reddit sentiment.
+     * @param \Finnhub\Model\RedditSentimentContent[]|null $reddit Reddit sentiment.
      *
      * @return self
      */
@@ -268,7 +268,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets twitter
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\TwitterSentimentContent[]|null
      */
     public function getTwitter()
     {
@@ -278,7 +278,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets twitter
      *
-     * @param object[]|null $twitter Twitter sentiment.
+     * @param \Finnhub\Model\TwitterSentimentContent[]|null $twitter Twitter sentiment.
      *
      * @return self
      */

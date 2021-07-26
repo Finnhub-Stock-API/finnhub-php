@@ -51,7 +51,7 @@ class MutualFundSectorExposure implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Mutual-fundSectorExposure';
+    protected static $openAPIModelName = 'MutualFundSectorExposure';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class MutualFundSectorExposure implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'sector_exposure' => 'object[]'
+        'sector_exposure' => '\Finnhub\Model\MutualFundSectorExposureData[]'
     ];
 
     /**
@@ -238,7 +238,7 @@ class MutualFundSectorExposure implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets sector_exposure
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\MutualFundSectorExposureData[]|null
      */
     public function getSectorExposure()
     {
@@ -248,7 +248,7 @@ class MutualFundSectorExposure implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets sector_exposure
      *
-     * @param object[]|null $sector_exposure Array of sector and exposure levels.
+     * @param \Finnhub\Model\MutualFundSectorExposureData[]|null $sector_exposure Array of sector and exposure levels.
      *
      * @return self
      */

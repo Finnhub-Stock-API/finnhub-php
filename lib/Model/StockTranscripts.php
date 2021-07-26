@@ -61,7 +61,7 @@ class StockTranscripts implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'id' => 'string',
         'title' => 'string',
-        'time' => '\DateTime',
+        'time' => 'string',
         'year' => 'int',
         'quarter' => 'int'
     ];
@@ -76,7 +76,7 @@ class StockTranscripts implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'title' => null,
-        'time' => 'date-time',
+        'time' => null,
         'year' => 'int64',
         'quarter' => 'int64'
     ];
@@ -280,7 +280,7 @@ class StockTranscripts implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets time
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getTime()
     {
@@ -290,7 +290,7 @@ class StockTranscripts implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets time
      *
-     * @param \DateTime|null $time Time of the event.
+     * @param string|null $time Time of the event.
      *
      * @return self
      */

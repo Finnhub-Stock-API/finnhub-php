@@ -59,7 +59,7 @@ class EconomicData implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => 'object[]',
+        'data' => '\Finnhub\Model\EconomicDataInfo[]',
         'code' => 'string'
     ];
 
@@ -214,7 +214,7 @@ class EconomicData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\EconomicDataInfo[]|null
      */
     public function getData()
     {
@@ -224,7 +224,7 @@ class EconomicData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param object[]|null $data Array of economic data for requested code.
+     * @param \Finnhub\Model\EconomicDataInfo[]|null $data Array of economic data for requested code.
      *
      * @return self
      */

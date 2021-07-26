@@ -60,7 +60,7 @@ class IndicesHistoricalConstituents implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'historical_constituents' => 'object[]'
+        'historical_constituents' => '\Finnhub\Model\IndexHistoricalConstituent[]'
     ];
 
     /**
@@ -238,7 +238,7 @@ class IndicesHistoricalConstituents implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets historical_constituents
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\IndexHistoricalConstituent[]|null
      */
     public function getHistoricalConstituents()
     {
@@ -248,7 +248,7 @@ class IndicesHistoricalConstituents implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets historical_constituents
      *
-     * @param object[]|null $historical_constituents Array of historical constituents.
+     * @param \Finnhub\Model\IndexHistoricalConstituent[]|null $historical_constituents Array of historical constituents.
      *
      * @return self
      */

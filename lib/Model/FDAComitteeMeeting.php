@@ -59,8 +59,8 @@ class FDAComitteeMeeting implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'from_date' => '\DateTime',
-        'to_date' => '\DateTime',
+        'from_date' => 'string',
+        'to_date' => 'string',
         'event_description' => 'string',
         'url' => 'string'
     ];
@@ -73,8 +73,8 @@ class FDAComitteeMeeting implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'from_date' => 'date-time',
-        'to_date' => 'date-time',
+        'from_date' => null,
+        'to_date' => null,
         'event_description' => null,
         'url' => null
     ];
@@ -226,7 +226,7 @@ class FDAComitteeMeeting implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets from_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getFromDate()
     {
@@ -236,7 +236,7 @@ class FDAComitteeMeeting implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets from_date
      *
-     * @param \DateTime|null $from_date Start time of the event in EST.
+     * @param string|null $from_date Start time of the event in EST.
      *
      * @return self
      */
@@ -250,7 +250,7 @@ class FDAComitteeMeeting implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets to_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getToDate()
     {
@@ -260,7 +260,7 @@ class FDAComitteeMeeting implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets to_date
      *
-     * @param \DateTime|null $to_date End time of the event in EST.
+     * @param string|null $to_date End time of the event in EST.
      *
      * @return self
      */

@@ -60,7 +60,7 @@ class ETFsSectorExposure implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'sector_exposure' => 'object[]'
+        'sector_exposure' => '\Finnhub\Model\ETFSectorExposureData[]'
     ];
 
     /**
@@ -238,7 +238,7 @@ class ETFsSectorExposure implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets sector_exposure
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\ETFSectorExposureData[]|null
      */
     public function getSectorExposure()
     {
@@ -248,7 +248,7 @@ class ETFsSectorExposure implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets sector_exposure
      *
-     * @param object[]|null $sector_exposure Array of industries and exposure levels.
+     * @param \Finnhub\Model\ETFSectorExposureData[]|null $sector_exposure Array of industries and exposure levels.
      *
      * @return self
      */

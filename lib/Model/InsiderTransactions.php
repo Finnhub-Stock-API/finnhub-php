@@ -60,7 +60,7 @@ class InsiderTransactions implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'data' => 'object[]'
+        'data' => '\Finnhub\Model\Transactions[]'
     ];
 
     /**
@@ -238,7 +238,7 @@ class InsiderTransactions implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets data
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\Transactions[]|null
      */
     public function getData()
     {
@@ -248,7 +248,7 @@ class InsiderTransactions implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets data
      *
-     * @param object[]|null $data Array of insider transactions.
+     * @param \Finnhub\Model\Transactions[]|null $data Array of insider transactions.
      *
      * @return self
      */

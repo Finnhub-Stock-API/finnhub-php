@@ -59,7 +59,7 @@ class IPOCalendar implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ipo_calendar' => 'object[]'
+        'ipo_calendar' => '\Finnhub\Model\IPOEvent[]'
     ];
 
     /**
@@ -208,7 +208,7 @@ class IPOCalendar implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ipo_calendar
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\IPOEvent[]|null
      */
     public function getIpoCalendar()
     {
@@ -218,7 +218,7 @@ class IPOCalendar implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ipo_calendar
      *
-     * @param object[]|null $ipo_calendar Array of IPO events.
+     * @param \Finnhub\Model\IPOEvent[]|null $ipo_calendar Array of IPO events.
      *
      * @return self
      */

@@ -65,10 +65,10 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
         'year' => 'int',
         'quarter' => 'int',
         'form' => 'string',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
-        'filed_date' => '\DateTime',
-        'accepted_date' => '\DateTime',
+        'start_date' => 'string',
+        'end_date' => 'string',
+        'filed_date' => 'string',
+        'accepted_date' => 'string',
         'report' => 'object'
     ];
 
@@ -86,10 +86,10 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
         'year' => 'int64',
         'quarter' => 'int64',
         'form' => null,
-        'start_date' => 'date-time',
-        'end_date' => 'date-time',
-        'filed_date' => 'date-time',
-        'accepted_date' => 'date-time',
+        'start_date' => null,
+        'end_date' => null,
+        'filed_date' => null,
+        'accepted_date' => null,
         'report' => null
     ];
 
@@ -412,7 +412,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets start_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getStartDate()
     {
@@ -422,7 +422,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_date
      *
-     * @param \DateTime|null $start_date Period start date <code>%Y-%m-%d %H:%M:%S</code>.
+     * @param string|null $start_date Period start date <code>%Y-%m-%d %H:%M:%S</code>.
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets end_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getEndDate()
     {
@@ -446,7 +446,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date Period end date <code>%Y-%m-%d %H:%M:%S</code>.
+     * @param string|null $end_date Period end date <code>%Y-%m-%d %H:%M:%S</code>.
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets filed_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getFiledDate()
     {
@@ -470,7 +470,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets filed_date
      *
-     * @param \DateTime|null $filed_date Filed date <code>%Y-%m-%d %H:%M:%S</code>.
+     * @param string|null $filed_date Filed date <code>%Y-%m-%d %H:%M:%S</code>.
      *
      * @return self
      */
@@ -484,7 +484,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets accepted_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getAcceptedDate()
     {
@@ -494,7 +494,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets accepted_date
      *
-     * @param \DateTime|null $accepted_date Accepted date <code>%Y-%m-%d %H:%M:%S</code>.
+     * @param string|null $accepted_date Accepted date <code>%Y-%m-%d %H:%M:%S</code>.
      *
      * @return self
      */

@@ -60,7 +60,7 @@ class EarningsCallTranscriptsList implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'transcripts' => 'object[]'
+        'transcripts' => '\Finnhub\Model\StockTranscripts[]'
     ];
 
     /**
@@ -238,7 +238,7 @@ class EarningsCallTranscriptsList implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets transcripts
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\StockTranscripts[]|null
      */
     public function getTranscripts()
     {
@@ -248,7 +248,7 @@ class EarningsCallTranscriptsList implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets transcripts
      *
-     * @param object[]|null $transcripts Array of transcripts' metadata
+     * @param \Finnhub\Model\StockTranscripts[]|null $transcripts Array of transcripts' metadata
      *
      * @return self
      */

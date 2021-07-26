@@ -60,7 +60,7 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'country_exposure' => 'object[]'
+        'country_exposure' => '\Finnhub\Model\ETFCountryExposureData[]'
     ];
 
     /**
@@ -238,7 +238,7 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets country_exposure
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\ETFCountryExposureData[]|null
      */
     public function getCountryExposure()
     {
@@ -248,7 +248,7 @@ class ETFsCountryExposure implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets country_exposure
      *
-     * @param object[]|null $country_exposure Array of countries and and exposure levels.
+     * @param \Finnhub\Model\ETFCountryExposureData[]|null $country_exposure Array of countries and and exposure levels.
      *
      * @return self
      */

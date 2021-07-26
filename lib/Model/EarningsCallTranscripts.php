@@ -60,12 +60,12 @@ class EarningsCallTranscripts implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'transcript' => 'object[]',
-        'participant' => 'object[]',
+        'transcript' => '\Finnhub\Model\TranscriptContent[]',
+        'participant' => '\Finnhub\Model\TranscriptParticipant[]',
         'audio' => 'string',
         'id' => 'string',
         'title' => 'string',
-        'time' => '\DateTime',
+        'time' => 'string',
         'year' => 'int',
         'quarter' => 'int'
     ];
@@ -84,7 +84,7 @@ class EarningsCallTranscripts implements ModelInterface, ArrayAccess, \JsonSeria
         'audio' => null,
         'id' => null,
         'title' => null,
-        'time' => 'date-time',
+        'time' => null,
         'year' => 'int64',
         'quarter' => 'int64'
     ];
@@ -280,7 +280,7 @@ class EarningsCallTranscripts implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets transcript
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\TranscriptContent[]|null
      */
     public function getTranscript()
     {
@@ -290,7 +290,7 @@ class EarningsCallTranscripts implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets transcript
      *
-     * @param object[]|null $transcript Transcript content.
+     * @param \Finnhub\Model\TranscriptContent[]|null $transcript Transcript content.
      *
      * @return self
      */
@@ -304,7 +304,7 @@ class EarningsCallTranscripts implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets participant
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\TranscriptParticipant[]|null
      */
     public function getParticipant()
     {
@@ -314,7 +314,7 @@ class EarningsCallTranscripts implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets participant
      *
-     * @param object[]|null $participant Participant list
+     * @param \Finnhub\Model\TranscriptParticipant[]|null $participant Participant list
      *
      * @return self
      */
@@ -400,7 +400,7 @@ class EarningsCallTranscripts implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets time
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getTime()
     {
@@ -410,7 +410,7 @@ class EarningsCallTranscripts implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets time
      *
-     * @param \DateTime|null $time Time of the event.
+     * @param string|null $time Time of the event.
      *
      * @return self
      */

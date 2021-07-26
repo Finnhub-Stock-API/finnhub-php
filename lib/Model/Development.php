@@ -60,7 +60,7 @@ class Development implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'datetime' => '\DateTime',
+        'datetime' => 'string',
         'headline' => 'string',
         'description' => 'string',
         'url' => 'string'
@@ -75,7 +75,7 @@ class Development implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'datetime' => 'date-time',
+        'datetime' => null,
         'headline' => null,
         'description' => null,
         'url' => null
@@ -256,7 +256,7 @@ class Development implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets datetime
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getDatetime()
     {
@@ -266,7 +266,7 @@ class Development implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets datetime
      *
-     * @param \DateTime|null $datetime Published time in <code>YYYY-MM-DD HH:MM:SS</code> format.
+     * @param string|null $datetime Published time in <code>YYYY-MM-DD HH:MM:SS</code> format.
      *
      * @return self
      */

@@ -60,7 +60,7 @@ class FundOwnership implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'ownership' => 'object[]'
+        'ownership' => '\Finnhub\Model\FundOwnershipInfo[]'
     ];
 
     /**
@@ -238,7 +238,7 @@ class FundOwnership implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ownership
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\FundOwnershipInfo[]|null
      */
     public function getOwnership()
     {
@@ -248,7 +248,7 @@ class FundOwnership implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ownership
      *
-     * @param object[]|null $ownership Array of investors with detailed information about their holdings.
+     * @param \Finnhub\Model\FundOwnershipInfo[]|null $ownership Array of investors with detailed information about their holdings.
      *
      * @return self
      */

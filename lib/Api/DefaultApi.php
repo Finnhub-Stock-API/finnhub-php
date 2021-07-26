@@ -1525,7 +1525,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\News[]
+     * @return \Finnhub\Model\CompanyNews[]
      */
     public function companyNews($symbol, $from, $to)
     {
@@ -1544,7 +1544,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\News[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\CompanyNews[], HTTP status code, HTTP response headers (array of strings)
      */
     public function companyNewsWithHttpInfo($symbol, $from, $to)
     {
@@ -1580,20 +1580,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\News[]' === '\SplFileObject') {
+                    if ('\Finnhub\Model\CompanyNews[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\News[]', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\CompanyNews[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\News[]';
+            $returnType = '\Finnhub\Model\CompanyNews[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1611,7 +1611,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\News[]',
+                        '\Finnhub\Model\CompanyNews[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1657,7 +1657,7 @@ class DefaultApi
      */
     public function companyNewsAsyncWithHttpInfo($symbol, $from, $to)
     {
-        $returnType = '\Finnhub\Model\News[]';
+        $returnType = '\Finnhub\Model\CompanyNews[]';
         $request = $this->companyNewsRequest($symbol, $from, $to);
 
         return $this->client
@@ -4577,36 +4577,34 @@ class DefaultApi
     }
 
     /**
-     * Operation earningsCallTranscriptsApi
+     * Operation economicCalendar
      *
-     * Earnings Call Transcripts
+     * Economic Calendar
      *
-     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\EarningsCallTranscripts
+     * @return \Finnhub\Model\EconomicCalendar
      */
-    public function earningsCallTranscriptsApi($id)
+    public function economicCalendar()
     {
-        list($response) = $this->earningsCallTranscriptsApiWithHttpInfo($id);
+        list($response) = $this->economicCalendarWithHttpInfo();
         return $response;
     }
 
     /**
-     * Operation earningsCallTranscriptsApiWithHttpInfo
+     * Operation economicCalendarWithHttpInfo
      *
-     * Earnings Call Transcripts
+     * Economic Calendar
      *
-     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\EarningsCallTranscripts, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\EconomicCalendar, HTTP status code, HTTP response headers (array of strings)
      */
-    public function earningsCallTranscriptsApiWithHttpInfo($id)
+    public function economicCalendarWithHttpInfo()
     {
-        $request = $this->earningsCallTranscriptsApiRequest($id);
+        $request = $this->economicCalendarRequest();
 
         try {
             $options = $this->createHttpClientOption();
@@ -4638,20 +4636,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\EarningsCallTranscripts' === '\SplFileObject') {
+                    if ('\Finnhub\Model\EconomicCalendar' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\EarningsCallTranscripts', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\EconomicCalendar', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\EarningsCallTranscripts';
+            $returnType = '\Finnhub\Model\EconomicCalendar';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4669,7 +4667,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\EarningsCallTranscripts',
+                        '\Finnhub\Model\EconomicCalendar',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4680,18 +4678,17 @@ class DefaultApi
     }
 
     /**
-     * Operation earningsCallTranscriptsApiAsync
+     * Operation economicCalendarAsync
      *
-     * Earnings Call Transcripts
+     * Economic Calendar
      *
-     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function earningsCallTranscriptsApiAsync($id)
+    public function economicCalendarAsync()
     {
-        return $this->earningsCallTranscriptsApiAsyncWithHttpInfo($id)
+        return $this->economicCalendarAsyncWithHttpInfo()
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4700,19 +4697,18 @@ class DefaultApi
     }
 
     /**
-     * Operation earningsCallTranscriptsApiAsyncWithHttpInfo
+     * Operation economicCalendarAsyncWithHttpInfo
      *
-     * Earnings Call Transcripts
+     * Economic Calendar
      *
-     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function earningsCallTranscriptsApiAsyncWithHttpInfo($id)
+    public function economicCalendarAsyncWithHttpInfo()
     {
-        $returnType = '\Finnhub\Model\EarningsCallTranscripts';
-        $request = $this->earningsCallTranscriptsApiRequest($id);
+        $returnType = '\Finnhub\Model\EconomicCalendar';
+        $request = $this->economicCalendarRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4748,36 +4744,22 @@ class DefaultApi
     }
 
     /**
-     * Create request for operation 'earningsCallTranscriptsApi'
+     * Create request for operation 'economicCalendar'
      *
-     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function earningsCallTranscriptsApiRequest($id)
+    public function economicCalendarRequest()
     {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling earningsCallTranscriptsApi'
-            );
-        }
 
-        $resourcePath = '/stock/transcripts';
+        $resourcePath = '/calendar/economic';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if (is_array($id)) {
-            $id = ObjectSerializer::serializeCollection($id, '', true);
-        }
-        if ($id !== null) {
-            $queryParams['id'] = $id;
-        }
 
 
 
@@ -10385,7 +10367,7 @@ class DefaultApi
     }
 
     /**
-     * Operation investmentThemesThematicInvesting
+     * Operation investmentThemes
      *
      * Investment Themes (Thematic Investing)
      *
@@ -10393,16 +10375,16 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\InvestmentThemesThematicInvesting
+     * @return \Finnhub\Model\InvestmentThemes
      */
-    public function investmentThemesThematicInvesting($theme)
+    public function investmentThemes($theme)
     {
-        list($response) = $this->investmentThemesThematicInvestingWithHttpInfo($theme);
+        list($response) = $this->investmentThemesWithHttpInfo($theme);
         return $response;
     }
 
     /**
-     * Operation investmentThemesThematicInvestingWithHttpInfo
+     * Operation investmentThemesWithHttpInfo
      *
      * Investment Themes (Thematic Investing)
      *
@@ -10410,11 +10392,11 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\InvestmentThemesThematicInvesting, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\InvestmentThemes, HTTP status code, HTTP response headers (array of strings)
      */
-    public function investmentThemesThematicInvestingWithHttpInfo($theme)
+    public function investmentThemesWithHttpInfo($theme)
     {
-        $request = $this->investmentThemesThematicInvestingRequest($theme);
+        $request = $this->investmentThemesRequest($theme);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10446,20 +10428,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\InvestmentThemesThematicInvesting' === '\SplFileObject') {
+                    if ('\Finnhub\Model\InvestmentThemes' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\InvestmentThemesThematicInvesting', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\InvestmentThemes', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\InvestmentThemesThematicInvesting';
+            $returnType = '\Finnhub\Model\InvestmentThemes';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10477,7 +10459,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\InvestmentThemesThematicInvesting',
+                        '\Finnhub\Model\InvestmentThemes',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10488,7 +10470,7 @@ class DefaultApi
     }
 
     /**
-     * Operation investmentThemesThematicInvestingAsync
+     * Operation investmentThemesAsync
      *
      * Investment Themes (Thematic Investing)
      *
@@ -10497,9 +10479,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function investmentThemesThematicInvestingAsync($theme)
+    public function investmentThemesAsync($theme)
     {
-        return $this->investmentThemesThematicInvestingAsyncWithHttpInfo($theme)
+        return $this->investmentThemesAsyncWithHttpInfo($theme)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10508,7 +10490,7 @@ class DefaultApi
     }
 
     /**
-     * Operation investmentThemesThematicInvestingAsyncWithHttpInfo
+     * Operation investmentThemesAsyncWithHttpInfo
      *
      * Investment Themes (Thematic Investing)
      *
@@ -10517,10 +10499,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function investmentThemesThematicInvestingAsyncWithHttpInfo($theme)
+    public function investmentThemesAsyncWithHttpInfo($theme)
     {
-        $returnType = '\Finnhub\Model\InvestmentThemesThematicInvesting';
-        $request = $this->investmentThemesThematicInvestingRequest($theme);
+        $returnType = '\Finnhub\Model\InvestmentThemes';
+        $request = $this->investmentThemesRequest($theme);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10556,19 +10538,19 @@ class DefaultApi
     }
 
     /**
-     * Create request for operation 'investmentThemesThematicInvesting'
+     * Create request for operation 'investmentThemes'
      *
      * @param  string $theme Investment theme. A full list of themes supported can be found &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1ULj9xDh4iPoQj279M084adZ2_S852ttRthKKJ7madYc/edit?usp&#x3D;sharing\&quot;&gt;here&lt;/a&gt;. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function investmentThemesThematicInvestingRequest($theme)
+    public function investmentThemesRequest($theme)
     {
         // verify the required parameter 'theme' is set
         if ($theme === null || (is_array($theme) && count($theme) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $theme when calling investmentThemesThematicInvesting'
+                'Missing the required parameter $theme when calling investmentThemes'
             );
         }
 
@@ -10948,7 +10930,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\News[]
+     * @return \Finnhub\Model\MarketNews[]
      */
     public function marketNews($category, $min_id = null)
     {
@@ -10966,7 +10948,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\News[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\MarketNews[], HTTP status code, HTTP response headers (array of strings)
      */
     public function marketNewsWithHttpInfo($category, $min_id = null)
     {
@@ -11002,20 +10984,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\News[]' === '\SplFileObject') {
+                    if ('\Finnhub\Model\MarketNews[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\News[]', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\MarketNews[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\News[]';
+            $returnType = '\Finnhub\Model\MarketNews[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -11033,7 +11015,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\News[]',
+                        '\Finnhub\Model\MarketNews[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11077,7 +11059,7 @@ class DefaultApi
      */
     public function marketNewsAsyncWithHttpInfo($category, $min_id = null)
     {
-        $returnType = '\Finnhub\Model\News[]';
+        $returnType = '\Finnhub\Model\MarketNews[]';
         $request = $this->marketNewsRequest($category, $min_id);
 
         return $this->client
@@ -11227,7 +11209,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\MutualFundsCountryExposure
+     * @return \Finnhub\Model\MutualFundCountryExposure
      */
     public function mutualFundCountryExposure($symbol)
     {
@@ -11244,7 +11226,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\MutualFundsCountryExposure, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\MutualFundCountryExposure, HTTP status code, HTTP response headers (array of strings)
      */
     public function mutualFundCountryExposureWithHttpInfo($symbol)
     {
@@ -11280,20 +11262,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\MutualFundsCountryExposure' === '\SplFileObject') {
+                    if ('\Finnhub\Model\MutualFundCountryExposure' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\MutualFundsCountryExposure', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\MutualFundCountryExposure', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\MutualFundsCountryExposure';
+            $returnType = '\Finnhub\Model\MutualFundCountryExposure';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -11311,7 +11293,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\MutualFundsCountryExposure',
+                        '\Finnhub\Model\MutualFundCountryExposure',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11353,7 +11335,7 @@ class DefaultApi
      */
     public function mutualFundCountryExposureAsyncWithHttpInfo($symbol)
     {
-        $returnType = '\Finnhub\Model\MutualFundsCountryExposure';
+        $returnType = '\Finnhub\Model\MutualFundCountryExposure';
         $request = $this->mutualFundCountryExposureRequest($symbol);
 
         return $this->client
@@ -11497,7 +11479,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\MutualFundsHoldings
+     * @return \Finnhub\Model\MutualFundHoldings
      */
     public function mutualFundHoldings($symbol = null, $isin = null, $skip = null)
     {
@@ -11516,7 +11498,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\MutualFundsHoldings, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\MutualFundHoldings, HTTP status code, HTTP response headers (array of strings)
      */
     public function mutualFundHoldingsWithHttpInfo($symbol = null, $isin = null, $skip = null)
     {
@@ -11552,20 +11534,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\MutualFundsHoldings' === '\SplFileObject') {
+                    if ('\Finnhub\Model\MutualFundHoldings' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\MutualFundsHoldings', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\MutualFundHoldings', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\MutualFundsHoldings';
+            $returnType = '\Finnhub\Model\MutualFundHoldings';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -11583,7 +11565,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\MutualFundsHoldings',
+                        '\Finnhub\Model\MutualFundHoldings',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11629,7 +11611,7 @@ class DefaultApi
      */
     public function mutualFundHoldingsAsyncWithHttpInfo($symbol = null, $isin = null, $skip = null)
     {
-        $returnType = '\Finnhub\Model\MutualFundsHoldings';
+        $returnType = '\Finnhub\Model\MutualFundHoldings';
         $request = $this->mutualFundHoldingsRequest($symbol, $isin, $skip);
 
         return $this->client
@@ -11782,7 +11764,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\MutualFundsProfile
+     * @return \Finnhub\Model\MutualFundProfile
      */
     public function mutualFundProfile($symbol = null, $isin = null)
     {
@@ -11800,7 +11782,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\MutualFundsProfile, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\MutualFundProfile, HTTP status code, HTTP response headers (array of strings)
      */
     public function mutualFundProfileWithHttpInfo($symbol = null, $isin = null)
     {
@@ -11836,20 +11818,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\MutualFundsProfile' === '\SplFileObject') {
+                    if ('\Finnhub\Model\MutualFundProfile' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\MutualFundsProfile', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\MutualFundProfile', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\MutualFundsProfile';
+            $returnType = '\Finnhub\Model\MutualFundProfile';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -11867,7 +11849,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\MutualFundsProfile',
+                        '\Finnhub\Model\MutualFundProfile',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -11911,7 +11893,7 @@ class DefaultApi
      */
     public function mutualFundProfileAsyncWithHttpInfo($symbol = null, $isin = null)
     {
-        $returnType = '\Finnhub\Model\MutualFundsProfile';
+        $returnType = '\Finnhub\Model\MutualFundProfile';
         $request = $this->mutualFundProfileRequest($symbol, $isin);
 
         return $this->client
@@ -12049,7 +12031,7 @@ class DefaultApi
     /**
      * Operation mutualFundSectorExposure
      *
-     * Mutual-fund Sector Exposure
+     * Mutual Funds Sector Exposure
      *
      * @param  string $symbol Mutual Fund symbol. (required)
      *
@@ -12066,7 +12048,7 @@ class DefaultApi
     /**
      * Operation mutualFundSectorExposureWithHttpInfo
      *
-     * Mutual-fund Sector Exposure
+     * Mutual Funds Sector Exposure
      *
      * @param  string $symbol Mutual Fund symbol. (required)
      *
@@ -12152,7 +12134,7 @@ class DefaultApi
     /**
      * Operation mutualFundSectorExposureAsync
      *
-     * Mutual-fund Sector Exposure
+     * Mutual Funds Sector Exposure
      *
      * @param  string $symbol Mutual Fund symbol. (required)
      *
@@ -12172,7 +12154,7 @@ class DefaultApi
     /**
      * Operation mutualFundSectorExposureAsyncWithHttpInfo
      *
-     * Mutual-fund Sector Exposure
+     * Mutual Funds Sector Exposure
      *
      * @param  string $symbol Mutual Fund symbol. (required)
      *
@@ -13159,7 +13141,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\MajorPressReleases
+     * @return \Finnhub\Model\PressRelease
      */
     public function pressReleases($symbol, $from = null, $to = null)
     {
@@ -13178,7 +13160,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\MajorPressReleases, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\PressRelease, HTTP status code, HTTP response headers (array of strings)
      */
     public function pressReleasesWithHttpInfo($symbol, $from = null, $to = null)
     {
@@ -13214,20 +13196,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\MajorPressReleases' === '\SplFileObject') {
+                    if ('\Finnhub\Model\PressRelease' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\MajorPressReleases', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\PressRelease', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\MajorPressReleases';
+            $returnType = '\Finnhub\Model\PressRelease';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -13245,7 +13227,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\MajorPressReleases',
+                        '\Finnhub\Model\PressRelease',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -13291,7 +13273,7 @@ class DefaultApi
      */
     public function pressReleasesAsyncWithHttpInfo($symbol, $from = null, $to = null)
     {
-        $returnType = '\Finnhub\Model\MajorPressReleases';
+        $returnType = '\Finnhub\Model\PressRelease';
         $request = $this->pressReleasesRequest($symbol, $from, $to);
 
         return $this->client
@@ -15105,7 +15087,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\Dividends2Basic
+     * @return \Finnhub\Model\Dividends2
      */
     public function stockBasicDividends($symbol)
     {
@@ -15122,7 +15104,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\Dividends2Basic, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\Dividends2, HTTP status code, HTTP response headers (array of strings)
      */
     public function stockBasicDividendsWithHttpInfo($symbol)
     {
@@ -15158,20 +15140,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\Dividends2Basic' === '\SplFileObject') {
+                    if ('\Finnhub\Model\Dividends2' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\Dividends2Basic', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\Dividends2', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\Dividends2Basic';
+            $returnType = '\Finnhub\Model\Dividends2';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -15189,7 +15171,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\Dividends2Basic',
+                        '\Finnhub\Model\Dividends2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -15231,7 +15213,7 @@ class DefaultApi
      */
     public function stockBasicDividendsAsyncWithHttpInfo($symbol)
     {
-        $returnType = '\Finnhub\Model\Dividends2Basic';
+        $returnType = '\Finnhub\Model\Dividends2';
         $request = $this->stockBasicDividendsRequest($symbol);
 
         return $this->client
@@ -16908,7 +16890,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Finnhub\Model\Stock[]
+     * @return \Finnhub\Model\StockSymbol[]
      */
     public function stockSymbols($exchange, $mic = null, $security_type = null, $currency = null)
     {
@@ -16928,7 +16910,7 @@ class DefaultApi
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Finnhub\Model\Stock[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Finnhub\Model\StockSymbol[], HTTP status code, HTTP response headers (array of strings)
      */
     public function stockSymbolsWithHttpInfo($exchange, $mic = null, $security_type = null, $currency = null)
     {
@@ -16964,20 +16946,20 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Finnhub\Model\Stock[]' === '\SplFileObject') {
+                    if ('\Finnhub\Model\StockSymbol[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Finnhub\Model\Stock[]', []),
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\StockSymbol[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Finnhub\Model\Stock[]';
+            $returnType = '\Finnhub\Model\StockSymbol[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -16995,7 +16977,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Finnhub\Model\Stock[]',
+                        '\Finnhub\Model\StockSymbol[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -17043,7 +17025,7 @@ class DefaultApi
      */
     public function stockSymbolsAsyncWithHttpInfo($exchange, $mic = null, $security_type = null, $currency = null)
     {
-        $returnType = '\Finnhub\Model\Stock[]';
+        $returnType = '\Finnhub\Model\StockSymbol[]';
         $request = $this->stockSymbolsRequest($exchange, $mic, $security_type, $currency);
 
         return $this->client
@@ -18689,6 +18671,274 @@ class DefaultApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation transcripts
+     *
+     * Earnings Call Transcripts
+     *
+     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\EarningsCallTranscripts
+     */
+    public function transcripts($id)
+    {
+        list($response) = $this->transcriptsWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation transcriptsWithHttpInfo
+     *
+     * Earnings Call Transcripts
+     *
+     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\EarningsCallTranscripts, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function transcriptsWithHttpInfo($id)
+    {
+        $request = $this->transcriptsRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\EarningsCallTranscripts' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\EarningsCallTranscripts', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\EarningsCallTranscripts';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\EarningsCallTranscripts',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation transcriptsAsync
+     *
+     * Earnings Call Transcripts
+     *
+     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function transcriptsAsync($id)
+    {
+        return $this->transcriptsAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation transcriptsAsyncWithHttpInfo
+     *
+     * Earnings Call Transcripts
+     *
+     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function transcriptsAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Finnhub\Model\EarningsCallTranscripts';
+        $request = $this->transcriptsRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'transcripts'
+     *
+     * @param  string $id Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function transcriptsRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling transcripts'
+            );
+        }
+
+        $resourcePath = '/stock/transcripts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($id)) {
+            $id = ObjectSerializer::serializeCollection($id, '', true);
+        }
+        if ($id !== null) {
+            $queryParams['id'] = $id;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

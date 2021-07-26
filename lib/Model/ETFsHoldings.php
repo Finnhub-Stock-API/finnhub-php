@@ -62,7 +62,7 @@ class ETFsHoldings implements ModelInterface, ArrayAccess, \JsonSerializable
         'symbol' => 'string',
         'at_date' => '\DateTime',
         'number_of_holdings' => 'int',
-        'holdings' => 'object[]'
+        'holdings' => '\Finnhub\Model\ETFHoldingsData[]'
     ];
 
     /**
@@ -298,7 +298,7 @@ class ETFsHoldings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets holdings
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\ETFHoldingsData[]|null
      */
     public function getHoldings()
     {
@@ -308,7 +308,7 @@ class ETFsHoldings implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets holdings
      *
-     * @param object[]|null $holdings Array of holdings.
+     * @param \Finnhub\Model\ETFHoldingsData[]|null $holdings Array of holdings.
      *
      * @return self
      */

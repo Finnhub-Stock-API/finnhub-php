@@ -61,7 +61,7 @@ class InternationalFiling implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'symbol' => 'string',
         'company_name' => 'string',
-        'filed_date' => '\DateTime',
+        'filed_date' => 'string',
         'category' => 'string',
         'title' => 'string',
         'description' => 'string',
@@ -80,7 +80,7 @@ class InternationalFiling implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPIFormats = [
         'symbol' => null,
         'company_name' => null,
-        'filed_date' => 'date-time',
+        'filed_date' => null,
         'category' => null,
         'title' => null,
         'description' => null,
@@ -304,7 +304,7 @@ class InternationalFiling implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets filed_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getFiledDate()
     {
@@ -314,7 +314,7 @@ class InternationalFiling implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets filed_date
      *
-     * @param \DateTime|null $filed_date Filed date <code>%Y-%m-%d %H:%M:%S</code>.
+     * @param string|null $filed_date Filed date <code>%Y-%m-%d %H:%M:%S</code>.
      *
      * @return self
      */

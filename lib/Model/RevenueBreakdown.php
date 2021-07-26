@@ -61,7 +61,7 @@ class RevenueBreakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'symbol' => 'string',
         'cik' => 'string',
-        'data' => 'object[]'
+        'data' => '\Finnhub\Model\BreakdownItem[]'
     ];
 
     /**
@@ -268,7 +268,7 @@ class RevenueBreakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\BreakdownItem[]|null
      */
     public function getData()
     {
@@ -278,7 +278,7 @@ class RevenueBreakdown implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param object[]|null $data Array of revenue breakdown over multiple periods.
+     * @param \Finnhub\Model\BreakdownItem[]|null $data Array of revenue breakdown over multiple periods.
      *
      * @return self
      */

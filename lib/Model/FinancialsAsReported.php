@@ -61,7 +61,7 @@ class FinancialsAsReported implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'symbol' => 'string',
         'cik' => 'string',
-        'data' => 'object[]'
+        'data' => '\Finnhub\Model\Report[]'
     ];
 
     /**
@@ -268,7 +268,7 @@ class FinancialsAsReported implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets data
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\Report[]|null
      */
     public function getData()
     {
@@ -278,7 +278,7 @@ class FinancialsAsReported implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets data
      *
-     * @param object[]|null $data Array of filings.
+     * @param \Finnhub\Model\Report[]|null $data Array of filings.
      *
      * @return self
      */

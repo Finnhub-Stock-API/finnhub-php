@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **symbol** | **string** | Symbol. | [optional]
 **cik** | **string** | CIK. | [optional]
 **form** | **string** | Form type. | [optional]
-**filed_date** | [**\DateTime**](\DateTime.md) | Filed date &lt;code&gt;%Y-%m-%d %H:%M:%S&lt;/code&gt;. | [optional]
-**accepted_date** | [**\DateTime**](\DateTime.md) | Accepted date &lt;code&gt;%Y-%m-%d %H:%M:%S&lt;/code&gt;. | [optional]
+**filed_date** | **string** | Filed date &lt;code&gt;%Y-%m-%d %H:%M:%S&lt;/code&gt;. | [optional]
+**accepted_date** | **string** | Accepted date &lt;code&gt;%Y-%m-%d %H:%M:%S&lt;/code&gt;. | [optional]
 **report_url** | **string** | Report&#39;s URL. | [optional]
 **filing_url** | **string** | Filing&#39;s URL. | [optional]
 

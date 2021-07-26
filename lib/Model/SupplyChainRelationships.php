@@ -60,7 +60,7 @@ class SupplyChainRelationships implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'data' => 'object[]'
+        'data' => '\Finnhub\Model\KeyCustomersSuppliers[]'
     ];
 
     /**
@@ -238,7 +238,7 @@ class SupplyChainRelationships implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets data
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\KeyCustomersSuppliers[]|null
      */
     public function getData()
     {
@@ -248,7 +248,7 @@ class SupplyChainRelationships implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets data
      *
-     * @param object[]|null $data Key customers and suppliers.
+     * @param \Finnhub\Model\KeyCustomersSuppliers[]|null $data Key customers and suppliers.
      *
      * @return self
      */

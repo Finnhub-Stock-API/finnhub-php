@@ -59,7 +59,7 @@ class EarningsCalendar implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'earnings_calendar' => 'object[]'
+        'earnings_calendar' => '\Finnhub\Model\EarningRelease[]'
     ];
 
     /**
@@ -208,7 +208,7 @@ class EarningsCalendar implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets earnings_calendar
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\EarningRelease[]|null
      */
     public function getEarningsCalendar()
     {
@@ -218,7 +218,7 @@ class EarningsCalendar implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets earnings_calendar
      *
-     * @param object[]|null $earnings_calendar Array of earnings release.
+     * @param \Finnhub\Model\EarningRelease[]|null $earnings_calendar Array of earnings release.
      *
      * @return self
      */

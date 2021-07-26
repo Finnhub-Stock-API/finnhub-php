@@ -60,7 +60,7 @@ class CompanyExecutive implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'executive' => 'object[]'
+        'executive' => '\Finnhub\Model\Company[]'
     ];
 
     /**
@@ -238,7 +238,7 @@ class CompanyExecutive implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets executive
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\Company[]|null
      */
     public function getExecutive()
     {
@@ -248,7 +248,7 @@ class CompanyExecutive implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets executive
      *
-     * @param object[]|null $executive Array of company's executives and members of the Board.
+     * @param \Finnhub\Model\Company[]|null $executive Array of company's executives and members of the Board.
      *
      * @return self
      */

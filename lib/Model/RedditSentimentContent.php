@@ -65,7 +65,7 @@ class RedditSentimentContent implements ModelInterface, ArrayAccess, \JsonSerial
         'positive_score' => 'float',
         'negative_score' => 'float',
         'score' => 'float',
-        'at_time' => '\DateTime'
+        'at_time' => 'string'
     ];
 
     /**
@@ -82,7 +82,7 @@ class RedditSentimentContent implements ModelInterface, ArrayAccess, \JsonSerial
         'positive_score' => 'float',
         'negative_score' => 'float',
         'score' => 'float',
-        'at_time' => 'date-time'
+        'at_time' => null
     ];
 
     /**
@@ -388,7 +388,7 @@ class RedditSentimentContent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets at_time
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getAtTime()
     {
@@ -398,7 +398,7 @@ class RedditSentimentContent implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets at_time
      *
-     * @param \DateTime|null $at_time Period.
+     * @param string|null $at_time Period.
      *
      * @return self
      */

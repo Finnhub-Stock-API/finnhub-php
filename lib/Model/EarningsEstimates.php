@@ -59,7 +59,7 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => 'object[]',
+        'data' => '\Finnhub\Model\EarningEstimate[]',
         'freq' => 'string',
         'symbol' => 'string'
     ];
@@ -220,7 +220,7 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets data
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\EarningEstimate[]|null
      */
     public function getData()
     {
@@ -230,7 +230,7 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets data
      *
-     * @param object[]|null $data List of estimates
+     * @param \Finnhub\Model\EarningEstimate[]|null $data List of estimates
      *
      * @return self
      */

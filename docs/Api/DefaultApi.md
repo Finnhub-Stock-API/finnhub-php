@@ -20,7 +20,7 @@ Method | HTTP request | Description
 [**cryptoExchanges()**](DefaultApi.md#cryptoExchanges) | **GET** /crypto/exchange | Crypto Exchanges
 [**cryptoSymbols()**](DefaultApi.md#cryptoSymbols) | **GET** /crypto/symbol | Crypto Symbol
 [**earningsCalendar()**](DefaultApi.md#earningsCalendar) | **GET** /calendar/earnings | Earnings Calendar
-[**earningsCallTranscriptsApi()**](DefaultApi.md#earningsCallTranscriptsApi) | **GET** /stock/transcripts | Earnings Call Transcripts
+[**economicCalendar()**](DefaultApi.md#economicCalendar) | **GET** /calendar/economic | Economic Calendar
 [**economicCode()**](DefaultApi.md#economicCode) | **GET** /economic/code | Economic Code
 [**economicData()**](DefaultApi.md#economicData) | **GET** /economic | Economic Data
 [**etfsCountryExposure()**](DefaultApi.md#etfsCountryExposure) | **GET** /etf/country | ETFs Country Exposure
@@ -41,13 +41,13 @@ Method | HTTP request | Description
 [**indicesHistoricalConstituents()**](DefaultApi.md#indicesHistoricalConstituents) | **GET** /index/historical-constituents | Indices Historical Constituents
 [**insiderTransactions()**](DefaultApi.md#insiderTransactions) | **GET** /stock/insider-transactions | Insider Transactions
 [**internationalFilings()**](DefaultApi.md#internationalFilings) | **GET** /stock/international-filings | International Filings
-[**investmentThemesThematicInvesting()**](DefaultApi.md#investmentThemesThematicInvesting) | **GET** /stock/investment-theme | Investment Themes (Thematic Investing)
+[**investmentThemes()**](DefaultApi.md#investmentThemes) | **GET** /stock/investment-theme | Investment Themes (Thematic Investing)
 [**ipoCalendar()**](DefaultApi.md#ipoCalendar) | **GET** /calendar/ipo | IPO Calendar
 [**marketNews()**](DefaultApi.md#marketNews) | **GET** /news | Market News
 [**mutualFundCountryExposure()**](DefaultApi.md#mutualFundCountryExposure) | **GET** /mutual-fund/country | Mutual Funds Country Exposure
 [**mutualFundHoldings()**](DefaultApi.md#mutualFundHoldings) | **GET** /mutual-fund/holdings | Mutual Funds Holdings
 [**mutualFundProfile()**](DefaultApi.md#mutualFundProfile) | **GET** /mutual-fund/profile | Mutual Funds Profile
-[**mutualFundSectorExposure()**](DefaultApi.md#mutualFundSectorExposure) | **GET** /mutual-fund/sector | Mutual-fund Sector Exposure
+[**mutualFundSectorExposure()**](DefaultApi.md#mutualFundSectorExposure) | **GET** /mutual-fund/sector | Mutual Funds Sector Exposure
 [**newsSentiment()**](DefaultApi.md#newsSentiment) | **GET** /news-sentiment | News Sentiment
 [**ownership()**](DefaultApi.md#ownership) | **GET** /stock/ownership | Ownership
 [**patternRecognition()**](DefaultApi.md#patternRecognition) | **GET** /scan/pattern | Pattern Recognition
@@ -70,6 +70,7 @@ Method | HTTP request | Description
 [**supportResistance()**](DefaultApi.md#supportResistance) | **GET** /scan/support-resistance | Support/Resistance
 [**symbolSearch()**](DefaultApi.md#symbolSearch) | **GET** /search | Symbol Lookup
 [**technicalIndicator()**](DefaultApi.md#technicalIndicator) | **POST** /indicator | Technical Indicators
+[**transcripts()**](DefaultApi.md#transcripts) | **GET** /stock/transcripts | Earnings Call Transcripts
 [**transcriptsList()**](DefaultApi.md#transcriptsList) | **GET** /stock/transcripts/list | Earnings Call Transcripts List
 [**upgradeDowngrade()**](DefaultApi.md#upgradeDowngrade) | **GET** /stock/upgrade-downgrade | Stock Upgrade/Downgrade
 
@@ -395,7 +396,7 @@ Name | Type | Description  | Notes
 ## `companyNews()`
 
 ```php
-companyNews($symbol, $from, $to): \Finnhub\Model\News[]
+companyNews($symbol, $from, $to): \Finnhub\Model\CompanyNews[]
 ```
 
 Company News
@@ -443,7 +444,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Finnhub\Model\News[]**](../Model/News.md)
+[**\Finnhub\Model\CompanyNews[]**](../Model/CompanyNews.md)
 
 ### Authorization
 
@@ -1091,15 +1092,15 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `earningsCallTranscriptsApi()`
+## `economicCalendar()`
 
 ```php
-earningsCallTranscriptsApi($id): \Finnhub\Model\EarningsCallTranscripts
+economicCalendar(): \Finnhub\Model\EconomicCalendar
 ```
 
-Earnings Call Transcripts
+Economic Calendar
 
-<p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US, UK, and Candian companies. <p>15+ years of data is available with 220,000+ audio which add up to 7TB in size.</p>
+<p>Get recent and upcoming economic releases.</p><p>Historical events and surprises are available for Enterprise clients.</p>
 
 ### Example
 
@@ -1120,25 +1121,22 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | Transcript's id obtained with <a href=\"#transcripts-list\">Transcripts List endpoint</a>.
 
 try {
-    $result = $apiInstance->earningsCallTranscriptsApi($id);
+    $result = $apiInstance->economicCalendar();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->earningsCallTranscriptsApi: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->economicCalendar: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. |
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Finnhub\Model\EarningsCallTranscripts**](../Model/EarningsCallTranscripts.md)
+[**\Finnhub\Model\EconomicCalendar**](../Model/EconomicCalendar.md)
 
 ### Authorization
 
@@ -2424,10 +2422,10 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `investmentThemesThematicInvesting()`
+## `investmentThemes()`
 
 ```php
-investmentThemesThematicInvesting($theme): \Finnhub\Model\InvestmentThemesThematicInvesting
+investmentThemes($theme): \Finnhub\Model\InvestmentThemes
 ```
 
 Investment Themes (Thematic Investing)
@@ -2456,10 +2454,10 @@ $apiInstance = new Finnhub\Api\DefaultApi(
 $theme = 'theme_example'; // string | Investment theme. A full list of themes supported can be found <a target=\"_blank\" href=\"https://docs.google.com/spreadsheets/d/1ULj9xDh4iPoQj279M084adZ2_S852ttRthKKJ7madYc/edit?usp=sharing\">here</a>.
 
 try {
-    $result = $apiInstance->investmentThemesThematicInvesting($theme);
+    $result = $apiInstance->investmentThemes($theme);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->investmentThemesThematicInvesting: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->investmentThemes: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -2471,7 +2469,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Finnhub\Model\InvestmentThemesThematicInvesting**](../Model/InvestmentThemesThematicInvesting.md)
+[**\Finnhub\Model\InvestmentThemes**](../Model/InvestmentThemes.md)
 
 ### Authorization
 
@@ -2553,7 +2551,7 @@ Name | Type | Description  | Notes
 ## `marketNews()`
 
 ```php
-marketNews($category, $min_id): \Finnhub\Model\News[]
+marketNews($category, $min_id): \Finnhub\Model\MarketNews[]
 ```
 
 Market News
@@ -2599,7 +2597,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Finnhub\Model\News[]**](../Model/News.md)
+[**\Finnhub\Model\MarketNews[]**](../Model/MarketNews.md)
 
 ### Authorization
 
@@ -2617,7 +2615,7 @@ Name | Type | Description  | Notes
 ## `mutualFundCountryExposure()`
 
 ```php
-mutualFundCountryExposure($symbol): \Finnhub\Model\MutualFundsCountryExposure
+mutualFundCountryExposure($symbol): \Finnhub\Model\MutualFundCountryExposure
 ```
 
 Mutual Funds Country Exposure
@@ -2661,7 +2659,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Finnhub\Model\MutualFundsCountryExposure**](../Model/MutualFundsCountryExposure.md)
+[**\Finnhub\Model\MutualFundCountryExposure**](../Model/MutualFundCountryExposure.md)
 
 ### Authorization
 
@@ -2679,7 +2677,7 @@ Name | Type | Description  | Notes
 ## `mutualFundHoldings()`
 
 ```php
-mutualFundHoldings($symbol, $isin, $skip): \Finnhub\Model\MutualFundsHoldings
+mutualFundHoldings($symbol, $isin, $skip): \Finnhub\Model\MutualFundHoldings
 ```
 
 Mutual Funds Holdings
@@ -2727,7 +2725,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Finnhub\Model\MutualFundsHoldings**](../Model/MutualFundsHoldings.md)
+[**\Finnhub\Model\MutualFundHoldings**](../Model/MutualFundHoldings.md)
 
 ### Authorization
 
@@ -2745,7 +2743,7 @@ Name | Type | Description  | Notes
 ## `mutualFundProfile()`
 
 ```php
-mutualFundProfile($symbol, $isin): \Finnhub\Model\MutualFundsProfile
+mutualFundProfile($symbol, $isin): \Finnhub\Model\MutualFundProfile
 ```
 
 Mutual Funds Profile
@@ -2791,7 +2789,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Finnhub\Model\MutualFundsProfile**](../Model/MutualFundsProfile.md)
+[**\Finnhub\Model\MutualFundProfile**](../Model/MutualFundProfile.md)
 
 ### Authorization
 
@@ -2812,7 +2810,7 @@ Name | Type | Description  | Notes
 mutualFundSectorExposure($symbol): \Finnhub\Model\MutualFundSectorExposure
 ```
 
-Mutual-fund Sector Exposure
+Mutual Funds Sector Exposure
 
 Get Mutual Funds sector exposure data.
 
@@ -3061,7 +3059,7 @@ Name | Type | Description  | Notes
 ## `pressReleases()`
 
 ```php
-pressReleases($symbol, $from, $to): \Finnhub\Model\MajorPressReleases
+pressReleases($symbol, $from, $to): \Finnhub\Model\PressRelease
 ```
 
 Major Press Releases
@@ -3109,7 +3107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Finnhub\Model\MajorPressReleases**](../Model/MajorPressReleases.md)
+[**\Finnhub\Model\PressRelease**](../Model/PressRelease.md)
 
 ### Authorization
 
@@ -3509,7 +3507,7 @@ Name | Type | Description  | Notes
 ## `stockBasicDividends()`
 
 ```php
-stockBasicDividends($symbol): \Finnhub\Model\Dividends2Basic
+stockBasicDividends($symbol): \Finnhub\Model\Dividends2
 ```
 
 Dividends 2 (Basic)
@@ -3553,7 +3551,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Finnhub\Model\Dividends2Basic**](../Model/Dividends2Basic.md)
+[**\Finnhub\Model\Dividends2**](../Model/Dividends2.md)
 
 ### Authorization
 
@@ -3903,7 +3901,7 @@ Name | Type | Description  | Notes
 ## `stockSymbols()`
 
 ```php
-stockSymbols($exchange, $mic, $security_type, $currency): \Finnhub\Model\Stock[]
+stockSymbols($exchange, $mic, $security_type, $currency): \Finnhub\Model\StockSymbol[]
 ```
 
 Stock Symbol
@@ -3953,7 +3951,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Finnhub\Model\Stock[]**](../Model/Stock.md)
+[**\Finnhub\Model\StockSymbol[]**](../Model/StockSymbol.md)
 
 ### Authorization
 
@@ -4290,6 +4288,68 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `transcripts()`
+
+```php
+transcripts($id): \Finnhub\Model\EarningsCallTranscripts
+```
+
+Earnings Call Transcripts
+
+<p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US, UK, and Candian companies. <p>15+ years of data is available with 220,000+ audio which add up to 7TB in size.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | Transcript's id obtained with <a href=\"#transcripts-list\">Transcripts List endpoint</a>.
+
+try {
+    $result = $apiInstance->transcripts($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->transcripts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| Transcript&#39;s id obtained with &lt;a href&#x3D;\&quot;#transcripts-list\&quot;&gt;Transcripts List endpoint&lt;/a&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\EarningsCallTranscripts**](../Model/EarningsCallTranscripts.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

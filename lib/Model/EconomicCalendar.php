@@ -59,7 +59,7 @@ class EconomicCalendar implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'economic_calendar' => 'object[]'
+        'economic_calendar' => '\Finnhub\Model\EconomicEvent[]'
     ];
 
     /**
@@ -208,7 +208,7 @@ class EconomicCalendar implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets economic_calendar
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\EconomicEvent[]|null
      */
     public function getEconomicCalendar()
     {
@@ -218,7 +218,7 @@ class EconomicCalendar implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets economic_calendar
      *
-     * @param object[]|null $economic_calendar Array of economic events.
+     * @param \Finnhub\Model\EconomicEvent[]|null $economic_calendar Array of economic events.
      *
      * @return self
      */

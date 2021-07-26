@@ -59,7 +59,7 @@ class SymbolLookup implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'result' => 'object[]',
+        'result' => '\Finnhub\Model\SymbolLookupInfo[]',
         'count' => 'int'
     ];
 
@@ -214,7 +214,7 @@ class SymbolLookup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets result
      *
-     * @return object[]|null
+     * @return \Finnhub\Model\SymbolLookupInfo[]|null
      */
     public function getResult()
     {
@@ -224,7 +224,7 @@ class SymbolLookup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets result
      *
-     * @param object[]|null $result Array of search results.
+     * @param \Finnhub\Model\SymbolLookupInfo[]|null $result Array of search results.
      *
      * @return self
      */

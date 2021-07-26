@@ -64,7 +64,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'target_low' => 'float',
         'target_mean' => 'float',
         'target_median' => 'float',
-        'last_updated' => '\DateTime'
+        'last_updated' => 'string'
     ];
 
     /**
@@ -80,7 +80,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'target_low' => 'float',
         'target_mean' => 'float',
         'target_median' => 'float',
-        'last_updated' => 'date-time'
+        'last_updated' => null
     ];
 
     /**
@@ -358,7 +358,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets last_updated
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getLastUpdated()
     {
@@ -368,7 +368,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_updated
      *
-     * @param \DateTime|null $last_updated Updated time of the data
+     * @param string|null $last_updated Updated time of the data
      *
      * @return self
      */

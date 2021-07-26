@@ -63,8 +63,8 @@ class Filing implements ModelInterface, ArrayAccess, \JsonSerializable
         'symbol' => 'string',
         'cik' => 'string',
         'form' => 'string',
-        'filed_date' => '\DateTime',
-        'accepted_date' => '\DateTime',
+        'filed_date' => 'string',
+        'accepted_date' => 'string',
         'report_url' => 'string',
         'filing_url' => 'string'
     ];
@@ -81,8 +81,8 @@ class Filing implements ModelInterface, ArrayAccess, \JsonSerializable
         'symbol' => null,
         'cik' => null,
         'form' => null,
-        'filed_date' => 'date-time',
-        'accepted_date' => 'date-time',
+        'filed_date' => null,
+        'accepted_date' => null,
         'report_url' => null,
         'filing_url' => null
     ];
@@ -346,7 +346,7 @@ class Filing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets filed_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getFiledDate()
     {
@@ -356,7 +356,7 @@ class Filing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets filed_date
      *
-     * @param \DateTime|null $filed_date Filed date <code>%Y-%m-%d %H:%M:%S</code>.
+     * @param string|null $filed_date Filed date <code>%Y-%m-%d %H:%M:%S</code>.
      *
      * @return self
      */
@@ -370,7 +370,7 @@ class Filing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets accepted_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getAcceptedDate()
     {
@@ -380,7 +380,7 @@ class Filing implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets accepted_date
      *
-     * @param \DateTime|null $accepted_date Accepted date <code>%Y-%m-%d %H:%M:%S</code>.
+     * @param string|null $accepted_date Accepted date <code>%Y-%m-%d %H:%M:%S</code>.
      *
      * @return self
      */
