@@ -105,8 +105,8 @@ print_r($client->fundOwnership('AMZN', 5));
 // General news
 print_r($client->marketNews('forex', 0));
 
-// Investors ownership
-print_r($client->investorsOwnership('AAPL', 5));
+// Ownership
+print_r($client->ownership('AAPL', 5));
 
 // IPO calendar
 print_r($client->ipoCalendar("2020-05-01", "2020-06-01"));
