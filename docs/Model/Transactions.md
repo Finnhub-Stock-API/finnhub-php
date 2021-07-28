@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **filing_date** | [**\DateTime**](\DateTime.md) | Filing date. | [optional]
 **transaction_date** | [**\DateTime**](\DateTime.md) | Transaction date. | [optional]
 **transaction_price** | **float** | Average transaction price. | [optional]
-**transaction_code** | [**\DateTime**](\DateTime.md) | Transaction code. A list of codes and their meanings can be found &lt;a href&#x3D;\&quot;https://www.sec.gov/about/forms/form4data.pdf\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener\&quot;&gt;here&lt;/a&gt;. | [optional]
+**transaction_code** | **string** | Transaction code. A list of codes and their meanings can be found &lt;a href&#x3D;\&quot;https://www.sec.gov/about/forms/form4data.pdf\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener\&quot;&gt;here&lt;/a&gt;. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

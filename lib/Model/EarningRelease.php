@@ -66,8 +66,8 @@ class EarningRelease implements ModelInterface, ArrayAccess, \JsonSerializable
         'quarter' => 'int',
         'eps_estimate' => 'float',
         'eps_actual' => 'float',
-        'revenue_estimate' => 'int',
-        'revenue_actual' => 'int'
+        'revenue_estimate' => 'float',
+        'revenue_actual' => 'float'
     ];
 
     /**
@@ -85,8 +85,8 @@ class EarningRelease implements ModelInterface, ArrayAccess, \JsonSerializable
         'quarter' => 'int64',
         'eps_estimate' => 'float',
         'eps_actual' => 'float',
-        'revenue_estimate' => 'int64',
-        'revenue_actual' => 'int64'
+        'revenue_estimate' => 'float',
+        'revenue_actual' => 'float'
     ];
 
     /**
@@ -424,7 +424,7 @@ class EarningRelease implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets revenue_estimate
      *
-     * @return int|null
+     * @return float|null
      */
     public function getRevenueEstimate()
     {
@@ -434,7 +434,7 @@ class EarningRelease implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets revenue_estimate
      *
-     * @param int|null $revenue_estimate Revenue estimate including Finnhub's proprietary estimates.
+     * @param float|null $revenue_estimate Revenue estimate including Finnhub's proprietary estimates.
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class EarningRelease implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets revenue_actual
      *
-     * @return int|null
+     * @return float|null
      */
     public function getRevenueActual()
     {
@@ -458,7 +458,7 @@ class EarningRelease implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets revenue_actual
      *
-     * @param int|null $revenue_actual Revenue actual.
+     * @param float|null $revenue_actual Revenue actual.
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * EarningsEstimates
+ * EarningsEstimatesInfo
  *
  * PHP version 7.2
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * EarningsEstimates Class Doc Comment
+ * EarningsEstimatesInfo Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializable
+class EarningsEstimatesInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EarningsEstimates';
+    protected static $openAPIModelName = 'EarningsEstimatesInfo';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,11 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Finnhub\Model\EarningsEstimatesInfo[]',
-        'freq' => 'string',
-        'symbol' => 'string'
+        'eps_avg' => 'float',
+        'eps_high' => 'float',
+        'eps_low' => 'float',
+        'number_analysts' => 'int',
+        'period' => '\DateTime'
     ];
 
     /**
@@ -72,9 +74,11 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'freq' => null,
-        'symbol' => null
+        'eps_avg' => 'float',
+        'eps_high' => 'float',
+        'eps_low' => 'float',
+        'number_analysts' => 'int64',
+        'period' => 'date'
     ];
 
     /**
@@ -104,9 +108,11 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'freq' => 'freq',
-        'symbol' => 'symbol'
+        'eps_avg' => 'epsAvg',
+        'eps_high' => 'epsHigh',
+        'eps_low' => 'epsLow',
+        'number_analysts' => 'numberAnalysts',
+        'period' => 'period'
     ];
 
     /**
@@ -115,9 +121,11 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'freq' => 'setFreq',
-        'symbol' => 'setSymbol'
+        'eps_avg' => 'setEpsAvg',
+        'eps_high' => 'setEpsHigh',
+        'eps_low' => 'setEpsLow',
+        'number_analysts' => 'setNumberAnalysts',
+        'period' => 'setPeriod'
     ];
 
     /**
@@ -126,9 +134,11 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'freq' => 'getFreq',
-        'symbol' => 'getSymbol'
+        'eps_avg' => 'getEpsAvg',
+        'eps_high' => 'getEpsHigh',
+        'eps_low' => 'getEpsLow',
+        'number_analysts' => 'getNumberAnalysts',
+        'period' => 'getPeriod'
     ];
 
     /**
@@ -188,9 +198,11 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
-        $this->container['freq'] = $data['freq'] ?? null;
-        $this->container['symbol'] = $data['symbol'] ?? null;
+        $this->container['eps_avg'] = $data['eps_avg'] ?? null;
+        $this->container['eps_high'] = $data['eps_high'] ?? null;
+        $this->container['eps_low'] = $data['eps_low'] ?? null;
+        $this->container['number_analysts'] = $data['number_analysts'] ?? null;
+        $this->container['period'] = $data['period'] ?? null;
     }
 
     /**
@@ -218,73 +230,121 @@ class EarningsEstimates implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets data
+     * Gets eps_avg
      *
-     * @return \Finnhub\Model\EarningsEstimatesInfo[]|null
+     * @return float|null
      */
-    public function getData()
+    public function getEpsAvg()
     {
-        return $this->container['data'];
+        return $this->container['eps_avg'];
     }
 
     /**
-     * Sets data
+     * Sets eps_avg
      *
-     * @param \Finnhub\Model\EarningsEstimatesInfo[]|null $data List of estimates
+     * @param float|null $eps_avg Average EPS estimates including Finnhub's proprietary estimates.
      *
      * @return self
      */
-    public function setData($data)
+    public function setEpsAvg($eps_avg)
     {
-        $this->container['data'] = $data;
+        $this->container['eps_avg'] = $eps_avg;
 
         return $this;
     }
 
     /**
-     * Gets freq
+     * Gets eps_high
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getFreq()
+    public function getEpsHigh()
     {
-        return $this->container['freq'];
+        return $this->container['eps_high'];
     }
 
     /**
-     * Sets freq
+     * Sets eps_high
      *
-     * @param string|null $freq Frequency: annual or quarterly.
+     * @param float|null $eps_high Highest estimate.
      *
      * @return self
      */
-    public function setFreq($freq)
+    public function setEpsHigh($eps_high)
     {
-        $this->container['freq'] = $freq;
+        $this->container['eps_high'] = $eps_high;
 
         return $this;
     }
 
     /**
-     * Gets symbol
+     * Gets eps_low
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getSymbol()
+    public function getEpsLow()
     {
-        return $this->container['symbol'];
+        return $this->container['eps_low'];
     }
 
     /**
-     * Sets symbol
+     * Sets eps_low
      *
-     * @param string|null $symbol Company symbol.
+     * @param float|null $eps_low Lowest estimate.
      *
      * @return self
      */
-    public function setSymbol($symbol)
+    public function setEpsLow($eps_low)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['eps_low'] = $eps_low;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_analysts
+     *
+     * @return int|null
+     */
+    public function getNumberAnalysts()
+    {
+        return $this->container['number_analysts'];
+    }
+
+    /**
+     * Sets number_analysts
+     *
+     * @param int|null $number_analysts Number of Analysts.
+     *
+     * @return self
+     */
+    public function setNumberAnalysts($number_analysts)
+    {
+        $this->container['number_analysts'] = $number_analysts;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return \DateTime|null
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param \DateTime|null $period Period.
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $this->container['period'] = $period;
 
         return $this;
     }

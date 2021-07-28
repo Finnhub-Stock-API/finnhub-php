@@ -61,7 +61,7 @@ class SimilarityIndex implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'symbol' => 'string',
         'cik' => 'string',
-        'similarity' => '\Finnhub\Model\Filing[]'
+        'similarity' => '\Finnhub\Model\SimilarityIndexInfo[]'
     ];
 
     /**
@@ -268,7 +268,7 @@ class SimilarityIndex implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets similarity
      *
-     * @return \Finnhub\Model\Filing[]|null
+     * @return \Finnhub\Model\SimilarityIndexInfo[]|null
      */
     public function getSimilarity()
     {
@@ -278,7 +278,7 @@ class SimilarityIndex implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets similarity
      *
-     * @param \Finnhub\Model\Filing[]|null $similarity Array of filings with its cosine similarity compared to the same report of the previous year.
+     * @param \Finnhub\Model\SimilarityIndexInfo[]|null $similarity Array of filings with its cosine similarity compared to the same report of the previous year.
      *
      * @return self
      */

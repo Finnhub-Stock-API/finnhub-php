@@ -59,8 +59,8 @@ class Sentiment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'bearish_percent' => 'int',
-        'bullish_percent' => 'int'
+        'bearish_percent' => 'float',
+        'bullish_percent' => 'float'
     ];
 
     /**
@@ -71,8 +71,8 @@ class Sentiment implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'bearish_percent' => 'int64',
-        'bullish_percent' => 'int64'
+        'bearish_percent' => 'float',
+        'bullish_percent' => 'float'
     ];
 
     /**
@@ -214,7 +214,7 @@ class Sentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bearish_percent
      *
-     * @return int|null
+     * @return float|null
      */
     public function getBearishPercent()
     {
@@ -224,7 +224,7 @@ class Sentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bearish_percent
      *
-     * @param int|null $bearish_percent 
+     * @param float|null $bearish_percent 
      *
      * @return self
      */
@@ -238,7 +238,7 @@ class Sentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bullish_percent
      *
-     * @return int|null
+     * @return float|null
      */
     public function getBullishPercent()
     {
@@ -248,7 +248,7 @@ class Sentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bullish_percent
      *
-     * @param int|null $bullish_percent 
+     * @param float|null $bullish_percent 
      *
      * @return self
      */

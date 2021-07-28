@@ -84,7 +84,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'ipo' => '\DateTime',
         'market_capitalization' => 'float',
         'share_outstanding' => 'float',
-        'employee_total' => 'int',
+        'employee_total' => 'float',
         'logo' => 'string',
         'finnhub_industry' => 'string'
     ];
@@ -122,7 +122,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'ipo' => 'date',
         'market_capitalization' => 'float',
         'share_outstanding' => 'float',
-        'employee_total' => 'int64',
+        'employee_total' => 'float',
         'logo' => null,
         'finnhub_industry' => null
     ];
@@ -970,7 +970,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets employee_total
      *
-     * @return int|null
+     * @return float|null
      */
     public function getEmployeeTotal()
     {
@@ -980,7 +980,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets employee_total
      *
-     * @param int|null $employee_total Number of employee.
+     * @param float|null $employee_total Number of employee.
      *
      * @return self
      */

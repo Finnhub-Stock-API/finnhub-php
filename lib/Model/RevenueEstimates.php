@@ -59,7 +59,7 @@ class RevenueEstimates implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Finnhub\Model\Estimate[]',
+        'data' => '\Finnhub\Model\RevenueEstimatesInfo[]',
         'freq' => 'string',
         'symbol' => 'string'
     ];
@@ -220,7 +220,7 @@ class RevenueEstimates implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return \Finnhub\Model\Estimate[]|null
+     * @return \Finnhub\Model\RevenueEstimatesInfo[]|null
      */
     public function getData()
     {
@@ -230,7 +230,7 @@ class RevenueEstimates implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \Finnhub\Model\Estimate[]|null $data List of estimates
+     * @param \Finnhub\Model\RevenueEstimatesInfo[]|null $data List of estimates
      *
      * @return self
      */

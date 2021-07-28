@@ -65,7 +65,7 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
         'filing_date' => '\DateTime',
         'transaction_date' => '\DateTime',
         'transaction_price' => 'float',
-        'transaction_code' => '\DateTime'
+        'transaction_code' => 'string'
     ];
 
     /**
@@ -82,7 +82,7 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
         'filing_date' => 'date',
         'transaction_date' => 'date',
         'transaction_price' => 'float',
-        'transaction_code' => 'date'
+        'transaction_code' => null
     ];
 
     /**
@@ -388,7 +388,7 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transaction_code
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getTransactionCode()
     {
@@ -398,7 +398,7 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_code
      *
-     * @param \DateTime|null $transaction_code Transaction code. A list of codes and their meanings can be found <a href=\"https://www.sec.gov/about/forms/form4data.pdf\" target=\"_blank\" rel=\"noopener\">here</a>.
+     * @param string|null $transaction_code Transaction code. A list of codes and their meanings can be found <a href=\"https://www.sec.gov/about/forms/form4data.pdf\" target=\"_blank\" rel=\"noopener\">here</a>.
      *
      * @return self
      */

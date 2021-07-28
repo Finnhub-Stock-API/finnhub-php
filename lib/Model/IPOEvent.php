@@ -65,8 +65,8 @@ class IPOEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'status' => 'string',
         'price' => 'string',
-        'number_of_shares' => 'int',
-        'total_shares_value' => 'int'
+        'number_of_shares' => 'float',
+        'total_shares_value' => 'float'
     ];
 
     /**
@@ -83,8 +83,8 @@ class IPOEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'status' => null,
         'price' => null,
-        'number_of_shares' => 'int64',
-        'total_shares_value' => 'int64'
+        'number_of_shares' => 'float',
+        'total_shares_value' => 'float'
     ];
 
     /**
@@ -394,7 +394,7 @@ class IPOEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets number_of_shares
      *
-     * @return int|null
+     * @return float|null
      */
     public function getNumberOfShares()
     {
@@ -404,7 +404,7 @@ class IPOEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets number_of_shares
      *
-     * @param int|null $number_of_shares Number of shares offered during the IPO.
+     * @param float|null $number_of_shares Number of shares offered during the IPO.
      *
      * @return self
      */
@@ -418,7 +418,7 @@ class IPOEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_shares_value
      *
-     * @return int|null
+     * @return float|null
      */
     public function getTotalSharesValue()
     {
@@ -428,7 +428,7 @@ class IPOEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_shares_value
      *
-     * @param int|null $total_shares_value Total shares value.
+     * @param float|null $total_shares_value Total shares value.
      *
      * @return self
      */

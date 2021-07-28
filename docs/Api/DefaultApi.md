@@ -2578,7 +2578,7 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $category = 'category_example'; // string | This parameter can be 1 of the following values <code>general, forex, crypto, merger</code>.
-$min_id = 'min_id_example'; // string | Use this field to get only news after this ID. Default to 0
+$min_id = 56; // int | Use this field to get only news after this ID. Default to 0
 
 try {
     $result = $apiInstance->marketNews($category, $min_id);
@@ -2593,7 +2593,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **category** | **string**| This parameter can be 1 of the following values &lt;code&gt;general, forex, crypto, merger&lt;/code&gt;. |
- **min_id** | **string**| Use this field to get only news after this ID. Default to 0 | [optional]
+ **min_id** | **int**| Use this field to get only news after this ID. Default to 0 | [optional]
 
 ### Return type
 
@@ -3631,12 +3631,12 @@ Name | Type | Description  | Notes
 ## `stockCandles()`
 
 ```php
-stockCandles($symbol, $resolution, $from, $to, $adjusted): \Finnhub\Model\StockCandles
+stockCandles($symbol, $resolution, $from, $to): \Finnhub\Model\StockCandles
 ```
 
 Stock Candles
 
-<p>Get candlestick data (OHLCV) for stocks
+<p>Get candlestick data (OHLCV) for stocks.</p><p>Daily data will be adjusted for Splits. Intraday data will remain unadjusted.</p>
 
 ### Example
 
@@ -3661,10 +3661,9 @@ $symbol = 'symbol_example'; // string | Symbol.
 $resolution = 'resolution_example'; // string | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
 $from = 56; // int | UNIX timestamp. Interval initial value.
 $to = 56; // int | UNIX timestamp. Interval end value.
-$adjusted = 'adjusted_example'; // string | DEPRECATED: this option has been deprecated. All Daily data will be adjusted for Splits and intraday data will remain unadjusted.
 
 try {
-    $result = $apiInstance->stockCandles($symbol, $resolution, $from, $to, $adjusted);
+    $result = $apiInstance->stockCandles($symbol, $resolution, $from, $to);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->stockCandles: ', $e->getMessage(), PHP_EOL;
@@ -3679,7 +3678,6 @@ Name | Type | Description  | Notes
  **resolution** | **string**| Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. |
  **from** | **int**| UNIX timestamp. Interval initial value. |
  **to** | **int**| UNIX timestamp. Interval end value. |
- **adjusted** | **string**| DEPRECATED: this option has been deprecated. All Daily data will be adjusted for Splits and intraday data will remain unadjusted. | [optional]
 
 ### Return type
 

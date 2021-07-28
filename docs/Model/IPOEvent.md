@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **name** | **string** | Company&#39;s name. | [optional]
 **status** | **string** | IPO status. Can take 1 of the following values: &lt;code&gt;expected&lt;/code&gt;,&lt;code&gt;priced&lt;/code&gt;,&lt;code&gt;withdrawn&lt;/code&gt;,&lt;code&gt;filed&lt;/code&gt; | [optional]
 **price** | **string** | Projected price or price range. | [optional]
-**number_of_shares** | **int** | Number of shares offered during the IPO. | [optional]
-**total_shares_value** | **int** | Total shares value. | [optional]
+**number_of_shares** | **float** | Number of shares offered during the IPO. | [optional]
+**total_shares_value** | **float** | Total shares value. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

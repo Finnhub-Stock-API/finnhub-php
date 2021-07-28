@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Finnhub\Model\Estimate[]**](Estimate.md) | List of estimates | [optional]
+**data** | [**\Finnhub\Model\RevenueEstimatesInfo[]**](RevenueEstimatesInfo.md) | List of estimates | [optional]
 **freq** | **string** | Frequency: annual or quarterly. | [optional]
 **symbol** | **string** | Company symbol. | [optional]
 

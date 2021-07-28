@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **ipo** | [**\DateTime**](\DateTime.md) | IPO date. | [optional]
 **market_capitalization** | **float** | Market Capitalization. | [optional]
 **share_outstanding** | **float** | Number of oustanding shares. | [optional]
-**employee_total** | **int** | Number of employee. | [optional]
+**employee_total** | **float** | Number of employee. | [optional]
 **logo** | **string** | Logo image. | [optional]
 **finnhub_industry** | **string** | Finnhub industry classification. | [optional]
 

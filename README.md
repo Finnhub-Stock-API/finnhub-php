@@ -1,7 +1,7 @@
 # Finnhub
 - Finnhub php api clent
 - API version: 1.0.0
-- Package version: 1.1.3
+- Package version: 1.1.4
 
 ## Requirements
 
@@ -14,7 +14,7 @@ In composer.json:
 ```json
 {
   "require": {
-    "finnhub/client": "1.1.3"
+    "finnhub/client": "1.1.4"
   }
 }
 ```
@@ -82,13 +82,13 @@ print_r($client->cryptoSymbols("BINANCE"));
 print_r($client->economicData("MA-USA-656880"));
 
 // Filings
-print_r($client->filings("AAPL", "2020-01-01", "2020-06-11"));
+print_r($client->filings($symbol = "AAPL", $from = "2020-01-01", $to = "2020-06-11"));
 
 // Financials
 print_r($client->financials("AAPL", "bs", "annual"));
 
 // Financials as reported
-print_r($client->financialsReported("AAPL", "annual"));
+print_r($client->financialsReported($symbol = "AAPL", $freq = "annual"));
 
 // Forex exchanges
 print_r($client->forexExchanges());
@@ -204,7 +204,7 @@ print_r($client->mutualFundSectorExposure("VTSAX"));
 print_r($client->mutualFundCountryExposure("VTSAX"));
 
 // Revenue Breakdown
-print_r($client->revenueBreakdown("AAPL"));
+print_r($client->revenueBreakdown($symbol = "AAPL"));
 
 // Social sentiment
 print_r($client->socialSentiment("GME"));
@@ -225,7 +225,10 @@ print_r($client->internationalFilings("AC.TO"));
 print_r($client->filingsSentiment("0000320193-20-000052"));
 
 // Similarity Index
-print_r($client->similarityIndex("AAPL"));
+print_r($client->similarityIndex($symbol = "AAPL"));
+
+//Symbol Search
+print_r($client->symbolSearch("AAPL"));
 
 ?>
 ```

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **quarter** | **int** | Earnings quarter. | [optional]
 **eps_estimate** | **float** | EPS estimate. | [optional]
 **eps_actual** | **float** | EPS actual. | [optional]
-**revenue_estimate** | **int** | Revenue estimate including Finnhub&#39;s proprietary estimates. | [optional]
-**revenue_actual** | **int** | Revenue actual. | [optional]
+**revenue_estimate** | **float** | Revenue estimate including Finnhub&#39;s proprietary estimates. | [optional]
+**revenue_actual** | **float** | Revenue actual. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

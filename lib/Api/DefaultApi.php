@@ -10926,7 +10926,7 @@ class DefaultApi
      * Market News
      *
      * @param  string $category This parameter can be 1 of the following values &lt;code&gt;general, forex, crypto, merger&lt;/code&gt;. (required)
-     * @param  string $min_id Use this field to get only news after this ID. Default to 0 (optional)
+     * @param  int $min_id Use this field to get only news after this ID. Default to 0 (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -10944,7 +10944,7 @@ class DefaultApi
      * Market News
      *
      * @param  string $category This parameter can be 1 of the following values &lt;code&gt;general, forex, crypto, merger&lt;/code&gt;. (required)
-     * @param  string $min_id Use this field to get only news after this ID. Default to 0 (optional)
+     * @param  int $min_id Use this field to get only news after this ID. Default to 0 (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -11031,7 +11031,7 @@ class DefaultApi
      * Market News
      *
      * @param  string $category This parameter can be 1 of the following values &lt;code&gt;general, forex, crypto, merger&lt;/code&gt;. (required)
-     * @param  string $min_id Use this field to get only news after this ID. Default to 0 (optional)
+     * @param  int $min_id Use this field to get only news after this ID. Default to 0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -11052,7 +11052,7 @@ class DefaultApi
      * Market News
      *
      * @param  string $category This parameter can be 1 of the following values &lt;code&gt;general, forex, crypto, merger&lt;/code&gt;. (required)
-     * @param  string $min_id Use this field to get only news after this ID. Default to 0 (optional)
+     * @param  int $min_id Use this field to get only news after this ID. Default to 0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -11099,7 +11099,7 @@ class DefaultApi
      * Create request for operation 'marketNews'
      *
      * @param  string $category This parameter can be 1 of the following values &lt;code&gt;general, forex, crypto, merger&lt;/code&gt;. (required)
-     * @param  string $min_id Use this field to get only news after this ID. Default to 0 (optional)
+     * @param  int $min_id Use this field to get only news after this ID. Default to 0 (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -15623,15 +15623,14 @@ class DefaultApi
      * @param  string $resolution Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. (required)
      * @param  int $from UNIX timestamp. Interval initial value. (required)
      * @param  int $to UNIX timestamp. Interval end value. (required)
-     * @param  string $adjusted DEPRECATED: this option has been deprecated. All Daily data will be adjusted for Splits and intraday data will remain unadjusted. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Finnhub\Model\StockCandles
      */
-    public function stockCandles($symbol, $resolution, $from, $to, $adjusted = null)
+    public function stockCandles($symbol, $resolution, $from, $to)
     {
-        list($response) = $this->stockCandlesWithHttpInfo($symbol, $resolution, $from, $to, $adjusted);
+        list($response) = $this->stockCandlesWithHttpInfo($symbol, $resolution, $from, $to);
         return $response;
     }
 
@@ -15644,15 +15643,14 @@ class DefaultApi
      * @param  string $resolution Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. (required)
      * @param  int $from UNIX timestamp. Interval initial value. (required)
      * @param  int $to UNIX timestamp. Interval end value. (required)
-     * @param  string $adjusted DEPRECATED: this option has been deprecated. All Daily data will be adjusted for Splits and intraday data will remain unadjusted. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Finnhub\Model\StockCandles, HTTP status code, HTTP response headers (array of strings)
      */
-    public function stockCandlesWithHttpInfo($symbol, $resolution, $from, $to, $adjusted = null)
+    public function stockCandlesWithHttpInfo($symbol, $resolution, $from, $to)
     {
-        $request = $this->stockCandlesRequest($symbol, $resolution, $from, $to, $adjusted);
+        $request = $this->stockCandlesRequest($symbol, $resolution, $from, $to);
 
         try {
             $options = $this->createHttpClientOption();
@@ -15734,14 +15732,13 @@ class DefaultApi
      * @param  string $resolution Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. (required)
      * @param  int $from UNIX timestamp. Interval initial value. (required)
      * @param  int $to UNIX timestamp. Interval end value. (required)
-     * @param  string $adjusted DEPRECATED: this option has been deprecated. All Daily data will be adjusted for Splits and intraday data will remain unadjusted. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function stockCandlesAsync($symbol, $resolution, $from, $to, $adjusted = null)
+    public function stockCandlesAsync($symbol, $resolution, $from, $to)
     {
-        return $this->stockCandlesAsyncWithHttpInfo($symbol, $resolution, $from, $to, $adjusted)
+        return $this->stockCandlesAsyncWithHttpInfo($symbol, $resolution, $from, $to)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -15758,15 +15755,14 @@ class DefaultApi
      * @param  string $resolution Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. (required)
      * @param  int $from UNIX timestamp. Interval initial value. (required)
      * @param  int $to UNIX timestamp. Interval end value. (required)
-     * @param  string $adjusted DEPRECATED: this option has been deprecated. All Daily data will be adjusted for Splits and intraday data will remain unadjusted. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function stockCandlesAsyncWithHttpInfo($symbol, $resolution, $from, $to, $adjusted = null)
+    public function stockCandlesAsyncWithHttpInfo($symbol, $resolution, $from, $to)
     {
         $returnType = '\Finnhub\Model\StockCandles';
-        $request = $this->stockCandlesRequest($symbol, $resolution, $from, $to, $adjusted);
+        $request = $this->stockCandlesRequest($symbol, $resolution, $from, $to);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -15808,12 +15804,11 @@ class DefaultApi
      * @param  string $resolution Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. (required)
      * @param  int $from UNIX timestamp. Interval initial value. (required)
      * @param  int $to UNIX timestamp. Interval end value. (required)
-     * @param  string $adjusted DEPRECATED: this option has been deprecated. All Daily data will be adjusted for Splits and intraday data will remain unadjusted. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function stockCandlesRequest($symbol, $resolution, $from, $to, $adjusted = null)
+    public function stockCandlesRequest($symbol, $resolution, $from, $to)
     {
         // verify the required parameter 'symbol' is set
         if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
@@ -15874,13 +15869,6 @@ class DefaultApi
         }
         if ($to !== null) {
             $queryParams['to'] = $to;
-        }
-        // query params
-        if (is_array($adjusted)) {
-            $adjusted = ObjectSerializer::serializeCollection($adjusted, '', true);
-        }
-        if ($adjusted !== null) {
-            $queryParams['adjusted'] = $adjusted;
         }
 
 
