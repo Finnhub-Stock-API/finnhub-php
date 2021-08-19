@@ -1,6 +1,6 @@
 <?php
 /**
- * MutualFundCountryExposureData
+ * CompanyESG
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * MutualFundCountryExposureData Class Doc Comment
+ * CompanyESG Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MutualFundCountryExposureData implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class MutualFundCountryExposureData implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MutualFundCountryExposureData';
+    protected static $openAPIModelName = 'CompanyESG';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,12 @@ class MutualFundCountryExposureData implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'country' => 'string',
-        'exposure' => 'float'
+        'symbol' => 'string',
+        'total_esg_score' => 'float',
+        'environment_score' => 'float',
+        'governance_score' => 'float',
+        'social_score' => 'float',
+        'data' => 'object'
     ];
 
     /**
@@ -71,8 +75,12 @@ class MutualFundCountryExposureData implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'country' => null,
-        'exposure' => 'float'
+        'symbol' => null,
+        'total_esg_score' => 'float',
+        'environment_score' => 'float',
+        'governance_score' => 'float',
+        'social_score' => 'float',
+        'data' => null
     ];
 
     /**
@@ -102,8 +110,12 @@ class MutualFundCountryExposureData implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'country' => 'country',
-        'exposure' => 'exposure'
+        'symbol' => 'symbol',
+        'total_esg_score' => 'totalESGScore',
+        'environment_score' => 'environmentScore',
+        'governance_score' => 'governanceScore',
+        'social_score' => 'socialScore',
+        'data' => 'data'
     ];
 
     /**
@@ -112,8 +124,12 @@ class MutualFundCountryExposureData implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'country' => 'setCountry',
-        'exposure' => 'setExposure'
+        'symbol' => 'setSymbol',
+        'total_esg_score' => 'setTotalEsgScore',
+        'environment_score' => 'setEnvironmentScore',
+        'governance_score' => 'setGovernanceScore',
+        'social_score' => 'setSocialScore',
+        'data' => 'setData'
     ];
 
     /**
@@ -122,8 +138,12 @@ class MutualFundCountryExposureData implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'country' => 'getCountry',
-        'exposure' => 'getExposure'
+        'symbol' => 'getSymbol',
+        'total_esg_score' => 'getTotalEsgScore',
+        'environment_score' => 'getEnvironmentScore',
+        'governance_score' => 'getGovernanceScore',
+        'social_score' => 'getSocialScore',
+        'data' => 'getData'
     ];
 
     /**
@@ -183,8 +203,12 @@ class MutualFundCountryExposureData implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['country'] = $data['country'] ?? null;
-        $this->container['exposure'] = $data['exposure'] ?? null;
+        $this->container['symbol'] = $data['symbol'] ?? null;
+        $this->container['total_esg_score'] = $data['total_esg_score'] ?? null;
+        $this->container['environment_score'] = $data['environment_score'] ?? null;
+        $this->container['governance_score'] = $data['governance_score'] ?? null;
+        $this->container['social_score'] = $data['social_score'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -212,49 +236,145 @@ class MutualFundCountryExposureData implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets country
+     * Gets symbol
      *
      * @return string|null
      */
-    public function getCountry()
+    public function getSymbol()
     {
-        return $this->container['country'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets country
+     * Sets symbol
      *
-     * @param string|null $country Country
+     * @param string|null $symbol symbol
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setSymbol($symbol)
     {
-        $this->container['country'] = $country;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets exposure
+     * Gets total_esg_score
      *
      * @return float|null
      */
-    public function getExposure()
+    public function getTotalEsgScore()
     {
-        return $this->container['exposure'];
+        return $this->container['total_esg_score'];
     }
 
     /**
-     * Sets exposure
+     * Sets total_esg_score
      *
-     * @param float|null $exposure Percent of exposure.
+     * @param float|null $total_esg_score Total ESG Score
      *
      * @return self
      */
-    public function setExposure($exposure)
+    public function setTotalEsgScore($total_esg_score)
     {
-        $this->container['exposure'] = $exposure;
+        $this->container['total_esg_score'] = $total_esg_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets environment_score
+     *
+     * @return float|null
+     */
+    public function getEnvironmentScore()
+    {
+        return $this->container['environment_score'];
+    }
+
+    /**
+     * Sets environment_score
+     *
+     * @param float|null $environment_score symbol
+     *
+     * @return self
+     */
+    public function setEnvironmentScore($environment_score)
+    {
+        $this->container['environment_score'] = $environment_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets governance_score
+     *
+     * @return float|null
+     */
+    public function getGovernanceScore()
+    {
+        return $this->container['governance_score'];
+    }
+
+    /**
+     * Sets governance_score
+     *
+     * @param float|null $governance_score symbol
+     *
+     * @return self
+     */
+    public function setGovernanceScore($governance_score)
+    {
+        $this->container['governance_score'] = $governance_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets social_score
+     *
+     * @return float|null
+     */
+    public function getSocialScore()
+    {
+        return $this->container['social_score'];
+    }
+
+    /**
+     * Sets social_score
+     *
+     * @param float|null $social_score symbol
+     *
+     * @return self
+     */
+    public function setSocialScore($social_score)
+    {
+        $this->container['social_score'] = $social_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return object|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param object|null $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**companyBasicFinancials()**](DefaultApi.md#companyBasicFinancials) | **GET** /stock/metric | Basic Financials
 [**companyEarnings()**](DefaultApi.md#companyEarnings) | **GET** /stock/earnings | Earnings Surprises
 [**companyEpsEstimates()**](DefaultApi.md#companyEpsEstimates) | **GET** /stock/eps-estimate | Earnings Estimates
+[**companyEsgScore()**](DefaultApi.md#companyEsgScore) | **GET** /stock/esg | Company ESG Scores
 [**companyExecutive()**](DefaultApi.md#companyExecutive) | **GET** /stock/executive | Company Executive
 [**companyNews()**](DefaultApi.md#companyNews) | **GET** /company-news | Company News
 [**companyPeers()**](DefaultApi.md#companyPeers) | **GET** /stock/peers | Peers
@@ -317,6 +318,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\EarningsEstimates**](../Model/EarningsEstimates.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `companyEsgScore()`
+
+```php
+companyEsgScore($symbol): \Finnhub\Model\CompanyESG
+```
+
+Company ESG Scores
+
+<p>This endpoint provides ESG scores and important indicators for 1000+ global companies. The data is collected through company's public ESG disclosure and public sources.</p><p>Our ESG scoring models takes into account more than 150 different inputs to calculate the level of ESG risks and how well a company is managing them. A higher score means lower ESG risk or better ESG management. ESG scores are in the the range of 0-100. Some key indicators might contain letter-grade score from C- to A+ with C- is the lowest score and A+ is the highest score.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+
+try {
+    $result = $apiInstance->companyEsgScore($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->companyEsgScore: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+
+### Return type
+
+[**\Finnhub\Model\CompanyESG**](../Model/CompanyESG.md)
 
 ### Authorization
 

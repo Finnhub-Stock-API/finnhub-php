@@ -7,6 +7,7 @@ docs/Model/AggregateIndicators.md
 docs/Model/BasicFinancials.md
 docs/Model/BreakdownItem.md
 docs/Model/Company.md
+docs/Model/CompanyESG.md
 docs/Model/CompanyExecutive.md
 docs/Model/CompanyNews.md
 docs/Model/CompanyNewsStatistics.md
@@ -115,6 +116,7 @@ lib/Model/AggregateIndicators.php
 lib/Model/BasicFinancials.php
 lib/Model/BreakdownItem.php
 lib/Model/Company.php
+lib/Model/CompanyESG.php
 lib/Model/CompanyExecutive.php
 lib/Model/CompanyNews.php
 lib/Model/CompanyNewsStatistics.php
@@ -217,6 +219,4 @@ lib/Model/TwitterSentimentContent.php
 lib/Model/UpgradeDowngrade.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/EarningsEstimatesInfoTest.php
-test/Model/RevenueEstimatesInfoTest.php
-test/Model/SimilarityIndexInfoTest.php
+test/Model/CompanyESGTest.php

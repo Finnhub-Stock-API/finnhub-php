@@ -1,7 +1,8 @@
 # Finnhub
+
 - Finnhub php api clent
 - API version: 1.0.0
-- Package version: 1.1.4
+- Package version: 1.1.5
 
 ## Requirements
 
@@ -10,11 +11,13 @@ PHP 5.5 and later
 ## Installation & Usage
 
 ### Composer
+
 In composer.json:
+
 ```json
 {
   "require": {
-    "finnhub/client": "1.1.4"
+    "finnhub/client": "1.1.5"
   }
 }
 ```
@@ -229,6 +232,9 @@ print_r($client->similarityIndex($symbol = "AAPL"));
 
 //Symbol Search
 print_r($client->symbolSearch("AAPL"));
+
+//Company ESG
+print_r($client->companyEsgScore("AAPL"));
 
 ?>
 ```
