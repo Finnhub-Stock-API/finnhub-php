@@ -1,6 +1,6 @@
 <?php
 /**
- * CompanyESG
+ * CompanyEarningsQualityScoreData
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * CompanyESG Class Doc Comment
+ * CompanyEarningsQualityScoreData Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyEarningsQualityScoreData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CompanyESG';
+    protected static $openAPIModelName = 'CompanyEarningsQualityScoreData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,13 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'total_esg_score' => 'float',
-        'environment_score' => 'float',
-        'governance_score' => 'float',
-        'social_score' => 'float',
-        'data' => 'object'
+        'period' => 'string',
+        'growth' => 'float',
+        'profitability' => 'float',
+        'cash_generation_capital_allocation' => 'float',
+        'leverage' => 'float',
+        'score' => 'float',
+        'letter_score' => 'string'
     ];
 
     /**
@@ -75,12 +76,13 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'total_esg_score' => 'float',
-        'environment_score' => 'float',
-        'governance_score' => 'float',
-        'social_score' => 'float',
-        'data' => null
+        'period' => null,
+        'growth' => 'float',
+        'profitability' => 'float',
+        'cash_generation_capital_allocation' => 'float',
+        'leverage' => 'float',
+        'score' => 'float',
+        'letter_score' => null
     ];
 
     /**
@@ -110,12 +112,13 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'total_esg_score' => 'totalESGScore',
-        'environment_score' => 'environmentScore',
-        'governance_score' => 'governanceScore',
-        'social_score' => 'socialScore',
-        'data' => 'data'
+        'period' => 'period',
+        'growth' => 'growth',
+        'profitability' => 'profitability',
+        'cash_generation_capital_allocation' => 'cashGenerationCapitalAllocation',
+        'leverage' => 'leverage',
+        'score' => 'score',
+        'letter_score' => 'letterScore'
     ];
 
     /**
@@ -124,12 +127,13 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'total_esg_score' => 'setTotalEsgScore',
-        'environment_score' => 'setEnvironmentScore',
-        'governance_score' => 'setGovernanceScore',
-        'social_score' => 'setSocialScore',
-        'data' => 'setData'
+        'period' => 'setPeriod',
+        'growth' => 'setGrowth',
+        'profitability' => 'setProfitability',
+        'cash_generation_capital_allocation' => 'setCashGenerationCapitalAllocation',
+        'leverage' => 'setLeverage',
+        'score' => 'setScore',
+        'letter_score' => 'setLetterScore'
     ];
 
     /**
@@ -138,12 +142,13 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'total_esg_score' => 'getTotalEsgScore',
-        'environment_score' => 'getEnvironmentScore',
-        'governance_score' => 'getGovernanceScore',
-        'social_score' => 'getSocialScore',
-        'data' => 'getData'
+        'period' => 'getPeriod',
+        'growth' => 'getGrowth',
+        'profitability' => 'getProfitability',
+        'cash_generation_capital_allocation' => 'getCashGenerationCapitalAllocation',
+        'leverage' => 'getLeverage',
+        'score' => 'getScore',
+        'letter_score' => 'getLetterScore'
     ];
 
     /**
@@ -203,12 +208,13 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['total_esg_score'] = $data['total_esg_score'] ?? null;
-        $this->container['environment_score'] = $data['environment_score'] ?? null;
-        $this->container['governance_score'] = $data['governance_score'] ?? null;
-        $this->container['social_score'] = $data['social_score'] ?? null;
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['period'] = $data['period'] ?? null;
+        $this->container['growth'] = $data['growth'] ?? null;
+        $this->container['profitability'] = $data['profitability'] ?? null;
+        $this->container['cash_generation_capital_allocation'] = $data['cash_generation_capital_allocation'] ?? null;
+        $this->container['leverage'] = $data['leverage'] ?? null;
+        $this->container['score'] = $data['score'] ?? null;
+        $this->container['letter_score'] = $data['letter_score'] ?? null;
     }
 
     /**
@@ -236,145 +242,169 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets symbol
+     * Gets period
      *
      * @return string|null
      */
-    public function getSymbol()
+    public function getPeriod()
     {
-        return $this->container['symbol'];
+        return $this->container['period'];
     }
 
     /**
-     * Sets symbol
+     * Sets period
      *
-     * @param string|null $symbol symbol
+     * @param string|null $period Period
      *
      * @return self
      */
-    public function setSymbol($symbol)
+    public function setPeriod($period)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['period'] = $period;
 
         return $this;
     }
 
     /**
-     * Gets total_esg_score
+     * Gets growth
      *
      * @return float|null
      */
-    public function getTotalEsgScore()
+    public function getGrowth()
     {
-        return $this->container['total_esg_score'];
+        return $this->container['growth'];
     }
 
     /**
-     * Sets total_esg_score
+     * Sets growth
      *
-     * @param float|null $total_esg_score Total ESG Score
+     * @param float|null $growth Growth Score
      *
      * @return self
      */
-    public function setTotalEsgScore($total_esg_score)
+    public function setGrowth($growth)
     {
-        $this->container['total_esg_score'] = $total_esg_score;
+        $this->container['growth'] = $growth;
 
         return $this;
     }
 
     /**
-     * Gets environment_score
+     * Gets profitability
      *
      * @return float|null
      */
-    public function getEnvironmentScore()
+    public function getProfitability()
     {
-        return $this->container['environment_score'];
+        return $this->container['profitability'];
     }
 
     /**
-     * Sets environment_score
+     * Sets profitability
      *
-     * @param float|null $environment_score Environment Score
+     * @param float|null $profitability Profitability Score
      *
      * @return self
      */
-    public function setEnvironmentScore($environment_score)
+    public function setProfitability($profitability)
     {
-        $this->container['environment_score'] = $environment_score;
+        $this->container['profitability'] = $profitability;
 
         return $this;
     }
 
     /**
-     * Gets governance_score
+     * Gets cash_generation_capital_allocation
      *
      * @return float|null
      */
-    public function getGovernanceScore()
+    public function getCashGenerationCapitalAllocation()
     {
-        return $this->container['governance_score'];
+        return $this->container['cash_generation_capital_allocation'];
     }
 
     /**
-     * Sets governance_score
+     * Sets cash_generation_capital_allocation
      *
-     * @param float|null $governance_score Governance Score
+     * @param float|null $cash_generation_capital_allocation Cash Generation and Capital Allocation
      *
      * @return self
      */
-    public function setGovernanceScore($governance_score)
+    public function setCashGenerationCapitalAllocation($cash_generation_capital_allocation)
     {
-        $this->container['governance_score'] = $governance_score;
+        $this->container['cash_generation_capital_allocation'] = $cash_generation_capital_allocation;
 
         return $this;
     }
 
     /**
-     * Gets social_score
+     * Gets leverage
      *
      * @return float|null
      */
-    public function getSocialScore()
+    public function getLeverage()
     {
-        return $this->container['social_score'];
+        return $this->container['leverage'];
     }
 
     /**
-     * Sets social_score
+     * Sets leverage
      *
-     * @param float|null $social_score Social Score
+     * @param float|null $leverage Leverage Score
      *
      * @return self
      */
-    public function setSocialScore($social_score)
+    public function setLeverage($leverage)
     {
-        $this->container['social_score'] = $social_score;
+        $this->container['leverage'] = $leverage;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets score
      *
-     * @return object|null
+     * @return float|null
      */
-    public function getData()
+    public function getScore()
     {
-        return $this->container['data'];
+        return $this->container['score'];
     }
 
     /**
-     * Sets data
+     * Sets score
      *
-     * @param object|null $data data
+     * @param float|null $score Total Score
      *
      * @return self
      */
-    public function setData($data)
+    public function setScore($score)
     {
-        $this->container['data'] = $data;
+        $this->container['score'] = $score;
+
+        return $this;
+    }
+
+    /**
+     * Gets letter_score
+     *
+     * @return string|null
+     */
+    public function getLetterScore()
+    {
+        return $this->container['letter_score'];
+    }
+
+    /**
+     * Sets letter_score
+     *
+     * @param string|null $letter_score Letter Score
+     *
+     * @return self
+     */
+    public function setLetterScore($letter_score)
+    {
+        $this->container['letter_score'] = $letter_score;
 
         return $this;
     }

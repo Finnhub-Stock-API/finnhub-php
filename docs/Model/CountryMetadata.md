@@ -10,5 +10,7 @@ Name | Type | Description | Notes
 **code_no** | **string** | UN code | [optional]
 **currency** | **string** | Currency name | [optional]
 **currency_code** | **string** | Currency code | [optional]
+**region** | **string** | Region | [optional]
+**sub_region** | **string** | Sub-Region | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

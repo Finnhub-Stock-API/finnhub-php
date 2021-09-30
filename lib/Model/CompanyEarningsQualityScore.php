@@ -1,6 +1,6 @@
 <?php
 /**
- * CompanyESG
+ * CompanyEarningsQualityScore
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * CompanyESG Class Doc Comment
+ * CompanyEarningsQualityScore Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyEarningsQualityScore implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CompanyESG';
+    protected static $openAPIModelName = 'CompanyEarningsQualityScore';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,11 +60,8 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'total_esg_score' => 'float',
-        'environment_score' => 'float',
-        'governance_score' => 'float',
-        'social_score' => 'float',
-        'data' => 'object'
+        'freq' => 'string',
+        'data' => '\Finnhub\Model\CompanyEarningsQualityScoreData[]'
     ];
 
     /**
@@ -76,10 +73,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'total_esg_score' => 'float',
-        'environment_score' => 'float',
-        'governance_score' => 'float',
-        'social_score' => 'float',
+        'freq' => null,
         'data' => null
     ];
 
@@ -111,10 +105,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
-        'total_esg_score' => 'totalESGScore',
-        'environment_score' => 'environmentScore',
-        'governance_score' => 'governanceScore',
-        'social_score' => 'socialScore',
+        'freq' => 'freq',
         'data' => 'data'
     ];
 
@@ -125,10 +116,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
-        'total_esg_score' => 'setTotalEsgScore',
-        'environment_score' => 'setEnvironmentScore',
-        'governance_score' => 'setGovernanceScore',
-        'social_score' => 'setSocialScore',
+        'freq' => 'setFreq',
         'data' => 'setData'
     ];
 
@@ -139,10 +127,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
-        'total_esg_score' => 'getTotalEsgScore',
-        'environment_score' => 'getEnvironmentScore',
-        'governance_score' => 'getGovernanceScore',
-        'social_score' => 'getSocialScore',
+        'freq' => 'getFreq',
         'data' => 'getData'
     ];
 
@@ -204,10 +189,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['total_esg_score'] = $data['total_esg_score'] ?? null;
-        $this->container['environment_score'] = $data['environment_score'] ?? null;
-        $this->container['governance_score'] = $data['governance_score'] ?? null;
-        $this->container['social_score'] = $data['social_score'] ?? null;
+        $this->container['freq'] = $data['freq'] ?? null;
         $this->container['data'] = $data['data'] ?? null;
     }
 
@@ -248,7 +230,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets symbol
      *
-     * @param string|null $symbol symbol
+     * @param string|null $symbol Symbol
      *
      * @return self
      */
@@ -260,97 +242,25 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets total_esg_score
+     * Gets freq
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getTotalEsgScore()
+    public function getFreq()
     {
-        return $this->container['total_esg_score'];
+        return $this->container['freq'];
     }
 
     /**
-     * Sets total_esg_score
+     * Sets freq
      *
-     * @param float|null $total_esg_score Total ESG Score
+     * @param string|null $freq Frequency
      *
      * @return self
      */
-    public function setTotalEsgScore($total_esg_score)
+    public function setFreq($freq)
     {
-        $this->container['total_esg_score'] = $total_esg_score;
-
-        return $this;
-    }
-
-    /**
-     * Gets environment_score
-     *
-     * @return float|null
-     */
-    public function getEnvironmentScore()
-    {
-        return $this->container['environment_score'];
-    }
-
-    /**
-     * Sets environment_score
-     *
-     * @param float|null $environment_score Environment Score
-     *
-     * @return self
-     */
-    public function setEnvironmentScore($environment_score)
-    {
-        $this->container['environment_score'] = $environment_score;
-
-        return $this;
-    }
-
-    /**
-     * Gets governance_score
-     *
-     * @return float|null
-     */
-    public function getGovernanceScore()
-    {
-        return $this->container['governance_score'];
-    }
-
-    /**
-     * Sets governance_score
-     *
-     * @param float|null $governance_score Governance Score
-     *
-     * @return self
-     */
-    public function setGovernanceScore($governance_score)
-    {
-        $this->container['governance_score'] = $governance_score;
-
-        return $this;
-    }
-
-    /**
-     * Gets social_score
-     *
-     * @return float|null
-     */
-    public function getSocialScore()
-    {
-        return $this->container['social_score'];
-    }
-
-    /**
-     * Sets social_score
-     *
-     * @param float|null $social_score Social Score
-     *
-     * @return self
-     */
-    public function setSocialScore($social_score)
-    {
-        $this->container['social_score'] = $social_score;
+        $this->container['freq'] = $freq;
 
         return $this;
     }
@@ -358,7 +268,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return object|null
+     * @return \Finnhub\Model\CompanyEarningsQualityScoreData[]|null
      */
     public function getData()
     {
@@ -368,7 +278,7 @@ class CompanyESG implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param object|null $data data
+     * @param \Finnhub\Model\CompanyEarningsQualityScoreData[]|null $data Array of earnings quality score.
      *
      * @return self
      */

@@ -967,6 +967,292 @@ class DefaultApi
     }
 
     /**
+     * Operation companyEarningsQualityScore
+     *
+     * Company Earnings Quality Score
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\CompanyEarningsQualityScore
+     */
+    public function companyEarningsQualityScore($symbol, $freq)
+    {
+        list($response) = $this->companyEarningsQualityScoreWithHttpInfo($symbol, $freq);
+        return $response;
+    }
+
+    /**
+     * Operation companyEarningsQualityScoreWithHttpInfo
+     *
+     * Company Earnings Quality Score
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\CompanyEarningsQualityScore, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function companyEarningsQualityScoreWithHttpInfo($symbol, $freq)
+    {
+        $request = $this->companyEarningsQualityScoreRequest($symbol, $freq);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\CompanyEarningsQualityScore' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\CompanyEarningsQualityScore', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\CompanyEarningsQualityScore';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\CompanyEarningsQualityScore',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation companyEarningsQualityScoreAsync
+     *
+     * Company Earnings Quality Score
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function companyEarningsQualityScoreAsync($symbol, $freq)
+    {
+        return $this->companyEarningsQualityScoreAsyncWithHttpInfo($symbol, $freq)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation companyEarningsQualityScoreAsyncWithHttpInfo
+     *
+     * Company Earnings Quality Score
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function companyEarningsQualityScoreAsyncWithHttpInfo($symbol, $freq)
+    {
+        $returnType = '\Finnhub\Model\CompanyEarningsQualityScore';
+        $request = $this->companyEarningsQualityScoreRequest($symbol, $freq);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'companyEarningsQualityScore'
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function companyEarningsQualityScoreRequest($symbol, $freq)
+    {
+        // verify the required parameter 'symbol' is set
+        if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling companyEarningsQualityScore'
+            );
+        }
+        // verify the required parameter 'freq' is set
+        if ($freq === null || (is_array($freq) && count($freq) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $freq when calling companyEarningsQualityScore'
+            );
+        }
+
+        $resourcePath = '/stock/earnings-quality-score';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($symbol)) {
+            $symbol = ObjectSerializer::serializeCollection($symbol, '', true);
+        }
+        if ($symbol !== null) {
+            $queryParams['symbol'] = $symbol;
+        }
+        // query params
+        if (is_array($freq)) {
+            $freq = ObjectSerializer::serializeCollection($freq, '', true);
+        }
+        if ($freq !== null) {
+            $queryParams['freq'] = $freq;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation companyEpsEstimates
      *
      * Earnings Estimates

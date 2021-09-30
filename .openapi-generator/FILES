@@ -8,6 +8,8 @@ docs/Model/BasicFinancials.md
 docs/Model/BreakdownItem.md
 docs/Model/Company.md
 docs/Model/CompanyESG.md
+docs/Model/CompanyEarningsQualityScore.md
+docs/Model/CompanyEarningsQualityScoreData.md
 docs/Model/CompanyExecutive.md
 docs/Model/CompanyNews.md
 docs/Model/CompanyNewsStatistics.md
@@ -117,6 +119,8 @@ lib/Model/BasicFinancials.php
 lib/Model/BreakdownItem.php
 lib/Model/Company.php
 lib/Model/CompanyESG.php
+lib/Model/CompanyEarningsQualityScore.php
+lib/Model/CompanyEarningsQualityScoreData.php
 lib/Model/CompanyExecutive.php
 lib/Model/CompanyNews.php
 lib/Model/CompanyNewsStatistics.php
@@ -219,4 +223,3 @@ lib/Model/TwitterSentimentContent.php
 lib/Model/UpgradeDowngrade.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CompanyESGTest.php

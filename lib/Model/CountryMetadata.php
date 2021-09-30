@@ -64,7 +64,9 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'code3' => 'string',
         'code_no' => 'string',
         'currency' => 'string',
-        'currency_code' => 'string'
+        'currency_code' => 'string',
+        'region' => 'string',
+        'sub_region' => 'string'
     ];
 
     /**
@@ -80,7 +82,9 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'code3' => null,
         'code_no' => null,
         'currency' => null,
-        'currency_code' => null
+        'currency_code' => null,
+        'region' => null,
+        'sub_region' => null
     ];
 
     /**
@@ -115,7 +119,9 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'code3' => 'code3',
         'code_no' => 'codeNo',
         'currency' => 'currency',
-        'currency_code' => 'currencyCode'
+        'currency_code' => 'currencyCode',
+        'region' => 'region',
+        'sub_region' => 'subRegion'
     ];
 
     /**
@@ -129,7 +135,9 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'code3' => 'setCode3',
         'code_no' => 'setCodeNo',
         'currency' => 'setCurrency',
-        'currency_code' => 'setCurrencyCode'
+        'currency_code' => 'setCurrencyCode',
+        'region' => 'setRegion',
+        'sub_region' => 'setSubRegion'
     ];
 
     /**
@@ -143,7 +151,9 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'code3' => 'getCode3',
         'code_no' => 'getCodeNo',
         'currency' => 'getCurrency',
-        'currency_code' => 'getCurrencyCode'
+        'currency_code' => 'getCurrencyCode',
+        'region' => 'getRegion',
+        'sub_region' => 'getSubRegion'
     ];
 
     /**
@@ -209,6 +219,8 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['code_no'] = $data['code_no'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
         $this->container['currency_code'] = $data['currency_code'] ?? null;
+        $this->container['region'] = $data['region'] ?? null;
+        $this->container['sub_region'] = $data['sub_region'] ?? null;
     }
 
     /**
@@ -375,6 +387,54 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCurrencyCode($currency_code)
     {
         $this->container['currency_code'] = $currency_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets region
+     *
+     * @return string|null
+     */
+    public function getRegion()
+    {
+        return $this->container['region'];
+    }
+
+    /**
+     * Sets region
+     *
+     * @param string|null $region Region
+     *
+     * @return self
+     */
+    public function setRegion($region)
+    {
+        $this->container['region'] = $region;
+
+        return $this;
+    }
+
+    /**
+     * Gets sub_region
+     *
+     * @return string|null
+     */
+    public function getSubRegion()
+    {
+        return $this->container['sub_region'];
+    }
+
+    /**
+     * Sets sub_region
+     *
+     * @param string|null $sub_region Sub-Region
+     *
+     * @return self
+     */
+    public function setSubRegion($sub_region)
+    {
+        $this->container['sub_region'] = $sub_region;
 
         return $this;
     }

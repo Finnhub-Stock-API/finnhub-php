@@ -572,7 +572,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ggroup
      *
-     * @param string|null $ggroup GICS industry group.
+     * @param string|null $ggroup Industry group.
      *
      * @return self
      */
@@ -596,7 +596,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets gind
      *
-     * @param string|null $gind GICS industry.
+     * @param string|null $gind Industry.
      *
      * @return self
      */
@@ -620,7 +620,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets gsector
      *
-     * @param string|null $gsector GICS sector.
+     * @param string|null $gsector Sector.
      *
      * @return self
      */
@@ -644,7 +644,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets gsubind
      *
-     * @param string|null $gsubind GICS sub-industry.
+     * @param string|null $gsubind Sub-industry.
      *
      * @return self
      */
