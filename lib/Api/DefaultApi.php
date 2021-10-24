@@ -11202,7 +11202,7 @@ class DefaultApi
      */
     public function ipoCalendar($from, $to)
     {
-        list($response) = $this->ipoCalendarWithHttpInfo($from, $to);
+        list($response) = $this->ipoCalendarWithHttpInfo($from->format('Y-m-d'), $to->format('Y-m-d'));
         return $response;
     }
 
