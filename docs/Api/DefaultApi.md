@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**covid19()**](DefaultApi.md#covid19) | **GET** /covid19/us | COVID-19
 [**cryptoCandles()**](DefaultApi.md#cryptoCandles) | **GET** /crypto/candle | Crypto Candles
 [**cryptoExchanges()**](DefaultApi.md#cryptoExchanges) | **GET** /crypto/exchange | Crypto Exchanges
+[**cryptoProfile()**](DefaultApi.md#cryptoProfile) | **GET** /crypto/profile | Crypto Profile
 [**cryptoSymbols()**](DefaultApi.md#cryptoSymbols) | **GET** /crypto/symbol | Crypto Symbol
 [**earningsCalendar()**](DefaultApi.md#earningsCalendar) | **GET** /calendar/earnings | Earnings Calendar
 [**economicCalendar()**](DefaultApi.md#economicCalendar) | **GET** /calendar/economic | Economic Calendar
@@ -299,7 +300,7 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | Symbol.
-$freq = 'freq_example'; // string | Frequency. Currently only support <code>quarterly</code>
+$freq = 'freq_example'; // string | Frequency. Currently support <code>annual</code> and <code>quarterly</code>
 
 try {
     $result = $apiInstance->companyEarningsQualityScore($symbol, $freq);
@@ -314,7 +315,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **string**| Symbol. |
- **freq** | **string**| Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; |
+ **freq** | **string**| Frequency. Currently support &lt;code&gt;annual&lt;/code&gt; and &lt;code&gt;quarterly&lt;/code&gt; |
 
 ### Return type
 
@@ -1090,6 +1091,68 @@ This endpoint does not need any parameter.
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `cryptoProfile()`
+
+```php
+cryptoProfile($symbol): \Finnhub\Model\CryptoProfile
+```
+
+Crypto Profile
+
+Get crypto's profile.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Crypto symbol such as BTC or ETH.
+
+try {
+    $result = $apiInstance->cryptoProfile($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->cryptoProfile: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Crypto symbol such as BTC or ETH. |
+
+### Return type
+
+[**\Finnhub\Model\CryptoProfile**](../Model/CryptoProfile.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `cryptoSymbols()`
 
 ```php
@@ -1223,7 +1286,7 @@ Name | Type | Description  | Notes
 ## `economicCalendar()`
 
 ```php
-economicCalendar(): \Finnhub\Model\EconomicCalendar
+economicCalendar($from, $to): \Finnhub\Model\EconomicCalendar
 ```
 
 Economic Calendar
@@ -1249,9 +1312,11 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>.
 
 try {
-    $result = $apiInstance->economicCalendar();
+    $result = $apiInstance->economicCalendar($from, $to);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->economicCalendar: ', $e->getMessage(), PHP_EOL;
@@ -1260,7 +1325,10 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. | [optional]
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. | [optional]
 
 ### Return type
 
@@ -2449,7 +2517,7 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
+$symbol = 'symbol_example'; // string | Symbol of the company: AAPL. Leave this param blank to get the latest transactions.
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date: 2020-03-15.
 $to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date: 2020-03-16.
 
@@ -2465,7 +2533,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| Symbol of the company: AAPL. |
+ **symbol** | **string**| Symbol of the company: AAPL. Leave this param blank to get the latest transactions. |
  **from** | **\DateTime**| From date: 2020-03-15. | [optional]
  **to** | **\DateTime**| To date: 2020-03-16. | [optional]
 

@@ -972,7 +972,7 @@ class DefaultApi
      * Company Earnings Quality Score
      *
      * @param  string $symbol Symbol. (required)
-     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     * @param  string $freq Frequency. Currently support &lt;code&gt;annual&lt;/code&gt; and &lt;code&gt;quarterly&lt;/code&gt; (required)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -990,7 +990,7 @@ class DefaultApi
      * Company Earnings Quality Score
      *
      * @param  string $symbol Symbol. (required)
-     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     * @param  string $freq Frequency. Currently support &lt;code&gt;annual&lt;/code&gt; and &lt;code&gt;quarterly&lt;/code&gt; (required)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1077,7 +1077,7 @@ class DefaultApi
      * Company Earnings Quality Score
      *
      * @param  string $symbol Symbol. (required)
-     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     * @param  string $freq Frequency. Currently support &lt;code&gt;annual&lt;/code&gt; and &lt;code&gt;quarterly&lt;/code&gt; (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1098,7 +1098,7 @@ class DefaultApi
      * Company Earnings Quality Score
      *
      * @param  string $symbol Symbol. (required)
-     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     * @param  string $freq Frequency. Currently support &lt;code&gt;annual&lt;/code&gt; and &lt;code&gt;quarterly&lt;/code&gt; (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1145,7 +1145,7 @@ class DefaultApi
      * Create request for operation 'companyEarningsQualityScore'
      *
      * @param  string $symbol Symbol. (required)
-     * @param  string $freq Frequency. Currently only support &lt;code&gt;quarterly&lt;/code&gt; (required)
+     * @param  string $freq Frequency. Currently support &lt;code&gt;annual&lt;/code&gt; and &lt;code&gt;quarterly&lt;/code&gt; (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4565,6 +4565,274 @@ class DefaultApi
     }
 
     /**
+     * Operation cryptoProfile
+     *
+     * Crypto Profile
+     *
+     * @param  string $symbol Crypto symbol such as BTC or ETH. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\CryptoProfile
+     */
+    public function cryptoProfile($symbol)
+    {
+        list($response) = $this->cryptoProfileWithHttpInfo($symbol);
+        return $response;
+    }
+
+    /**
+     * Operation cryptoProfileWithHttpInfo
+     *
+     * Crypto Profile
+     *
+     * @param  string $symbol Crypto symbol such as BTC or ETH. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\CryptoProfile, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function cryptoProfileWithHttpInfo($symbol)
+    {
+        $request = $this->cryptoProfileRequest($symbol);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\CryptoProfile' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\CryptoProfile', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\CryptoProfile';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\CryptoProfile',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation cryptoProfileAsync
+     *
+     * Crypto Profile
+     *
+     * @param  string $symbol Crypto symbol such as BTC or ETH. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cryptoProfileAsync($symbol)
+    {
+        return $this->cryptoProfileAsyncWithHttpInfo($symbol)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation cryptoProfileAsyncWithHttpInfo
+     *
+     * Crypto Profile
+     *
+     * @param  string $symbol Crypto symbol such as BTC or ETH. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function cryptoProfileAsyncWithHttpInfo($symbol)
+    {
+        $returnType = '\Finnhub\Model\CryptoProfile';
+        $request = $this->cryptoProfileRequest($symbol);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'cryptoProfile'
+     *
+     * @param  string $symbol Crypto symbol such as BTC or ETH. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function cryptoProfileRequest($symbol)
+    {
+        // verify the required parameter 'symbol' is set
+        if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling cryptoProfile'
+            );
+        }
+
+        $resourcePath = '/crypto/profile';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($symbol)) {
+            $symbol = ObjectSerializer::serializeCollection($symbol, '', true);
+        }
+        if ($symbol !== null) {
+            $queryParams['symbol'] = $symbol;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation cryptoSymbols
      *
      * Crypto Symbol
@@ -5135,14 +5403,16 @@ class DefaultApi
      *
      * Economic Calendar
      *
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Finnhub\Model\EconomicCalendar
      */
-    public function economicCalendar()
+    public function economicCalendar($from = null, $to = null)
     {
-        list($response) = $this->economicCalendarWithHttpInfo();
+        list($response) = $this->economicCalendarWithHttpInfo($from, $to);
         return $response;
     }
 
@@ -5151,14 +5421,16 @@ class DefaultApi
      *
      * Economic Calendar
      *
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Finnhub\Model\EconomicCalendar, HTTP status code, HTTP response headers (array of strings)
      */
-    public function economicCalendarWithHttpInfo()
+    public function economicCalendarWithHttpInfo($from = null, $to = null)
     {
-        $request = $this->economicCalendarRequest();
+        $request = $this->economicCalendarRequest($from, $to);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5236,13 +5508,15 @@ class DefaultApi
      *
      * Economic Calendar
      *
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function economicCalendarAsync()
+    public function economicCalendarAsync($from = null, $to = null)
     {
-        return $this->economicCalendarAsyncWithHttpInfo()
+        return $this->economicCalendarAsyncWithHttpInfo($from, $to)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5255,14 +5529,16 @@ class DefaultApi
      *
      * Economic Calendar
      *
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function economicCalendarAsyncWithHttpInfo()
+    public function economicCalendarAsyncWithHttpInfo($from = null, $to = null)
     {
         $returnType = '\Finnhub\Model\EconomicCalendar';
-        $request = $this->economicCalendarRequest();
+        $request = $this->economicCalendarRequest($from, $to);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5300,11 +5576,13 @@ class DefaultApi
     /**
      * Create request for operation 'economicCalendar'
      *
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function economicCalendarRequest()
+    public function economicCalendarRequest($from = null, $to = null)
     {
 
         $resourcePath = '/calendar/economic';
@@ -5314,6 +5592,20 @@ class DefaultApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if (is_array($from)) {
+            $from = ObjectSerializer::serializeCollection($from, '', true);
+        }
+        if ($from !== null) {
+            $queryParams['from'] = $from;
+        }
+        // query params
+        if (is_array($to)) {
+            $to = ObjectSerializer::serializeCollection($to, '', true);
+        }
+        if ($to !== null) {
+            $queryParams['to'] = $to;
+        }
 
 
 
@@ -10359,7 +10651,7 @@ class DefaultApi
      *
      * Insider Transactions
      *
-     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $symbol Symbol of the company: AAPL. Leave this param blank to get the latest transactions. (required)
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      *
@@ -10378,7 +10670,7 @@ class DefaultApi
      *
      * Insider Transactions
      *
-     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $symbol Symbol of the company: AAPL. Leave this param blank to get the latest transactions. (required)
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      *
@@ -10466,7 +10758,7 @@ class DefaultApi
      *
      * Insider Transactions
      *
-     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $symbol Symbol of the company: AAPL. Leave this param blank to get the latest transactions. (required)
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      *
@@ -10488,7 +10780,7 @@ class DefaultApi
      *
      * Insider Transactions
      *
-     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $symbol Symbol of the company: AAPL. Leave this param blank to get the latest transactions. (required)
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      *
@@ -10536,7 +10828,7 @@ class DefaultApi
     /**
      * Create request for operation 'insiderTransactions'
      *
-     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $symbol Symbol of the company: AAPL. Leave this param blank to get the latest transactions. (required)
      * @param  \DateTime $from From date: 2020-03-15. (optional)
      * @param  \DateTime $to To date: 2020-03-16. (optional)
      *

@@ -18,6 +18,7 @@ docs/Model/CompanyProfile2.md
 docs/Model/CountryMetadata.md
 docs/Model/CovidInfo.md
 docs/Model/CryptoCandles.md
+docs/Model/CryptoProfile.md
 docs/Model/CryptoSymbol.md
 docs/Model/Development.md
 docs/Model/Dividends.md
@@ -129,6 +130,7 @@ lib/Model/CompanyProfile2.php
 lib/Model/CountryMetadata.php
 lib/Model/CovidInfo.php
 lib/Model/CryptoCandles.php
+lib/Model/CryptoProfile.php
 lib/Model/CryptoSymbol.php
 lib/Model/Development.php
 lib/Model/Dividends.php
@@ -223,3 +225,4 @@ lib/Model/TwitterSentimentContent.php
 lib/Model/UpgradeDowngrade.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CryptoProfileTest.php

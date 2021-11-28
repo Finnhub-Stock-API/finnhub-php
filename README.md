@@ -236,6 +236,12 @@ print_r($client->symbolSearch("AAPL"));
 //Company ESG
 print_r($client->companyEsgScore("AAPL"));
 
+//Company Earnings Quality Score
+print_r($client->companyEarningsQualityScore("AAPL", "quarterly"));
+
+//Company Earnings Quality Score
+print_r($client->cryptoProfile("AAPL"));
+
 ?>
 ```
 
