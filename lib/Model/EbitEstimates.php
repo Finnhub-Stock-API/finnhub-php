@@ -1,6 +1,6 @@
 <?php
 /**
- * Transactions
+ * EbitEstimates
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Transactions Class Doc Comment
+ * EbitEstimates Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
+class EbitEstimates implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Transactions';
+    protected static $openAPIModelName = 'EbitEstimates';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,9 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'name' => 'string',
-        'share' => 'int',
-        'change' => 'int',
-        'filing_date' => '\DateTime',
-        'transaction_date' => '\DateTime',
-        'transaction_price' => 'float',
-        'transaction_code' => 'string'
+        'data' => '\Finnhub\Model\EbitEstimatesInfo[]',
+        'freq' => 'string',
+        'symbol' => 'string'
     ];
 
     /**
@@ -77,14 +72,9 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'name' => null,
-        'share' => 'int64',
-        'change' => 'int64',
-        'filing_date' => 'date',
-        'transaction_date' => 'date',
-        'transaction_price' => 'float',
-        'transaction_code' => null
+        'data' => null,
+        'freq' => null,
+        'symbol' => null
     ];
 
     /**
@@ -114,14 +104,9 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'name' => 'name',
-        'share' => 'share',
-        'change' => 'change',
-        'filing_date' => 'filingDate',
-        'transaction_date' => 'transactionDate',
-        'transaction_price' => 'transactionPrice',
-        'transaction_code' => 'transactionCode'
+        'data' => 'data',
+        'freq' => 'freq',
+        'symbol' => 'symbol'
     ];
 
     /**
@@ -130,14 +115,9 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'name' => 'setName',
-        'share' => 'setShare',
-        'change' => 'setChange',
-        'filing_date' => 'setFilingDate',
-        'transaction_date' => 'setTransactionDate',
-        'transaction_price' => 'setTransactionPrice',
-        'transaction_code' => 'setTransactionCode'
+        'data' => 'setData',
+        'freq' => 'setFreq',
+        'symbol' => 'setSymbol'
     ];
 
     /**
@@ -146,14 +126,9 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'name' => 'getName',
-        'share' => 'getShare',
-        'change' => 'getChange',
-        'filing_date' => 'getFilingDate',
-        'transaction_date' => 'getTransactionDate',
-        'transaction_price' => 'getTransactionPrice',
-        'transaction_code' => 'getTransactionCode'
+        'data' => 'getData',
+        'freq' => 'getFreq',
+        'symbol' => 'getSymbol'
     ];
 
     /**
@@ -213,14 +188,9 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['freq'] = $data['freq'] ?? null;
         $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['share'] = $data['share'] ?? null;
-        $this->container['change'] = $data['change'] ?? null;
-        $this->container['filing_date'] = $data['filing_date'] ?? null;
-        $this->container['transaction_date'] = $data['transaction_date'] ?? null;
-        $this->container['transaction_price'] = $data['transaction_price'] ?? null;
-        $this->container['transaction_code'] = $data['transaction_code'] ?? null;
     }
 
     /**
@@ -248,6 +218,54 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets data
+     *
+     * @return \Finnhub\Model\EbitEstimatesInfo[]|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \Finnhub\Model\EbitEstimatesInfo[]|null $data List of estimates
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets freq
+     *
+     * @return string|null
+     */
+    public function getFreq()
+    {
+        return $this->container['freq'];
+    }
+
+    /**
+     * Sets freq
+     *
+     * @param string|null $freq Frequency: annual or quarterly.
+     *
+     * @return self
+     */
+    public function setFreq($freq)
+    {
+        $this->container['freq'] = $freq;
+
+        return $this;
+    }
+
+    /**
      * Gets symbol
      *
      * @return string|null
@@ -260,181 +278,13 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Symbol.
+     * @param string|null $symbol Company symbol.
      *
      * @return self
      */
     public function setSymbol($symbol)
     {
         $this->container['symbol'] = $symbol;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Insider's name.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets share
-     *
-     * @return int|null
-     */
-    public function getShare()
-    {
-        return $this->container['share'];
-    }
-
-    /**
-     * Sets share
-     *
-     * @param int|null $share Number of shares held after the transaction.
-     *
-     * @return self
-     */
-    public function setShare($share)
-    {
-        $this->container['share'] = $share;
-
-        return $this;
-    }
-
-    /**
-     * Gets change
-     *
-     * @return int|null
-     */
-    public function getChange()
-    {
-        return $this->container['change'];
-    }
-
-    /**
-     * Sets change
-     *
-     * @param int|null $change Number of share changed from the last period. A positive value suggests a <code>BUY</code> transaction. A negative value suggests a <code>SELL</code> transaction.
-     *
-     * @return self
-     */
-    public function setChange($change)
-    {
-        $this->container['change'] = $change;
-
-        return $this;
-    }
-
-    /**
-     * Gets filing_date
-     *
-     * @return \DateTime|null
-     */
-    public function getFilingDate()
-    {
-        return $this->container['filing_date'];
-    }
-
-    /**
-     * Sets filing_date
-     *
-     * @param \DateTime|null $filing_date Filing date.
-     *
-     * @return self
-     */
-    public function setFilingDate($filing_date)
-    {
-        $this->container['filing_date'] = $filing_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_date
-     *
-     * @return \DateTime|null
-     */
-    public function getTransactionDate()
-    {
-        return $this->container['transaction_date'];
-    }
-
-    /**
-     * Sets transaction_date
-     *
-     * @param \DateTime|null $transaction_date Transaction date.
-     *
-     * @return self
-     */
-    public function setTransactionDate($transaction_date)
-    {
-        $this->container['transaction_date'] = $transaction_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_price
-     *
-     * @return float|null
-     */
-    public function getTransactionPrice()
-    {
-        return $this->container['transaction_price'];
-    }
-
-    /**
-     * Sets transaction_price
-     *
-     * @param float|null $transaction_price Average transaction price.
-     *
-     * @return self
-     */
-    public function setTransactionPrice($transaction_price)
-    {
-        $this->container['transaction_price'] = $transaction_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_code
-     *
-     * @return string|null
-     */
-    public function getTransactionCode()
-    {
-        return $this->container['transaction_code'];
-    }
-
-    /**
-     * Sets transaction_code
-     *
-     * @param string|null $transaction_code Transaction code. A list of codes and their meanings can be found <a href=\"https://www.sec.gov/about/forms/form4data.pdf\" target=\"_blank\" rel=\"noopener\">here</a>.
-     *
-     * @return self
-     */
-    public function setTransactionCode($transaction_code)
-    {
-        $this->container['transaction_code'] = $transaction_code;
 
         return $this;
     }

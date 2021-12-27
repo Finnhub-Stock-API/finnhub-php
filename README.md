@@ -2,7 +2,7 @@
 
 - Finnhub php api clent
 - API version: 1.0.0
-- Package version: 1.1.6
+- Package version: 1.1.8
 
 ## Requirements
 
@@ -17,7 +17,7 @@ In composer.json:
 ```json
 {
   "require": {
-    "finnhub/client": "1.1.6"
+    "finnhub/client": "1.1.8"
   }
 }
 ```
@@ -242,6 +242,11 @@ print_r($client->companyEarningsQualityScore("AAPL", "quarterly"));
 //Company Earnings Quality Score
 print_r($client->cryptoProfile("AAPL"));
 
+// EBITDA Estimates
+print_r($client->companyEbitdaEstimates("AAPL", "quarterly"));
+
+// EBIT Estimates
+print_r($client->companyEbitEstimates("TSLA", "quarterly"));
 ?>
 ```
 

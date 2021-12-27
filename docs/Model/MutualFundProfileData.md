@@ -25,5 +25,9 @@ Name | Type | Description | Notes
 **max_redemption_fee** | **float** | Max redemption fee. | [optional]
 **standard_min_investment** | **float** | Minimum investment for standard accounts. | [optional]
 **turnover** | **float** | Turnover. | [optional]
+**series_id** | **string** | Fund&#39;s series ID. This field can be used to group multiple share classes into 1 unique fund. | [optional]
+**series_name** | **string** | Fund&#39;s series name. | [optional]
+**class_id** | **string** | Class ID. | [optional]
+**class_name** | **string** | Class name. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

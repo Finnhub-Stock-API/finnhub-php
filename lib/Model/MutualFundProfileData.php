@@ -79,7 +79,11 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'cusip' => 'string',
         'max_redemption_fee' => 'float',
         'standard_min_investment' => 'float',
-        'turnover' => 'float'
+        'turnover' => 'float',
+        'series_id' => 'string',
+        'series_name' => 'string',
+        'class_id' => 'string',
+        'class_name' => 'string'
     ];
 
     /**
@@ -110,7 +114,11 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'cusip' => null,
         'max_redemption_fee' => 'float',
         'standard_min_investment' => 'float',
-        'turnover' => 'float'
+        'turnover' => 'float',
+        'series_id' => null,
+        'series_name' => null,
+        'class_id' => null,
+        'class_name' => null
     ];
 
     /**
@@ -160,7 +168,11 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'cusip' => 'cusip',
         'max_redemption_fee' => 'maxRedemptionFee',
         'standard_min_investment' => 'standardMinInvestment',
-        'turnover' => 'turnover'
+        'turnover' => 'turnover',
+        'series_id' => 'seriesId',
+        'series_name' => 'seriesName',
+        'class_id' => 'classId',
+        'class_name' => 'className'
     ];
 
     /**
@@ -189,7 +201,11 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'cusip' => 'setCusip',
         'max_redemption_fee' => 'setMaxRedemptionFee',
         'standard_min_investment' => 'setStandardMinInvestment',
-        'turnover' => 'setTurnover'
+        'turnover' => 'setTurnover',
+        'series_id' => 'setSeriesId',
+        'series_name' => 'setSeriesName',
+        'class_id' => 'setClassId',
+        'class_name' => 'setClassName'
     ];
 
     /**
@@ -218,7 +234,11 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'cusip' => 'getCusip',
         'max_redemption_fee' => 'getMaxRedemptionFee',
         'standard_min_investment' => 'getStandardMinInvestment',
-        'turnover' => 'getTurnover'
+        'turnover' => 'getTurnover',
+        'series_id' => 'getSeriesId',
+        'series_name' => 'getSeriesName',
+        'class_id' => 'getClassId',
+        'class_name' => 'getClassName'
     ];
 
     /**
@@ -299,6 +319,10 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['max_redemption_fee'] = $data['max_redemption_fee'] ?? null;
         $this->container['standard_min_investment'] = $data['standard_min_investment'] ?? null;
         $this->container['turnover'] = $data['turnover'] ?? null;
+        $this->container['series_id'] = $data['series_id'] ?? null;
+        $this->container['series_name'] = $data['series_name'] ?? null;
+        $this->container['class_id'] = $data['class_id'] ?? null;
+        $this->container['class_name'] = $data['class_name'] ?? null;
     }
 
     /**
@@ -825,6 +849,102 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTurnover($turnover)
     {
         $this->container['turnover'] = $turnover;
+
+        return $this;
+    }
+
+    /**
+     * Gets series_id
+     *
+     * @return string|null
+     */
+    public function getSeriesId()
+    {
+        return $this->container['series_id'];
+    }
+
+    /**
+     * Sets series_id
+     *
+     * @param string|null $series_id Fund's series ID. This field can be used to group multiple share classes into 1 unique fund.
+     *
+     * @return self
+     */
+    public function setSeriesId($series_id)
+    {
+        $this->container['series_id'] = $series_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets series_name
+     *
+     * @return string|null
+     */
+    public function getSeriesName()
+    {
+        return $this->container['series_name'];
+    }
+
+    /**
+     * Sets series_name
+     *
+     * @param string|null $series_name Fund's series name.
+     *
+     * @return self
+     */
+    public function setSeriesName($series_name)
+    {
+        $this->container['series_name'] = $series_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets class_id
+     *
+     * @return string|null
+     */
+    public function getClassId()
+    {
+        return $this->container['class_id'];
+    }
+
+    /**
+     * Sets class_id
+     *
+     * @param string|null $class_id Class ID.
+     *
+     * @return self
+     */
+    public function setClassId($class_id)
+    {
+        $this->container['class_id'] = $class_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets class_name
+     *
+     * @return string|null
+     */
+    public function getClassName()
+    {
+        return $this->container['class_name'];
+    }
+
+    /**
+     * Sets class_name
+     *
+     * @param string|null $class_name Class name.
+     *
+     * @return self
+     */
+    public function setClassName($class_name)
+    {
+        $this->container['class_name'] = $class_name;
 
         return $this;
     }

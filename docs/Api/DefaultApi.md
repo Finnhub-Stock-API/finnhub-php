@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**companyBasicFinancials()**](DefaultApi.md#companyBasicFinancials) | **GET** /stock/metric | Basic Financials
 [**companyEarnings()**](DefaultApi.md#companyEarnings) | **GET** /stock/earnings | Earnings Surprises
 [**companyEarningsQualityScore()**](DefaultApi.md#companyEarningsQualityScore) | **GET** /stock/earnings-quality-score | Company Earnings Quality Score
+[**companyEbitEstimates()**](DefaultApi.md#companyEbitEstimates) | **GET** /stock/ebit-estimate | EBIT Estimates
+[**companyEbitdaEstimates()**](DefaultApi.md#companyEbitdaEstimates) | **GET** /stock/ebitda-estimate | EBITDA Estimates
 [**companyEpsEstimates()**](DefaultApi.md#companyEpsEstimates) | **GET** /stock/eps-estimate | Earnings Estimates
 [**companyEsgScore()**](DefaultApi.md#companyEsgScore) | **GET** /stock/esg | Company ESG Scores
 [**companyExecutive()**](DefaultApi.md#companyExecutive) | **GET** /stock/executive | Company Executive
@@ -320,6 +322,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\CompanyEarningsQualityScore**](../Model/CompanyEarningsQualityScore.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `companyEbitEstimates()`
+
+```php
+companyEbitEstimates($symbol, $freq): \Finnhub\Model\EbitEstimates
+```
+
+EBIT Estimates
+
+Get company's ebit estimates.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
+$freq = 'freq_example'; // string | Can take 1 of the following values: <code>annual, quarterly</code>. Default to <code>quarterly</code>
+
+try {
+    $result = $apiInstance->companyEbitEstimates($symbol, $freq);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->companyEbitEstimates: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol of the company: AAPL. |
+ **freq** | **string**| Can take 1 of the following values: &lt;code&gt;annual, quarterly&lt;/code&gt;. Default to &lt;code&gt;quarterly&lt;/code&gt; | [optional]
+
+### Return type
+
+[**\Finnhub\Model\EbitEstimates**](../Model/EbitEstimates.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `companyEbitdaEstimates()`
+
+```php
+companyEbitdaEstimates($symbol, $freq): \Finnhub\Model\EbitdaEstimates
+```
+
+EBITDA Estimates
+
+Get company's ebitda estimates.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
+$freq = 'freq_example'; // string | Can take 1 of the following values: <code>annual, quarterly</code>. Default to <code>quarterly</code>
+
+try {
+    $result = $apiInstance->companyEbitdaEstimates($symbol, $freq);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->companyEbitdaEstimates: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol of the company: AAPL. |
+ **freq** | **string**| Can take 1 of the following values: &lt;code&gt;annual, quarterly&lt;/code&gt;. Default to &lt;code&gt;quarterly&lt;/code&gt; | [optional]
+
+### Return type
+
+[**\Finnhub\Model\EbitdaEstimates**](../Model/EbitdaEstimates.md)
 
 ### Authorization
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**symbol** | **string** | Symbol. | [optional]
 **name** | **string** | Insider&#39;s name. | [optional]
 **share** | **int** | Number of shares held after the transaction. | [optional]
 **change** | **int** | Number of share changed from the last period. A positive value suggests a &lt;code&gt;BUY&lt;/code&gt; transaction. A negative value suggests a &lt;code&gt;SELL&lt;/code&gt; transaction. | [optional]

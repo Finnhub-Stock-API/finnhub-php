@@ -1,6 +1,6 @@
 <?php
 /**
- * Transactions
+ * EbitdaEstimatesInfo
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Transactions Class Doc Comment
+ * EbitdaEstimatesInfo Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
+class EbitdaEstimatesInfo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Transactions';
+    protected static $openAPIModelName = 'EbitdaEstimatesInfo';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,11 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'name' => 'string',
-        'share' => 'int',
-        'change' => 'int',
-        'filing_date' => '\DateTime',
-        'transaction_date' => '\DateTime',
-        'transaction_price' => 'float',
-        'transaction_code' => 'string'
+        'ebitda_avg' => 'float',
+        'ebitda_high' => 'float',
+        'ebitda_low' => 'float',
+        'number_analysts' => 'int',
+        'period' => '\DateTime'
     ];
 
     /**
@@ -77,14 +74,11 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'name' => null,
-        'share' => 'int64',
-        'change' => 'int64',
-        'filing_date' => 'date',
-        'transaction_date' => 'date',
-        'transaction_price' => 'float',
-        'transaction_code' => null
+        'ebitda_avg' => 'float',
+        'ebitda_high' => 'float',
+        'ebitda_low' => 'float',
+        'number_analysts' => 'int64',
+        'period' => 'date'
     ];
 
     /**
@@ -114,14 +108,11 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'name' => 'name',
-        'share' => 'share',
-        'change' => 'change',
-        'filing_date' => 'filingDate',
-        'transaction_date' => 'transactionDate',
-        'transaction_price' => 'transactionPrice',
-        'transaction_code' => 'transactionCode'
+        'ebitda_avg' => 'ebitdaAvg',
+        'ebitda_high' => 'ebitdaHigh',
+        'ebitda_low' => 'ebitdaLow',
+        'number_analysts' => 'numberAnalysts',
+        'period' => 'period'
     ];
 
     /**
@@ -130,14 +121,11 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'name' => 'setName',
-        'share' => 'setShare',
-        'change' => 'setChange',
-        'filing_date' => 'setFilingDate',
-        'transaction_date' => 'setTransactionDate',
-        'transaction_price' => 'setTransactionPrice',
-        'transaction_code' => 'setTransactionCode'
+        'ebitda_avg' => 'setEbitdaAvg',
+        'ebitda_high' => 'setEbitdaHigh',
+        'ebitda_low' => 'setEbitdaLow',
+        'number_analysts' => 'setNumberAnalysts',
+        'period' => 'setPeriod'
     ];
 
     /**
@@ -146,14 +134,11 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'name' => 'getName',
-        'share' => 'getShare',
-        'change' => 'getChange',
-        'filing_date' => 'getFilingDate',
-        'transaction_date' => 'getTransactionDate',
-        'transaction_price' => 'getTransactionPrice',
-        'transaction_code' => 'getTransactionCode'
+        'ebitda_avg' => 'getEbitdaAvg',
+        'ebitda_high' => 'getEbitdaHigh',
+        'ebitda_low' => 'getEbitdaLow',
+        'number_analysts' => 'getNumberAnalysts',
+        'period' => 'getPeriod'
     ];
 
     /**
@@ -213,14 +198,11 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['share'] = $data['share'] ?? null;
-        $this->container['change'] = $data['change'] ?? null;
-        $this->container['filing_date'] = $data['filing_date'] ?? null;
-        $this->container['transaction_date'] = $data['transaction_date'] ?? null;
-        $this->container['transaction_price'] = $data['transaction_price'] ?? null;
-        $this->container['transaction_code'] = $data['transaction_code'] ?? null;
+        $this->container['ebitda_avg'] = $data['ebitda_avg'] ?? null;
+        $this->container['ebitda_high'] = $data['ebitda_high'] ?? null;
+        $this->container['ebitda_low'] = $data['ebitda_low'] ?? null;
+        $this->container['number_analysts'] = $data['number_analysts'] ?? null;
+        $this->container['period'] = $data['period'] ?? null;
     }
 
     /**
@@ -248,193 +230,121 @@ class Transactions implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets symbol
-     *
-     * @return string|null
-     */
-    public function getSymbol()
-    {
-        return $this->container['symbol'];
-    }
-
-    /**
-     * Sets symbol
-     *
-     * @param string|null $symbol Symbol.
-     *
-     * @return self
-     */
-    public function setSymbol($symbol)
-    {
-        $this->container['symbol'] = $symbol;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Insider's name.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets share
-     *
-     * @return int|null
-     */
-    public function getShare()
-    {
-        return $this->container['share'];
-    }
-
-    /**
-     * Sets share
-     *
-     * @param int|null $share Number of shares held after the transaction.
-     *
-     * @return self
-     */
-    public function setShare($share)
-    {
-        $this->container['share'] = $share;
-
-        return $this;
-    }
-
-    /**
-     * Gets change
-     *
-     * @return int|null
-     */
-    public function getChange()
-    {
-        return $this->container['change'];
-    }
-
-    /**
-     * Sets change
-     *
-     * @param int|null $change Number of share changed from the last period. A positive value suggests a <code>BUY</code> transaction. A negative value suggests a <code>SELL</code> transaction.
-     *
-     * @return self
-     */
-    public function setChange($change)
-    {
-        $this->container['change'] = $change;
-
-        return $this;
-    }
-
-    /**
-     * Gets filing_date
-     *
-     * @return \DateTime|null
-     */
-    public function getFilingDate()
-    {
-        return $this->container['filing_date'];
-    }
-
-    /**
-     * Sets filing_date
-     *
-     * @param \DateTime|null $filing_date Filing date.
-     *
-     * @return self
-     */
-    public function setFilingDate($filing_date)
-    {
-        $this->container['filing_date'] = $filing_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_date
-     *
-     * @return \DateTime|null
-     */
-    public function getTransactionDate()
-    {
-        return $this->container['transaction_date'];
-    }
-
-    /**
-     * Sets transaction_date
-     *
-     * @param \DateTime|null $transaction_date Transaction date.
-     *
-     * @return self
-     */
-    public function setTransactionDate($transaction_date)
-    {
-        $this->container['transaction_date'] = $transaction_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets transaction_price
+     * Gets ebitda_avg
      *
      * @return float|null
      */
-    public function getTransactionPrice()
+    public function getEbitdaAvg()
     {
-        return $this->container['transaction_price'];
+        return $this->container['ebitda_avg'];
     }
 
     /**
-     * Sets transaction_price
+     * Sets ebitda_avg
      *
-     * @param float|null $transaction_price Average transaction price.
+     * @param float|null $ebitda_avg Average EBITDA estimates including Finnhub's proprietary estimates.
      *
      * @return self
      */
-    public function setTransactionPrice($transaction_price)
+    public function setEbitdaAvg($ebitda_avg)
     {
-        $this->container['transaction_price'] = $transaction_price;
+        $this->container['ebitda_avg'] = $ebitda_avg;
 
         return $this;
     }
 
     /**
-     * Gets transaction_code
+     * Gets ebitda_high
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTransactionCode()
+    public function getEbitdaHigh()
     {
-        return $this->container['transaction_code'];
+        return $this->container['ebitda_high'];
     }
 
     /**
-     * Sets transaction_code
+     * Sets ebitda_high
      *
-     * @param string|null $transaction_code Transaction code. A list of codes and their meanings can be found <a href=\"https://www.sec.gov/about/forms/form4data.pdf\" target=\"_blank\" rel=\"noopener\">here</a>.
+     * @param float|null $ebitda_high Highest estimate.
      *
      * @return self
      */
-    public function setTransactionCode($transaction_code)
+    public function setEbitdaHigh($ebitda_high)
     {
-        $this->container['transaction_code'] = $transaction_code;
+        $this->container['ebitda_high'] = $ebitda_high;
+
+        return $this;
+    }
+
+    /**
+     * Gets ebitda_low
+     *
+     * @return float|null
+     */
+    public function getEbitdaLow()
+    {
+        return $this->container['ebitda_low'];
+    }
+
+    /**
+     * Sets ebitda_low
+     *
+     * @param float|null $ebitda_low Lowest estimate.
+     *
+     * @return self
+     */
+    public function setEbitdaLow($ebitda_low)
+    {
+        $this->container['ebitda_low'] = $ebitda_low;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_analysts
+     *
+     * @return int|null
+     */
+    public function getNumberAnalysts()
+    {
+        return $this->container['number_analysts'];
+    }
+
+    /**
+     * Sets number_analysts
+     *
+     * @param int|null $number_analysts Number of Analysts.
+     *
+     * @return self
+     */
+    public function setNumberAnalysts($number_analysts)
+    {
+        $this->container['number_analysts'] = $number_analysts;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return \DateTime|null
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param \DateTime|null $period Period.
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        $this->container['period'] = $period;
 
         return $this;
     }

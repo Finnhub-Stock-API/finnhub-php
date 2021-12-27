@@ -39,6 +39,10 @@ docs/Model/EarningsCallTranscripts.md
 docs/Model/EarningsCallTranscriptsList.md
 docs/Model/EarningsEstimates.md
 docs/Model/EarningsEstimatesInfo.md
+docs/Model/EbitEstimates.md
+docs/Model/EbitEstimatesInfo.md
+docs/Model/EbitdaEstimates.md
+docs/Model/EbitdaEstimatesInfo.md
 docs/Model/EconomicCalendar.md
 docs/Model/EconomicCode.md
 docs/Model/EconomicData.md
@@ -151,6 +155,10 @@ lib/Model/EarningsCallTranscripts.php
 lib/Model/EarningsCallTranscriptsList.php
 lib/Model/EarningsEstimates.php
 lib/Model/EarningsEstimatesInfo.php
+lib/Model/EbitEstimates.php
+lib/Model/EbitEstimatesInfo.php
+lib/Model/EbitdaEstimates.php
+lib/Model/EbitdaEstimatesInfo.php
 lib/Model/EconomicCalendar.php
 lib/Model/EconomicCode.php
 lib/Model/EconomicData.php
@@ -225,4 +233,7 @@ lib/Model/TwitterSentimentContent.php
 lib/Model/UpgradeDowngrade.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CryptoProfileTest.php
+test/Model/EbitEstimatesInfoTest.php
+test/Model/EbitEstimatesTest.php
+test/Model/EbitdaEstimatesInfoTest.php
+test/Model/EbitdaEstimatesTest.php
