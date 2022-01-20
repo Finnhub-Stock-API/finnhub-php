@@ -1,6 +1,6 @@
 <?php
 /**
- * StockSymbol
+ * UsptoPatentResult
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * StockSymbol Class Doc Comment
+ * UsptoPatentResult Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
+class UsptoPatentResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'StockSymbol';
+    protected static $openAPIModelName = 'UsptoPatentResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,16 +59,8 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'description' => 'string',
-        'display_symbol' => 'string',
         'symbol' => 'string',
-        'type' => 'string',
-        'mic' => 'string',
-        'figi' => 'string',
-        'share_class_figi' => 'string',
-        'currency' => 'string',
-        'symbol2' => 'string',
-        'isin' => 'string'
+        'data' => '\Finnhub\Model\UsptoPatent[]'
     ];
 
     /**
@@ -79,16 +71,8 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'description' => null,
-        'display_symbol' => null,
         'symbol' => null,
-        'type' => null,
-        'mic' => null,
-        'figi' => null,
-        'share_class_figi' => null,
-        'currency' => null,
-        'symbol2' => null,
-        'isin' => null
+        'data' => null
     ];
 
     /**
@@ -118,16 +102,8 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'description' => 'description',
-        'display_symbol' => 'displaySymbol',
         'symbol' => 'symbol',
-        'type' => 'type',
-        'mic' => 'mic',
-        'figi' => 'figi',
-        'share_class_figi' => 'shareClassFIGI',
-        'currency' => 'currency',
-        'symbol2' => 'symbol2',
-        'isin' => 'isin'
+        'data' => 'data'
     ];
 
     /**
@@ -136,16 +112,8 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'description' => 'setDescription',
-        'display_symbol' => 'setDisplaySymbol',
         'symbol' => 'setSymbol',
-        'type' => 'setType',
-        'mic' => 'setMic',
-        'figi' => 'setFigi',
-        'share_class_figi' => 'setShareClassFigi',
-        'currency' => 'setCurrency',
-        'symbol2' => 'setSymbol2',
-        'isin' => 'setIsin'
+        'data' => 'setData'
     ];
 
     /**
@@ -154,16 +122,8 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'description' => 'getDescription',
-        'display_symbol' => 'getDisplaySymbol',
         'symbol' => 'getSymbol',
-        'type' => 'getType',
-        'mic' => 'getMic',
-        'figi' => 'getFigi',
-        'share_class_figi' => 'getShareClassFigi',
-        'currency' => 'getCurrency',
-        'symbol2' => 'getSymbol2',
-        'isin' => 'getIsin'
+        'data' => 'getData'
     ];
 
     /**
@@ -223,16 +183,8 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['display_symbol'] = $data['display_symbol'] ?? null;
         $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['mic'] = $data['mic'] ?? null;
-        $this->container['figi'] = $data['figi'] ?? null;
-        $this->container['share_class_figi'] = $data['share_class_figi'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
-        $this->container['symbol2'] = $data['symbol2'] ?? null;
-        $this->container['isin'] = $data['isin'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -260,54 +212,6 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Symbol description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_symbol
-     *
-     * @return string|null
-     */
-    public function getDisplaySymbol()
-    {
-        return $this->container['display_symbol'];
-    }
-
-    /**
-     * Sets display_symbol
-     *
-     * @param string|null $display_symbol Display symbol name.
-     *
-     * @return self
-     */
-    public function setDisplaySymbol($display_symbol)
-    {
-        $this->container['display_symbol'] = $display_symbol;
-
-        return $this;
-    }
-
-    /**
      * Gets symbol
      *
      * @return string|null
@@ -320,7 +224,7 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Unique symbol used to identify this symbol used in <code>/stock/candle</code> endpoint.
+     * @param string|null $symbol Symbol.
      *
      * @return self
      */
@@ -332,169 +236,25 @@ class StockSymbol implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets type
+     * Gets data
      *
-     * @return string|null
+     * @return \Finnhub\Model\UsptoPatent[]|null
      */
-    public function getType()
+    public function getData()
     {
-        return $this->container['type'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets type
+     * Sets data
      *
-     * @param string|null $type Security type.
+     * @param \Finnhub\Model\UsptoPatent[]|null $data Array of patents.
      *
      * @return self
      */
-    public function setType($type)
+    public function setData($data)
     {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets mic
-     *
-     * @return string|null
-     */
-    public function getMic()
-    {
-        return $this->container['mic'];
-    }
-
-    /**
-     * Sets mic
-     *
-     * @param string|null $mic Primary exchange's MIC.
-     *
-     * @return self
-     */
-    public function setMic($mic)
-    {
-        $this->container['mic'] = $mic;
-
-        return $this;
-    }
-
-    /**
-     * Gets figi
-     *
-     * @return string|null
-     */
-    public function getFigi()
-    {
-        return $this->container['figi'];
-    }
-
-    /**
-     * Sets figi
-     *
-     * @param string|null $figi FIGI identifier.
-     *
-     * @return self
-     */
-    public function setFigi($figi)
-    {
-        $this->container['figi'] = $figi;
-
-        return $this;
-    }
-
-    /**
-     * Gets share_class_figi
-     *
-     * @return string|null
-     */
-    public function getShareClassFigi()
-    {
-        return $this->container['share_class_figi'];
-    }
-
-    /**
-     * Sets share_class_figi
-     *
-     * @param string|null $share_class_figi Global Share Class FIGI.
-     *
-     * @return self
-     */
-    public function setShareClassFigi($share_class_figi)
-    {
-        $this->container['share_class_figi'] = $share_class_figi;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string|null
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string|null $currency Price's currency. This might be different from the reporting currency of fundamental data.
-     *
-     * @return self
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets symbol2
-     *
-     * @return string|null
-     */
-    public function getSymbol2()
-    {
-        return $this->container['symbol2'];
-    }
-
-    /**
-     * Sets symbol2
-     *
-     * @param string|null $symbol2 Alternative ticker for exchanges with multiple tickers for 1 stock such as BSE.
-     *
-     * @return self
-     */
-    public function setSymbol2($symbol2)
-    {
-        $this->container['symbol2'] = $symbol2;
-
-        return $this;
-    }
-
-    /**
-     * Gets isin
-     *
-     * @return string|null
-     */
-    public function getIsin()
-    {
-        return $this->container['isin'];
-    }
-
-    /**
-     * Sets isin
-     *
-     * @param string|null $isin ISIN. This field is only available for EU stocks and selected Asian markets. Entitlement from Finnhub is required to access this field.
-     *
-     * @return self
-     */
-    public function setIsin($isin)
-    {
-        $this->container['isin'] = $isin;
+        $this->container['data'] = $data;
 
         return $this;
     }

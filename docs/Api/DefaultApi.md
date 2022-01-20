@@ -71,6 +71,7 @@ Method | HTTP request | Description
 [**stockSplits()**](DefaultApi.md#stockSplits) | **GET** /stock/split | Splits
 [**stockSymbols()**](DefaultApi.md#stockSymbols) | **GET** /stock/symbol | Stock Symbol
 [**stockTick()**](DefaultApi.md#stockTick) | **GET** /stock/tick | Tick Data
+[**stockUsptoPatent()**](DefaultApi.md#stockUsptoPatent) | **GET** /stock/uspto-patent | USPTO Patents
 [**supplyChainRelationships()**](DefaultApi.md#supplyChainRelationships) | **GET** /stock/supply-chain | Supply Chain Relationships
 [**supportResistance()**](DefaultApi.md#supportResistance) | **GET** /scan/support-resistance | Support/Resistance
 [**symbolSearch()**](DefaultApi.md#symbolSearch) | **GET** /search | Symbol Lookup
@@ -2692,7 +2693,7 @@ internationalFilings($symbol, $country): \Finnhub\Model\InternationalFiling[]
 
 International Filings
 
-List filings for international companies which covers 95%+ of global market cap. Limit to 250 documents at a time. These are the documents we use to source our fundamental data.
+List filings for international companies. Limit to 250 documents at a time. These are the documents we use to source our fundamental data.
 
 ### Example
 
@@ -4344,6 +4345,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\TickData**](../Model/TickData.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `stockUsptoPatent()`
+
+```php
+stockUsptoPatent($symbol, $from, $to): \Finnhub\Model\UsptoPatentResult
+```
+
+USPTO Patents
+
+List USPTO patents for companies. Limit to 250 records per API call.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->stockUsptoPatent($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->stockUsptoPatent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\UsptoPatentResult**](../Model/UsptoPatentResult.md)
 
 ### Authorization
 

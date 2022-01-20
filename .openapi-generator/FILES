@@ -114,6 +114,8 @@ docs/Model/TranscriptParticipant.md
 docs/Model/Trend.md
 docs/Model/TwitterSentimentContent.md
 docs/Model/UpgradeDowngrade.md
+docs/Model/UsptoPatent.md
+docs/Model/UsptoPatentResult.md
 git_push.sh
 lib/Api/DefaultApi.php
 lib/ApiException.php
@@ -231,9 +233,9 @@ lib/Model/TranscriptParticipant.php
 lib/Model/Trend.php
 lib/Model/TwitterSentimentContent.php
 lib/Model/UpgradeDowngrade.php
+lib/Model/UsptoPatent.php
+lib/Model/UsptoPatentResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/EbitEstimatesInfoTest.php
-test/Model/EbitEstimatesTest.php
-test/Model/EbitdaEstimatesInfoTest.php
-test/Model/EbitdaEstimatesTest.php
+test/Model/UsptoPatentResultTest.php
+test/Model/UsptoPatentTest.php
