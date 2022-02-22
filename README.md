@@ -2,7 +2,7 @@
 
 - Finnhub php api clent
 - API version: 1.0.0
-- Package version: 1.1.9
+- Package version: 1.1.10
 
 ## Requirements
 
@@ -17,7 +17,7 @@ In composer.json:
 ```json
 {
   "require": {
-    "finnhub/client": "1.1.8"
+    "finnhub/client": "1.1.10"
   }
 }
 ```
@@ -250,6 +250,10 @@ print_r($client->companyEbitEstimates("TSLA", "quarterly"));
 
 // USPTO Patent
 print_r($client->stockUsptoPatent("NVDA", "2021-01-01", "2022-01-10"));
+
+// Visa Application
+print_r($client->stockVisaApplication("NVDA", "2021-01-01", "2022-01-10"));
+
 ?>
 ```
 

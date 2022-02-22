@@ -72,6 +72,7 @@ Method | HTTP request | Description
 [**stockSymbols()**](DefaultApi.md#stockSymbols) | **GET** /stock/symbol | Stock Symbol
 [**stockTick()**](DefaultApi.md#stockTick) | **GET** /stock/tick | Tick Data
 [**stockUsptoPatent()**](DefaultApi.md#stockUsptoPatent) | **GET** /stock/uspto-patent | USPTO Patents
+[**stockVisaApplication()**](DefaultApi.md#stockVisaApplication) | **GET** /stock/visa-application | H1-B Visa Application
 [**supplyChainRelationships()**](DefaultApi.md#supplyChainRelationships) | **GET** /stock/supply-chain | Supply Chain Relationships
 [**supportResistance()**](DefaultApi.md#supportResistance) | **GET** /scan/support-resistance | Support/Resistance
 [**symbolSearch()**](DefaultApi.md#symbolSearch) | **GET** /search | Symbol Lookup
@@ -2310,7 +2311,7 @@ This endpoint does not need any parameter.
 ## `forexRates()`
 
 ```php
-forexRates($base): \Finnhub\Model\Forexrates
+forexRates($base, $date): \Finnhub\Model\Forexrates
 ```
 
 Forex rates
@@ -2337,9 +2338,10 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $base = 'base_example'; // string | Base currency. Default to EUR.
+$date = 'date_example'; // string | Date. Leave blank to get the latest data.
 
 try {
-    $result = $apiInstance->forexRates($base);
+    $result = $apiInstance->forexRates($base, $date);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->forexRates: ', $e->getMessage(), PHP_EOL;
@@ -2351,6 +2353,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **base** | **string**| Base currency. Default to EUR. | [optional]
+ **date** | **string**| Date. Leave blank to get the latest data. | [optional]
 
 ### Return type
 
@@ -4411,6 +4414,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\UsptoPatentResult**](../Model/UsptoPatentResult.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `stockVisaApplication()`
+
+```php
+stockVisaApplication($symbol, $from, $to): \Finnhub\Model\VisaApplicationResult
+```
+
+H1-B Visa Application
+
+Get a list of H1-B and Permanent visa applications for companies from the DOL. The data is updated quarterly.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>. Filter on the <code>beginDate</code> column.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>. Filter on the <code>beginDate</code> column.
+
+try {
+    $result = $apiInstance->stockVisaApplication($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->stockVisaApplication: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. |
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. |
+
+### Return type
+
+[**\Finnhub\Model\VisaApplicationResult**](../Model/VisaApplicationResult.md)
 
 ### Authorization
 

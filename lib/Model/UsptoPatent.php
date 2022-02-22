@@ -410,7 +410,7 @@ class UsptoPatent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets publication_date
      *
-     * @param string|null $publication_date Filing date.
+     * @param string|null $publication_date Publication date.
      *
      * @return self
      */

@@ -9866,14 +9866,15 @@ class DefaultApi
      * Forex rates
      *
      * @param  string $base Base currency. Default to EUR. (optional)
+     * @param  string $date Date. Leave blank to get the latest data. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Finnhub\Model\Forexrates
      */
-    public function forexRates($base = null)
+    public function forexRates($base = null, $date = null)
     {
-        list($response) = $this->forexRatesWithHttpInfo($base);
+        list($response) = $this->forexRatesWithHttpInfo($base, $date);
         return $response;
     }
 
@@ -9883,14 +9884,15 @@ class DefaultApi
      * Forex rates
      *
      * @param  string $base Base currency. Default to EUR. (optional)
+     * @param  string $date Date. Leave blank to get the latest data. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Finnhub\Model\Forexrates, HTTP status code, HTTP response headers (array of strings)
      */
-    public function forexRatesWithHttpInfo($base = null)
+    public function forexRatesWithHttpInfo($base = null, $date = null)
     {
-        $request = $this->forexRatesRequest($base);
+        $request = $this->forexRatesRequest($base, $date);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9969,13 +9971,14 @@ class DefaultApi
      * Forex rates
      *
      * @param  string $base Base currency. Default to EUR. (optional)
+     * @param  string $date Date. Leave blank to get the latest data. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function forexRatesAsync($base = null)
+    public function forexRatesAsync($base = null, $date = null)
     {
-        return $this->forexRatesAsyncWithHttpInfo($base)
+        return $this->forexRatesAsyncWithHttpInfo($base, $date)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9989,14 +9992,15 @@ class DefaultApi
      * Forex rates
      *
      * @param  string $base Base currency. Default to EUR. (optional)
+     * @param  string $date Date. Leave blank to get the latest data. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function forexRatesAsyncWithHttpInfo($base = null)
+    public function forexRatesAsyncWithHttpInfo($base = null, $date = null)
     {
         $returnType = '\Finnhub\Model\Forexrates';
-        $request = $this->forexRatesRequest($base);
+        $request = $this->forexRatesRequest($base, $date);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10035,11 +10039,12 @@ class DefaultApi
      * Create request for operation 'forexRates'
      *
      * @param  string $base Base currency. Default to EUR. (optional)
+     * @param  string $date Date. Leave blank to get the latest data. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function forexRatesRequest($base = null)
+    public function forexRatesRequest($base = null, $date = null)
     {
 
         $resourcePath = '/forex/rates';
@@ -10055,6 +10060,13 @@ class DefaultApi
         }
         if ($base !== null) {
             $queryParams['base'] = $base;
+        }
+        // query params
+        if (is_array($date)) {
+            $date = ObjectSerializer::serializeCollection($date, '', true);
+        }
+        if ($date !== null) {
+            $queryParams['date'] = $date;
         }
 
 
@@ -19109,6 +19121,310 @@ class DefaultApi
         }
 
         $resourcePath = '/stock/uspto-patent';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($symbol)) {
+            $symbol = ObjectSerializer::serializeCollection($symbol, '', true);
+        }
+        if ($symbol !== null) {
+            $queryParams['symbol'] = $symbol;
+        }
+        // query params
+        if (is_array($from)) {
+            $from = ObjectSerializer::serializeCollection($from, '', true);
+        }
+        if ($from !== null) {
+            $queryParams['from'] = $from;
+        }
+        // query params
+        if (is_array($to)) {
+            $to = ObjectSerializer::serializeCollection($to, '', true);
+        }
+        if ($to !== null) {
+            $queryParams['to'] = $to;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation stockVisaApplication
+     *
+     * H1-B Visa Application
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\VisaApplicationResult
+     */
+    public function stockVisaApplication($symbol, $from, $to)
+    {
+        list($response) = $this->stockVisaApplicationWithHttpInfo($symbol, $from, $to);
+        return $response;
+    }
+
+    /**
+     * Operation stockVisaApplicationWithHttpInfo
+     *
+     * H1-B Visa Application
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\VisaApplicationResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function stockVisaApplicationWithHttpInfo($symbol, $from, $to)
+    {
+        $request = $this->stockVisaApplicationRequest($symbol, $from, $to);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\VisaApplicationResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\VisaApplicationResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\VisaApplicationResult';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\VisaApplicationResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation stockVisaApplicationAsync
+     *
+     * H1-B Visa Application
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function stockVisaApplicationAsync($symbol, $from, $to)
+    {
+        return $this->stockVisaApplicationAsyncWithHttpInfo($symbol, $from, $to)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation stockVisaApplicationAsyncWithHttpInfo
+     *
+     * H1-B Visa Application
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function stockVisaApplicationAsyncWithHttpInfo($symbol, $from, $to)
+    {
+        $returnType = '\Finnhub\Model\VisaApplicationResult';
+        $request = $this->stockVisaApplicationRequest($symbol, $from, $to);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'stockVisaApplication'
+     *
+     * @param  string $symbol Symbol. (required)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter on the &lt;code&gt;beginDate&lt;/code&gt; column. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function stockVisaApplicationRequest($symbol, $from, $to)
+    {
+        // verify the required parameter 'symbol' is set
+        if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling stockVisaApplication'
+            );
+        }
+        // verify the required parameter 'from' is set
+        if ($from === null || (is_array($from) && count($from) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $from when calling stockVisaApplication'
+            );
+        }
+        // verify the required parameter 'to' is set
+        if ($to === null || (is_array($to) && count($to) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to when calling stockVisaApplication'
+            );
+        }
+
+        $resourcePath = '/stock/visa-application';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

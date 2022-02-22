@@ -116,6 +116,8 @@ docs/Model/TwitterSentimentContent.md
 docs/Model/UpgradeDowngrade.md
 docs/Model/UsptoPatent.md
 docs/Model/UsptoPatentResult.md
+docs/Model/VisaApplication.md
+docs/Model/VisaApplicationResult.md
 git_push.sh
 lib/Api/DefaultApi.php
 lib/ApiException.php
@@ -235,7 +237,9 @@ lib/Model/TwitterSentimentContent.php
 lib/Model/UpgradeDowngrade.php
 lib/Model/UsptoPatent.php
 lib/Model/UsptoPatentResult.php
+lib/Model/VisaApplication.php
+lib/Model/VisaApplicationResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UsptoPatentResultTest.php
-test/Model/UsptoPatentTest.php
+test/Model/VisaApplicationResultTest.php
+test/Model/VisaApplicationTest.php
