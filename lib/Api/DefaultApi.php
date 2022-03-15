@@ -7026,14 +7026,15 @@ class DefaultApi
      * @param  string $symbol ETF symbol. (optional)
      * @param  string $isin ETF isin. (optional)
      * @param  int $skip Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip&#x3D;0 or not set. (optional)
+     * @param  string $date Query holdings by date. You can use either this param or &lt;code&gt;skip&lt;/code&gt; param, not both. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Finnhub\Model\ETFsHoldings
      */
-    public function etfsHoldings($symbol = null, $isin = null, $skip = null)
+    public function etfsHoldings($symbol = null, $isin = null, $skip = null, $date = null)
     {
-        list($response) = $this->etfsHoldingsWithHttpInfo($symbol, $isin, $skip);
+        list($response) = $this->etfsHoldingsWithHttpInfo($symbol, $isin, $skip, $date);
         return $response;
     }
 
@@ -7045,14 +7046,15 @@ class DefaultApi
      * @param  string $symbol ETF symbol. (optional)
      * @param  string $isin ETF isin. (optional)
      * @param  int $skip Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip&#x3D;0 or not set. (optional)
+     * @param  string $date Query holdings by date. You can use either this param or &lt;code&gt;skip&lt;/code&gt; param, not both. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Finnhub\Model\ETFsHoldings, HTTP status code, HTTP response headers (array of strings)
      */
-    public function etfsHoldingsWithHttpInfo($symbol = null, $isin = null, $skip = null)
+    public function etfsHoldingsWithHttpInfo($symbol = null, $isin = null, $skip = null, $date = null)
     {
-        $request = $this->etfsHoldingsRequest($symbol, $isin, $skip);
+        $request = $this->etfsHoldingsRequest($symbol, $isin, $skip, $date);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7133,13 +7135,14 @@ class DefaultApi
      * @param  string $symbol ETF symbol. (optional)
      * @param  string $isin ETF isin. (optional)
      * @param  int $skip Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip&#x3D;0 or not set. (optional)
+     * @param  string $date Query holdings by date. You can use either this param or &lt;code&gt;skip&lt;/code&gt; param, not both. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function etfsHoldingsAsync($symbol = null, $isin = null, $skip = null)
+    public function etfsHoldingsAsync($symbol = null, $isin = null, $skip = null, $date = null)
     {
-        return $this->etfsHoldingsAsyncWithHttpInfo($symbol, $isin, $skip)
+        return $this->etfsHoldingsAsyncWithHttpInfo($symbol, $isin, $skip, $date)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7155,14 +7158,15 @@ class DefaultApi
      * @param  string $symbol ETF symbol. (optional)
      * @param  string $isin ETF isin. (optional)
      * @param  int $skip Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip&#x3D;0 or not set. (optional)
+     * @param  string $date Query holdings by date. You can use either this param or &lt;code&gt;skip&lt;/code&gt; param, not both. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function etfsHoldingsAsyncWithHttpInfo($symbol = null, $isin = null, $skip = null)
+    public function etfsHoldingsAsyncWithHttpInfo($symbol = null, $isin = null, $skip = null, $date = null)
     {
         $returnType = '\Finnhub\Model\ETFsHoldings';
-        $request = $this->etfsHoldingsRequest($symbol, $isin, $skip);
+        $request = $this->etfsHoldingsRequest($symbol, $isin, $skip, $date);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7203,11 +7207,12 @@ class DefaultApi
      * @param  string $symbol ETF symbol. (optional)
      * @param  string $isin ETF isin. (optional)
      * @param  int $skip Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip&#x3D;0 or not set. (optional)
+     * @param  string $date Query holdings by date. You can use either this param or &lt;code&gt;skip&lt;/code&gt; param, not both. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function etfsHoldingsRequest($symbol = null, $isin = null, $skip = null)
+    public function etfsHoldingsRequest($symbol = null, $isin = null, $skip = null, $date = null)
     {
 
         $resourcePath = '/etf/holdings';
@@ -7237,6 +7242,13 @@ class DefaultApi
         }
         if ($skip !== null) {
             $queryParams['skip'] = $skip;
+        }
+        // query params
+        if (is_array($date)) {
+            $date = ObjectSerializer::serializeCollection($date, '', true);
+        }
+        if ($date !== null) {
+            $queryParams['date'] = $date;
         }
 
 
@@ -11151,6 +11163,310 @@ class DefaultApi
         }
         if ($symbol !== null) {
             $queryParams['symbol'] = $symbol;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation insiderSentiment
+     *
+     * Insider Sentiment
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  \DateTime $from From date: 2020-03-15. (required)
+     * @param  \DateTime $to To date: 2020-03-16. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\InsiderSentiments
+     */
+    public function insiderSentiment($symbol, $from, $to)
+    {
+        list($response) = $this->insiderSentimentWithHttpInfo($symbol, $from, $to);
+        return $response;
+    }
+
+    /**
+     * Operation insiderSentimentWithHttpInfo
+     *
+     * Insider Sentiment
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  \DateTime $from From date: 2020-03-15. (required)
+     * @param  \DateTime $to To date: 2020-03-16. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\InsiderSentiments, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function insiderSentimentWithHttpInfo($symbol, $from, $to)
+    {
+        $request = $this->insiderSentimentRequest($symbol, $from, $to);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\InsiderSentiments' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\InsiderSentiments', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\InsiderSentiments';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\InsiderSentiments',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation insiderSentimentAsync
+     *
+     * Insider Sentiment
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  \DateTime $from From date: 2020-03-15. (required)
+     * @param  \DateTime $to To date: 2020-03-16. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function insiderSentimentAsync($symbol, $from, $to)
+    {
+        return $this->insiderSentimentAsyncWithHttpInfo($symbol, $from, $to)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation insiderSentimentAsyncWithHttpInfo
+     *
+     * Insider Sentiment
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  \DateTime $from From date: 2020-03-15. (required)
+     * @param  \DateTime $to To date: 2020-03-16. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function insiderSentimentAsyncWithHttpInfo($symbol, $from, $to)
+    {
+        $returnType = '\Finnhub\Model\InsiderSentiments';
+        $request = $this->insiderSentimentRequest($symbol, $from, $to);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'insiderSentiment'
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  \DateTime $from From date: 2020-03-15. (required)
+     * @param  \DateTime $to To date: 2020-03-16. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function insiderSentimentRequest($symbol, $from, $to)
+    {
+        // verify the required parameter 'symbol' is set
+        if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling insiderSentiment'
+            );
+        }
+        // verify the required parameter 'from' is set
+        if ($from === null || (is_array($from) && count($from) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $from when calling insiderSentiment'
+            );
+        }
+        // verify the required parameter 'to' is set
+        if ($to === null || (is_array($to) && count($to) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to when calling insiderSentiment'
+            );
+        }
+
+        $resourcePath = '/stock/insider-sentiment';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($symbol)) {
+            $symbol = ObjectSerializer::serializeCollection($symbol, '', true);
+        }
+        if ($symbol !== null) {
+            $queryParams['symbol'] = $symbol;
+        }
+        // query params
+        if (is_array($from)) {
+            $from = ObjectSerializer::serializeCollection($from, '', true);
+        }
+        if ($from !== null) {
+            $queryParams['from'] = $from;
+        }
+        // query params
+        if (is_array($to)) {
+            $to = ObjectSerializer::serializeCollection($to, '', true);
+        }
+        if ($to !== null) {
+            $queryParams['to'] = $to;
         }
 
 

@@ -79,7 +79,7 @@ class VisaApplication implements ModelInterface, ArrayAccess, \JsonSerializable
         'worksite_postal_code' => 'string',
         'wage_range_from' => 'float',
         'wage_range_to' => 'float',
-        'wave_unit_of_pay' => 'string',
+        'wage_unit_of_pay' => 'string',
         'wage_level' => 'string',
         'h1b_dependent' => 'string'
     ];
@@ -112,7 +112,7 @@ class VisaApplication implements ModelInterface, ArrayAccess, \JsonSerializable
         'worksite_postal_code' => null,
         'wage_range_from' => 'float',
         'wage_range_to' => 'float',
-        'wave_unit_of_pay' => null,
+        'wage_unit_of_pay' => null,
         'wage_level' => null,
         'h1b_dependent' => null
     ];
@@ -164,7 +164,7 @@ class VisaApplication implements ModelInterface, ArrayAccess, \JsonSerializable
         'worksite_postal_code' => 'worksitePostalCode',
         'wage_range_from' => 'wageRangeFrom',
         'wage_range_to' => 'wageRangeTo',
-        'wave_unit_of_pay' => 'waveUnitOfPay',
+        'wage_unit_of_pay' => 'wageUnitOfPay',
         'wage_level' => 'wageLevel',
         'h1b_dependent' => 'h1bDependent'
     ];
@@ -195,7 +195,7 @@ class VisaApplication implements ModelInterface, ArrayAccess, \JsonSerializable
         'worksite_postal_code' => 'setWorksitePostalCode',
         'wage_range_from' => 'setWageRangeFrom',
         'wage_range_to' => 'setWageRangeTo',
-        'wave_unit_of_pay' => 'setWaveUnitOfPay',
+        'wage_unit_of_pay' => 'setWageUnitOfPay',
         'wage_level' => 'setWageLevel',
         'h1b_dependent' => 'setH1bDependent'
     ];
@@ -226,7 +226,7 @@ class VisaApplication implements ModelInterface, ArrayAccess, \JsonSerializable
         'worksite_postal_code' => 'getWorksitePostalCode',
         'wage_range_from' => 'getWageRangeFrom',
         'wage_range_to' => 'getWageRangeTo',
-        'wave_unit_of_pay' => 'getWaveUnitOfPay',
+        'wage_unit_of_pay' => 'getWageUnitOfPay',
         'wage_level' => 'getWageLevel',
         'h1b_dependent' => 'getH1bDependent'
     ];
@@ -308,7 +308,7 @@ class VisaApplication implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['worksite_postal_code'] = $data['worksite_postal_code'] ?? null;
         $this->container['wage_range_from'] = $data['wage_range_from'] ?? null;
         $this->container['wage_range_to'] = $data['wage_range_to'] ?? null;
-        $this->container['wave_unit_of_pay'] = $data['wave_unit_of_pay'] ?? null;
+        $this->container['wage_unit_of_pay'] = $data['wage_unit_of_pay'] ?? null;
         $this->container['wage_level'] = $data['wage_level'] ?? null;
         $this->container['h1b_dependent'] = $data['h1b_dependent'] ?? null;
     }
@@ -818,25 +818,25 @@ class VisaApplication implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets wave_unit_of_pay
+     * Gets wage_unit_of_pay
      *
      * @return string|null
      */
-    public function getWaveUnitOfPay()
+    public function getWageUnitOfPay()
     {
-        return $this->container['wave_unit_of_pay'];
+        return $this->container['wage_unit_of_pay'];
     }
 
     /**
-     * Sets wave_unit_of_pay
+     * Sets wage_unit_of_pay
      *
-     * @param string|null $wave_unit_of_pay Wage unit of pay.
+     * @param string|null $wage_unit_of_pay Wage unit of pay.
      *
      * @return self
      */
-    public function setWaveUnitOfPay($wave_unit_of_pay)
+    public function setWageUnitOfPay($wage_unit_of_pay)
     {
-        $this->container['wave_unit_of_pay'] = $wave_unit_of_pay;
+        $this->container['wage_unit_of_pay'] = $wage_unit_of_pay;
 
         return $this;
     }

@@ -65,6 +65,8 @@ docs/Model/IndexHistoricalConstituent.md
 docs/Model/Indicator.md
 docs/Model/IndicesConstituents.md
 docs/Model/IndicesHistoricalConstituents.md
+docs/Model/InsiderSentiments.md
+docs/Model/InsiderSentimentsData.md
 docs/Model/InsiderTransactions.md
 docs/Model/InternationalFiling.md
 docs/Model/InvestmentThemePortfolio.md
@@ -185,6 +187,8 @@ lib/Model/IndexHistoricalConstituent.php
 lib/Model/Indicator.php
 lib/Model/IndicesConstituents.php
 lib/Model/IndicesHistoricalConstituents.php
+lib/Model/InsiderSentiments.php
+lib/Model/InsiderSentimentsData.php
 lib/Model/InsiderTransactions.php
 lib/Model/InternationalFiling.php
 lib/Model/InvestmentThemePortfolio.php
@@ -241,5 +245,5 @@ lib/Model/VisaApplication.php
 lib/Model/VisaApplicationResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/VisaApplicationResultTest.php
-test/Model/VisaApplicationTest.php
+test/Model/InsiderSentimentsDataTest.php
+test/Model/InsiderSentimentsTest.php

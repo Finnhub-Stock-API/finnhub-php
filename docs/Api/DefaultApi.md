@@ -44,6 +44,7 @@ Method | HTTP request | Description
 [**fundOwnership()**](DefaultApi.md#fundOwnership) | **GET** /stock/fund-ownership | Fund Ownership
 [**indicesConstituents()**](DefaultApi.md#indicesConstituents) | **GET** /index/constituents | Indices Constituents
 [**indicesHistoricalConstituents()**](DefaultApi.md#indicesHistoricalConstituents) | **GET** /index/historical-constituents | Indices Historical Constituents
+[**insiderSentiment()**](DefaultApi.md#insiderSentiment) | **GET** /stock/insider-sentiment | Insider Sentiment
 [**insiderTransactions()**](DefaultApi.md#insiderTransactions) | **GET** /stock/insider-transactions | Insider Transactions
 [**internationalFilings()**](DefaultApi.md#internationalFilings) | **GET** /stock/international-filings | International Filings
 [**investmentThemes()**](DefaultApi.md#investmentThemes) | **GET** /stock/investment-theme | Investment Themes (Thematic Investing)
@@ -1665,7 +1666,7 @@ Name | Type | Description  | Notes
 ## `etfsHoldings()`
 
 ```php
-etfsHoldings($symbol, $isin, $skip): \Finnhub\Model\ETFsHoldings
+etfsHoldings($symbol, $isin, $skip, $date): \Finnhub\Model\ETFsHoldings
 ```
 
 ETFs Holdings
@@ -1694,9 +1695,10 @@ $apiInstance = new Finnhub\Api\DefaultApi(
 $symbol = 'symbol_example'; // string | ETF symbol.
 $isin = 'isin_example'; // string | ETF isin.
 $skip = 56; // int | Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip=0 or not set.
+$date = 'date_example'; // string | Query holdings by date. You can use either this param or <code>skip</code> param, not both.
 
 try {
-    $result = $apiInstance->etfsHoldings($symbol, $isin, $skip);
+    $result = $apiInstance->etfsHoldings($symbol, $isin, $skip, $date);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->etfsHoldings: ', $e->getMessage(), PHP_EOL;
@@ -1710,6 +1712,7 @@ Name | Type | Description  | Notes
  **symbol** | **string**| ETF symbol. | [optional]
  **isin** | **string**| ETF isin. | [optional]
  **skip** | **int**| Skip the first n results. You can use this parameter to query historical constituents data. The latest result is returned if skip&#x3D;0 or not set. | [optional]
+ **date** | **string**| Query holdings by date. You can use either this param or &lt;code&gt;skip&lt;/code&gt; param, not both. | [optional]
 
 ### Return type
 
@@ -2568,7 +2571,7 @@ indicesHistoricalConstituents($symbol): \Finnhub\Model\IndicesHistoricalConstitu
 
 Indices Historical Constituents
 
-Get full history of index's constituents including symbols and dates of joining and leaving the Index. Currently support <code>^GSPC (S&P 500)</code>, <code>^NDX (Nasdaq 100)</code>, <code>^DJI (Dow Jones)</code>
+Get full history of index's constituents including symbols and dates of joining and leaving the Index. Currently support <code>^GSPC</code>, <code>^NDX</code>, <code>^DJI</code>
 
 ### Example
 
@@ -2608,6 +2611,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\IndicesHistoricalConstituents**](../Model/IndicesHistoricalConstituents.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `insiderSentiment()`
+
+```php
+insiderSentiment($symbol, $from, $to): \Finnhub\Model\InsiderSentiments
+```
+
+Insider Sentiment
+
+Get insider sentiment data for US companies calculated using method discussed <a href=\"https://medium.com/@stock-api/finnhub-insiders-sentiment-analysis-cc43f9f64b3a\" target=\"_blank\">here</a>. The MSPR ranges from -100 for the most negative to 100 for the most positive which can signal price changes in the coming 30-90 days.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date: 2020-03-15.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date: 2020-03-16.
+
+try {
+    $result = $apiInstance->insiderSentiment($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->insiderSentiment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol of the company: AAPL. |
+ **from** | **\DateTime**| From date: 2020-03-15. |
+ **to** | **\DateTime**| To date: 2020-03-16. |
+
+### Return type
+
+[**\Finnhub\Model\InsiderSentiments**](../Model/InsiderSentiments.md)
 
 ### Authorization
 
@@ -4234,7 +4303,7 @@ stockSymbols($exchange, $mic, $security_type, $currency): \Finnhub\Model\StockSy
 
 Stock Symbol
 
-List supported stocks. We use the following symbology to identify stocks on Finnhub <code>Exchange_Ticker.Exchange_Code</code>. A list of supported exchange codes can be found <a href=\"https://docs.google.com/spreadsheets/d/1I3pBxjfXB056-g_JYf_6o3Rns3BV2kMGG1nCatb91ls/edit?usp=sharing\" target=\"_blank\">here</a>. A list of supported CFD Indices can be found <a href=\"https://docs.google.com/spreadsheets/d/1BAbIXBgl405fj0oHeEyRFEu8mW4QD1PhvtaBATLoR14/edit?usp=sharing\" target=\"_blank\">here</a>.
+List supported stocks. We use the following symbology to identify stocks on Finnhub <code>Exchange_Ticker.Exchange_Code</code>. A list of supported exchange codes can be found <a href=\"https://docs.google.com/spreadsheets/d/1I3pBxjfXB056-g_JYf_6o3Rns3BV2kMGG1nCatb91ls/edit?usp=sharing\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -4302,7 +4371,7 @@ stockTick($symbol, $date, $limit, $skip): \Finnhub\Model\TickData
 
 Tick Data
 
-<p>Get historical tick data for global exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server.</p><p>For US market, you can visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a> to speed up the download process.</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">US CTA/UTP</th>       <td>Full SIP</td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">TSX</th>       <td><ul><li>TSX</li><li>TSX Venture</li><li>Index</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">LSE</th>       <td><ul><li>London Stock Exchange (L)</li><li>LSE International (L)</li><li>LSE European (L)</li></ul></td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">Euronext</th>       <td><ul> <li>Euronext Paris (PA)</li> <li>Euronext Amsterdam (AS)</li> <li>Euronext Lisbon (LS)</li> <li>Euronext Brussels (BR)</li> <li>Euronext Oslo (OL)</li> <li>Euronext London (LN)</li> <li>Euronext Dublin (IR)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Deutsche Börse</th>       <td><ul> <li>Frankfurt (F)</li> <li>Xetra (DE)</li> <li>Duesseldorf (DU)</li> <li>Hamburg (HM)</li> <li>Berlin (BE)</li> <li>Hanover (HA)</li> <li>Stoxx (SX)</li> <li>TradeGate (TG)</li> <li>Zertifikate (SC)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Nasdaq Nordic & Baltic</th>       <td> <ul> <li>Copenhagen (CO)</li> <li>Stockholm (ST)</li> <li>Helsinki (HE)</li> <li>Iceland (IC)</li> <li>Riga (RG)</li> <li>Tallinn (TL)</li> <li>Vilnius(VS)</li> <li>Fixed Income</li> <li>Derivatives</li> <li>Commodities</li></ul></td>       <td>End-of-day</td>     </tr>   </tbody> </table>
+<p>Get historical tick data for global exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server.</p><p>For US market, you can visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a> to speed up the download process.</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">US CTA/UTP</th>       <td>Full SIP</td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">TSX</th>       <td><ul><li>TSX</li><li>TSX Venture</li><li>Index</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">LSE</th>       <td><ul><li>London Stock Exchange (L)</li><li>LSE International (L)</li><li>LSE European (L)</li></ul></td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">Euronext</th>       <td><ul> <li>Euronext Paris (PA)</li> <li>Euronext Amsterdam (AS)</li> <li>Euronext Lisbon (LS)</li> <li>Euronext Brussels (BR)</li> <li>Euronext Oslo (OL)</li> <li>Euronext London (LN)</li> <li>Euronext Dublin (IR)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Deutsche Börse</th>       <td><ul> <li>Frankfurt (F)</li> <li>Xetra (DE)</li> <li>Duesseldorf (DU)</li> <li>Hamburg (HM)</li> <li>Berlin (BE)</li> <li>Hanover (HA)</li> <li>Stoxx (SX)</li> <li>TradeGate (TG)</li> <li>Zertifikate (SC)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>   </tbody> </table>
 
 ### Example
 
@@ -4502,7 +4571,7 @@ supplyChainRelationships($symbol): \Finnhub\Model\SupplyChainRelationships
 
 Supply Chain Relationships
 
-<p>This endpoint provides an overall map of public companies' key customers and suppliers. The data offers a deeper look into a company's supply chain and how products are created. The data will help investors manage risk, limit exposure or generate alpha-generating ideas and trading insights.</p><p>We currently cover data for S&P500 and Nasdaq 100 companies.</p>
+<p>This endpoint provides an overall map of public companies' key customers and suppliers. The data offers a deeper look into a company's supply chain and how products are created. The data will help investors manage risk, limit exposure or generate alpha-generating ideas and trading insights.</p>
 
 ### Example
 
@@ -4824,7 +4893,7 @@ transcriptsList($symbol): \Finnhub\Model\EarningsCallTranscriptsList
 
 Earnings Call Transcripts List
 
-List earnings call transcripts' metadata. This endpoint is available for US, UK and Canadian companies.
+List earnings call transcripts' metadata. This endpoint is available for US, UK, European, Australian and Canadian companies.
 
 ### Example
 
