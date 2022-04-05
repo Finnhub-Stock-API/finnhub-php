@@ -5,6 +5,8 @@ composer.json
 docs/Api/DefaultApi.md
 docs/Model/AggregateIndicators.md
 docs/Model/BasicFinancials.md
+docs/Model/BondCandles.md
+docs/Model/BondProfile.md
 docs/Model/BreakdownItem.md
 docs/Model/Company.md
 docs/Model/CompanyESG.md
@@ -73,6 +75,8 @@ docs/Model/InvestmentThemePortfolio.md
 docs/Model/InvestmentThemes.md
 docs/Model/KeyCustomersSuppliers.md
 docs/Model/LastBidAsk.md
+docs/Model/LobbyingData.md
+docs/Model/LobbyingResult.md
 docs/Model/MarketNews.md
 docs/Model/MutualFundCountryExposure.md
 docs/Model/MutualFundCountryExposureData.md
@@ -127,6 +131,8 @@ lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/AggregateIndicators.php
 lib/Model/BasicFinancials.php
+lib/Model/BondCandles.php
+lib/Model/BondProfile.php
 lib/Model/BreakdownItem.php
 lib/Model/Company.php
 lib/Model/CompanyESG.php
@@ -195,6 +201,8 @@ lib/Model/InvestmentThemePortfolio.php
 lib/Model/InvestmentThemes.php
 lib/Model/KeyCustomersSuppliers.php
 lib/Model/LastBidAsk.php
+lib/Model/LobbyingData.php
+lib/Model/LobbyingResult.php
 lib/Model/MarketNews.php
 lib/Model/ModelInterface.php
 lib/Model/MutualFundCountryExposure.php
@@ -245,5 +253,7 @@ lib/Model/VisaApplication.php
 lib/Model/VisaApplicationResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/InsiderSentimentsDataTest.php
-test/Model/InsiderSentimentsTest.php
+test/Model/BondCandlesTest.php
+test/Model/BondProfileTest.php
+test/Model/LobbyingDataTest.php
+test/Model/LobbyingResultTest.php

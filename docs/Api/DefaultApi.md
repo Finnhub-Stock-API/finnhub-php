@@ -5,6 +5,8 @@ All URIs are relative to https://finnhub.io/api/v1.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**aggregateIndicator()**](DefaultApi.md#aggregateIndicator) | **GET** /scan/technical-indicator | Aggregate Indicators
+[**bondPrice()**](DefaultApi.md#bondPrice) | **GET** /bond/price | Bond price data
+[**bondProfile()**](DefaultApi.md#bondProfile) | **GET** /bond/profile | Bond Profile
 [**companyBasicFinancials()**](DefaultApi.md#companyBasicFinancials) | **GET** /stock/metric | Basic Financials
 [**companyEarnings()**](DefaultApi.md#companyEarnings) | **GET** /stock/earnings | Earnings Surprises
 [**companyEarningsQualityScore()**](DefaultApi.md#companyEarningsQualityScore) | **GET** /stock/earnings-quality-score | Company Earnings Quality Score
@@ -68,6 +70,7 @@ Method | HTTP request | Description
 [**stockBidask()**](DefaultApi.md#stockBidask) | **GET** /stock/bidask | Last Bid-Ask
 [**stockCandles()**](DefaultApi.md#stockCandles) | **GET** /stock/candle | Stock Candles
 [**stockDividends()**](DefaultApi.md#stockDividends) | **GET** /stock/dividend | Dividends
+[**stockLobbying()**](DefaultApi.md#stockLobbying) | **GET** /stock/lobbying | Senate Lobbying
 [**stockNbbo()**](DefaultApi.md#stockNbbo) | **GET** /stock/bbo | Historical NBBO
 [**stockSplits()**](DefaultApi.md#stockSplits) | **GET** /stock/split | Splits
 [**stockSymbols()**](DefaultApi.md#stockSymbols) | **GET** /stock/symbol | Stock Symbol
@@ -133,6 +136,138 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\AggregateIndicators**](../Model/AggregateIndicators.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `bondPrice()`
+
+```php
+bondPrice($isin, $from, $to): \Finnhub\Model\BondCandles
+```
+
+Bond price data
+
+Get end-of-day bond's price data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$isin = 'isin_example'; // string | ISIN.
+$from = 56; // int | UNIX timestamp. Interval initial value.
+$to = 56; // int | UNIX timestamp. Interval end value.
+
+try {
+    $result = $apiInstance->bondPrice($isin, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->bondPrice: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **isin** | **string**| ISIN. |
+ **from** | **int**| UNIX timestamp. Interval initial value. |
+ **to** | **int**| UNIX timestamp. Interval end value. |
+
+### Return type
+
+[**\Finnhub\Model\BondCandles**](../Model/BondCandles.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `bondProfile()`
+
+```php
+bondProfile($isin, $cusip, $figi): \Finnhub\Model\BondProfile
+```
+
+Bond Profile
+
+Get general information of a bond. You can query by FIGI, ISIN or CUSIP
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$isin = 'isin_example'; // string | ISIN
+$cusip = 'cusip_example'; // string | CUSIP
+$figi = 'figi_example'; // string | FIGI
+
+try {
+    $result = $apiInstance->bondProfile($isin, $cusip, $figi);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->bondProfile: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **isin** | **string**| ISIN | [optional]
+ **cusip** | **string**| CUSIP | [optional]
+ **figi** | **string**| FIGI | [optional]
+
+### Return type
+
+[**\Finnhub\Model\BondProfile**](../Model/BondProfile.md)
 
 ### Authorization
 
@@ -4147,6 +4282,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\Dividends[]**](../Model/Dividends.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `stockLobbying()`
+
+```php
+stockLobbying($symbol, $from, $to): \Finnhub\Model\LobbyingResult
+```
+
+Senate Lobbying
+
+Get a list of reported lobbying activities in the Senate and the House.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->stockLobbying($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->stockLobbying: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\LobbyingResult**](../Model/LobbyingResult.md)
 
 ### Authorization
 
