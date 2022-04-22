@@ -120,6 +120,8 @@ docs/Model/TranscriptParticipant.md
 docs/Model/Trend.md
 docs/Model/TwitterSentimentContent.md
 docs/Model/UpgradeDowngrade.md
+docs/Model/UsaSpending.md
+docs/Model/UsaSpendingResult.md
 docs/Model/UsptoPatent.md
 docs/Model/UsptoPatentResult.md
 docs/Model/VisaApplication.md
@@ -247,13 +249,13 @@ lib/Model/TranscriptParticipant.php
 lib/Model/Trend.php
 lib/Model/TwitterSentimentContent.php
 lib/Model/UpgradeDowngrade.php
+lib/Model/UsaSpending.php
+lib/Model/UsaSpendingResult.php
 lib/Model/UsptoPatent.php
 lib/Model/UsptoPatentResult.php
 lib/Model/VisaApplication.php
 lib/Model/VisaApplicationResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BondCandlesTest.php
-test/Model/BondProfileTest.php
-test/Model/LobbyingDataTest.php
-test/Model/LobbyingResultTest.php
+test/Model/UsaSpendingResultTest.php
+test/Model/UsaSpendingTest.php

@@ -75,6 +75,7 @@ Method | HTTP request | Description
 [**stockSplits()**](DefaultApi.md#stockSplits) | **GET** /stock/split | Splits
 [**stockSymbols()**](DefaultApi.md#stockSymbols) | **GET** /stock/symbol | Stock Symbol
 [**stockTick()**](DefaultApi.md#stockTick) | **GET** /stock/tick | Tick Data
+[**stockUsaSpending()**](DefaultApi.md#stockUsaSpending) | **GET** /stock/usa-spending | USA Spending
 [**stockUsptoPatent()**](DefaultApi.md#stockUsptoPatent) | **GET** /stock/uspto-patent | USPTO Patents
 [**stockVisaApplication()**](DefaultApi.md#stockVisaApplication) | **GET** /stock/visa-application | H1-B Visa Application
 [**supplyChainRelationships()**](DefaultApi.md#supplyChainRelationships) | **GET** /stock/supply-chain | Supply Chain Relationships
@@ -3216,7 +3217,7 @@ mutualFundHoldings($symbol, $isin, $skip): \Finnhub\Model\MutualFundHoldings
 
 Mutual Funds Holdings
 
-Get full Mutual Funds holdings/constituents.
+Get full Mutual Funds holdings/constituents. This endpoint covers both US and global mutual funds. For international funds, you must query the data using ISIN.
 
 ### Example
 
@@ -3282,7 +3283,7 @@ mutualFundProfile($symbol, $isin): \Finnhub\Model\MutualFundProfile
 
 Mutual Funds Profile
 
-Get mutual funds profile information. This endpoint covers US mutual funds only.
+Get mutual funds profile information. This endpoint covers both US and global mutual funds. For international funds, you must query the data using ISIN.
 
 ### Example
 
@@ -4618,6 +4619,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\TickData**](../Model/TickData.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `stockUsaSpending()`
+
+```php
+stockUsaSpending($symbol, $from, $to): \Finnhub\Model\UsaSpendingResult
+```
+
+USA Spending
+
+Get a list of government's spending activities from USASpending dataset for public companies. This dataset can help you identify companies that win big government contracts which is extremely important for industries such as Defense, Aerospace, and Education.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>. Filter for <code>actionDate</code>
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>. Filter for <code>actionDate</code>
+
+try {
+    $result = $apiInstance->stockUsaSpending($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->stockUsaSpending: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for &lt;code&gt;actionDate&lt;/code&gt; |
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for &lt;code&gt;actionDate&lt;/code&gt; |
+
+### Return type
+
+[**\Finnhub\Model\UsaSpendingResult**](../Model/UsaSpendingResult.md)
 
 ### Authorization
 
