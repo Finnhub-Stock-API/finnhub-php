@@ -100,6 +100,8 @@ docs/Model/RevenueBreakdown.md
 docs/Model/RevenueEstimates.md
 docs/Model/RevenueEstimatesInfo.md
 docs/Model/SECSentimentAnalysis.md
+docs/Model/SectorMetric.md
+docs/Model/SectorMetricData.md
 docs/Model/Sentiment.md
 docs/Model/SimilarityIndex.md
 docs/Model/SimilarityIndexInfo.md
@@ -229,6 +231,8 @@ lib/Model/RevenueBreakdown.php
 lib/Model/RevenueEstimates.php
 lib/Model/RevenueEstimatesInfo.php
 lib/Model/SECSentimentAnalysis.php
+lib/Model/SectorMetric.php
+lib/Model/SectorMetricData.php
 lib/Model/Sentiment.php
 lib/Model/SimilarityIndex.php
 lib/Model/SimilarityIndexInfo.php
@@ -257,5 +261,5 @@ lib/Model/VisaApplication.php
 lib/Model/VisaApplicationResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UsaSpendingResultTest.php
-test/Model/UsaSpendingTest.php
+test/Model/SectorMetricDataTest.php
+test/Model/SectorMetricTest.php

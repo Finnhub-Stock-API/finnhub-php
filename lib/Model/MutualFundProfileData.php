@@ -83,7 +83,9 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'series_id' => 'string',
         'series_name' => 'string',
         'class_id' => 'string',
-        'class_name' => 'string'
+        'class_name' => 'string',
+        'sfdr_classification' => 'string',
+        'currency' => 'string'
     ];
 
     /**
@@ -118,7 +120,9 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'series_id' => null,
         'series_name' => null,
         'class_id' => null,
-        'class_name' => null
+        'class_name' => null,
+        'sfdr_classification' => null,
+        'currency' => null
     ];
 
     /**
@@ -172,7 +176,9 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'series_id' => 'seriesId',
         'series_name' => 'seriesName',
         'class_id' => 'classId',
-        'class_name' => 'className'
+        'class_name' => 'className',
+        'sfdr_classification' => 'sfdrClassification',
+        'currency' => 'currency'
     ];
 
     /**
@@ -205,7 +211,9 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'series_id' => 'setSeriesId',
         'series_name' => 'setSeriesName',
         'class_id' => 'setClassId',
-        'class_name' => 'setClassName'
+        'class_name' => 'setClassName',
+        'sfdr_classification' => 'setSfdrClassification',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -238,7 +246,9 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'series_id' => 'getSeriesId',
         'series_name' => 'getSeriesName',
         'class_id' => 'getClassId',
-        'class_name' => 'getClassName'
+        'class_name' => 'getClassName',
+        'sfdr_classification' => 'getSfdrClassification',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -323,6 +333,8 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['series_name'] = $data['series_name'] ?? null;
         $this->container['class_id'] = $data['class_id'] ?? null;
         $this->container['class_name'] = $data['class_name'] ?? null;
+        $this->container['sfdr_classification'] = $data['sfdr_classification'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
     }
 
     /**
@@ -945,6 +957,54 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setClassName($class_name)
     {
         $this->container['class_name'] = $class_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets sfdr_classification
+     *
+     * @return string|null
+     */
+    public function getSfdrClassification()
+    {
+        return $this->container['sfdr_classification'];
+    }
+
+    /**
+     * Sets sfdr_classification
+     *
+     * @param string|null $sfdr_classification SFDR classification for EU funds. Under the new classifications, a fund's strategy will labeled under either Article 6, 8 or 9. Article 6 covers funds which do not integrate any kind of sustainability into the investment process. Article 8, also known as ‘environmental and socially promoting’, applies “… where a financial product promotes, among other characteristics, environmental or social characteristics, or a combination of those characteristics, provided that the companies in which the investments are made follow good governance practices.”. Article 9, also known as ‘products targeting sustainable investments’, covers products targeting bespoke sustainable investments and applies “… where a financial product has sustainable investment as its objective and an index has been designated as a reference benchmark.”
+     *
+     * @return self
+     */
+    public function setSfdrClassification($sfdr_classification)
+    {
+        $this->container['sfdr_classification'] = $sfdr_classification;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency Fund's currency
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        $this->container['currency'] = $currency;
 
         return $this;
     }

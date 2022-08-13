@@ -64,6 +64,7 @@ Method | HTTP request | Description
 [**quote()**](DefaultApi.md#quote) | **GET** /quote | Quote
 [**recommendationTrends()**](DefaultApi.md#recommendationTrends) | **GET** /stock/recommendation | Recommendation Trends
 [**revenueBreakdown()**](DefaultApi.md#revenueBreakdown) | **GET** /stock/revenue-breakdown | Revenue Breakdown
+[**sectorMetric()**](DefaultApi.md#sectorMetric) | **GET** /sector/metrics | Sector Metrics
 [**similarityIndex()**](DefaultApi.md#similarityIndex) | **GET** /stock/similarity-index | Similarity Index
 [**socialSentiment()**](DefaultApi.md#socialSentiment) | **GET** /stock/social-sentiment | Social Sentiment
 [**stockBasicDividends()**](DefaultApi.md#stockBasicDividends) | **GET** /stock/dividend2 | Dividends 2 (Basic)
@@ -2901,7 +2902,7 @@ internationalFilings($symbol, $country): \Finnhub\Model\InternationalFiling[]
 
 International Filings
 
-List filings for international companies. Limit to 250 documents at a time. These are the documents we use to source our fundamental data.
+List filings for international companies. Limit to 250 documents at a time. These are the documents we use to source our fundamental data. Only support SEDAR and UK Companies House for normal usage. Enterprise clients who need access to the full filings for global markets should contact us for the access.
 
 ### Example
 
@@ -3599,7 +3600,7 @@ pressReleases($symbol, $from, $to): \Finnhub\Model\PressRelease
 
 Major Press Releases
 
-Get latest major press releases of a company. This data can be used to highlight the most significant events comprised of mostly press releases sourced from the exchanges, BusinessWire, AccessWire, GlobeNewswire, Newsfile, and PRNewswire.
+<p>Get latest major press releases of a company. This data can be used to highlight the most significant events comprised of mostly press releases sourced from the exchanges, BusinessWire, AccessWire, GlobeNewswire, Newsfile, and PRNewswire.</p><p>Full-text press releases data is available for Enterprise clients. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
 
 ### Example
 
@@ -3893,6 +3894,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\RevenueBreakdown**](../Model/RevenueBreakdown.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `sectorMetric()`
+
+```php
+sectorMetric($region): \Finnhub\Model\SectorMetric
+```
+
+Sector Metrics
+
+Get ratios for different sectors and regions/indices.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$region = 'region_example'; // string | Region. A list of supported values for this field can be found <a href=\"https://docs.google.com/spreadsheets/d/1afedyv7yWJ-z7pMjaAZK-f6ENY3mI3EBCk95QffpoHw/edit?usp=sharing\" target=\"_blank\">here</a>.
+
+try {
+    $result = $apiInstance->sectorMetric($region);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->sectorMetric: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **region** | **string**| Region. A list of supported values for this field can be found &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1afedyv7yWJ-z7pMjaAZK-f6ENY3mI3EBCk95QffpoHw/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\SectorMetric**](../Model/SectorMetric.md)
 
 ### Authorization
 

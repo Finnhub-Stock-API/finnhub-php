@@ -61,6 +61,8 @@ class KeyCustomersSuppliers implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'symbol' => 'string',
         'name' => 'string',
+        'country' => 'string',
+        'industry' => 'string',
         'customer' => 'bool',
         'supplier' => 'bool',
         'one_month_correlation' => 'float',
@@ -81,6 +83,8 @@ class KeyCustomersSuppliers implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPIFormats = [
         'symbol' => null,
         'name' => null,
+        'country' => null,
+        'industry' => null,
         'customer' => null,
         'supplier' => null,
         'one_month_correlation' => 'float',
@@ -120,6 +124,8 @@ class KeyCustomersSuppliers implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $attributeMap = [
         'symbol' => 'symbol',
         'name' => 'name',
+        'country' => 'country',
+        'industry' => 'industry',
         'customer' => 'customer',
         'supplier' => 'supplier',
         'one_month_correlation' => 'oneMonthCorrelation',
@@ -138,6 +144,8 @@ class KeyCustomersSuppliers implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $setters = [
         'symbol' => 'setSymbol',
         'name' => 'setName',
+        'country' => 'setCountry',
+        'industry' => 'setIndustry',
         'customer' => 'setCustomer',
         'supplier' => 'setSupplier',
         'one_month_correlation' => 'setOneMonthCorrelation',
@@ -156,6 +164,8 @@ class KeyCustomersSuppliers implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $getters = [
         'symbol' => 'getSymbol',
         'name' => 'getName',
+        'country' => 'getCountry',
+        'industry' => 'getIndustry',
         'customer' => 'getCustomer',
         'supplier' => 'getSupplier',
         'one_month_correlation' => 'getOneMonthCorrelation',
@@ -225,6 +235,8 @@ class KeyCustomersSuppliers implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $this->container['symbol'] = $data['symbol'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
+        $this->container['industry'] = $data['industry'] ?? null;
         $this->container['customer'] = $data['customer'] ?? null;
         $this->container['supplier'] = $data['supplier'] ?? null;
         $this->container['one_month_correlation'] = $data['one_month_correlation'] ?? null;
@@ -303,6 +315,54 @@ class KeyCustomersSuppliers implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets country
+     *
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string|null $country Country
+     *
+     * @return self
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets industry
+     *
+     * @return string|null
+     */
+    public function getIndustry()
+    {
+        return $this->container['industry'];
+    }
+
+    /**
+     * Sets industry
+     *
+     * @param string|null $industry Industry
+     *
+     * @return self
+     */
+    public function setIndustry($industry)
+    {
+        $this->container['industry'] = $industry;
 
         return $this;
     }

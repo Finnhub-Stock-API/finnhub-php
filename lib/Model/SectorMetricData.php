@@ -1,6 +1,6 @@
 <?php
 /**
- * Company
+ * SectorMetricData
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Company Class Doc Comment
+ * SectorMetricData Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Company implements ModelInterface, ArrayAccess, \JsonSerializable
+class SectorMetricData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Company';
+    protected static $openAPIModelName = 'SectorMetricData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +59,8 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'age' => 'int',
-        'title' => 'string',
-        'since' => 'string',
-        'sex' => 'string',
-        'compensation' => 'int',
-        'currency' => 'string'
+        'sector' => 'string',
+        'metrics' => 'object'
     ];
 
     /**
@@ -76,13 +71,8 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'age' => 'int64',
-        'title' => null,
-        'since' => null,
-        'sex' => null,
-        'compensation' => 'int64',
-        'currency' => null
+        'sector' => null,
+        'metrics' => null
     ];
 
     /**
@@ -112,13 +102,8 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'age' => 'age',
-        'title' => 'title',
-        'since' => 'since',
-        'sex' => 'sex',
-        'compensation' => 'compensation',
-        'currency' => 'currency'
+        'sector' => 'sector',
+        'metrics' => 'metrics'
     ];
 
     /**
@@ -127,13 +112,8 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'age' => 'setAge',
-        'title' => 'setTitle',
-        'since' => 'setSince',
-        'sex' => 'setSex',
-        'compensation' => 'setCompensation',
-        'currency' => 'setCurrency'
+        'sector' => 'setSector',
+        'metrics' => 'setMetrics'
     ];
 
     /**
@@ -142,13 +122,8 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'age' => 'getAge',
-        'title' => 'getTitle',
-        'since' => 'getSince',
-        'sex' => 'getSex',
-        'compensation' => 'getCompensation',
-        'currency' => 'getCurrency'
+        'sector' => 'getSector',
+        'metrics' => 'getMetrics'
     ];
 
     /**
@@ -208,13 +183,8 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['age'] = $data['age'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['since'] = $data['since'] ?? null;
-        $this->container['sex'] = $data['sex'] ?? null;
-        $this->container['compensation'] = $data['compensation'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['sector'] = $data['sector'] ?? null;
+        $this->container['metrics'] = $data['metrics'] ?? null;
     }
 
     /**
@@ -242,169 +212,49 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets sector
      *
      * @return string|null
      */
-    public function getName()
+    public function getSector()
     {
-        return $this->container['name'];
+        return $this->container['sector'];
     }
 
     /**
-     * Sets name
+     * Sets sector
      *
-     * @param string|null $name Executive name
+     * @param string|null $sector Sector
      *
      * @return self
      */
-    public function setName($name)
+    public function setSector($sector)
     {
-        $this->container['name'] = $name;
+        $this->container['sector'] = $sector;
 
         return $this;
     }
 
     /**
-     * Gets age
+     * Gets metrics
      *
-     * @return int|null
+     * @return object|null
      */
-    public function getAge()
+    public function getMetrics()
     {
-        return $this->container['age'];
+        return $this->container['metrics'];
     }
 
     /**
-     * Sets age
+     * Sets metrics
      *
-     * @param int|null $age Age
+     * @param object|null $metrics Metrics data in key-value format. <code>a</code> and <code>m</code> fields are for average and median respectively.
      *
      * @return self
      */
-    public function setAge($age)
+    public function setMetrics($metrics)
     {
-        $this->container['age'] = $age;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title Title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets since
-     *
-     * @return string|null
-     */
-    public function getSince()
-    {
-        return $this->container['since'];
-    }
-
-    /**
-     * Sets since
-     *
-     * @param string|null $since Year first appointed as executive/director of the company
-     *
-     * @return self
-     */
-    public function setSince($since)
-    {
-        $this->container['since'] = $since;
-
-        return $this;
-    }
-
-    /**
-     * Gets sex
-     *
-     * @return string|null
-     */
-    public function getSex()
-    {
-        return $this->container['sex'];
-    }
-
-    /**
-     * Sets sex
-     *
-     * @param string|null $sex Sex
-     *
-     * @return self
-     */
-    public function setSex($sex)
-    {
-        $this->container['sex'] = $sex;
-
-        return $this;
-    }
-
-    /**
-     * Gets compensation
-     *
-     * @return int|null
-     */
-    public function getCompensation()
-    {
-        return $this->container['compensation'];
-    }
-
-    /**
-     * Sets compensation
-     *
-     * @param int|null $compensation Total compensation
-     *
-     * @return self
-     */
-    public function setCompensation($compensation)
-    {
-        $this->container['compensation'] = $compensation;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string|null
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string|null $currency Compensation currency
-     *
-     * @return self
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
+        $this->container['metrics'] = $metrics;
 
         return $this;
     }
