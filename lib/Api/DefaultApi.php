@@ -991,6 +991,346 @@ class DefaultApi
     }
 
     /**
+     * Operation bondTick
+     *
+     * Bond Tick Data
+     *
+     * @param  string $isin ISIN. (required)
+     * @param  \DateTime $date Date: 2020-04-02. (required)
+     * @param  int $limit Limit number of ticks returned. Maximum value: &lt;code&gt;25000&lt;/code&gt; (required)
+     * @param  int $skip Number of ticks to skip. Use this parameter to loop through the entire data. (required)
+     * @param  string $exchange Currently support the following values: &lt;code&gt;trace&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\BondTickData
+     */
+    public function bondTick($isin, $date, $limit, $skip, $exchange)
+    {
+        list($response) = $this->bondTickWithHttpInfo($isin, $date, $limit, $skip, $exchange);
+        return $response;
+    }
+
+    /**
+     * Operation bondTickWithHttpInfo
+     *
+     * Bond Tick Data
+     *
+     * @param  string $isin ISIN. (required)
+     * @param  \DateTime $date Date: 2020-04-02. (required)
+     * @param  int $limit Limit number of ticks returned. Maximum value: &lt;code&gt;25000&lt;/code&gt; (required)
+     * @param  int $skip Number of ticks to skip. Use this parameter to loop through the entire data. (required)
+     * @param  string $exchange Currently support the following values: &lt;code&gt;trace&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\BondTickData, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function bondTickWithHttpInfo($isin, $date, $limit, $skip, $exchange)
+    {
+        $request = $this->bondTickRequest($isin, $date, $limit, $skip, $exchange);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\BondTickData' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\BondTickData', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\BondTickData';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\BondTickData',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation bondTickAsync
+     *
+     * Bond Tick Data
+     *
+     * @param  string $isin ISIN. (required)
+     * @param  \DateTime $date Date: 2020-04-02. (required)
+     * @param  int $limit Limit number of ticks returned. Maximum value: &lt;code&gt;25000&lt;/code&gt; (required)
+     * @param  int $skip Number of ticks to skip. Use this parameter to loop through the entire data. (required)
+     * @param  string $exchange Currently support the following values: &lt;code&gt;trace&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bondTickAsync($isin, $date, $limit, $skip, $exchange)
+    {
+        return $this->bondTickAsyncWithHttpInfo($isin, $date, $limit, $skip, $exchange)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation bondTickAsyncWithHttpInfo
+     *
+     * Bond Tick Data
+     *
+     * @param  string $isin ISIN. (required)
+     * @param  \DateTime $date Date: 2020-04-02. (required)
+     * @param  int $limit Limit number of ticks returned. Maximum value: &lt;code&gt;25000&lt;/code&gt; (required)
+     * @param  int $skip Number of ticks to skip. Use this parameter to loop through the entire data. (required)
+     * @param  string $exchange Currently support the following values: &lt;code&gt;trace&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bondTickAsyncWithHttpInfo($isin, $date, $limit, $skip, $exchange)
+    {
+        $returnType = '\Finnhub\Model\BondTickData';
+        $request = $this->bondTickRequest($isin, $date, $limit, $skip, $exchange);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'bondTick'
+     *
+     * @param  string $isin ISIN. (required)
+     * @param  \DateTime $date Date: 2020-04-02. (required)
+     * @param  int $limit Limit number of ticks returned. Maximum value: &lt;code&gt;25000&lt;/code&gt; (required)
+     * @param  int $skip Number of ticks to skip. Use this parameter to loop through the entire data. (required)
+     * @param  string $exchange Currently support the following values: &lt;code&gt;trace&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function bondTickRequest($isin, $date, $limit, $skip, $exchange)
+    {
+        // verify the required parameter 'isin' is set
+        if ($isin === null || (is_array($isin) && count($isin) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $isin when calling bondTick'
+            );
+        }
+        // verify the required parameter 'date' is set
+        if ($date === null || (is_array($date) && count($date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $date when calling bondTick'
+            );
+        }
+        // verify the required parameter 'limit' is set
+        if ($limit === null || (is_array($limit) && count($limit) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $limit when calling bondTick'
+            );
+        }
+        // verify the required parameter 'skip' is set
+        if ($skip === null || (is_array($skip) && count($skip) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $skip when calling bondTick'
+            );
+        }
+        // verify the required parameter 'exchange' is set
+        if ($exchange === null || (is_array($exchange) && count($exchange) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $exchange when calling bondTick'
+            );
+        }
+
+        $resourcePath = '/bond/tick';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($isin)) {
+            $isin = ObjectSerializer::serializeCollection($isin, '', true);
+        }
+        if ($isin !== null) {
+            $queryParams['isin'] = $isin;
+        }
+        // query params
+        if (is_array($date)) {
+            $date = ObjectSerializer::serializeCollection($date, '', true);
+        }
+        if ($date !== null) {
+            $queryParams['date'] = $date;
+        }
+        // query params
+        if (is_array($limit)) {
+            $limit = ObjectSerializer::serializeCollection($limit, '', true);
+        }
+        if ($limit !== null) {
+            $queryParams['limit'] = $limit;
+        }
+        // query params
+        if (is_array($skip)) {
+            $skip = ObjectSerializer::serializeCollection($skip, '', true);
+        }
+        if ($skip !== null) {
+            $queryParams['skip'] = $skip;
+        }
+        // query params
+        if (is_array($exchange)) {
+            $exchange = ObjectSerializer::serializeCollection($exchange, '', true);
+        }
+        if ($exchange !== null) {
+            $queryParams['exchange'] = $exchange;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation companyBasicFinancials
      *
      * Basic Financials
@@ -3528,14 +3868,15 @@ class DefaultApi
      * Peers
      *
      * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $grouping Specify the grouping criteria for choosing peers.Supporter values: &lt;code&gt;sector&lt;/code&gt;, &lt;code&gt;industry&lt;/code&gt;, &lt;code&gt;subIndustry&lt;/code&gt;. Default to &lt;code&gt;subIndustry&lt;/code&gt;. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string[]
      */
-    public function companyPeers($symbol)
+    public function companyPeers($symbol, $grouping = null)
     {
-        list($response) = $this->companyPeersWithHttpInfo($symbol);
+        list($response) = $this->companyPeersWithHttpInfo($symbol, $grouping);
         return $response;
     }
 
@@ -3545,14 +3886,15 @@ class DefaultApi
      * Peers
      *
      * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $grouping Specify the grouping criteria for choosing peers.Supporter values: &lt;code&gt;sector&lt;/code&gt;, &lt;code&gt;industry&lt;/code&gt;, &lt;code&gt;subIndustry&lt;/code&gt;. Default to &lt;code&gt;subIndustry&lt;/code&gt;. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function companyPeersWithHttpInfo($symbol)
+    public function companyPeersWithHttpInfo($symbol, $grouping = null)
     {
-        $request = $this->companyPeersRequest($symbol);
+        $request = $this->companyPeersRequest($symbol, $grouping);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3631,13 +3973,14 @@ class DefaultApi
      * Peers
      *
      * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $grouping Specify the grouping criteria for choosing peers.Supporter values: &lt;code&gt;sector&lt;/code&gt;, &lt;code&gt;industry&lt;/code&gt;, &lt;code&gt;subIndustry&lt;/code&gt;. Default to &lt;code&gt;subIndustry&lt;/code&gt;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function companyPeersAsync($symbol)
+    public function companyPeersAsync($symbol, $grouping = null)
     {
-        return $this->companyPeersAsyncWithHttpInfo($symbol)
+        return $this->companyPeersAsyncWithHttpInfo($symbol, $grouping)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3651,14 +3994,15 @@ class DefaultApi
      * Peers
      *
      * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $grouping Specify the grouping criteria for choosing peers.Supporter values: &lt;code&gt;sector&lt;/code&gt;, &lt;code&gt;industry&lt;/code&gt;, &lt;code&gt;subIndustry&lt;/code&gt;. Default to &lt;code&gt;subIndustry&lt;/code&gt;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function companyPeersAsyncWithHttpInfo($symbol)
+    public function companyPeersAsyncWithHttpInfo($symbol, $grouping = null)
     {
         $returnType = 'string[]';
-        $request = $this->companyPeersRequest($symbol);
+        $request = $this->companyPeersRequest($symbol, $grouping);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3697,11 +4041,12 @@ class DefaultApi
      * Create request for operation 'companyPeers'
      *
      * @param  string $symbol Symbol of the company: AAPL. (required)
+     * @param  string $grouping Specify the grouping criteria for choosing peers.Supporter values: &lt;code&gt;sector&lt;/code&gt;, &lt;code&gt;industry&lt;/code&gt;, &lt;code&gt;subIndustry&lt;/code&gt;. Default to &lt;code&gt;subIndustry&lt;/code&gt;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function companyPeersRequest($symbol)
+    public function companyPeersRequest($symbol, $grouping = null)
     {
         // verify the required parameter 'symbol' is set
         if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
@@ -3723,6 +4068,13 @@ class DefaultApi
         }
         if ($symbol !== null) {
             $queryParams['symbol'] = $symbol;
+        }
+        // query params
+        if (is_array($grouping)) {
+            $grouping = ObjectSerializer::serializeCollection($grouping, '', true);
+        }
+        if ($grouping !== null) {
+            $queryParams['grouping'] = $grouping;
         }
 
 
@@ -9601,14 +9953,16 @@ class DefaultApi
      * @param  string $cik CIK. (optional)
      * @param  string $access_number Access number of a specific report you want to retrieve financials from. (optional)
      * @param  string $freq Frequency. Can be either &lt;code&gt;annual&lt;/code&gt; or &lt;code&gt;quarterly&lt;/code&gt;. Default to &lt;code&gt;annual&lt;/code&gt;. (optional)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Finnhub\Model\FinancialsAsReported
      */
-    public function financialsReported($symbol = null, $cik = null, $access_number = null, $freq = null)
+    public function financialsReported($symbol = null, $cik = null, $access_number = null, $freq = null, $from = null, $to = null)
     {
-        list($response) = $this->financialsReportedWithHttpInfo($symbol, $cik, $access_number, $freq);
+        list($response) = $this->financialsReportedWithHttpInfo($symbol, $cik, $access_number, $freq, $from, $to);
         return $response;
     }
 
@@ -9621,14 +9975,16 @@ class DefaultApi
      * @param  string $cik CIK. (optional)
      * @param  string $access_number Access number of a specific report you want to retrieve financials from. (optional)
      * @param  string $freq Frequency. Can be either &lt;code&gt;annual&lt;/code&gt; or &lt;code&gt;quarterly&lt;/code&gt;. Default to &lt;code&gt;annual&lt;/code&gt;. (optional)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
      *
      * @throws \Finnhub\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Finnhub\Model\FinancialsAsReported, HTTP status code, HTTP response headers (array of strings)
      */
-    public function financialsReportedWithHttpInfo($symbol = null, $cik = null, $access_number = null, $freq = null)
+    public function financialsReportedWithHttpInfo($symbol = null, $cik = null, $access_number = null, $freq = null, $from = null, $to = null)
     {
-        $request = $this->financialsReportedRequest($symbol, $cik, $access_number, $freq);
+        $request = $this->financialsReportedRequest($symbol, $cik, $access_number, $freq, $from, $to);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9710,13 +10066,15 @@ class DefaultApi
      * @param  string $cik CIK. (optional)
      * @param  string $access_number Access number of a specific report you want to retrieve financials from. (optional)
      * @param  string $freq Frequency. Can be either &lt;code&gt;annual&lt;/code&gt; or &lt;code&gt;quarterly&lt;/code&gt;. Default to &lt;code&gt;annual&lt;/code&gt;. (optional)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function financialsReportedAsync($symbol = null, $cik = null, $access_number = null, $freq = null)
+    public function financialsReportedAsync($symbol = null, $cik = null, $access_number = null, $freq = null, $from = null, $to = null)
     {
-        return $this->financialsReportedAsyncWithHttpInfo($symbol, $cik, $access_number, $freq)
+        return $this->financialsReportedAsyncWithHttpInfo($symbol, $cik, $access_number, $freq, $from, $to)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9733,14 +10091,16 @@ class DefaultApi
      * @param  string $cik CIK. (optional)
      * @param  string $access_number Access number of a specific report you want to retrieve financials from. (optional)
      * @param  string $freq Frequency. Can be either &lt;code&gt;annual&lt;/code&gt; or &lt;code&gt;quarterly&lt;/code&gt;. Default to &lt;code&gt;annual&lt;/code&gt;. (optional)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function financialsReportedAsyncWithHttpInfo($symbol = null, $cik = null, $access_number = null, $freq = null)
+    public function financialsReportedAsyncWithHttpInfo($symbol = null, $cik = null, $access_number = null, $freq = null, $from = null, $to = null)
     {
         $returnType = '\Finnhub\Model\FinancialsAsReported';
-        $request = $this->financialsReportedRequest($symbol, $cik, $access_number, $freq);
+        $request = $this->financialsReportedRequest($symbol, $cik, $access_number, $freq, $from, $to);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9782,11 +10142,13 @@ class DefaultApi
      * @param  string $cik CIK. (optional)
      * @param  string $access_number Access number of a specific report you want to retrieve financials from. (optional)
      * @param  string $freq Frequency. Can be either &lt;code&gt;annual&lt;/code&gt; or &lt;code&gt;quarterly&lt;/code&gt;. Default to &lt;code&gt;annual&lt;/code&gt;. (optional)
+     * @param  \DateTime $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
+     * @param  \DateTime $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function financialsReportedRequest($symbol = null, $cik = null, $access_number = null, $freq = null)
+    public function financialsReportedRequest($symbol = null, $cik = null, $access_number = null, $freq = null, $from = null, $to = null)
     {
 
         $resourcePath = '/stock/financials-reported';
@@ -9823,6 +10185,20 @@ class DefaultApi
         }
         if ($freq !== null) {
             $queryParams['freq'] = $freq;
+        }
+        // query params
+        if (is_array($from)) {
+            $from = ObjectSerializer::serializeCollection($from, '', true);
+        }
+        if ($from !== null) {
+            $queryParams['from'] = $from;
+        }
+        // query params
+        if (is_array($to)) {
+            $to = ObjectSerializer::serializeCollection($to, '', true);
+        }
+        if ($to !== null) {
+            $queryParams['to'] = $to;
         }
 
 
@@ -12417,6 +12793,894 @@ class DefaultApi
     }
 
     /**
+     * Operation institutionalOwnership
+     *
+     * Institutional Ownership
+     *
+     * @param  string $symbol Filter by symbol. (required)
+     * @param  string $cusip Filter by CUSIP. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\InstitutionalOwnership
+     */
+    public function institutionalOwnership($symbol, $cusip, $from, $to)
+    {
+        list($response) = $this->institutionalOwnershipWithHttpInfo($symbol, $cusip, $from, $to);
+        return $response;
+    }
+
+    /**
+     * Operation institutionalOwnershipWithHttpInfo
+     *
+     * Institutional Ownership
+     *
+     * @param  string $symbol Filter by symbol. (required)
+     * @param  string $cusip Filter by CUSIP. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\InstitutionalOwnership, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function institutionalOwnershipWithHttpInfo($symbol, $cusip, $from, $to)
+    {
+        $request = $this->institutionalOwnershipRequest($symbol, $cusip, $from, $to);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\InstitutionalOwnership' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\InstitutionalOwnership', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\InstitutionalOwnership';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\InstitutionalOwnership',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation institutionalOwnershipAsync
+     *
+     * Institutional Ownership
+     *
+     * @param  string $symbol Filter by symbol. (required)
+     * @param  string $cusip Filter by CUSIP. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function institutionalOwnershipAsync($symbol, $cusip, $from, $to)
+    {
+        return $this->institutionalOwnershipAsyncWithHttpInfo($symbol, $cusip, $from, $to)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation institutionalOwnershipAsyncWithHttpInfo
+     *
+     * Institutional Ownership
+     *
+     * @param  string $symbol Filter by symbol. (required)
+     * @param  string $cusip Filter by CUSIP. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function institutionalOwnershipAsyncWithHttpInfo($symbol, $cusip, $from, $to)
+    {
+        $returnType = '\Finnhub\Model\InstitutionalOwnership';
+        $request = $this->institutionalOwnershipRequest($symbol, $cusip, $from, $to);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'institutionalOwnership'
+     *
+     * @param  string $symbol Filter by symbol. (required)
+     * @param  string $cusip Filter by CUSIP. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function institutionalOwnershipRequest($symbol, $cusip, $from, $to)
+    {
+        // verify the required parameter 'symbol' is set
+        if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling institutionalOwnership'
+            );
+        }
+        // verify the required parameter 'cusip' is set
+        if ($cusip === null || (is_array($cusip) && count($cusip) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cusip when calling institutionalOwnership'
+            );
+        }
+        // verify the required parameter 'from' is set
+        if ($from === null || (is_array($from) && count($from) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $from when calling institutionalOwnership'
+            );
+        }
+        // verify the required parameter 'to' is set
+        if ($to === null || (is_array($to) && count($to) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to when calling institutionalOwnership'
+            );
+        }
+
+        $resourcePath = '/institutional/ownership';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($symbol)) {
+            $symbol = ObjectSerializer::serializeCollection($symbol, '', true);
+        }
+        if ($symbol !== null) {
+            $queryParams['symbol'] = $symbol;
+        }
+        // query params
+        if (is_array($cusip)) {
+            $cusip = ObjectSerializer::serializeCollection($cusip, '', true);
+        }
+        if ($cusip !== null) {
+            $queryParams['cusip'] = $cusip;
+        }
+        // query params
+        if (is_array($from)) {
+            $from = ObjectSerializer::serializeCollection($from, '', true);
+        }
+        if ($from !== null) {
+            $queryParams['from'] = $from;
+        }
+        // query params
+        if (is_array($to)) {
+            $to = ObjectSerializer::serializeCollection($to, '', true);
+        }
+        if ($to !== null) {
+            $queryParams['to'] = $to;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation institutionalPortfolio
+     *
+     * Institutional Portfolio
+     *
+     * @param  string $cik Fund&#39;s CIK. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\InstitutionalPortfolio
+     */
+    public function institutionalPortfolio($cik, $from, $to)
+    {
+        list($response) = $this->institutionalPortfolioWithHttpInfo($cik, $from, $to);
+        return $response;
+    }
+
+    /**
+     * Operation institutionalPortfolioWithHttpInfo
+     *
+     * Institutional Portfolio
+     *
+     * @param  string $cik Fund&#39;s CIK. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\InstitutionalPortfolio, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function institutionalPortfolioWithHttpInfo($cik, $from, $to)
+    {
+        $request = $this->institutionalPortfolioRequest($cik, $from, $to);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\InstitutionalPortfolio' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\InstitutionalPortfolio', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\InstitutionalPortfolio';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\InstitutionalPortfolio',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation institutionalPortfolioAsync
+     *
+     * Institutional Portfolio
+     *
+     * @param  string $cik Fund&#39;s CIK. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function institutionalPortfolioAsync($cik, $from, $to)
+    {
+        return $this->institutionalPortfolioAsyncWithHttpInfo($cik, $from, $to)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation institutionalPortfolioAsyncWithHttpInfo
+     *
+     * Institutional Portfolio
+     *
+     * @param  string $cik Fund&#39;s CIK. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function institutionalPortfolioAsyncWithHttpInfo($cik, $from, $to)
+    {
+        $returnType = '\Finnhub\Model\InstitutionalPortfolio';
+        $request = $this->institutionalPortfolioRequest($cik, $from, $to);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'institutionalPortfolio'
+     *
+     * @param  string $cik Fund&#39;s CIK. (required)
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function institutionalPortfolioRequest($cik, $from, $to)
+    {
+        // verify the required parameter 'cik' is set
+        if ($cik === null || (is_array($cik) && count($cik) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $cik when calling institutionalPortfolio'
+            );
+        }
+        // verify the required parameter 'from' is set
+        if ($from === null || (is_array($from) && count($from) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $from when calling institutionalPortfolio'
+            );
+        }
+        // verify the required parameter 'to' is set
+        if ($to === null || (is_array($to) && count($to) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to when calling institutionalPortfolio'
+            );
+        }
+
+        $resourcePath = '/institutional/portfolio';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($cik)) {
+            $cik = ObjectSerializer::serializeCollection($cik, '', true);
+        }
+        if ($cik !== null) {
+            $queryParams['cik'] = $cik;
+        }
+        // query params
+        if (is_array($from)) {
+            $from = ObjectSerializer::serializeCollection($from, '', true);
+        }
+        if ($from !== null) {
+            $queryParams['from'] = $from;
+        }
+        // query params
+        if (is_array($to)) {
+            $to = ObjectSerializer::serializeCollection($to, '', true);
+        }
+        if ($to !== null) {
+            $queryParams['to'] = $to;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation institutionalProfile
+     *
+     * Institutional Profile
+     *
+     * @param  string $cik Filter by CIK. Leave blank to get the full list. (optional)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\InstitutionalProfile
+     */
+    public function institutionalProfile($cik = null)
+    {
+        list($response) = $this->institutionalProfileWithHttpInfo($cik);
+        return $response;
+    }
+
+    /**
+     * Operation institutionalProfileWithHttpInfo
+     *
+     * Institutional Profile
+     *
+     * @param  string $cik Filter by CIK. Leave blank to get the full list. (optional)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\InstitutionalProfile, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function institutionalProfileWithHttpInfo($cik = null)
+    {
+        $request = $this->institutionalProfileRequest($cik);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\InstitutionalProfile' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\InstitutionalProfile', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\InstitutionalProfile';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\InstitutionalProfile',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation institutionalProfileAsync
+     *
+     * Institutional Profile
+     *
+     * @param  string $cik Filter by CIK. Leave blank to get the full list. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function institutionalProfileAsync($cik = null)
+    {
+        return $this->institutionalProfileAsyncWithHttpInfo($cik)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation institutionalProfileAsyncWithHttpInfo
+     *
+     * Institutional Profile
+     *
+     * @param  string $cik Filter by CIK. Leave blank to get the full list. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function institutionalProfileAsyncWithHttpInfo($cik = null)
+    {
+        $returnType = '\Finnhub\Model\InstitutionalProfile';
+        $request = $this->institutionalProfileRequest($cik);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'institutionalProfile'
+     *
+     * @param  string $cik Filter by CIK. Leave blank to get the full list. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function institutionalProfileRequest($cik = null)
+    {
+
+        $resourcePath = '/institutional/profile';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($cik)) {
+            $cik = ObjectSerializer::serializeCollection($cik, '', true);
+        }
+        if ($cik !== null) {
+            $queryParams['cik'] = $cik;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation internationalFilings
      *
      * International Filings
@@ -13158,6 +14422,292 @@ class DefaultApi
         }
 
         $resourcePath = '/calendar/ipo';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($from)) {
+            $from = ObjectSerializer::serializeCollection($from, '', true);
+        }
+        if ($from !== null) {
+            $queryParams['from'] = $from;
+        }
+        // query params
+        if (is_array($to)) {
+            $to = ObjectSerializer::serializeCollection($to, '', true);
+        }
+        if ($to !== null) {
+            $queryParams['to'] = $to;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation isinChange
+     *
+     * ISIN Change
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\IsinChange
+     */
+    public function isinChange($from, $to)
+    {
+        list($response) = $this->isinChangeWithHttpInfo($from, $to);
+        return $response;
+    }
+
+    /**
+     * Operation isinChangeWithHttpInfo
+     *
+     * ISIN Change
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\IsinChange, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function isinChangeWithHttpInfo($from, $to)
+    {
+        $request = $this->isinChangeRequest($from, $to);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\IsinChange' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\IsinChange', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\IsinChange';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\IsinChange',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation isinChangeAsync
+     *
+     * ISIN Change
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function isinChangeAsync($from, $to)
+    {
+        return $this->isinChangeAsyncWithHttpInfo($from, $to)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation isinChangeAsyncWithHttpInfo
+     *
+     * ISIN Change
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function isinChangeAsyncWithHttpInfo($from, $to)
+    {
+        $returnType = '\Finnhub\Model\IsinChange';
+        $request = $this->isinChangeRequest($from, $to);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'isinChange'
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function isinChangeRequest($from, $to)
+    {
+        // verify the required parameter 'from' is set
+        if ($from === null || (is_array($from) && count($from) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $from when calling isinChange'
+            );
+        }
+        // verify the required parameter 'to' is set
+        if ($to === null || (is_array($to) && count($to) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to when calling isinChange'
+            );
+        }
+
+        $resourcePath = '/ca/isin-change';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -15679,6 +17229,274 @@ class DefaultApi
         }
         if ($to !== null) {
             $queryParams['to'] = $to;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation priceMetrics
+     *
+     * Price Metrics
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\PriceMetrics
+     */
+    public function priceMetrics($symbol)
+    {
+        list($response) = $this->priceMetricsWithHttpInfo($symbol);
+        return $response;
+    }
+
+    /**
+     * Operation priceMetricsWithHttpInfo
+     *
+     * Price Metrics
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\PriceMetrics, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function priceMetricsWithHttpInfo($symbol)
+    {
+        $request = $this->priceMetricsRequest($symbol);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\PriceMetrics' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\PriceMetrics', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\PriceMetrics';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\PriceMetrics',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation priceMetricsAsync
+     *
+     * Price Metrics
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function priceMetricsAsync($symbol)
+    {
+        return $this->priceMetricsAsyncWithHttpInfo($symbol)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation priceMetricsAsyncWithHttpInfo
+     *
+     * Price Metrics
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function priceMetricsAsyncWithHttpInfo($symbol)
+    {
+        $returnType = '\Finnhub\Model\PriceMetrics';
+        $request = $this->priceMetricsRequest($symbol);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'priceMetrics'
+     *
+     * @param  string $symbol Symbol of the company: AAPL. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function priceMetricsRequest($symbol)
+    {
+        // verify the required parameter 'symbol' is set
+        if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $symbol when calling priceMetrics'
+            );
+        }
+
+        $resourcePath = '/stock/price-metric';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($symbol)) {
+            $symbol = ObjectSerializer::serializeCollection($symbol, '', true);
+        }
+        if ($symbol !== null) {
+            $queryParams['symbol'] = $symbol;
         }
 
 
@@ -21787,6 +23605,292 @@ class DefaultApi
         }
         if ($resolution !== null) {
             $queryParams['resolution'] = $resolution;
+        }
+
+
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('token');
+        if ($apiKey !== null) {
+            $queryParams['token'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation symbolChange
+     *
+     * Symbol Change
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Finnhub\Model\SymbolChange
+     */
+    public function symbolChange($from, $to)
+    {
+        list($response) = $this->symbolChangeWithHttpInfo($from, $to);
+        return $response;
+    }
+
+    /**
+     * Operation symbolChangeWithHttpInfo
+     *
+     * Symbol Change
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \Finnhub\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Finnhub\Model\SymbolChange, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function symbolChangeWithHttpInfo($from, $to)
+    {
+        $request = $this->symbolChangeRequest($from, $to);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Finnhub\Model\SymbolChange' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Finnhub\Model\SymbolChange', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Finnhub\Model\SymbolChange';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Finnhub\Model\SymbolChange',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation symbolChangeAsync
+     *
+     * Symbol Change
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function symbolChangeAsync($from, $to)
+    {
+        return $this->symbolChangeAsyncWithHttpInfo($from, $to)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation symbolChangeAsyncWithHttpInfo
+     *
+     * Symbol Change
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function symbolChangeAsyncWithHttpInfo($from, $to)
+    {
+        $returnType = '\Finnhub\Model\SymbolChange';
+        $request = $this->symbolChangeRequest($from, $to);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'symbolChange'
+     *
+     * @param  string $from From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     * @param  string $to To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function symbolChangeRequest($from, $to)
+    {
+        // verify the required parameter 'from' is set
+        if ($from === null || (is_array($from) && count($from) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $from when calling symbolChange'
+            );
+        }
+        // verify the required parameter 'to' is set
+        if ($to === null || (is_array($to) && count($to) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $to when calling symbolChange'
+            );
+        }
+
+        $resourcePath = '/ca/symbol-change';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if (is_array($from)) {
+            $from = ObjectSerializer::serializeCollection($from, '', true);
+        }
+        if ($from !== null) {
+            $queryParams['from'] = $from;
+        }
+        // query params
+        if (is_array($to)) {
+            $to = ObjectSerializer::serializeCollection($to, '', true);
+        }
+        if ($to !== null) {
+            $queryParams['to'] = $to;
         }
 
 

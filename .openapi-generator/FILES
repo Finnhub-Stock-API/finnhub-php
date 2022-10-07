@@ -7,6 +7,7 @@ docs/Model/AggregateIndicators.md
 docs/Model/BasicFinancials.md
 docs/Model/BondCandles.md
 docs/Model/BondProfile.md
+docs/Model/BondTickData.md
 docs/Model/BreakdownItem.md
 docs/Model/Company.md
 docs/Model/CompanyESG.md
@@ -70,9 +71,19 @@ docs/Model/IndicesHistoricalConstituents.md
 docs/Model/InsiderSentiments.md
 docs/Model/InsiderSentimentsData.md
 docs/Model/InsiderTransactions.md
+docs/Model/InstitutionalOwnership.md
+docs/Model/InstitutionalOwnershipGroup.md
+docs/Model/InstitutionalOwnershipInfo.md
+docs/Model/InstitutionalPortfolio.md
+docs/Model/InstitutionalPortfolioGroup.md
+docs/Model/InstitutionalPortfolioInfo.md
+docs/Model/InstitutionalProfile.md
+docs/Model/InstitutionalProfileInfo.md
 docs/Model/InternationalFiling.md
 docs/Model/InvestmentThemePortfolio.md
 docs/Model/InvestmentThemes.md
+docs/Model/IsinChange.md
+docs/Model/IsinChangeInfo.md
 docs/Model/KeyCustomersSuppliers.md
 docs/Model/LastBidAsk.md
 docs/Model/LobbyingData.md
@@ -91,6 +102,7 @@ docs/Model/Ownership.md
 docs/Model/OwnershipInfo.md
 docs/Model/PatternRecognition.md
 docs/Model/PressRelease.md
+docs/Model/PriceMetrics.md
 docs/Model/PriceTarget.md
 docs/Model/Quote.md
 docs/Model/RecommendationTrend.md
@@ -112,6 +124,8 @@ docs/Model/StockSymbol.md
 docs/Model/StockTranscripts.md
 docs/Model/SupplyChainRelationships.md
 docs/Model/SupportResistance.md
+docs/Model/SymbolChange.md
+docs/Model/SymbolChangeInfo.md
 docs/Model/SymbolLookup.md
 docs/Model/SymbolLookupInfo.md
 docs/Model/TechnicalAnalysis.md
@@ -137,6 +151,7 @@ lib/Model/AggregateIndicators.php
 lib/Model/BasicFinancials.php
 lib/Model/BondCandles.php
 lib/Model/BondProfile.php
+lib/Model/BondTickData.php
 lib/Model/BreakdownItem.php
 lib/Model/Company.php
 lib/Model/CompanyESG.php
@@ -200,9 +215,19 @@ lib/Model/IndicesHistoricalConstituents.php
 lib/Model/InsiderSentiments.php
 lib/Model/InsiderSentimentsData.php
 lib/Model/InsiderTransactions.php
+lib/Model/InstitutionalOwnership.php
+lib/Model/InstitutionalOwnershipGroup.php
+lib/Model/InstitutionalOwnershipInfo.php
+lib/Model/InstitutionalPortfolio.php
+lib/Model/InstitutionalPortfolioGroup.php
+lib/Model/InstitutionalPortfolioInfo.php
+lib/Model/InstitutionalProfile.php
+lib/Model/InstitutionalProfileInfo.php
 lib/Model/InternationalFiling.php
 lib/Model/InvestmentThemePortfolio.php
 lib/Model/InvestmentThemes.php
+lib/Model/IsinChange.php
+lib/Model/IsinChangeInfo.php
 lib/Model/KeyCustomersSuppliers.php
 lib/Model/LastBidAsk.php
 lib/Model/LobbyingData.php
@@ -222,6 +247,7 @@ lib/Model/Ownership.php
 lib/Model/OwnershipInfo.php
 lib/Model/PatternRecognition.php
 lib/Model/PressRelease.php
+lib/Model/PriceMetrics.php
 lib/Model/PriceTarget.php
 lib/Model/Quote.php
 lib/Model/RecommendationTrend.php
@@ -243,6 +269,8 @@ lib/Model/StockSymbol.php
 lib/Model/StockTranscripts.php
 lib/Model/SupplyChainRelationships.php
 lib/Model/SupportResistance.php
+lib/Model/SymbolChange.php
+lib/Model/SymbolChangeInfo.php
 lib/Model/SymbolLookup.php
 lib/Model/SymbolLookupInfo.php
 lib/Model/TechnicalAnalysis.php
@@ -261,5 +289,3 @@ lib/Model/VisaApplication.php
 lib/Model/VisaApplicationResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SectorMetricDataTest.php
-test/Model/SectorMetricTest.php

@@ -76,7 +76,10 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_to_earnings' => 'float',
         'price_to_book' => 'float',
         'avg_volume' => 'float',
-        'description' => 'string'
+        'description' => 'string',
+        'is_inverse' => 'bool',
+        'is_leveraged' => 'bool',
+        'leverage_factor' => 'float'
     ];
 
     /**
@@ -104,7 +107,10 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_to_earnings' => 'float',
         'price_to_book' => 'float',
         'avg_volume' => 'float',
-        'description' => null
+        'description' => null,
+        'is_inverse' => null,
+        'is_leveraged' => null,
+        'leverage_factor' => 'float'
     ];
 
     /**
@@ -151,7 +157,10 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_to_earnings' => 'priceToEarnings',
         'price_to_book' => 'priceToBook',
         'avg_volume' => 'avgVolume',
-        'description' => 'description'
+        'description' => 'description',
+        'is_inverse' => 'isInverse',
+        'is_leveraged' => 'isLeveraged',
+        'leverage_factor' => 'leverageFactor'
     ];
 
     /**
@@ -177,7 +186,10 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_to_earnings' => 'setPriceToEarnings',
         'price_to_book' => 'setPriceToBook',
         'avg_volume' => 'setAvgVolume',
-        'description' => 'setDescription'
+        'description' => 'setDescription',
+        'is_inverse' => 'setIsInverse',
+        'is_leveraged' => 'setIsLeveraged',
+        'leverage_factor' => 'setLeverageFactor'
     ];
 
     /**
@@ -203,7 +215,10 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'price_to_earnings' => 'getPriceToEarnings',
         'price_to_book' => 'getPriceToBook',
         'avg_volume' => 'getAvgVolume',
-        'description' => 'getDescription'
+        'description' => 'getDescription',
+        'is_inverse' => 'getIsInverse',
+        'is_leveraged' => 'getIsLeveraged',
+        'leverage_factor' => 'getLeverageFactor'
     ];
 
     /**
@@ -281,6 +296,9 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['price_to_book'] = $data['price_to_book'] ?? null;
         $this->container['avg_volume'] = $data['avg_volume'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
+        $this->container['is_inverse'] = $data['is_inverse'] ?? null;
+        $this->container['is_leveraged'] = $data['is_leveraged'] ?? null;
+        $this->container['leverage_factor'] = $data['leverage_factor'] ?? null;
     }
 
     /**
@@ -464,7 +482,7 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets expense_ratio
      *
-     * @param float|null $expense_ratio Expense ratio.
+     * @param float|null $expense_ratio Expense ratio. For non-US funds, this is the <a href=\"https://www.esma.europa.eu/sites/default/files/library/2015/11/09_1028_final_kid_ongoing_charges_methodology_for_publication_u_2_.pdf\" target=\"_blank\">KID ongoing charges<a/>.
      *
      * @return self
      */
@@ -735,6 +753,78 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription($description)
     {
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_inverse
+     *
+     * @return bool|null
+     */
+    public function getIsInverse()
+    {
+        return $this->container['is_inverse'];
+    }
+
+    /**
+     * Sets is_inverse
+     *
+     * @param bool|null $is_inverse Whether the ETF is inverse
+     *
+     * @return self
+     */
+    public function setIsInverse($is_inverse)
+    {
+        $this->container['is_inverse'] = $is_inverse;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_leveraged
+     *
+     * @return bool|null
+     */
+    public function getIsLeveraged()
+    {
+        return $this->container['is_leveraged'];
+    }
+
+    /**
+     * Sets is_leveraged
+     *
+     * @param bool|null $is_leveraged Whether the ETF is leveraged
+     *
+     * @return self
+     */
+    public function setIsLeveraged($is_leveraged)
+    {
+        $this->container['is_leveraged'] = $is_leveraged;
+
+        return $this;
+    }
+
+    /**
+     * Gets leverage_factor
+     *
+     * @return float|null
+     */
+    public function getLeverageFactor()
+    {
+        return $this->container['leverage_factor'];
+    }
+
+    /**
+     * Sets leverage_factor
+     *
+     * @param float|null $leverage_factor Leverage factor.
+     *
+     * @return self
+     */
+    public function setLeverageFactor($leverage_factor)
+    {
+        $this->container['leverage_factor'] = $leverage_factor;
 
         return $this;
     }
