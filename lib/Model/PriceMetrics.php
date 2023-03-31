@@ -60,6 +60,7 @@ class PriceMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
+        'at_date' => 'string',
         'data' => 'object'
     ];
 
@@ -72,6 +73,7 @@ class PriceMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'symbol' => null,
+        'at_date' => null,
         'data' => null
     ];
 
@@ -103,6 +105,7 @@ class PriceMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
+        'at_date' => 'atDate',
         'data' => 'data'
     ];
 
@@ -113,6 +116,7 @@ class PriceMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
+        'at_date' => 'setAtDate',
         'data' => 'setData'
     ];
 
@@ -123,6 +127,7 @@ class PriceMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
+        'at_date' => 'getAtDate',
         'data' => 'getData'
     ];
 
@@ -184,6 +189,7 @@ class PriceMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = $data['symbol'] ?? null;
+        $this->container['at_date'] = $data['at_date'] ?? null;
         $this->container['data'] = $data['data'] ?? null;
     }
 
@@ -231,6 +237,30 @@ class PriceMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSymbol($symbol)
     {
         $this->container['symbol'] = $symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets at_date
+     *
+     * @return string|null
+     */
+    public function getAtDate()
+    {
+        return $this->container['at_date'];
+    }
+
+    /**
+     * Sets at_date
+     *
+     * @param string|null $at_date Data date.
+     *
+     * @return self
+     */
+    public function setAtDate($at_date)
+    {
+        $this->container['at_date'] = $at_date;
 
         return $this;
     }

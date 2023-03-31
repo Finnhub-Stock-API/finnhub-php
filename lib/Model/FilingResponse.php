@@ -1,6 +1,6 @@
 <?php
 /**
- * Dividends
+ * FilingResponse
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Dividends Class Doc Comment
+ * FilingResponse Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
+class FilingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Dividends';
+    protected static $openAPIModelName = 'FilingResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,19 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'date' => '\DateTime',
-        'amount' => 'float',
-        'adjusted_amount' => 'float',
-        'pay_date' => '\DateTime',
-        'record_date' => '\DateTime',
-        'declaration_date' => '\DateTime',
-        'currency' => 'string',
-        'freq' => 'string'
+        'filing_id' => 'string',
+        'title' => 'string',
+        'filer_id' => 'string',
+        'symbol' => 'object',
+        'name' => 'string',
+        'acceptance_date' => 'string',
+        'filed_date' => 'string',
+        'report_date' => 'string',
+        'form' => 'string',
+        'amend' => 'bool',
+        'source' => 'string',
+        'page_count' => 'int',
+        'document_count' => 'int'
     ];
 
     /**
@@ -78,15 +82,19 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'filing_id' => null,
+        'title' => null,
+        'filer_id' => null,
         'symbol' => null,
-        'date' => 'date',
-        'amount' => 'float',
-        'adjusted_amount' => 'float',
-        'pay_date' => 'date',
-        'record_date' => 'date',
-        'declaration_date' => 'date',
-        'currency' => null,
-        'freq' => null
+        'name' => null,
+        'acceptance_date' => null,
+        'filed_date' => null,
+        'report_date' => null,
+        'form' => null,
+        'amend' => null,
+        'source' => null,
+        'page_count' => null,
+        'document_count' => null
     ];
 
     /**
@@ -116,15 +124,19 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'filing_id' => 'filingId',
+        'title' => 'title',
+        'filer_id' => 'filerId',
         'symbol' => 'symbol',
-        'date' => 'date',
-        'amount' => 'amount',
-        'adjusted_amount' => 'adjustedAmount',
-        'pay_date' => 'payDate',
-        'record_date' => 'recordDate',
-        'declaration_date' => 'declarationDate',
-        'currency' => 'currency',
-        'freq' => 'freq'
+        'name' => 'name',
+        'acceptance_date' => 'acceptanceDate',
+        'filed_date' => 'filedDate',
+        'report_date' => 'reportDate',
+        'form' => 'form',
+        'amend' => 'amend',
+        'source' => 'source',
+        'page_count' => 'pageCount',
+        'document_count' => 'documentCount'
     ];
 
     /**
@@ -133,15 +145,19 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'filing_id' => 'setFilingId',
+        'title' => 'setTitle',
+        'filer_id' => 'setFilerId',
         'symbol' => 'setSymbol',
-        'date' => 'setDate',
-        'amount' => 'setAmount',
-        'adjusted_amount' => 'setAdjustedAmount',
-        'pay_date' => 'setPayDate',
-        'record_date' => 'setRecordDate',
-        'declaration_date' => 'setDeclarationDate',
-        'currency' => 'setCurrency',
-        'freq' => 'setFreq'
+        'name' => 'setName',
+        'acceptance_date' => 'setAcceptanceDate',
+        'filed_date' => 'setFiledDate',
+        'report_date' => 'setReportDate',
+        'form' => 'setForm',
+        'amend' => 'setAmend',
+        'source' => 'setSource',
+        'page_count' => 'setPageCount',
+        'document_count' => 'setDocumentCount'
     ];
 
     /**
@@ -150,15 +166,19 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'filing_id' => 'getFilingId',
+        'title' => 'getTitle',
+        'filer_id' => 'getFilerId',
         'symbol' => 'getSymbol',
-        'date' => 'getDate',
-        'amount' => 'getAmount',
-        'adjusted_amount' => 'getAdjustedAmount',
-        'pay_date' => 'getPayDate',
-        'record_date' => 'getRecordDate',
-        'declaration_date' => 'getDeclarationDate',
-        'currency' => 'getCurrency',
-        'freq' => 'getFreq'
+        'name' => 'getName',
+        'acceptance_date' => 'getAcceptanceDate',
+        'filed_date' => 'getFiledDate',
+        'report_date' => 'getReportDate',
+        'form' => 'getForm',
+        'amend' => 'getAmend',
+        'source' => 'getSource',
+        'page_count' => 'getPageCount',
+        'document_count' => 'getDocumentCount'
     ];
 
     /**
@@ -218,15 +238,19 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['filing_id'] = $data['filing_id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['filer_id'] = $data['filer_id'] ?? null;
         $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['date'] = $data['date'] ?? null;
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['adjusted_amount'] = $data['adjusted_amount'] ?? null;
-        $this->container['pay_date'] = $data['pay_date'] ?? null;
-        $this->container['record_date'] = $data['record_date'] ?? null;
-        $this->container['declaration_date'] = $data['declaration_date'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
-        $this->container['freq'] = $data['freq'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['acceptance_date'] = $data['acceptance_date'] ?? null;
+        $this->container['filed_date'] = $data['filed_date'] ?? null;
+        $this->container['report_date'] = $data['report_date'] ?? null;
+        $this->container['form'] = $data['form'] ?? null;
+        $this->container['amend'] = $data['amend'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
+        $this->container['page_count'] = $data['page_count'] ?? null;
+        $this->container['document_count'] = $data['document_count'] ?? null;
     }
 
     /**
@@ -254,9 +278,81 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets symbol
+     * Gets filing_id
      *
      * @return string|null
+     */
+    public function getFilingId()
+    {
+        return $this->container['filing_id'];
+    }
+
+    /**
+     * Sets filing_id
+     *
+     * @param string|null $filing_id Filing Id in Alpharesearch platform
+     *
+     * @return self
+     */
+    public function setFilingId($filing_id)
+    {
+        $this->container['filing_id'] = $filing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Filing title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets filer_id
+     *
+     * @return string|null
+     */
+    public function getFilerId()
+    {
+        return $this->container['filer_id'];
+    }
+
+    /**
+     * Sets filer_id
+     *
+     * @param string|null $filer_id Id of the entity submitted the filing
+     *
+     * @return self
+     */
+    public function setFilerId($filer_id)
+    {
+        $this->container['filer_id'] = $filer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbol
+     *
+     * @return object|null
      */
     public function getSymbol()
     {
@@ -266,7 +362,7 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Symbol.
+     * @param object|null $symbol List of symbol associate with this filing
      *
      * @return self
      */
@@ -278,193 +374,217 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets date
-     *
-     * @return \DateTime|null
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime|null $date Ex-Dividend date.
-     *
-     * @return self
-     */
-    public function setDate($date)
-    {
-        $this->container['date'] = $date;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return float|null
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param float|null $amount Amount in local currency.
-     *
-     * @return self
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets adjusted_amount
-     *
-     * @return float|null
-     */
-    public function getAdjustedAmount()
-    {
-        return $this->container['adjusted_amount'];
-    }
-
-    /**
-     * Sets adjusted_amount
-     *
-     * @param float|null $adjusted_amount Adjusted dividend.
-     *
-     * @return self
-     */
-    public function setAdjustedAmount($adjusted_amount)
-    {
-        $this->container['adjusted_amount'] = $adjusted_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_date
-     *
-     * @return \DateTime|null
-     */
-    public function getPayDate()
-    {
-        return $this->container['pay_date'];
-    }
-
-    /**
-     * Sets pay_date
-     *
-     * @param \DateTime|null $pay_date Pay date.
-     *
-     * @return self
-     */
-    public function setPayDate($pay_date)
-    {
-        $this->container['pay_date'] = $pay_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets record_date
-     *
-     * @return \DateTime|null
-     */
-    public function getRecordDate()
-    {
-        return $this->container['record_date'];
-    }
-
-    /**
-     * Sets record_date
-     *
-     * @param \DateTime|null $record_date Record date.
-     *
-     * @return self
-     */
-    public function setRecordDate($record_date)
-    {
-        $this->container['record_date'] = $record_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets declaration_date
-     *
-     * @return \DateTime|null
-     */
-    public function getDeclarationDate()
-    {
-        return $this->container['declaration_date'];
-    }
-
-    /**
-     * Sets declaration_date
-     *
-     * @param \DateTime|null $declaration_date Declaration date.
-     *
-     * @return self
-     */
-    public function setDeclarationDate($declaration_date)
-    {
-        $this->container['declaration_date'] = $declaration_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
+     * Gets name
      *
      * @return string|null
      */
-    public function getCurrency()
+    public function getName()
     {
-        return $this->container['currency'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets currency
+     * Sets name
      *
-     * @param string|null $currency Currency.
+     * @param string|null $name Filer name
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setName($name)
     {
-        $this->container['currency'] = $currency;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets freq
+     * Gets acceptance_date
      *
      * @return string|null
      */
-    public function getFreq()
+    public function getAcceptanceDate()
     {
-        return $this->container['freq'];
+        return $this->container['acceptance_date'];
     }
 
     /**
-     * Sets freq
+     * Sets acceptance_date
      *
-     * @param string|null $freq <p>Dividend frequency. Can be 1 of the following values:</p><ul> <li><code>0: Annually</code></li> <li><code>1: Monthly</code></li> <li><code>2: Quarterly</code></li> <li><code>3: Semi-annually</code></li> <li><code>4: Other/Unknown</code></li> <li><code>5: Bimonthly</code></li> <li><code>6: Trimesterly</code></li> <li><code>7: Weekly</code></li> </ul>
+     * @param string|null $acceptance_date Date the filing is submitted.
      *
      * @return self
      */
-    public function setFreq($freq)
+    public function setAcceptanceDate($acceptance_date)
     {
-        $this->container['freq'] = $freq;
+        $this->container['acceptance_date'] = $acceptance_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets filed_date
+     *
+     * @return string|null
+     */
+    public function getFiledDate()
+    {
+        return $this->container['filed_date'];
+    }
+
+    /**
+     * Sets filed_date
+     *
+     * @param string|null $filed_date Date the filing is make available to the public
+     *
+     * @return self
+     */
+    public function setFiledDate($filed_date)
+    {
+        $this->container['filed_date'] = $filed_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets report_date
+     *
+     * @return string|null
+     */
+    public function getReportDate()
+    {
+        return $this->container['report_date'];
+    }
+
+    /**
+     * Sets report_date
+     *
+     * @param string|null $report_date Date as which the filing is reported
+     *
+     * @return self
+     */
+    public function setReportDate($report_date)
+    {
+        $this->container['report_date'] = $report_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets form
+     *
+     * @return string|null
+     */
+    public function getForm()
+    {
+        return $this->container['form'];
+    }
+
+    /**
+     * Sets form
+     *
+     * @param string|null $form Filing Form
+     *
+     * @return self
+     */
+    public function setForm($form)
+    {
+        $this->container['form'] = $form;
+
+        return $this;
+    }
+
+    /**
+     * Gets amend
+     *
+     * @return bool|null
+     */
+    public function getAmend()
+    {
+        return $this->container['amend'];
+    }
+
+    /**
+     * Sets amend
+     *
+     * @param bool|null $amend Amendment
+     *
+     * @return self
+     */
+    public function setAmend($amend)
+    {
+        $this->container['amend'] = $amend;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source Filing Source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_count
+     *
+     * @return int|null
+     */
+    public function getPageCount()
+    {
+        return $this->container['page_count'];
+    }
+
+    /**
+     * Sets page_count
+     *
+     * @param int|null $page_count Estimate number of page when printing
+     *
+     * @return self
+     */
+    public function setPageCount($page_count)
+    {
+        $this->container['page_count'] = $page_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_count
+     *
+     * @return int|null
+     */
+    public function getDocumentCount()
+    {
+        return $this->container['document_count'];
+    }
+
+    /**
+     * Sets document_count
+     *
+     * @param int|null $document_count Number of document in this filing
+     *
+     * @return self
+     */
+    public function setDocumentCount($document_count)
+    {
+        $this->container['document_count'] = $document_count;
 
         return $this;
     }

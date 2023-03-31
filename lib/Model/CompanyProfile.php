@@ -63,6 +63,8 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => 'string',
         'country' => 'string',
         'currency' => 'string',
+        'estimate_currency' => 'string',
+        'market_cap_currency' => 'string',
         'cusip' => 'string',
         'sedol' => 'string',
         'description' => 'string',
@@ -101,6 +103,8 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => null,
         'country' => null,
         'currency' => null,
+        'estimate_currency' => null,
+        'market_cap_currency' => null,
         'cusip' => null,
         'sedol' => null,
         'description' => null,
@@ -158,6 +162,8 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => 'city',
         'country' => 'country',
         'currency' => 'currency',
+        'estimate_currency' => 'estimateCurrency',
+        'market_cap_currency' => 'marketCapCurrency',
         'cusip' => 'cusip',
         'sedol' => 'sedol',
         'description' => 'description',
@@ -194,6 +200,8 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => 'setCity',
         'country' => 'setCountry',
         'currency' => 'setCurrency',
+        'estimate_currency' => 'setEstimateCurrency',
+        'market_cap_currency' => 'setMarketCapCurrency',
         'cusip' => 'setCusip',
         'sedol' => 'setSedol',
         'description' => 'setDescription',
@@ -230,6 +238,8 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'city' => 'getCity',
         'country' => 'getCountry',
         'currency' => 'getCurrency',
+        'estimate_currency' => 'getEstimateCurrency',
+        'market_cap_currency' => 'getMarketCapCurrency',
         'cusip' => 'getCusip',
         'sedol' => 'getSedol',
         'description' => 'getDescription',
@@ -317,6 +327,8 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['city'] = $data['city'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['estimate_currency'] = $data['estimate_currency'] ?? null;
+        $this->container['market_cap_currency'] = $data['market_cap_currency'] ?? null;
         $this->container['cusip'] = $data['cusip'] ?? null;
         $this->container['sedol'] = $data['sedol'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
@@ -452,13 +464,61 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency Currency used in company filings.
+     * @param string|null $currency Currency used in company filings and financials.
      *
      * @return self
      */
     public function setCurrency($currency)
     {
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets estimate_currency
+     *
+     * @return string|null
+     */
+    public function getEstimateCurrency()
+    {
+        return $this->container['estimate_currency'];
+    }
+
+    /**
+     * Sets estimate_currency
+     *
+     * @param string|null $estimate_currency Currency used in Estimates data.
+     *
+     * @return self
+     */
+    public function setEstimateCurrency($estimate_currency)
+    {
+        $this->container['estimate_currency'] = $estimate_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets market_cap_currency
+     *
+     * @return string|null
+     */
+    public function getMarketCapCurrency()
+    {
+        return $this->container['market_cap_currency'];
+    }
+
+    /**
+     * Sets market_cap_currency
+     *
+     * @param string|null $market_cap_currency Currency used in market capitalization.
+     *
+     * @return self
+     */
+    public function setMarketCapCurrency($market_cap_currency)
+    {
+        $this->container['market_cap_currency'] = $market_cap_currency;
 
         return $this;
     }

@@ -64,7 +64,9 @@ class EarningResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'surprise' => 'float',
         'surprise_percent' => 'float',
         'period' => '\DateTime',
-        'symbol' => 'string'
+        'symbol' => 'string',
+        'year' => 'int',
+        'quarter' => 'int'
     ];
 
     /**
@@ -80,7 +82,9 @@ class EarningResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'surprise' => 'float',
         'surprise_percent' => 'float',
         'period' => 'date',
-        'symbol' => null
+        'symbol' => null,
+        'year' => 'int64',
+        'quarter' => 'int64'
     ];
 
     /**
@@ -115,7 +119,9 @@ class EarningResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'surprise' => 'surprise',
         'surprise_percent' => 'surprisePercent',
         'period' => 'period',
-        'symbol' => 'symbol'
+        'symbol' => 'symbol',
+        'year' => 'year',
+        'quarter' => 'quarter'
     ];
 
     /**
@@ -129,7 +135,9 @@ class EarningResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'surprise' => 'setSurprise',
         'surprise_percent' => 'setSurprisePercent',
         'period' => 'setPeriod',
-        'symbol' => 'setSymbol'
+        'symbol' => 'setSymbol',
+        'year' => 'setYear',
+        'quarter' => 'setQuarter'
     ];
 
     /**
@@ -143,7 +151,9 @@ class EarningResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'surprise' => 'getSurprise',
         'surprise_percent' => 'getSurprisePercent',
         'period' => 'getPeriod',
-        'symbol' => 'getSymbol'
+        'symbol' => 'getSymbol',
+        'year' => 'getYear',
+        'quarter' => 'getQuarter'
     ];
 
     /**
@@ -209,6 +219,8 @@ class EarningResult implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['surprise_percent'] = $data['surprise_percent'] ?? null;
         $this->container['period'] = $data['period'] ?? null;
         $this->container['symbol'] = $data['symbol'] ?? null;
+        $this->container['year'] = $data['year'] ?? null;
+        $this->container['quarter'] = $data['quarter'] ?? null;
     }
 
     /**
@@ -375,6 +387,54 @@ class EarningResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSymbol($symbol)
     {
         $this->container['symbol'] = $symbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets year
+     *
+     * @return int|null
+     */
+    public function getYear()
+    {
+        return $this->container['year'];
+    }
+
+    /**
+     * Sets year
+     *
+     * @param int|null $year Earnings year.
+     *
+     * @return self
+     */
+    public function setYear($year)
+    {
+        $this->container['year'] = $year;
+
+        return $this;
+    }
+
+    /**
+     * Gets quarter
+     *
+     * @return int|null
+     */
+    public function getQuarter()
+    {
+        return $this->container['quarter'];
+    }
+
+    /**
+     * Sets quarter
+     *
+     * @param int|null $quarter Earnings quarter.
+     *
+     * @return self
+     */
+    public function setQuarter($quarter)
+    {
+        $this->container['quarter'] = $quarter;
 
         return $this;
     }

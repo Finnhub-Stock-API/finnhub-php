@@ -1,6 +1,6 @@
 <?php
 /**
- * Dividends
+ * DocumentResponse
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Dividends Class Doc Comment
+ * DocumentResponse Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
+class DocumentResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Dividends';
+    protected static $openAPIModelName = 'DocumentResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,12 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'date' => '\DateTime',
-        'amount' => 'float',
-        'adjusted_amount' => 'float',
-        'pay_date' => '\DateTime',
-        'record_date' => '\DateTime',
-        'declaration_date' => '\DateTime',
-        'currency' => 'string',
-        'freq' => 'string'
+        'document_id' => 'string',
+        'title' => 'string',
+        'hits' => 'string',
+        'url' => 'string',
+        'format' => 'string',
+        'excerpts' => '\Finnhub\Model\ExcerptResponse[]'
     ];
 
     /**
@@ -78,15 +75,12 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'date' => 'date',
-        'amount' => 'float',
-        'adjusted_amount' => 'float',
-        'pay_date' => 'date',
-        'record_date' => 'date',
-        'declaration_date' => 'date',
-        'currency' => null,
-        'freq' => null
+        'document_id' => null,
+        'title' => null,
+        'hits' => null,
+        'url' => null,
+        'format' => null,
+        'excerpts' => null
     ];
 
     /**
@@ -116,15 +110,12 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'date' => 'date',
-        'amount' => 'amount',
-        'adjusted_amount' => 'adjustedAmount',
-        'pay_date' => 'payDate',
-        'record_date' => 'recordDate',
-        'declaration_date' => 'declarationDate',
-        'currency' => 'currency',
-        'freq' => 'freq'
+        'document_id' => 'documentId',
+        'title' => 'title',
+        'hits' => 'hits',
+        'url' => 'url',
+        'format' => 'format',
+        'excerpts' => 'excerpts'
     ];
 
     /**
@@ -133,15 +124,12 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'date' => 'setDate',
-        'amount' => 'setAmount',
-        'adjusted_amount' => 'setAdjustedAmount',
-        'pay_date' => 'setPayDate',
-        'record_date' => 'setRecordDate',
-        'declaration_date' => 'setDeclarationDate',
-        'currency' => 'setCurrency',
-        'freq' => 'setFreq'
+        'document_id' => 'setDocumentId',
+        'title' => 'setTitle',
+        'hits' => 'setHits',
+        'url' => 'setUrl',
+        'format' => 'setFormat',
+        'excerpts' => 'setExcerpts'
     ];
 
     /**
@@ -150,15 +138,12 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'date' => 'getDate',
-        'amount' => 'getAmount',
-        'adjusted_amount' => 'getAdjustedAmount',
-        'pay_date' => 'getPayDate',
-        'record_date' => 'getRecordDate',
-        'declaration_date' => 'getDeclarationDate',
-        'currency' => 'getCurrency',
-        'freq' => 'getFreq'
+        'document_id' => 'getDocumentId',
+        'title' => 'getTitle',
+        'hits' => 'getHits',
+        'url' => 'getUrl',
+        'format' => 'getFormat',
+        'excerpts' => 'getExcerpts'
     ];
 
     /**
@@ -218,15 +203,12 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['date'] = $data['date'] ?? null;
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['adjusted_amount'] = $data['adjusted_amount'] ?? null;
-        $this->container['pay_date'] = $data['pay_date'] ?? null;
-        $this->container['record_date'] = $data['record_date'] ?? null;
-        $this->container['declaration_date'] = $data['declaration_date'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
-        $this->container['freq'] = $data['freq'] ?? null;
+        $this->container['document_id'] = $data['document_id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['hits'] = $data['hits'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
+        $this->container['format'] = $data['format'] ?? null;
+        $this->container['excerpts'] = $data['excerpts'] ?? null;
     }
 
     /**
@@ -254,217 +236,145 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets symbol
+     * Gets document_id
      *
      * @return string|null
      */
-    public function getSymbol()
+    public function getDocumentId()
     {
-        return $this->container['symbol'];
+        return $this->container['document_id'];
     }
 
     /**
-     * Sets symbol
+     * Sets document_id
      *
-     * @param string|null $symbol Symbol.
+     * @param string|null $document_id AlphaResearch internal document id.
      *
      * @return self
      */
-    public function setSymbol($symbol)
+    public function setDocumentId($document_id)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['document_id'] = $document_id;
 
         return $this;
     }
 
     /**
-     * Gets date
-     *
-     * @return \DateTime|null
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime|null $date Ex-Dividend date.
-     *
-     * @return self
-     */
-    public function setDate($date)
-    {
-        $this->container['date'] = $date;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return float|null
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param float|null $amount Amount in local currency.
-     *
-     * @return self
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets adjusted_amount
-     *
-     * @return float|null
-     */
-    public function getAdjustedAmount()
-    {
-        return $this->container['adjusted_amount'];
-    }
-
-    /**
-     * Sets adjusted_amount
-     *
-     * @param float|null $adjusted_amount Adjusted dividend.
-     *
-     * @return self
-     */
-    public function setAdjustedAmount($adjusted_amount)
-    {
-        $this->container['adjusted_amount'] = $adjusted_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_date
-     *
-     * @return \DateTime|null
-     */
-    public function getPayDate()
-    {
-        return $this->container['pay_date'];
-    }
-
-    /**
-     * Sets pay_date
-     *
-     * @param \DateTime|null $pay_date Pay date.
-     *
-     * @return self
-     */
-    public function setPayDate($pay_date)
-    {
-        $this->container['pay_date'] = $pay_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets record_date
-     *
-     * @return \DateTime|null
-     */
-    public function getRecordDate()
-    {
-        return $this->container['record_date'];
-    }
-
-    /**
-     * Sets record_date
-     *
-     * @param \DateTime|null $record_date Record date.
-     *
-     * @return self
-     */
-    public function setRecordDate($record_date)
-    {
-        $this->container['record_date'] = $record_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets declaration_date
-     *
-     * @return \DateTime|null
-     */
-    public function getDeclarationDate()
-    {
-        return $this->container['declaration_date'];
-    }
-
-    /**
-     * Sets declaration_date
-     *
-     * @param \DateTime|null $declaration_date Declaration date.
-     *
-     * @return self
-     */
-    public function setDeclarationDate($declaration_date)
-    {
-        $this->container['declaration_date'] = $declaration_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
+     * Gets title
      *
      * @return string|null
      */
-    public function getCurrency()
+    public function getTitle()
     {
-        return $this->container['currency'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets currency
+     * Sets title
      *
-     * @param string|null $currency Currency.
+     * @param string|null $title Title for this document.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setTitle($title)
     {
-        $this->container['currency'] = $currency;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets freq
+     * Gets hits
      *
      * @return string|null
      */
-    public function getFreq()
+    public function getHits()
     {
-        return $this->container['freq'];
+        return $this->container['hits'];
     }
 
     /**
-     * Sets freq
+     * Sets hits
      *
-     * @param string|null $freq <p>Dividend frequency. Can be 1 of the following values:</p><ul> <li><code>0: Annually</code></li> <li><code>1: Monthly</code></li> <li><code>2: Quarterly</code></li> <li><code>3: Semi-annually</code></li> <li><code>4: Other/Unknown</code></li> <li><code>5: Bimonthly</code></li> <li><code>6: Trimesterly</code></li> <li><code>7: Weekly</code></li> </ul>
+     * @param string|null $hits Number of hit in this document
      *
      * @return self
      */
-    public function setFreq($freq)
+    public function setHits($hits)
     {
-        $this->container['freq'] = $freq;
+        $this->container['hits'] = $hits;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url Link to render this document
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format Format of this document (can be html or pdf)
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets excerpts
+     *
+     * @return \Finnhub\Model\ExcerptResponse[]|null
+     */
+    public function getExcerpts()
+    {
+        return $this->container['excerpts'];
+    }
+
+    /**
+     * Sets excerpts
+     *
+     * @param \Finnhub\Model\ExcerptResponse[]|null $excerpts Highlighted excerpts for this document
+     *
+     * @return self
+     */
+    public function setExcerpts($excerpts)
+    {
+        $this->container['excerpts'] = $excerpts;
 
         return $this;
     }

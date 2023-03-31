@@ -1,6 +1,6 @@
 <?php
 /**
- * Dividends
+ * CongressionalTransaction
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Dividends Class Doc Comment
+ * CongressionalTransaction Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
+class CongressionalTransaction implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Dividends';
+    protected static $openAPIModelName = 'CongressionalTransaction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,16 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'amount_from' => 'float',
+        'amount_to' => 'float',
+        'asset_name' => 'string',
+        'filing_date' => 'string',
+        'name' => 'string',
+        'owner_type' => 'string',
+        'position' => 'string',
         'symbol' => 'string',
-        'date' => '\DateTime',
-        'amount' => 'float',
-        'adjusted_amount' => 'float',
-        'pay_date' => '\DateTime',
-        'record_date' => '\DateTime',
-        'declaration_date' => '\DateTime',
-        'currency' => 'string',
-        'freq' => 'string'
+        'transaction_date' => 'string',
+        'transaction_type' => 'string'
     ];
 
     /**
@@ -78,15 +79,16 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'amount_from' => 'float',
+        'amount_to' => 'float',
+        'asset_name' => null,
+        'filing_date' => null,
+        'name' => null,
+        'owner_type' => null,
+        'position' => null,
         'symbol' => null,
-        'date' => 'date',
-        'amount' => 'float',
-        'adjusted_amount' => 'float',
-        'pay_date' => 'date',
-        'record_date' => 'date',
-        'declaration_date' => 'date',
-        'currency' => null,
-        'freq' => null
+        'transaction_date' => null,
+        'transaction_type' => null
     ];
 
     /**
@@ -116,15 +118,16 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'amount_from' => 'amountFrom',
+        'amount_to' => 'amountTo',
+        'asset_name' => 'assetName',
+        'filing_date' => 'filingDate',
+        'name' => 'name',
+        'owner_type' => 'ownerType',
+        'position' => 'position',
         'symbol' => 'symbol',
-        'date' => 'date',
-        'amount' => 'amount',
-        'adjusted_amount' => 'adjustedAmount',
-        'pay_date' => 'payDate',
-        'record_date' => 'recordDate',
-        'declaration_date' => 'declarationDate',
-        'currency' => 'currency',
-        'freq' => 'freq'
+        'transaction_date' => 'transactionDate',
+        'transaction_type' => 'transactionType'
     ];
 
     /**
@@ -133,15 +136,16 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'amount_from' => 'setAmountFrom',
+        'amount_to' => 'setAmountTo',
+        'asset_name' => 'setAssetName',
+        'filing_date' => 'setFilingDate',
+        'name' => 'setName',
+        'owner_type' => 'setOwnerType',
+        'position' => 'setPosition',
         'symbol' => 'setSymbol',
-        'date' => 'setDate',
-        'amount' => 'setAmount',
-        'adjusted_amount' => 'setAdjustedAmount',
-        'pay_date' => 'setPayDate',
-        'record_date' => 'setRecordDate',
-        'declaration_date' => 'setDeclarationDate',
-        'currency' => 'setCurrency',
-        'freq' => 'setFreq'
+        'transaction_date' => 'setTransactionDate',
+        'transaction_type' => 'setTransactionType'
     ];
 
     /**
@@ -150,15 +154,16 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'amount_from' => 'getAmountFrom',
+        'amount_to' => 'getAmountTo',
+        'asset_name' => 'getAssetName',
+        'filing_date' => 'getFilingDate',
+        'name' => 'getName',
+        'owner_type' => 'getOwnerType',
+        'position' => 'getPosition',
         'symbol' => 'getSymbol',
-        'date' => 'getDate',
-        'amount' => 'getAmount',
-        'adjusted_amount' => 'getAdjustedAmount',
-        'pay_date' => 'getPayDate',
-        'record_date' => 'getRecordDate',
-        'declaration_date' => 'getDeclarationDate',
-        'currency' => 'getCurrency',
-        'freq' => 'getFreq'
+        'transaction_date' => 'getTransactionDate',
+        'transaction_type' => 'getTransactionType'
     ];
 
     /**
@@ -218,15 +223,16 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['amount_from'] = $data['amount_from'] ?? null;
+        $this->container['amount_to'] = $data['amount_to'] ?? null;
+        $this->container['asset_name'] = $data['asset_name'] ?? null;
+        $this->container['filing_date'] = $data['filing_date'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['owner_type'] = $data['owner_type'] ?? null;
+        $this->container['position'] = $data['position'] ?? null;
         $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['date'] = $data['date'] ?? null;
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['adjusted_amount'] = $data['adjusted_amount'] ?? null;
-        $this->container['pay_date'] = $data['pay_date'] ?? null;
-        $this->container['record_date'] = $data['record_date'] ?? null;
-        $this->container['declaration_date'] = $data['declaration_date'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
-        $this->container['freq'] = $data['freq'] ?? null;
+        $this->container['transaction_date'] = $data['transaction_date'] ?? null;
+        $this->container['transaction_type'] = $data['transaction_type'] ?? null;
     }
 
     /**
@@ -254,6 +260,174 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets amount_from
+     *
+     * @return float|null
+     */
+    public function getAmountFrom()
+    {
+        return $this->container['amount_from'];
+    }
+
+    /**
+     * Sets amount_from
+     *
+     * @param float|null $amount_from Transaction amount from.
+     *
+     * @return self
+     */
+    public function setAmountFrom($amount_from)
+    {
+        $this->container['amount_from'] = $amount_from;
+
+        return $this;
+    }
+
+    /**
+     * Gets amount_to
+     *
+     * @return float|null
+     */
+    public function getAmountTo()
+    {
+        return $this->container['amount_to'];
+    }
+
+    /**
+     * Sets amount_to
+     *
+     * @param float|null $amount_to Transaction amount to.
+     *
+     * @return self
+     */
+    public function setAmountTo($amount_to)
+    {
+        $this->container['amount_to'] = $amount_to;
+
+        return $this;
+    }
+
+    /**
+     * Gets asset_name
+     *
+     * @return string|null
+     */
+    public function getAssetName()
+    {
+        return $this->container['asset_name'];
+    }
+
+    /**
+     * Sets asset_name
+     *
+     * @param string|null $asset_name Asset name.
+     *
+     * @return self
+     */
+    public function setAssetName($asset_name)
+    {
+        $this->container['asset_name'] = $asset_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets filing_date
+     *
+     * @return string|null
+     */
+    public function getFilingDate()
+    {
+        return $this->container['filing_date'];
+    }
+
+    /**
+     * Sets filing_date
+     *
+     * @param string|null $filing_date Filing date.
+     *
+     * @return self
+     */
+    public function setFilingDate($filing_date)
+    {
+        $this->container['filing_date'] = $filing_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name of the representative.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner_type
+     *
+     * @return string|null
+     */
+    public function getOwnerType()
+    {
+        return $this->container['owner_type'];
+    }
+
+    /**
+     * Sets owner_type
+     *
+     * @param string|null $owner_type Owner Type.
+     *
+     * @return self
+     */
+    public function setOwnerType($owner_type)
+    {
+        $this->container['owner_type'] = $owner_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets position
+     *
+     * @return string|null
+     */
+    public function getPosition()
+    {
+        return $this->container['position'];
+    }
+
+    /**
+     * Sets position
+     *
+     * @param string|null $position Position.
+     *
+     * @return self
+     */
+    public function setPosition($position)
+    {
+        $this->container['position'] = $position;
+
+        return $this;
+    }
+
+    /**
      * Gets symbol
      *
      * @return string|null
@@ -278,193 +452,49 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets date
-     *
-     * @return \DateTime|null
-     */
-    public function getDate()
-    {
-        return $this->container['date'];
-    }
-
-    /**
-     * Sets date
-     *
-     * @param \DateTime|null $date Ex-Dividend date.
-     *
-     * @return self
-     */
-    public function setDate($date)
-    {
-        $this->container['date'] = $date;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return float|null
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param float|null $amount Amount in local currency.
-     *
-     * @return self
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets adjusted_amount
-     *
-     * @return float|null
-     */
-    public function getAdjustedAmount()
-    {
-        return $this->container['adjusted_amount'];
-    }
-
-    /**
-     * Sets adjusted_amount
-     *
-     * @param float|null $adjusted_amount Adjusted dividend.
-     *
-     * @return self
-     */
-    public function setAdjustedAmount($adjusted_amount)
-    {
-        $this->container['adjusted_amount'] = $adjusted_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_date
-     *
-     * @return \DateTime|null
-     */
-    public function getPayDate()
-    {
-        return $this->container['pay_date'];
-    }
-
-    /**
-     * Sets pay_date
-     *
-     * @param \DateTime|null $pay_date Pay date.
-     *
-     * @return self
-     */
-    public function setPayDate($pay_date)
-    {
-        $this->container['pay_date'] = $pay_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets record_date
-     *
-     * @return \DateTime|null
-     */
-    public function getRecordDate()
-    {
-        return $this->container['record_date'];
-    }
-
-    /**
-     * Sets record_date
-     *
-     * @param \DateTime|null $record_date Record date.
-     *
-     * @return self
-     */
-    public function setRecordDate($record_date)
-    {
-        $this->container['record_date'] = $record_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets declaration_date
-     *
-     * @return \DateTime|null
-     */
-    public function getDeclarationDate()
-    {
-        return $this->container['declaration_date'];
-    }
-
-    /**
-     * Sets declaration_date
-     *
-     * @param \DateTime|null $declaration_date Declaration date.
-     *
-     * @return self
-     */
-    public function setDeclarationDate($declaration_date)
-    {
-        $this->container['declaration_date'] = $declaration_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
+     * Gets transaction_date
      *
      * @return string|null
      */
-    public function getCurrency()
+    public function getTransactionDate()
     {
-        return $this->container['currency'];
+        return $this->container['transaction_date'];
     }
 
     /**
-     * Sets currency
+     * Sets transaction_date
      *
-     * @param string|null $currency Currency.
+     * @param string|null $transaction_date Transaction date.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setTransactionDate($transaction_date)
     {
-        $this->container['currency'] = $currency;
+        $this->container['transaction_date'] = $transaction_date;
 
         return $this;
     }
 
     /**
-     * Gets freq
+     * Gets transaction_type
      *
      * @return string|null
      */
-    public function getFreq()
+    public function getTransactionType()
     {
-        return $this->container['freq'];
+        return $this->container['transaction_type'];
     }
 
     /**
-     * Sets freq
+     * Sets transaction_type
      *
-     * @param string|null $freq <p>Dividend frequency. Can be 1 of the following values:</p><ul> <li><code>0: Annually</code></li> <li><code>1: Monthly</code></li> <li><code>2: Quarterly</code></li> <li><code>3: Semi-annually</code></li> <li><code>4: Other/Unknown</code></li> <li><code>5: Bimonthly</code></li> <li><code>6: Trimesterly</code></li> <li><code>7: Weekly</code></li> </ul>
+     * @param string|null $transaction_type Transaction type <code>Sale</code> or <code>Purchase</code>.
      *
      * @return self
      */
-    public function setFreq($freq)
+    public function setTransactionType($transaction_type)
     {
-        $this->container['freq'] = $freq;
+        $this->container['transaction_type'] = $transaction_type;
 
         return $this;
     }

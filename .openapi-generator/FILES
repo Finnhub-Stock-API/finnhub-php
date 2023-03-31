@@ -8,6 +8,8 @@ docs/Model/BasicFinancials.md
 docs/Model/BondCandles.md
 docs/Model/BondProfile.md
 docs/Model/BondTickData.md
+docs/Model/BondYieldCurve.md
+docs/Model/BondYieldCurveInfo.md
 docs/Model/BreakdownItem.md
 docs/Model/Company.md
 docs/Model/CompanyESG.md
@@ -18,6 +20,8 @@ docs/Model/CompanyNews.md
 docs/Model/CompanyNewsStatistics.md
 docs/Model/CompanyProfile.md
 docs/Model/CompanyProfile2.md
+docs/Model/CongressionalTrading.md
+docs/Model/CongressionalTransaction.md
 docs/Model/CountryMetadata.md
 docs/Model/CovidInfo.md
 docs/Model/CryptoCandles.md
@@ -27,6 +31,7 @@ docs/Model/Development.md
 docs/Model/Dividends.md
 docs/Model/Dividends2.md
 docs/Model/Dividends2Info.md
+docs/Model/DocumentResponse.md
 docs/Model/ETFCountryExposureData.md
 docs/Model/ETFHoldingsData.md
 docs/Model/ETFProfileData.md
@@ -51,8 +56,10 @@ docs/Model/EconomicCode.md
 docs/Model/EconomicData.md
 docs/Model/EconomicDataInfo.md
 docs/Model/EconomicEvent.md
+docs/Model/ExcerptResponse.md
 docs/Model/FDAComitteeMeeting.md
 docs/Model/Filing.md
+docs/Model/FilingResponse.md
 docs/Model/FilingSentiment.md
 docs/Model/FinancialStatements.md
 docs/Model/FinancialsAsReported.md
@@ -64,6 +71,8 @@ docs/Model/FundOwnershipInfo.md
 docs/Model/HistoricalNBBO.md
 docs/Model/IPOCalendar.md
 docs/Model/IPOEvent.md
+docs/Model/InFilingResponse.md
+docs/Model/InFilingSearchBody.md
 docs/Model/IndexHistoricalConstituent.md
 docs/Model/Indicator.md
 docs/Model/IndicesConstituents.md
@@ -91,6 +100,8 @@ docs/Model/LobbyingResult.md
 docs/Model/MarketNews.md
 docs/Model/MutualFundCountryExposure.md
 docs/Model/MutualFundCountryExposureData.md
+docs/Model/MutualFundEet.md
+docs/Model/MutualFundEetPai.md
 docs/Model/MutualFundHoldings.md
 docs/Model/MutualFundHoldingsData.md
 docs/Model/MutualFundProfile.md
@@ -112,6 +123,9 @@ docs/Model/RevenueBreakdown.md
 docs/Model/RevenueEstimates.md
 docs/Model/RevenueEstimatesInfo.md
 docs/Model/SECSentimentAnalysis.md
+docs/Model/SearchBody.md
+docs/Model/SearchFilter.md
+docs/Model/SearchResponse.md
 docs/Model/SectorMetric.md
 docs/Model/SectorMetricData.md
 docs/Model/Sentiment.md
@@ -152,6 +166,8 @@ lib/Model/BasicFinancials.php
 lib/Model/BondCandles.php
 lib/Model/BondProfile.php
 lib/Model/BondTickData.php
+lib/Model/BondYieldCurve.php
+lib/Model/BondYieldCurveInfo.php
 lib/Model/BreakdownItem.php
 lib/Model/Company.php
 lib/Model/CompanyESG.php
@@ -162,6 +178,8 @@ lib/Model/CompanyNews.php
 lib/Model/CompanyNewsStatistics.php
 lib/Model/CompanyProfile.php
 lib/Model/CompanyProfile2.php
+lib/Model/CongressionalTrading.php
+lib/Model/CongressionalTransaction.php
 lib/Model/CountryMetadata.php
 lib/Model/CovidInfo.php
 lib/Model/CryptoCandles.php
@@ -171,6 +189,7 @@ lib/Model/Development.php
 lib/Model/Dividends.php
 lib/Model/Dividends2.php
 lib/Model/Dividends2Info.php
+lib/Model/DocumentResponse.php
 lib/Model/ETFCountryExposureData.php
 lib/Model/ETFHoldingsData.php
 lib/Model/ETFProfileData.php
@@ -195,8 +214,10 @@ lib/Model/EconomicCode.php
 lib/Model/EconomicData.php
 lib/Model/EconomicDataInfo.php
 lib/Model/EconomicEvent.php
+lib/Model/ExcerptResponse.php
 lib/Model/FDAComitteeMeeting.php
 lib/Model/Filing.php
+lib/Model/FilingResponse.php
 lib/Model/FilingSentiment.php
 lib/Model/FinancialStatements.php
 lib/Model/FinancialsAsReported.php
@@ -208,6 +229,8 @@ lib/Model/FundOwnershipInfo.php
 lib/Model/HistoricalNBBO.php
 lib/Model/IPOCalendar.php
 lib/Model/IPOEvent.php
+lib/Model/InFilingResponse.php
+lib/Model/InFilingSearchBody.php
 lib/Model/IndexHistoricalConstituent.php
 lib/Model/Indicator.php
 lib/Model/IndicesConstituents.php
@@ -236,6 +259,8 @@ lib/Model/MarketNews.php
 lib/Model/ModelInterface.php
 lib/Model/MutualFundCountryExposure.php
 lib/Model/MutualFundCountryExposureData.php
+lib/Model/MutualFundEet.php
+lib/Model/MutualFundEetPai.php
 lib/Model/MutualFundHoldings.php
 lib/Model/MutualFundHoldingsData.php
 lib/Model/MutualFundProfile.php
@@ -257,6 +282,9 @@ lib/Model/RevenueBreakdown.php
 lib/Model/RevenueEstimates.php
 lib/Model/RevenueEstimatesInfo.php
 lib/Model/SECSentimentAnalysis.php
+lib/Model/SearchBody.php
+lib/Model/SearchFilter.php
+lib/Model/SearchResponse.php
 lib/Model/SectorMetric.php
 lib/Model/SectorMetricData.php
 lib/Model/Sentiment.php
@@ -289,3 +317,17 @@ lib/Model/VisaApplication.php
 lib/Model/VisaApplicationResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BondYieldCurveInfoTest.php
+test/Model/BondYieldCurveTest.php
+test/Model/CongressionalTradingTest.php
+test/Model/CongressionalTransactionTest.php
+test/Model/DocumentResponseTest.php
+test/Model/ExcerptResponseTest.php
+test/Model/FilingResponseTest.php
+test/Model/InFilingResponseTest.php
+test/Model/InFilingSearchBodyTest.php
+test/Model/MutualFundEetPaiTest.php
+test/Model/MutualFundEetTest.php
+test/Model/SearchBodyTest.php
+test/Model/SearchFilterTest.php
+test/Model/SearchResponseTest.php

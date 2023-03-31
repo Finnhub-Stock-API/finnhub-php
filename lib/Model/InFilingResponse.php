@@ -1,6 +1,6 @@
 <?php
 /**
- * MutualFundHoldingsData
+ * InFilingResponse
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * MutualFundHoldingsData Class Doc Comment
+ * InFilingResponse Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerializable
+class InFilingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MutualFundHoldingsData';
+    protected static $openAPIModelName = 'InFilingResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,20 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
+        'filing_id' => 'string',
+        'title' => 'string',
+        'filer_id' => 'string',
+        'symbol' => 'object',
         'name' => 'string',
-        'isin' => 'string',
-        'cusip' => 'string',
-        'share' => 'float',
-        'percent' => 'float',
-        'value' => 'float',
-        'asset_type' => 'string'
+        'acceptance_date' => 'string',
+        'filed_date' => 'string',
+        'report_date' => 'string',
+        'form' => 'string',
+        'amend' => 'bool',
+        'source' => 'string',
+        'page_count' => 'int',
+        'document_count' => 'int',
+        'documents' => '\Finnhub\Model\DocumentResponse[]'
     ];
 
     /**
@@ -77,14 +83,20 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'filing_id' => null,
+        'title' => null,
+        'filer_id' => null,
         'symbol' => null,
         'name' => null,
-        'isin' => null,
-        'cusip' => null,
-        'share' => 'float',
-        'percent' => 'float',
-        'value' => 'float',
-        'asset_type' => null
+        'acceptance_date' => null,
+        'filed_date' => null,
+        'report_date' => null,
+        'form' => null,
+        'amend' => null,
+        'source' => null,
+        'page_count' => null,
+        'document_count' => null,
+        'documents' => null
     ];
 
     /**
@@ -114,14 +126,20 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
+        'filing_id' => 'filingId',
+        'title' => 'title',
+        'filer_id' => 'filerId',
         'symbol' => 'symbol',
         'name' => 'name',
-        'isin' => 'isin',
-        'cusip' => 'cusip',
-        'share' => 'share',
-        'percent' => 'percent',
-        'value' => 'value',
-        'asset_type' => 'assetType'
+        'acceptance_date' => 'acceptanceDate',
+        'filed_date' => 'filedDate',
+        'report_date' => 'reportDate',
+        'form' => 'form',
+        'amend' => 'amend',
+        'source' => 'source',
+        'page_count' => 'pageCount',
+        'document_count' => 'documentCount',
+        'documents' => 'documents'
     ];
 
     /**
@@ -130,14 +148,20 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
+        'filing_id' => 'setFilingId',
+        'title' => 'setTitle',
+        'filer_id' => 'setFilerId',
         'symbol' => 'setSymbol',
         'name' => 'setName',
-        'isin' => 'setIsin',
-        'cusip' => 'setCusip',
-        'share' => 'setShare',
-        'percent' => 'setPercent',
-        'value' => 'setValue',
-        'asset_type' => 'setAssetType'
+        'acceptance_date' => 'setAcceptanceDate',
+        'filed_date' => 'setFiledDate',
+        'report_date' => 'setReportDate',
+        'form' => 'setForm',
+        'amend' => 'setAmend',
+        'source' => 'setSource',
+        'page_count' => 'setPageCount',
+        'document_count' => 'setDocumentCount',
+        'documents' => 'setDocuments'
     ];
 
     /**
@@ -146,14 +170,20 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
+        'filing_id' => 'getFilingId',
+        'title' => 'getTitle',
+        'filer_id' => 'getFilerId',
         'symbol' => 'getSymbol',
         'name' => 'getName',
-        'isin' => 'getIsin',
-        'cusip' => 'getCusip',
-        'share' => 'getShare',
-        'percent' => 'getPercent',
-        'value' => 'getValue',
-        'asset_type' => 'getAssetType'
+        'acceptance_date' => 'getAcceptanceDate',
+        'filed_date' => 'getFiledDate',
+        'report_date' => 'getReportDate',
+        'form' => 'getForm',
+        'amend' => 'getAmend',
+        'source' => 'getSource',
+        'page_count' => 'getPageCount',
+        'document_count' => 'getDocumentCount',
+        'documents' => 'getDocuments'
     ];
 
     /**
@@ -213,14 +243,20 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
+        $this->container['filing_id'] = $data['filing_id'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['filer_id'] = $data['filer_id'] ?? null;
         $this->container['symbol'] = $data['symbol'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['isin'] = $data['isin'] ?? null;
-        $this->container['cusip'] = $data['cusip'] ?? null;
-        $this->container['share'] = $data['share'] ?? null;
-        $this->container['percent'] = $data['percent'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
-        $this->container['asset_type'] = $data['asset_type'] ?? null;
+        $this->container['acceptance_date'] = $data['acceptance_date'] ?? null;
+        $this->container['filed_date'] = $data['filed_date'] ?? null;
+        $this->container['report_date'] = $data['report_date'] ?? null;
+        $this->container['form'] = $data['form'] ?? null;
+        $this->container['amend'] = $data['amend'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
+        $this->container['page_count'] = $data['page_count'] ?? null;
+        $this->container['document_count'] = $data['document_count'] ?? null;
+        $this->container['documents'] = $data['documents'] ?? null;
     }
 
     /**
@@ -248,9 +284,81 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets symbol
+     * Gets filing_id
      *
      * @return string|null
+     */
+    public function getFilingId()
+    {
+        return $this->container['filing_id'];
+    }
+
+    /**
+     * Sets filing_id
+     *
+     * @param string|null $filing_id Filing Id in Alpharesearch platform
+     *
+     * @return self
+     */
+    public function setFilingId($filing_id)
+    {
+        $this->container['filing_id'] = $filing_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Filing title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets filer_id
+     *
+     * @return string|null
+     */
+    public function getFilerId()
+    {
+        return $this->container['filer_id'];
+    }
+
+    /**
+     * Sets filer_id
+     *
+     * @param string|null $filer_id Id of the entity submitted the filing
+     *
+     * @return self
+     */
+    public function setFilerId($filer_id)
+    {
+        $this->container['filer_id'] = $filer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbol
+     *
+     * @return object|null
      */
     public function getSymbol()
     {
@@ -260,7 +368,7 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Symbol description
+     * @param object|null $symbol List of symbol associate with this filing
      *
      * @return self
      */
@@ -284,7 +392,7 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets name
      *
-     * @param string|null $name Security name
+     * @param string|null $name Filer name
      *
      * @return self
      */
@@ -296,145 +404,217 @@ class MutualFundHoldingsData implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets isin
+     * Gets acceptance_date
      *
      * @return string|null
      */
-    public function getIsin()
+    public function getAcceptanceDate()
     {
-        return $this->container['isin'];
+        return $this->container['acceptance_date'];
     }
 
     /**
-     * Sets isin
+     * Sets acceptance_date
      *
-     * @param string|null $isin ISIN.
+     * @param string|null $acceptance_date Date the filing is submitted.
      *
      * @return self
      */
-    public function setIsin($isin)
+    public function setAcceptanceDate($acceptance_date)
     {
-        $this->container['isin'] = $isin;
+        $this->container['acceptance_date'] = $acceptance_date;
 
         return $this;
     }
 
     /**
-     * Gets cusip
+     * Gets filed_date
      *
      * @return string|null
      */
-    public function getCusip()
+    public function getFiledDate()
     {
-        return $this->container['cusip'];
+        return $this->container['filed_date'];
     }
 
     /**
-     * Sets cusip
+     * Sets filed_date
      *
-     * @param string|null $cusip CUSIP.
+     * @param string|null $filed_date Date the filing is make available to the public
      *
      * @return self
      */
-    public function setCusip($cusip)
+    public function setFiledDate($filed_date)
     {
-        $this->container['cusip'] = $cusip;
+        $this->container['filed_date'] = $filed_date;
 
         return $this;
     }
 
     /**
-     * Gets share
-     *
-     * @return float|null
-     */
-    public function getShare()
-    {
-        return $this->container['share'];
-    }
-
-    /**
-     * Sets share
-     *
-     * @param float|null $share Number of shares.
-     *
-     * @return self
-     */
-    public function setShare($share)
-    {
-        $this->container['share'] = $share;
-
-        return $this;
-    }
-
-    /**
-     * Gets percent
-     *
-     * @return float|null
-     */
-    public function getPercent()
-    {
-        return $this->container['percent'];
-    }
-
-    /**
-     * Sets percent
-     *
-     * @param float|null $percent Portfolio's percent
-     *
-     * @return self
-     */
-    public function setPercent($percent)
-    {
-        $this->container['percent'] = $percent;
-
-        return $this;
-    }
-
-    /**
-     * Gets value
-     *
-     * @return float|null
-     */
-    public function getValue()
-    {
-        return $this->container['value'];
-    }
-
-    /**
-     * Sets value
-     *
-     * @param float|null $value Market value
-     *
-     * @return self
-     */
-    public function setValue($value)
-    {
-        $this->container['value'] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Gets asset_type
+     * Gets report_date
      *
      * @return string|null
      */
-    public function getAssetType()
+    public function getReportDate()
     {
-        return $this->container['asset_type'];
+        return $this->container['report_date'];
     }
 
     /**
-     * Sets asset_type
+     * Sets report_date
      *
-     * @param string|null $asset_type Asset type. Can be 1 of the following values: <code>Equity</code>, <code>ETP</code>, <code>Fund</code>, <code>Bond</code>, <code>Other</code> or empty.
+     * @param string|null $report_date Date as which the filing is reported
      *
      * @return self
      */
-    public function setAssetType($asset_type)
+    public function setReportDate($report_date)
     {
-        $this->container['asset_type'] = $asset_type;
+        $this->container['report_date'] = $report_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets form
+     *
+     * @return string|null
+     */
+    public function getForm()
+    {
+        return $this->container['form'];
+    }
+
+    /**
+     * Sets form
+     *
+     * @param string|null $form Filing Form
+     *
+     * @return self
+     */
+    public function setForm($form)
+    {
+        $this->container['form'] = $form;
+
+        return $this;
+    }
+
+    /**
+     * Gets amend
+     *
+     * @return bool|null
+     */
+    public function getAmend()
+    {
+        return $this->container['amend'];
+    }
+
+    /**
+     * Sets amend
+     *
+     * @param bool|null $amend Amendment
+     *
+     * @return self
+     */
+    public function setAmend($amend)
+    {
+        $this->container['amend'] = $amend;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source Filing Source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_count
+     *
+     * @return int|null
+     */
+    public function getPageCount()
+    {
+        return $this->container['page_count'];
+    }
+
+    /**
+     * Sets page_count
+     *
+     * @param int|null $page_count Estimate number of page when printing
+     *
+     * @return self
+     */
+    public function setPageCount($page_count)
+    {
+        $this->container['page_count'] = $page_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_count
+     *
+     * @return int|null
+     */
+    public function getDocumentCount()
+    {
+        return $this->container['document_count'];
+    }
+
+    /**
+     * Sets document_count
+     *
+     * @param int|null $document_count Number of document in this filing
+     *
+     * @return self
+     */
+    public function setDocumentCount($document_count)
+    {
+        $this->container['document_count'] = $document_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets documents
+     *
+     * @return \Finnhub\Model\DocumentResponse[]|null
+     */
+    public function getDocuments()
+    {
+        return $this->container['documents'];
+    }
+
+    /**
+     * Sets documents
+     *
+     * @param \Finnhub\Model\DocumentResponse[]|null $documents Document for this filing.
+     *
+     * @return self
+     */
+    public function setDocuments($documents)
+    {
+        $this->container['documents'] = $documents;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Dividends
+ * MutualFundEetPai
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * Dividends Class Doc Comment
+ * MutualFundEetPai Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
+class MutualFundEetPai implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Dividends';
+    protected static $openAPIModelName = 'MutualFundEetPai';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'date' => '\DateTime',
-        'amount' => 'float',
-        'adjusted_amount' => 'float',
-        'pay_date' => '\DateTime',
-        'record_date' => '\DateTime',
-        'declaration_date' => '\DateTime',
-        'currency' => 'string',
-        'freq' => 'string'
+        'isin' => 'string',
+        'data' => 'object'
     ];
 
     /**
@@ -78,15 +71,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'date' => 'date',
-        'amount' => 'float',
-        'adjusted_amount' => 'float',
-        'pay_date' => 'date',
-        'record_date' => 'date',
-        'declaration_date' => 'date',
-        'currency' => null,
-        'freq' => null
+        'isin' => null,
+        'data' => null
     ];
 
     /**
@@ -116,15 +102,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'date' => 'date',
-        'amount' => 'amount',
-        'adjusted_amount' => 'adjustedAmount',
-        'pay_date' => 'payDate',
-        'record_date' => 'recordDate',
-        'declaration_date' => 'declarationDate',
-        'currency' => 'currency',
-        'freq' => 'freq'
+        'isin' => 'isin',
+        'data' => 'data'
     ];
 
     /**
@@ -133,15 +112,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'date' => 'setDate',
-        'amount' => 'setAmount',
-        'adjusted_amount' => 'setAdjustedAmount',
-        'pay_date' => 'setPayDate',
-        'record_date' => 'setRecordDate',
-        'declaration_date' => 'setDeclarationDate',
-        'currency' => 'setCurrency',
-        'freq' => 'setFreq'
+        'isin' => 'setIsin',
+        'data' => 'setData'
     ];
 
     /**
@@ -150,15 +122,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'date' => 'getDate',
-        'amount' => 'getAmount',
-        'adjusted_amount' => 'getAdjustedAmount',
-        'pay_date' => 'getPayDate',
-        'record_date' => 'getRecordDate',
-        'declaration_date' => 'getDeclarationDate',
-        'currency' => 'getCurrency',
-        'freq' => 'getFreq'
+        'isin' => 'getIsin',
+        'data' => 'getData'
     ];
 
     /**
@@ -218,15 +183,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['date'] = $data['date'] ?? null;
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['adjusted_amount'] = $data['adjusted_amount'] ?? null;
-        $this->container['pay_date'] = $data['pay_date'] ?? null;
-        $this->container['record_date'] = $data['record_date'] ?? null;
-        $this->container['declaration_date'] = $data['declaration_date'] ?? null;
-        $this->container['currency'] = $data['currency'] ?? null;
-        $this->container['freq'] = $data['freq'] ?? null;
+        $this->container['isin'] = $data['isin'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -254,217 +212,49 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets symbol
+     * Gets isin
      *
      * @return string|null
      */
-    public function getSymbol()
+    public function getIsin()
     {
-        return $this->container['symbol'];
+        return $this->container['isin'];
     }
 
     /**
-     * Sets symbol
+     * Sets isin
      *
-     * @param string|null $symbol Symbol.
+     * @param string|null $isin ISIN.
      *
      * @return self
      */
-    public function setSymbol($symbol)
+    public function setIsin($isin)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['isin'] = $isin;
 
         return $this;
     }
 
     /**
-     * Gets date
+     * Gets data
      *
-     * @return \DateTime|null
+     * @return object|null
      */
-    public function getDate()
+    public function getData()
     {
-        return $this->container['date'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets date
+     * Sets data
      *
-     * @param \DateTime|null $date Ex-Dividend date.
+     * @param object|null $data data
      *
      * @return self
      */
-    public function setDate($date)
+    public function setData($data)
     {
-        $this->container['date'] = $date;
-
-        return $this;
-    }
-
-    /**
-     * Gets amount
-     *
-     * @return float|null
-     */
-    public function getAmount()
-    {
-        return $this->container['amount'];
-    }
-
-    /**
-     * Sets amount
-     *
-     * @param float|null $amount Amount in local currency.
-     *
-     * @return self
-     */
-    public function setAmount($amount)
-    {
-        $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets adjusted_amount
-     *
-     * @return float|null
-     */
-    public function getAdjustedAmount()
-    {
-        return $this->container['adjusted_amount'];
-    }
-
-    /**
-     * Sets adjusted_amount
-     *
-     * @param float|null $adjusted_amount Adjusted dividend.
-     *
-     * @return self
-     */
-    public function setAdjustedAmount($adjusted_amount)
-    {
-        $this->container['adjusted_amount'] = $adjusted_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets pay_date
-     *
-     * @return \DateTime|null
-     */
-    public function getPayDate()
-    {
-        return $this->container['pay_date'];
-    }
-
-    /**
-     * Sets pay_date
-     *
-     * @param \DateTime|null $pay_date Pay date.
-     *
-     * @return self
-     */
-    public function setPayDate($pay_date)
-    {
-        $this->container['pay_date'] = $pay_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets record_date
-     *
-     * @return \DateTime|null
-     */
-    public function getRecordDate()
-    {
-        return $this->container['record_date'];
-    }
-
-    /**
-     * Sets record_date
-     *
-     * @param \DateTime|null $record_date Record date.
-     *
-     * @return self
-     */
-    public function setRecordDate($record_date)
-    {
-        $this->container['record_date'] = $record_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets declaration_date
-     *
-     * @return \DateTime|null
-     */
-    public function getDeclarationDate()
-    {
-        return $this->container['declaration_date'];
-    }
-
-    /**
-     * Sets declaration_date
-     *
-     * @param \DateTime|null $declaration_date Declaration date.
-     *
-     * @return self
-     */
-    public function setDeclarationDate($declaration_date)
-    {
-        $this->container['declaration_date'] = $declaration_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string|null
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string|null $currency Currency.
-     *
-     * @return self
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets freq
-     *
-     * @return string|null
-     */
-    public function getFreq()
-    {
-        return $this->container['freq'];
-    }
-
-    /**
-     * Sets freq
-     *
-     * @param string|null $freq <p>Dividend frequency. Can be 1 of the following values:</p><ul> <li><code>0: Annually</code></li> <li><code>1: Monthly</code></li> <li><code>2: Quarterly</code></li> <li><code>3: Semi-annually</code></li> <li><code>4: Other/Unknown</code></li> <li><code>5: Bimonthly</code></li> <li><code>6: Trimesterly</code></li> <li><code>7: Weekly</code></li> </ul>
-     *
-     * @return self
-     */
-    public function setFreq($freq)
-    {
-        $this->container['freq'] = $freq;
+        $this->container['data'] = $data;
 
         return $this;
     }

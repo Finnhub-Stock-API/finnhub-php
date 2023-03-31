@@ -64,9 +64,12 @@ class BondTickData implements ModelInterface, ArrayAccess, \JsonSerializable
         'total' => 'int',
         'v' => 'float[]',
         'p' => 'float[]',
+        'y' => 'float[]',
         't' => 'int[]',
         'si' => 'string[]',
         'cp' => 'string[]',
+        'rp' => 'string[]',
+        'ats' => 'string[]',
         'c' => 'string[][]'
     ];
 
@@ -83,9 +86,12 @@ class BondTickData implements ModelInterface, ArrayAccess, \JsonSerializable
         'total' => 'int64',
         'v' => 'float',
         'p' => 'float',
+        'y' => 'float',
         't' => 'int64',
         'si' => null,
         'cp' => null,
+        'rp' => null,
+        'ats' => null,
         'c' => null
     ];
 
@@ -121,9 +127,12 @@ class BondTickData implements ModelInterface, ArrayAccess, \JsonSerializable
         'total' => 'total',
         'v' => 'v',
         'p' => 'p',
+        'y' => 'y',
         't' => 't',
         'si' => 'si',
         'cp' => 'cp',
+        'rp' => 'rp',
+        'ats' => 'ats',
         'c' => 'c'
     ];
 
@@ -138,9 +147,12 @@ class BondTickData implements ModelInterface, ArrayAccess, \JsonSerializable
         'total' => 'setTotal',
         'v' => 'setV',
         'p' => 'setP',
+        'y' => 'setY',
         't' => 'setT',
         'si' => 'setSi',
         'cp' => 'setCp',
+        'rp' => 'setRp',
+        'ats' => 'setAts',
         'c' => 'setC'
     ];
 
@@ -155,9 +167,12 @@ class BondTickData implements ModelInterface, ArrayAccess, \JsonSerializable
         'total' => 'getTotal',
         'v' => 'getV',
         'p' => 'getP',
+        'y' => 'getY',
         't' => 'getT',
         'si' => 'getSi',
         'cp' => 'getCp',
+        'rp' => 'getRp',
+        'ats' => 'getAts',
         'c' => 'getC'
     ];
 
@@ -223,9 +238,12 @@ class BondTickData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['total'] = $data['total'] ?? null;
         $this->container['v'] = $data['v'] ?? null;
         $this->container['p'] = $data['p'] ?? null;
+        $this->container['y'] = $data['y'] ?? null;
         $this->container['t'] = $data['t'] ?? null;
         $this->container['si'] = $data['si'] ?? null;
         $this->container['cp'] = $data['cp'] ?? null;
+        $this->container['rp'] = $data['rp'] ?? null;
+        $this->container['ats'] = $data['ats'] ?? null;
         $this->container['c'] = $data['c'] ?? null;
     }
 
@@ -374,6 +392,30 @@ class BondTickData implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets y
+     *
+     * @return float[]|null
+     */
+    public function getY()
+    {
+        return $this->container['y'];
+    }
+
+    /**
+     * Sets y
+     *
+     * @param float[]|null $y List of yield data.
+     *
+     * @return self
+     */
+    public function setY($y)
+    {
+        $this->container['y'] = $y;
+
+        return $this;
+    }
+
+    /**
      * Gets t
      *
      * @return int[]|null
@@ -441,6 +483,54 @@ class BondTickData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCp($cp)
     {
         $this->container['cp'] = $cp;
+
+        return $this;
+    }
+
+    /**
+     * Gets rp
+     *
+     * @return string[]|null
+     */
+    public function getRp()
+    {
+        return $this->container['rp'];
+    }
+
+    /**
+     * Sets rp
+     *
+     * @param string[]|null $rp List of values showing the reporting party of each trade. List of supported values: <a target=\"_blank\" href=\"https://docs.google.com/spreadsheets/d/1O3aueXSPOqo7Iuyz4PqDG6yZunHsX8BTefZ2kFk5pz4/edit?usp=sharing\",>here</a>
+     *
+     * @return self
+     */
+    public function setRp($rp)
+    {
+        $this->container['rp'] = $rp;
+
+        return $this;
+    }
+
+    /**
+     * Gets ats
+     *
+     * @return string[]|null
+     */
+    public function getAts()
+    {
+        return $this->container['ats'];
+    }
+
+    /**
+     * Sets ats
+     *
+     * @param string[]|null $ats ATS flag. Y or empty
+     *
+     * @return self
+     */
+    public function setAts($ats)
+    {
+        $this->container['ats'] = $ats;
 
         return $this;
     }

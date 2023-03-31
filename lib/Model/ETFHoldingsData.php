@@ -65,7 +65,8 @@ class ETFHoldingsData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cusip' => 'string',
         'share' => 'float',
         'percent' => 'float',
-        'value' => 'float'
+        'value' => 'float',
+        'asset_type' => 'string'
     ];
 
     /**
@@ -82,7 +83,8 @@ class ETFHoldingsData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cusip' => null,
         'share' => 'float',
         'percent' => 'float',
-        'value' => 'float'
+        'value' => 'float',
+        'asset_type' => null
     ];
 
     /**
@@ -118,7 +120,8 @@ class ETFHoldingsData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cusip' => 'cusip',
         'share' => 'share',
         'percent' => 'percent',
-        'value' => 'value'
+        'value' => 'value',
+        'asset_type' => 'assetType'
     ];
 
     /**
@@ -133,7 +136,8 @@ class ETFHoldingsData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cusip' => 'setCusip',
         'share' => 'setShare',
         'percent' => 'setPercent',
-        'value' => 'setValue'
+        'value' => 'setValue',
+        'asset_type' => 'setAssetType'
     ];
 
     /**
@@ -148,7 +152,8 @@ class ETFHoldingsData implements ModelInterface, ArrayAccess, \JsonSerializable
         'cusip' => 'getCusip',
         'share' => 'getShare',
         'percent' => 'getPercent',
-        'value' => 'getValue'
+        'value' => 'getValue',
+        'asset_type' => 'getAssetType'
     ];
 
     /**
@@ -215,6 +220,7 @@ class ETFHoldingsData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['share'] = $data['share'] ?? null;
         $this->container['percent'] = $data['percent'] ?? null;
         $this->container['value'] = $data['value'] ?? null;
+        $this->container['asset_type'] = $data['asset_type'] ?? null;
     }
 
     /**
@@ -405,6 +411,30 @@ class ETFHoldingsData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValue($value)
     {
         $this->container['value'] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Gets asset_type
+     *
+     * @return string|null
+     */
+    public function getAssetType()
+    {
+        return $this->container['asset_type'];
+    }
+
+    /**
+     * Sets asset_type
+     *
+     * @param string|null $asset_type Asset type. Can be 1 of the following values: <code>Equity</code>, <code>ETP</code>, <code>Fund</code>, <code>Bond</code>, <code>Other</code> or empty.
+     *
+     * @return self
+     */
+    public function setAssetType($asset_type)
+    {
+        $this->container['asset_type'] = $asset_type;
 
         return $this;
     }
