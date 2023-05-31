@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**aggregateIndicator()**](DefaultApi.md#aggregateIndicator) | **GET** /scan/technical-indicator | Aggregate Indicators
 [**bondPrice()**](DefaultApi.md#bondPrice) | **GET** /bond/price | Bond price data
 [**bondProfile()**](DefaultApi.md#bondProfile) | **GET** /bond/profile | Bond Profile
+[**bondTick()**](DefaultApi.md#bondTick) | **GET** /bond/tick | Bond Tick Data
+[**bondYieldCurve()**](DefaultApi.md#bondYieldCurve) | **GET** /bond/yield-curve | Bond Yield Curve
 [**companyBasicFinancials()**](DefaultApi.md#companyBasicFinancials) | **GET** /stock/metric | Basic Financials
 [**companyEarnings()**](DefaultApi.md#companyEarnings) | **GET** /stock/earnings | Earnings Surprises
 [**companyEarningsQualityScore()**](DefaultApi.md#companyEarningsQualityScore) | **GET** /stock/earnings-quality-score | Company Earnings Quality Score
@@ -20,6 +22,7 @@ Method | HTTP request | Description
 [**companyProfile()**](DefaultApi.md#companyProfile) | **GET** /stock/profile | Company Profile
 [**companyProfile2()**](DefaultApi.md#companyProfile2) | **GET** /stock/profile2 | Company Profile 2
 [**companyRevenueEstimates()**](DefaultApi.md#companyRevenueEstimates) | **GET** /stock/revenue-estimate | Revenue Estimates
+[**congressionalTrading()**](DefaultApi.md#congressionalTrading) | **GET** /stock/congressional-trading | Congressional Trading
 [**country()**](DefaultApi.md#country) | **GET** /country | Country Metadata
 [**covid19()**](DefaultApi.md#covid19) | **GET** /covid19/us | COVID-19
 [**cryptoCandles()**](DefaultApi.md#cryptoCandles) | **GET** /crypto/candle | Crypto Candles
@@ -48,11 +51,16 @@ Method | HTTP request | Description
 [**indicesHistoricalConstituents()**](DefaultApi.md#indicesHistoricalConstituents) | **GET** /index/historical-constituents | Indices Historical Constituents
 [**insiderSentiment()**](DefaultApi.md#insiderSentiment) | **GET** /stock/insider-sentiment | Insider Sentiment
 [**insiderTransactions()**](DefaultApi.md#insiderTransactions) | **GET** /stock/insider-transactions | Insider Transactions
-[**internationalFilings()**](DefaultApi.md#internationalFilings) | **GET** /stock/international-filings | International Filings
+[**institutionalOwnership()**](DefaultApi.md#institutionalOwnership) | **GET** /institutional/ownership | Institutional Ownership
+[**institutionalPortfolio()**](DefaultApi.md#institutionalPortfolio) | **GET** /institutional/portfolio | Institutional Portfolio
+[**institutionalProfile()**](DefaultApi.md#institutionalProfile) | **GET** /institutional/profile | Institutional Profile
 [**investmentThemes()**](DefaultApi.md#investmentThemes) | **GET** /stock/investment-theme | Investment Themes (Thematic Investing)
 [**ipoCalendar()**](DefaultApi.md#ipoCalendar) | **GET** /calendar/ipo | IPO Calendar
+[**isinChange()**](DefaultApi.md#isinChange) | **GET** /ca/isin-change | ISIN Change
 [**marketNews()**](DefaultApi.md#marketNews) | **GET** /news | Market News
 [**mutualFundCountryExposure()**](DefaultApi.md#mutualFundCountryExposure) | **GET** /mutual-fund/country | Mutual Funds Country Exposure
+[**mutualFundEet()**](DefaultApi.md#mutualFundEet) | **GET** /mutual-fund/eet | Mutual Funds EET
+[**mutualFundEetPai()**](DefaultApi.md#mutualFundEetPai) | **GET** /mutual-fund/eet-pai | Mutual Funds EET PAI
 [**mutualFundHoldings()**](DefaultApi.md#mutualFundHoldings) | **GET** /mutual-fund/holdings | Mutual Funds Holdings
 [**mutualFundProfile()**](DefaultApi.md#mutualFundProfile) | **GET** /mutual-fund/profile | Mutual Funds Profile
 [**mutualFundSectorExposure()**](DefaultApi.md#mutualFundSectorExposure) | **GET** /mutual-fund/sector | Mutual Funds Sector Exposure
@@ -60,6 +68,7 @@ Method | HTTP request | Description
 [**ownership()**](DefaultApi.md#ownership) | **GET** /stock/ownership | Ownership
 [**patternRecognition()**](DefaultApi.md#patternRecognition) | **GET** /scan/pattern | Pattern Recognition
 [**pressReleases()**](DefaultApi.md#pressReleases) | **GET** /press-releases | Major Press Releases
+[**priceMetrics()**](DefaultApi.md#priceMetrics) | **GET** /stock/price-metric | Price Metrics
 [**priceTarget()**](DefaultApi.md#priceTarget) | **GET** /stock/price-target | Price Target
 [**quote()**](DefaultApi.md#quote) | **GET** /quote | Quote
 [**recommendationTrends()**](DefaultApi.md#recommendationTrends) | **GET** /stock/recommendation | Recommendation Trends
@@ -81,8 +90,9 @@ Method | HTTP request | Description
 [**stockVisaApplication()**](DefaultApi.md#stockVisaApplication) | **GET** /stock/visa-application | H1-B Visa Application
 [**supplyChainRelationships()**](DefaultApi.md#supplyChainRelationships) | **GET** /stock/supply-chain | Supply Chain Relationships
 [**supportResistance()**](DefaultApi.md#supportResistance) | **GET** /scan/support-resistance | Support/Resistance
+[**symbolChange()**](DefaultApi.md#symbolChange) | **GET** /ca/symbol-change | Symbol Change
 [**symbolSearch()**](DefaultApi.md#symbolSearch) | **GET** /search | Symbol Lookup
-[**technicalIndicator()**](DefaultApi.md#technicalIndicator) | **POST** /indicator | Technical Indicators
+[**technicalIndicator()**](DefaultApi.md#technicalIndicator) | **GET** /indicator | Technical Indicators
 [**transcripts()**](DefaultApi.md#transcripts) | **GET** /stock/transcripts | Earnings Call Transcripts
 [**transcriptsList()**](DefaultApi.md#transcriptsList) | **GET** /stock/transcripts/list | Earnings Call Transcripts List
 [**upgradeDowngrade()**](DefaultApi.md#upgradeDowngrade) | **GET** /stock/upgrade-downgrade | Stock Upgrade/Downgrade
@@ -96,7 +106,7 @@ aggregateIndicator($symbol, $resolution): \Finnhub\Model\AggregateIndicators
 
 Aggregate Indicators
 
-Get aggregate signal of multiple technical indicators such as MACD, RSI, Moving Average v.v.
+Get aggregate signal of multiple technical indicators such as MACD, RSI, Moving Average v.v. A full list of indicators can be found <a href=\"https://docs.google.com/spreadsheets/d/1MWuy0WuT2yVlxr1KbPdggVygMZtJfunDnhe-C0GEXYM/edit?usp=sharing\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -160,7 +170,7 @@ bondPrice($isin, $from, $to): \Finnhub\Model\BondCandles
 
 Bond price data
 
-Get end-of-day bond's price data.
+<p>Get bond's price data. The following datasets are supported:</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>   <tr>       <td class=\"text-blue\">US Government Bonds</th>       <td>Government Bonds</td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">FINRA Trace</th>       <td>BTDS: US Corporate Bonds</td>       <td>Delayed 4h</td>     </tr>     <tr>       <td class=\"text-blue\">FINRA Trace</th>       <td>144A Bonds</td>       <td>Delayed 4h</td>     </tr>   </tbody> </table>
 
 ### Example
 
@@ -226,7 +236,7 @@ bondProfile($isin, $cusip, $figi): \Finnhub\Model\BondProfile
 
 Bond Profile
 
-Get general information of a bond. You can query by FIGI, ISIN or CUSIP
+Get general information of a bond. You can query by FIGI, ISIN or CUSIP. A list of supported bonds can be found <a href=\"/api/v1/bond/list?token=\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -270,6 +280,138 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\BondProfile**](../Model/BondProfile.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `bondTick()`
+
+```php
+bondTick($isin, $date, $limit, $skip, $exchange): \Finnhub\Model\BondTickData
+```
+
+Bond Tick Data
+
+<p>Get trade-level data for bonds. The following datasets are supported:</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">FINRA Trace</th>       <td>BTDS: US Corporate Bonds</td>       <td>Delayed 4h</td>     </tr>     <tr>       <td class=\"text-blue\">FINRA Trace</th>       <td>144A Bonds</td>       <td>Delayed 4h</td>     </tr>   </tbody> </table>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$isin = 'isin_example'; // string | ISIN.
+$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Date: 2020-04-02.
+$limit = 56; // int | Limit number of ticks returned. Maximum value: <code>25000</code>
+$skip = 56; // int | Number of ticks to skip. Use this parameter to loop through the entire data.
+$exchange = 'exchange_example'; // string | Currently support the following values: <code>trace</code>.
+
+try {
+    $result = $apiInstance->bondTick($isin, $date, $limit, $skip, $exchange);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->bondTick: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **isin** | **string**| ISIN. |
+ **date** | **\DateTime**| Date: 2020-04-02. |
+ **limit** | **int**| Limit number of ticks returned. Maximum value: &lt;code&gt;25000&lt;/code&gt; |
+ **skip** | **int**| Number of ticks to skip. Use this parameter to loop through the entire data. |
+ **exchange** | **string**| Currently support the following values: &lt;code&gt;trace&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\BondTickData**](../Model/BondTickData.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `bondYieldCurve()`
+
+```php
+bondYieldCurve($code): \Finnhub\Model\BondYieldCurve
+```
+
+Bond Yield Curve
+
+Get yield curve data for Treasury bonds.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$code = 'code_example'; // string | Bond's code. You can find the list of supported code <a href=\"https://docs.google.com/spreadsheets/d/1iA-lM0Kht7lsQZ7Uu_s6r2i1BbQNUNO9eGkO5-zglHg/edit?usp=sharing\" target=\"_blank\" rel=\"noopener\">here</a>.
+
+try {
+    $result = $apiInstance->bondYieldCurve($code);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->bondYieldCurve: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **string**| Bond&#39;s code. You can find the list of supported code &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1iA-lM0Kht7lsQZ7Uu_s6r2i1BbQNUNO9eGkO5-zglHg/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener\&quot;&gt;here&lt;/a&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\BondYieldCurve**](../Model/BondYieldCurve.md)
 
 ### Authorization
 
@@ -861,12 +1003,12 @@ Name | Type | Description  | Notes
 ## `companyPeers()`
 
 ```php
-companyPeers($symbol): string[]
+companyPeers($symbol, $grouping): string[]
 ```
 
 Peers
 
-Get company peers. Return a list of peers in the same country and sub-industry
+Get company peers. Return a list of peers operating in the same country and sector/industry.
 
 ### Example
 
@@ -888,9 +1030,10 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
+$grouping = 'grouping_example'; // string | Specify the grouping criteria for choosing peers.Supporter values: <code>sector</code>, <code>industry</code>, <code>subIndustry</code>. Default to <code>subIndustry</code>.
 
 try {
-    $result = $apiInstance->companyPeers($symbol);
+    $result = $apiInstance->companyPeers($symbol, $grouping);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->companyPeers: ', $e->getMessage(), PHP_EOL;
@@ -902,6 +1045,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **string**| Symbol of the company: AAPL. |
+ **grouping** | **string**| Specify the grouping criteria for choosing peers.Supporter values: &lt;code&gt;sector&lt;/code&gt;, &lt;code&gt;industry&lt;/code&gt;, &lt;code&gt;subIndustry&lt;/code&gt;. Default to &lt;code&gt;subIndustry&lt;/code&gt;. | [optional]
 
 ### Return type
 
@@ -1102,6 +1246,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\RevenueEstimates**](../Model/RevenueEstimates.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `congressionalTrading()`
+
+```php
+congressionalTrading($symbol, $from, $to): \Finnhub\Model\CongressionalTrading
+```
+
+Congressional Trading
+
+Get stock trades data disclosed by members of congress.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->congressionalTrading($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->congressionalTrading: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol of the company: AAPL. |
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\CongressionalTrading**](../Model/CongressionalTrading.md)
 
 ### Authorization
 
@@ -1808,7 +2018,7 @@ etfsHoldings($symbol, $isin, $skip, $date): \Finnhub\Model\ETFsHoldings
 
 ETFs Holdings
 
-Get full ETF holdings/constituents. This endpoint has global coverage. Widget only shows top 10 holdings.
+Get full ETF holdings/constituents. This endpoint has global coverage. Widget only shows top 10 holdings. A list of supported ETFs can be found <a href=\"/api/v1/etf/list?token=\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -1876,7 +2086,7 @@ etfsProfile($symbol, $isin): \Finnhub\Model\ETFsProfile
 
 ETFs Profile
 
-Get ETF profile information. This endpoint has global coverage.
+Get ETF profile information. This endpoint has global coverage. A list of supported ETFs can be found <a href=\"/api/v1/etf/list?token=\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -2256,7 +2466,7 @@ Name | Type | Description  | Notes
 ## `financialsReported()`
 
 ```php
-financialsReported($symbol, $cik, $access_number, $freq): \Finnhub\Model\FinancialsAsReported
+financialsReported($symbol, $cik, $access_number, $freq, $from, $to): \Finnhub\Model\FinancialsAsReported
 ```
 
 Financials As Reported
@@ -2286,9 +2496,11 @@ $symbol = 'symbol_example'; // string | Symbol.
 $cik = 'cik_example'; // string | CIK.
 $access_number = 'access_number_example'; // string | Access number of a specific report you want to retrieve financials from.
 $freq = 'freq_example'; // string | Frequency. Can be either <code>annual</code> or <code>quarterly</code>. Default to <code>annual</code>.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>. Filter for endDate.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>. Filter for endDate.
 
 try {
-    $result = $apiInstance->financialsReported($symbol, $cik, $access_number, $freq);
+    $result = $apiInstance->financialsReported($symbol, $cik, $access_number, $freq, $from, $to);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->financialsReported: ', $e->getMessage(), PHP_EOL;
@@ -2303,6 +2515,8 @@ Name | Type | Description  | Notes
  **cik** | **string**| CIK. | [optional]
  **access_number** | **string**| Access number of a specific report you want to retrieve financials from. | [optional]
  **freq** | **string**| Frequency. Can be either &lt;code&gt;annual&lt;/code&gt; or &lt;code&gt;quarterly&lt;/code&gt;. Default to &lt;code&gt;annual&lt;/code&gt;. | [optional]
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. | [optional]
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. Filter for endDate. | [optional]
 
 ### Return type
 
@@ -2836,7 +3050,7 @@ insiderTransactions($symbol, $from, $to): \Finnhub\Model\InsiderTransactions
 
 Insider Transactions
 
-Company insider transactions data sourced from <code>Form 3,4,5</code>. This endpoint only covers US companies at the moment. Limit to 100 transactions per API call.
+Company insider transactions data sourced from <code>Form 3,4,5</code>, SEDI and relevant companies' filings. This endpoint covers US, Canada, Australia, and selected EU companies. Limit to 100 transactions per API call.
 
 ### Example
 
@@ -2894,15 +3108,15 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `internationalFilings()`
+## `institutionalOwnership()`
 
 ```php
-internationalFilings($symbol, $country): \Finnhub\Model\InternationalFiling[]
+institutionalOwnership($symbol, $cusip, $from, $to): \Finnhub\Model\InstitutionalOwnership
 ```
 
-International Filings
+Institutional Ownership
 
-List filings for international companies. Limit to 250 documents at a time. These are the documents we use to source our fundamental data. Only support SEDAR and UK Companies House for normal usage. Enterprise clients who need access to the full filings for global markets should contact us for the access.
+Get a list institutional investors' positions for a particular stock overtime. Data from 13-F filings. Limit to 1 year of data at a time.
 
 ### Example
 
@@ -2923,14 +3137,16 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$symbol = 'symbol_example'; // string | Symbol. Leave empty to list latest filings.
-$country = 'country_example'; // string | Filter by country using country's 2-letter code.
+$symbol = 'symbol_example'; // string | Filter by symbol.
+$cusip = 'cusip_example'; // string | Filter by CUSIP.
+$from = 'from_example'; // string | From date <code>YYYY-MM-DD</code>.
+$to = 'to_example'; // string | To date <code>YYYY-MM-DD</code>.
 
 try {
-    $result = $apiInstance->internationalFilings($symbol, $country);
+    $result = $apiInstance->institutionalOwnership($symbol, $cusip, $from, $to);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->internationalFilings: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->institutionalOwnership: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -2938,12 +3154,142 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| Symbol. Leave empty to list latest filings. | [optional]
- **country** | **string**| Filter by country using country&#39;s 2-letter code. | [optional]
+ **symbol** | **string**| Filter by symbol. |
+ **cusip** | **string**| Filter by CUSIP. |
+ **from** | **string**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **string**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
 
 ### Return type
 
-[**\Finnhub\Model\InternationalFiling[]**](../Model/InternationalFiling.md)
+[**\Finnhub\Model\InstitutionalOwnership**](../Model/InstitutionalOwnership.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `institutionalPortfolio()`
+
+```php
+institutionalPortfolio($cik, $from, $to): \Finnhub\Model\InstitutionalPortfolio
+```
+
+Institutional Portfolio
+
+Get the holdings/portfolio data of institutional investors from 13-F filings. Limit to 1 year of data at a time. You can get a list of supported CIK <a href=\"/api/v1/institutional/list?token=\" target=\"_blank\">here</a>.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$cik = 'cik_example'; // string | Fund's CIK.
+$from = 'from_example'; // string | From date <code>YYYY-MM-DD</code>.
+$to = 'to_example'; // string | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->institutionalPortfolio($cik, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->institutionalPortfolio: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cik** | **string**| Fund&#39;s CIK. |
+ **from** | **string**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **string**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\InstitutionalPortfolio**](../Model/InstitutionalPortfolio.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `institutionalProfile()`
+
+```php
+institutionalProfile($cik): \Finnhub\Model\InstitutionalProfile
+```
+
+Institutional Profile
+
+Get a list of well-known institutional investors. Currently support 60+ profiles.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$cik = 'cik_example'; // string | Filter by CIK. Leave blank to get the full list.
+
+try {
+    $result = $apiInstance->institutionalProfile($cik);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->institutionalProfile: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cik** | **string**| Filter by CIK. Leave blank to get the full list. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\InstitutionalProfile**](../Model/InstitutionalProfile.md)
 
 ### Authorization
 
@@ -3084,6 +3430,70 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `isinChange()`
+
+```php
+isinChange($from, $to): \Finnhub\Model\IsinChange
+```
+
+ISIN Change
+
+Get a list of ISIN changes for EU-listed securities. Limit to 2000 events at a time.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from = 'from_example'; // string | From date <code>YYYY-MM-DD</code>.
+$to = 'to_example'; // string | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->isinChange($from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->isinChange: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **string**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\IsinChange**](../Model/IsinChange.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `marketNews()`
 
 ```php
@@ -3210,6 +3620,130 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `mutualFundEet()`
+
+```php
+mutualFundEet($isin): \Finnhub\Model\MutualFundEet
+```
+
+Mutual Funds EET
+
+Get EET data for EU funds. For PAIs data, please see the EET PAI endpoint.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$isin = 'isin_example'; // string | ISIN.
+
+try {
+    $result = $apiInstance->mutualFundEet($isin);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->mutualFundEet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **isin** | **string**| ISIN. |
+
+### Return type
+
+[**\Finnhub\Model\MutualFundEet**](../Model/MutualFundEet.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `mutualFundEetPai()`
+
+```php
+mutualFundEetPai($isin): \Finnhub\Model\MutualFundEetPai
+```
+
+Mutual Funds EET PAI
+
+Get EET PAI data for EU funds.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$isin = 'isin_example'; // string | ISIN.
+
+try {
+    $result = $apiInstance->mutualFundEetPai($isin);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->mutualFundEetPai: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **isin** | **string**| ISIN. |
+
+### Return type
+
+[**\Finnhub\Model\MutualFundEetPai**](../Model/MutualFundEetPai.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `mutualFundHoldings()`
 
 ```php
@@ -3218,7 +3752,7 @@ mutualFundHoldings($symbol, $isin, $skip): \Finnhub\Model\MutualFundHoldings
 
 Mutual Funds Holdings
 
-Get full Mutual Funds holdings/constituents. This endpoint covers both US and global mutual funds. For international funds, you must query the data using ISIN.
+Get full Mutual Funds holdings/constituents. This endpoint covers both US and global mutual funds. For international funds, you must query the data using ISIN. A list of supported funds can be found <a href=\"/api/v1/mutual-fund/list?token=\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -3284,7 +3818,7 @@ mutualFundProfile($symbol, $isin): \Finnhub\Model\MutualFundProfile
 
 Mutual Funds Profile
 
-Get mutual funds profile information. This endpoint covers both US and global mutual funds. For international funds, you must query the data using ISIN.
+Get mutual funds profile information. This endpoint covers both US and global mutual funds. For international funds, you must query the data using ISIN. A list of supported funds can be found <a href=\"/api/v1/mutual-fund/list?token=\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -3644,6 +4178,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\PressRelease**](../Model/PressRelease.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `priceMetrics()`
+
+```php
+priceMetrics($symbol, $date): \Finnhub\Model\PriceMetrics
+```
+
+Price Metrics
+
+Get company price performance statistics such as 52-week high/low, YTD return and much more.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol of the company: AAPL.
+$date = 'date_example'; // string | Get data on a specific date in the past. The data is available weekly so your date will be automatically adjusted to the last day of that week.
+
+try {
+    $result = $apiInstance->priceMetrics($symbol, $date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->priceMetrics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol of the company: AAPL. |
+ **date** | **string**| Get data on a specific date in the past. The data is available weekly so your date will be automatically adjusted to the last day of that week. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\PriceMetrics**](../Model/PriceMetrics.md)
 
 ### Authorization
 
@@ -4636,7 +5234,7 @@ stockTick($symbol, $date, $limit, $skip): \Finnhub\Model\TickData
 
 Tick Data
 
-<p>Get historical tick data for global exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server.</p><p>For US market, you can visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a> to speed up the download process.</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">US CTA/UTP</th>       <td>Full SIP</td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">TSX</th>       <td><ul><li>TSX</li><li>TSX Venture</li><li>Index</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">LSE</th>       <td><ul><li>London Stock Exchange (L)</li><li>LSE International (L)</li><li>LSE European (L)</li></ul></td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">Euronext</th>       <td><ul> <li>Euronext Paris (PA)</li> <li>Euronext Amsterdam (AS)</li> <li>Euronext Lisbon (LS)</li> <li>Euronext Brussels (BR)</li> <li>Euronext Oslo (OL)</li> <li>Euronext London (LN)</li> <li>Euronext Dublin (IR)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Deutsche Börse</th>       <td><ul> <li>Frankfurt (F)</li> <li>Xetra (DE)</li> <li>Duesseldorf (DU)</li> <li>Hamburg (HM)</li> <li>Berlin (BE)</li> <li>Hanover (HA)</li> <li>Stoxx (SX)</li> <li>TradeGate (TG)</li> <li>Zertifikate (SC)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>   </tbody> </table>
+<p>Get historical tick data for global exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server.</p><p>For US market, you can visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a> to speed up the download process.</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">US CTA/UTP</th>       <td>Full SIP</td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">TSX</th>       <td><ul><li>TSX</li><li>TSX Venture</li><li>Index</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">LSE</th>       <td><ul><li>London Stock Exchange (L)</li><li>LSE International (L)</li><li>LSE European (L)</li></ul></td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">Euronext</th>       <td><ul> <li>Euronext Paris (PA)</li> <li>Euronext Amsterdam (AS)</li> <li>Euronext Lisbon (LS)</li> <li>Euronext Brussels (BR)</li> <li>Euronext Oslo (OL)</li> <li>Euronext London (LN)</li> <li>Euronext Dublin (IR)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Deutsche Börse</th>       <td><ul> <li>Frankfurt (F)</li> <li>Xetra (DE)</li> <li>Duesseldorf (DU)</li> <li>Hamburg (HM)</li> <li>Berlin (BE)</li> <li>Hanover (HA)</li> <li>Stoxx (SX)</li> <li>TradeGate (TG)</li> <li>Zertifikate (SC)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>   </tbody> </table>
 
 ### Example
 
@@ -5020,6 +5618,70 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `symbolChange()`
+
+```php
+symbolChange($from, $to): \Finnhub\Model\SymbolChange
+```
+
+Symbol Change
+
+Get a list of symbol changes for US-listed, EU-listed, NSE and ASX securities. Limit to 2000 events at a time.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from = 'from_example'; // string | From date <code>YYYY-MM-DD</code>.
+$to = 'to_example'; // string | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->symbolChange($from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->symbolChange: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **string**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\SymbolChange**](../Model/SymbolChange.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `symbolSearch()`
 
 ```php
@@ -5162,7 +5824,7 @@ transcripts($id): \Finnhub\Model\EarningsCallTranscripts
 
 Earnings Call Transcripts
 
-<p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US, UK, and Candian companies. <p>15+ years of data is available with 220,000+ audio which add up to 7TB in size.</p>
+<p>Get earnings call transcripts, audio and participants' list. Data is available for US, UK, European, Australian and Canadian companies.<p>15+ years of data is available with 220,000+ audio which add up to 7TB in size.</p>
 
 ### Example
 

@@ -66,7 +66,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
         'pay_date' => '\DateTime',
         'record_date' => '\DateTime',
         'declaration_date' => '\DateTime',
-        'currency' => 'string'
+        'currency' => 'string',
+        'freq' => 'string'
     ];
 
     /**
@@ -84,7 +85,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
         'pay_date' => 'date',
         'record_date' => 'date',
         'declaration_date' => 'date',
-        'currency' => null
+        'currency' => null,
+        'freq' => null
     ];
 
     /**
@@ -121,7 +123,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
         'pay_date' => 'payDate',
         'record_date' => 'recordDate',
         'declaration_date' => 'declarationDate',
-        'currency' => 'currency'
+        'currency' => 'currency',
+        'freq' => 'freq'
     ];
 
     /**
@@ -137,7 +140,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
         'pay_date' => 'setPayDate',
         'record_date' => 'setRecordDate',
         'declaration_date' => 'setDeclarationDate',
-        'currency' => 'setCurrency'
+        'currency' => 'setCurrency',
+        'freq' => 'setFreq'
     ];
 
     /**
@@ -153,7 +157,8 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
         'pay_date' => 'getPayDate',
         'record_date' => 'getRecordDate',
         'declaration_date' => 'getDeclarationDate',
-        'currency' => 'getCurrency'
+        'currency' => 'getCurrency',
+        'freq' => 'getFreq'
     ];
 
     /**
@@ -221,6 +226,7 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['record_date'] = $data['record_date'] ?? null;
         $this->container['declaration_date'] = $data['declaration_date'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['freq'] = $data['freq'] ?? null;
     }
 
     /**
@@ -435,6 +441,30 @@ class Dividends implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCurrency($currency)
     {
         $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets freq
+     *
+     * @return string|null
+     */
+    public function getFreq()
+    {
+        return $this->container['freq'];
+    }
+
+    /**
+     * Sets freq
+     *
+     * @param string|null $freq <p>Dividend frequency. Can be 1 of the following values:</p><ul> <li><code>0: Annually</code></li> <li><code>1: Monthly</code></li> <li><code>2: Quarterly</code></li> <li><code>3: Semi-annually</code></li> <li><code>4: Other/Unknown</code></li> <li><code>5: Bimonthly</code></li> <li><code>6: Trimesterly</code></li> <li><code>7: Weekly</code></li> </ul>
+     *
+     * @return self
+     */
+    public function setFreq($freq)
+    {
+        $this->container['freq'] = $freq;
 
         return $this;
     }

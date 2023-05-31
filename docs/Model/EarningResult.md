@@ -10,5 +10,7 @@ Name | Type | Description | Notes
 **surprise_percent** | **float** | Surprise percent. | [optional]
 **period** | [**\DateTime**](\DateTime.md) | Reported period. | [optional]
 **symbol** | **string** | Company symbol. | [optional]
+**year** | **int** | Earnings year. | [optional]
+**quarter** | **int** | Earnings quarter. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
