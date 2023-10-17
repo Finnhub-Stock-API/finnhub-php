@@ -66,7 +66,11 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'currency_code' => 'string',
         'region' => 'string',
-        'sub_region' => 'string'
+        'sub_region' => 'string',
+        'rating' => 'string',
+        'default_spread' => 'float',
+        'country_risk_premium' => 'float',
+        'equity_risk_premium' => 'float'
     ];
 
     /**
@@ -84,7 +88,11 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'currency_code' => null,
         'region' => null,
-        'sub_region' => null
+        'sub_region' => null,
+        'rating' => null,
+        'default_spread' => 'float',
+        'country_risk_premium' => 'float',
+        'equity_risk_premium' => 'float'
     ];
 
     /**
@@ -121,7 +129,11 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'currency_code' => 'currencyCode',
         'region' => 'region',
-        'sub_region' => 'subRegion'
+        'sub_region' => 'subRegion',
+        'rating' => 'rating',
+        'default_spread' => 'defaultSpread',
+        'country_risk_premium' => 'countryRiskPremium',
+        'equity_risk_premium' => 'equityRiskPremium'
     ];
 
     /**
@@ -137,7 +149,11 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'currency_code' => 'setCurrencyCode',
         'region' => 'setRegion',
-        'sub_region' => 'setSubRegion'
+        'sub_region' => 'setSubRegion',
+        'rating' => 'setRating',
+        'default_spread' => 'setDefaultSpread',
+        'country_risk_premium' => 'setCountryRiskPremium',
+        'equity_risk_premium' => 'setEquityRiskPremium'
     ];
 
     /**
@@ -153,7 +169,11 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'currency_code' => 'getCurrencyCode',
         'region' => 'getRegion',
-        'sub_region' => 'getSubRegion'
+        'sub_region' => 'getSubRegion',
+        'rating' => 'getRating',
+        'default_spread' => 'getDefaultSpread',
+        'country_risk_premium' => 'getCountryRiskPremium',
+        'equity_risk_premium' => 'getEquityRiskPremium'
     ];
 
     /**
@@ -221,6 +241,10 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['currency_code'] = $data['currency_code'] ?? null;
         $this->container['region'] = $data['region'] ?? null;
         $this->container['sub_region'] = $data['sub_region'] ?? null;
+        $this->container['rating'] = $data['rating'] ?? null;
+        $this->container['default_spread'] = $data['default_spread'] ?? null;
+        $this->container['country_risk_premium'] = $data['country_risk_premium'] ?? null;
+        $this->container['equity_risk_premium'] = $data['equity_risk_premium'] ?? null;
     }
 
     /**
@@ -435,6 +459,102 @@ class CountryMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSubRegion($sub_region)
     {
         $this->container['sub_region'] = $sub_region;
+
+        return $this;
+    }
+
+    /**
+     * Gets rating
+     *
+     * @return string|null
+     */
+    public function getRating()
+    {
+        return $this->container['rating'];
+    }
+
+    /**
+     * Sets rating
+     *
+     * @param string|null $rating Moody's credit risk rating.
+     *
+     * @return self
+     */
+    public function setRating($rating)
+    {
+        $this->container['rating'] = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_spread
+     *
+     * @return float|null
+     */
+    public function getDefaultSpread()
+    {
+        return $this->container['default_spread'];
+    }
+
+    /**
+     * Sets default_spread
+     *
+     * @param float|null $default_spread Default spread
+     *
+     * @return self
+     */
+    public function setDefaultSpread($default_spread)
+    {
+        $this->container['default_spread'] = $default_spread;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_risk_premium
+     *
+     * @return float|null
+     */
+    public function getCountryRiskPremium()
+    {
+        return $this->container['country_risk_premium'];
+    }
+
+    /**
+     * Sets country_risk_premium
+     *
+     * @param float|null $country_risk_premium Country risk premium
+     *
+     * @return self
+     */
+    public function setCountryRiskPremium($country_risk_premium)
+    {
+        $this->container['country_risk_premium'] = $country_risk_premium;
+
+        return $this;
+    }
+
+    /**
+     * Gets equity_risk_premium
+     *
+     * @return float|null
+     */
+    public function getEquityRiskPremium()
+    {
+        return $this->container['equity_risk_premium'];
+    }
+
+    /**
+     * Sets equity_risk_premium
+     *
+     * @param float|null $equity_risk_premium Equity risk premium
+     *
+     * @return self
+     */
+    public function setEquityRiskPremium($equity_risk_premium)
+    {
+        $this->container['equity_risk_premium'] = $equity_risk_premium;
 
         return $this;
     }

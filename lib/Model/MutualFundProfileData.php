@@ -68,6 +68,7 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'inception_date' => '\DateTime',
         'description' => 'string',
         'fund_family' => 'string',
+        'fund_company' => 'string',
         'manager' => 'string',
         'status' => 'string',
         'beta' => 'float',
@@ -105,6 +106,7 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'inception_date' => 'date',
         'description' => null,
         'fund_family' => null,
+        'fund_company' => null,
         'manager' => null,
         'status' => null,
         'beta' => 'float',
@@ -161,6 +163,7 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'inception_date' => 'inceptionDate',
         'description' => 'description',
         'fund_family' => 'fundFamily',
+        'fund_company' => 'fundCompany',
         'manager' => 'manager',
         'status' => 'status',
         'beta' => 'beta',
@@ -196,6 +199,7 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'inception_date' => 'setInceptionDate',
         'description' => 'setDescription',
         'fund_family' => 'setFundFamily',
+        'fund_company' => 'setFundCompany',
         'manager' => 'setManager',
         'status' => 'setStatus',
         'beta' => 'setBeta',
@@ -231,6 +235,7 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         'inception_date' => 'getInceptionDate',
         'description' => 'getDescription',
         'fund_family' => 'getFundFamily',
+        'fund_company' => 'getFundCompany',
         'manager' => 'getManager',
         'status' => 'getStatus',
         'beta' => 'getBeta',
@@ -317,6 +322,7 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->container['inception_date'] = $data['inception_date'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['fund_family'] = $data['fund_family'] ?? null;
+        $this->container['fund_company'] = $data['fund_company'] ?? null;
         $this->container['manager'] = $data['manager'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['beta'] = $data['beta'] ?? null;
@@ -573,6 +579,30 @@ class MutualFundProfileData implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFundFamily($fund_family)
     {
         $this->container['fund_family'] = $fund_family;
+
+        return $this;
+    }
+
+    /**
+     * Gets fund_company
+     *
+     * @return string|null
+     */
+    public function getFundCompany()
+    {
+        return $this->container['fund_company'];
+    }
+
+    /**
+     * Sets fund_company
+     *
+     * @param string|null $fund_company Fund Company.
+     *
+     * @return self
+     */
+    public function setFundCompany($fund_company)
+    {
+        $this->container['fund_company'] = $fund_company;
 
         return $this;
     }

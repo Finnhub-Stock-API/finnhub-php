@@ -54,10 +54,13 @@ Method | HTTP request | Description
 [**institutionalOwnership()**](DefaultApi.md#institutionalOwnership) | **GET** /institutional/ownership | Institutional Ownership
 [**institutionalPortfolio()**](DefaultApi.md#institutionalPortfolio) | **GET** /institutional/portfolio | Institutional Portfolio
 [**institutionalProfile()**](DefaultApi.md#institutionalProfile) | **GET** /institutional/profile | Institutional Profile
+[**internationalFilings()**](DefaultApi.md#internationalFilings) | **GET** /stock/international-filings | International Filings
 [**investmentThemes()**](DefaultApi.md#investmentThemes) | **GET** /stock/investment-theme | Investment Themes (Thematic Investing)
 [**ipoCalendar()**](DefaultApi.md#ipoCalendar) | **GET** /calendar/ipo | IPO Calendar
 [**isinChange()**](DefaultApi.md#isinChange) | **GET** /ca/isin-change | ISIN Change
+[**marketHoliday()**](DefaultApi.md#marketHoliday) | **GET** /stock/market-holiday | Market Holiday
 [**marketNews()**](DefaultApi.md#marketNews) | **GET** /news | Market News
+[**marketStatus()**](DefaultApi.md#marketStatus) | **GET** /stock/market-status | Market Status
 [**mutualFundCountryExposure()**](DefaultApi.md#mutualFundCountryExposure) | **GET** /mutual-fund/country | Mutual Funds Country Exposure
 [**mutualFundEet()**](DefaultApi.md#mutualFundEet) | **GET** /mutual-fund/eet | Mutual Funds EET
 [**mutualFundEetPai()**](DefaultApi.md#mutualFundEetPai) | **GET** /mutual-fund/eet-pai | Mutual Funds EET PAI
@@ -818,7 +821,7 @@ companyEsgScore($symbol): \Finnhub\Model\CompanyESG
 
 Company ESG Scores
 
-<p>This endpoint provides ESG scores and important indicators for 1000+ global companies. The data is collected through company's public ESG disclosure and public sources.</p><p>Our ESG scoring models takes into account more than 150 different inputs to calculate the level of ESG risks and how well a company is managing them. A higher score means lower ESG risk or better ESG management. ESG scores are in the the range of 0-100. Some key indicators might contain letter-grade score from C- to A+ with C- is the lowest score and A+ is the highest score.</p>
+<p>This endpoint provides ESG scores and important indicators for 7000+ global companies. The data is collected through company's public ESG disclosure and public sources.</p><p>Our ESG scoring models takes into account more than 150 different inputs to calculate the level of ESG risks and how well a company is managing them. A higher score means lower ESG risk or better ESG management. ESG scores are in the the range of 0-100. Some key indicators might contain letter-grade score from C- to A+ with C- is the lowest score and A+ is the highest score.</p><p>Historical ESG data is available for Enterprise users. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>
 
 ### Example
 
@@ -1951,7 +1954,7 @@ Name | Type | Description  | Notes
 ## `etfsCountryExposure()`
 
 ```php
-etfsCountryExposure($symbol): \Finnhub\Model\ETFsCountryExposure
+etfsCountryExposure($symbol, $isin): \Finnhub\Model\ETFsCountryExposure
 ```
 
 ETFs Country Exposure
@@ -1978,9 +1981,10 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | ETF symbol.
+$isin = 'isin_example'; // string | ETF isin.
 
 try {
-    $result = $apiInstance->etfsCountryExposure($symbol);
+    $result = $apiInstance->etfsCountryExposure($symbol, $isin);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->etfsCountryExposure: ', $e->getMessage(), PHP_EOL;
@@ -1991,7 +1995,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| ETF symbol. |
+ **symbol** | **string**| ETF symbol. | [optional]
+ **isin** | **string**| ETF isin. | [optional]
 
 ### Return type
 
@@ -2145,7 +2150,7 @@ Name | Type | Description  | Notes
 ## `etfsSectorExposure()`
 
 ```php
-etfsSectorExposure($symbol): \Finnhub\Model\ETFsSectorExposure
+etfsSectorExposure($symbol, $isin): \Finnhub\Model\ETFsSectorExposure
 ```
 
 ETFs Sector Exposure
@@ -2172,9 +2177,10 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | ETF symbol.
+$isin = 'isin_example'; // string | ETF isin.
 
 try {
-    $result = $apiInstance->etfsSectorExposure($symbol);
+    $result = $apiInstance->etfsSectorExposure($symbol, $isin);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->etfsSectorExposure: ', $e->getMessage(), PHP_EOL;
@@ -2185,7 +2191,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| ETF symbol. |
+ **symbol** | **string**| ETF symbol. | [optional]
+ **isin** | **string**| ETF isin. | [optional]
 
 ### Return type
 
@@ -2860,7 +2867,7 @@ indicesConstituents($symbol): \Finnhub\Model\IndicesConstituents
 
 Indices Constituents
 
-Get a list of index's constituents. A list of supported indices for this endpoint can be found <a href=\"https://docs.google.com/spreadsheets/d/1Syr2eLielHWsorxkDEZXyc55d6bNx1M3ZeI4vdn7Qzo/edit?usp=sharing\" target=\"_blank\">here</a>.
+Get a list of index's constituents. A list of supported indices for this endpoint can be found <a href=\"/api/v1/index/list?token=\" target=\"_blank\">here</a>.
 
 ### Example
 
@@ -3304,6 +3311,70 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `internationalFilings()`
+
+```php
+internationalFilings($symbol, $country): \Finnhub\Model\InternationalFiling[]
+```
+
+International Filings
+
+List filings for international companies. Limit to 250 documents at a time. These are the documents we use to source our fundamental data. Only support SEDAR and UK Companies House for normal usage. Enterprise clients who need access to the full filings for global markets should contact us for the access.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol. Leave empty to list latest filings.
+$country = 'country_example'; // string | Filter by country using country's 2-letter code.
+
+try {
+    $result = $apiInstance->internationalFilings($symbol, $country);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->internationalFilings: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. Leave empty to list latest filings. | [optional]
+ **country** | **string**| Filter by country using country&#39;s 2-letter code. | [optional]
+
+### Return type
+
+[**\Finnhub\Model\InternationalFiling[]**](../Model/InternationalFiling.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `investmentThemes()`
 
 ```php
@@ -3494,6 +3565,68 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `marketHoliday()`
+
+```php
+marketHoliday($exchange): \Finnhub\Model\MarketHoliday
+```
+
+Market Holiday
+
+Get a list of holidays for global exchanges.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$exchange = 'exchange_example'; // string | Exchange code.
+
+try {
+    $result = $apiInstance->marketHoliday($exchange);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->marketHoliday: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **exchange** | **string**| Exchange code. |
+
+### Return type
+
+[**\Finnhub\Model\MarketHoliday**](../Model/MarketHoliday.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `marketNews()`
 
 ```php
@@ -3558,10 +3691,72 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `marketStatus()`
+
+```php
+marketStatus($exchange): \Finnhub\Model\MarketStatus
+```
+
+Market Status
+
+Get current market status for global exchanges (whether exchanges are open or close).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$exchange = 'exchange_example'; // string | Exchange code.
+
+try {
+    $result = $apiInstance->marketStatus($exchange);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->marketStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **exchange** | **string**| Exchange code. |
+
+### Return type
+
+[**\Finnhub\Model\MarketStatus**](../Model/MarketStatus.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `mutualFundCountryExposure()`
 
 ```php
-mutualFundCountryExposure($symbol): \Finnhub\Model\MutualFundCountryExposure
+mutualFundCountryExposure($symbol, $isin): \Finnhub\Model\MutualFundCountryExposure
 ```
 
 Mutual Funds Country Exposure
@@ -3588,9 +3783,10 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | Symbol.
+$isin = 'isin_example'; // string | Fund's isin.
 
 try {
-    $result = $apiInstance->mutualFundCountryExposure($symbol);
+    $result = $apiInstance->mutualFundCountryExposure($symbol, $isin);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->mutualFundCountryExposure: ', $e->getMessage(), PHP_EOL;
@@ -3601,7 +3797,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| Symbol. |
+ **symbol** | **string**| Symbol. | [optional]
+ **isin** | **string**| Fund&#39;s isin. | [optional]
 
 ### Return type
 
@@ -3877,7 +4074,7 @@ Name | Type | Description  | Notes
 ## `mutualFundSectorExposure()`
 
 ```php
-mutualFundSectorExposure($symbol): \Finnhub\Model\MutualFundSectorExposure
+mutualFundSectorExposure($symbol, $isin): \Finnhub\Model\MutualFundSectorExposure
 ```
 
 Mutual Funds Sector Exposure
@@ -3904,9 +4101,10 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $symbol = 'symbol_example'; // string | Mutual Fund symbol.
+$isin = 'isin_example'; // string | Fund's isin.
 
 try {
-    $result = $apiInstance->mutualFundSectorExposure($symbol);
+    $result = $apiInstance->mutualFundSectorExposure($symbol, $isin);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->mutualFundSectorExposure: ', $e->getMessage(), PHP_EOL;
@@ -3917,7 +4115,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **string**| Mutual Fund symbol. |
+ **symbol** | **string**| Mutual Fund symbol. | [optional]
+ **isin** | **string**| Fund&#39;s isin. | [optional]
 
 ### Return type
 
@@ -4642,7 +4841,7 @@ socialSentiment($symbol, $from, $to): \Finnhub\Model\SocialSentiment
 
 Social Sentiment
 
-<p>Get social sentiment for stocks on Reddit and Twitter. This endpoint is currently in Beta.</p>
+<p>Get social sentiment for stocks on Reddit and Twitter.</p>
 
 ### Example
 
@@ -4832,7 +5031,7 @@ stockCandles($symbol, $resolution, $from, $to): \Finnhub\Model\StockCandles
 
 Stock Candles
 
-<p>Get candlestick data (OHLCV) for stocks.</p><p>Daily data will be adjusted for Splits. Intraday data will remain unadjusted.</p>
+<p>Get candlestick data (OHLCV) for stocks.</p><p>Daily data will be adjusted for Splits. Intraday data will remain unadjusted. Only 1 month of intraday will be returned at a time. If you need more historical intraday data, please use the from and to params iteratively to request more data.</p>
 
 ### Example
 
@@ -5234,7 +5433,7 @@ stockTick($symbol, $date, $limit, $skip): \Finnhub\Model\TickData
 
 Tick Data
 
-<p>Get historical tick data for global exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server.</p><p>For US market, you can visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a> to speed up the download process.</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">US CTA/UTP</th>       <td>Full SIP</td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">TSX</th>       <td><ul><li>TSX</li><li>TSX Venture</li><li>Index</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">LSE</th>       <td><ul><li>London Stock Exchange (L)</li><li>LSE International (L)</li><li>LSE European (L)</li></ul></td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">Euronext</th>       <td><ul> <li>Euronext Paris (PA)</li> <li>Euronext Amsterdam (AS)</li> <li>Euronext Lisbon (LS)</li> <li>Euronext Brussels (BR)</li> <li>Euronext Oslo (OL)</li> <li>Euronext London (LN)</li> <li>Euronext Dublin (IR)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Deutsche Börse</th>       <td><ul> <li>Frankfurt (F)</li> <li>Xetra (DE)</li> <li>Duesseldorf (DU)</li> <li>Hamburg (HM)</li> <li>Berlin (BE)</li> <li>Hanover (HA)</li> <li>Stoxx (SX)</li> <li>TradeGate (TG)</li> <li>Zertifikate (SC)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>   </tbody> </table>
+<p>Get historical tick data for global exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server.</p><p>For more historical tick data, you can visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a> to speed up the download process.</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">US CTA/UTP</th>       <td>Full SIP</td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">TSX</th>       <td><ul><li>TSX</li><li>TSX Venture</li><li>Index</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">LSE</th>       <td><ul><li>London Stock Exchange (L)</li><li>LSE International (L)</li><li>LSE European (L)</li></ul></td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">Euronext</th>       <td><ul> <li>Euronext Paris (PA)</li> <li>Euronext Amsterdam (AS)</li> <li>Euronext Lisbon (LS)</li> <li>Euronext Brussels (BR)</li> <li>Euronext Oslo (OL)</li> <li>Euronext London (LN)</li> <li>Euronext Dublin (IR)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Deutsche Börse</th>       <td><ul> <li>Frankfurt (F)</li> <li>Xetra (DE)</li> <li>Duesseldorf (DU)</li> <li>Hamburg (HM)</li> <li>Berlin (BE)</li> <li>Hanover (HA)</li> <li>Stoxx (SX)</li> <li>TradeGate (TG)</li> <li>Zertifikate (SC)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>   </tbody> </table>
 
 ### Example
 

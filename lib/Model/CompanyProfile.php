@@ -59,6 +59,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'alias' => 'string[]',
         'address' => 'string',
         'city' => 'string',
         'country' => 'string',
@@ -74,6 +75,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsector' => 'string',
         'gsubind' => 'string',
         'isin' => 'string',
+        'lei' => 'string',
         'naics_national_industry' => 'string',
         'naics' => 'string',
         'naics_sector' => 'string',
@@ -99,6 +101,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'alias' => null,
         'address' => null,
         'city' => null,
         'country' => null,
@@ -114,6 +117,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsector' => null,
         'gsubind' => null,
         'isin' => null,
+        'lei' => null,
         'naics_national_industry' => null,
         'naics' => null,
         'naics_sector' => null,
@@ -158,6 +162,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'alias' => 'alias',
         'address' => 'address',
         'city' => 'city',
         'country' => 'country',
@@ -173,6 +178,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsector' => 'gsector',
         'gsubind' => 'gsubind',
         'isin' => 'isin',
+        'lei' => 'lei',
         'naics_national_industry' => 'naicsNationalIndustry',
         'naics' => 'naics',
         'naics_sector' => 'naicsSector',
@@ -196,6 +202,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'alias' => 'setAlias',
         'address' => 'setAddress',
         'city' => 'setCity',
         'country' => 'setCountry',
@@ -211,6 +218,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsector' => 'setGsector',
         'gsubind' => 'setGsubind',
         'isin' => 'setIsin',
+        'lei' => 'setLei',
         'naics_national_industry' => 'setNaicsNationalIndustry',
         'naics' => 'setNaics',
         'naics_sector' => 'setNaicsSector',
@@ -234,6 +242,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'alias' => 'getAlias',
         'address' => 'getAddress',
         'city' => 'getCity',
         'country' => 'getCountry',
@@ -249,6 +258,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsector' => 'getGsector',
         'gsubind' => 'getGsubind',
         'isin' => 'getIsin',
+        'lei' => 'getLei',
         'naics_national_industry' => 'getNaicsNationalIndustry',
         'naics' => 'getNaics',
         'naics_sector' => 'getNaicsSector',
@@ -323,6 +333,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['alias'] = $data['alias'] ?? null;
         $this->container['address'] = $data['address'] ?? null;
         $this->container['city'] = $data['city'] ?? null;
         $this->container['country'] = $data['country'] ?? null;
@@ -338,6 +349,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['gsector'] = $data['gsector'] ?? null;
         $this->container['gsubind'] = $data['gsubind'] ?? null;
         $this->container['isin'] = $data['isin'] ?? null;
+        $this->container['lei'] = $data['lei'] ?? null;
         $this->container['naics_national_industry'] = $data['naics_national_industry'] ?? null;
         $this->container['naics'] = $data['naics'] ?? null;
         $this->container['naics_sector'] = $data['naics_sector'] ?? null;
@@ -378,6 +390,30 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets alias
+     *
+     * @return string[]|null
+     */
+    public function getAlias()
+    {
+        return $this->container['alias'];
+    }
+
+    /**
+     * Sets alias
+     *
+     * @param string[]|null $alias Company name alias.
+     *
+     * @return self
+     */
+    public function setAlias($alias)
+    {
+        $this->container['alias'] = $alias;
+
+        return $this;
+    }
 
     /**
      * Gets address
@@ -735,6 +771,30 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsin($isin)
     {
         $this->container['isin'] = $isin;
+
+        return $this;
+    }
+
+    /**
+     * Gets lei
+     *
+     * @return string|null
+     */
+    public function getLei()
+    {
+        return $this->container['lei'];
+    }
+
+    /**
+     * Sets lei
+     *
+     * @param string|null $lei LEI number.
+     *
+     * @return self
+     */
+    public function setLei($lei)
+    {
+        $this->container['lei'] = $lei;
 
         return $this;
     }

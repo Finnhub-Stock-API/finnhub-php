@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **inception_date** | [**\DateTime**](\DateTime.md) | Inception date. | [optional]
 **description** | **string** | Fund&#39;s description. | [optional]
 **fund_family** | **string** | Fund Family. | [optional]
+**fund_company** | **string** | Fund Company. | [optional]
 **manager** | **string** | Fund&#39;s managers. | [optional]
 **status** | **string** | Status. | [optional]
 **beta** | **float** | Beta. | [optional]

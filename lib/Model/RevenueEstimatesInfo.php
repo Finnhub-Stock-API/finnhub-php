@@ -63,7 +63,9 @@ class RevenueEstimatesInfo implements ModelInterface, ArrayAccess, \JsonSerializ
         'revenue_high' => 'float',
         'revenue_low' => 'float',
         'number_analysts' => 'int',
-        'period' => '\DateTime'
+        'period' => '\DateTime',
+        'year' => 'int',
+        'quarter' => 'int'
     ];
 
     /**
@@ -78,7 +80,9 @@ class RevenueEstimatesInfo implements ModelInterface, ArrayAccess, \JsonSerializ
         'revenue_high' => 'float',
         'revenue_low' => 'float',
         'number_analysts' => 'int64',
-        'period' => 'date'
+        'period' => 'date',
+        'year' => 'int64',
+        'quarter' => 'int64'
     ];
 
     /**
@@ -112,7 +116,9 @@ class RevenueEstimatesInfo implements ModelInterface, ArrayAccess, \JsonSerializ
         'revenue_high' => 'revenueHigh',
         'revenue_low' => 'revenueLow',
         'number_analysts' => 'numberAnalysts',
-        'period' => 'period'
+        'period' => 'period',
+        'year' => 'year',
+        'quarter' => 'quarter'
     ];
 
     /**
@@ -125,7 +131,9 @@ class RevenueEstimatesInfo implements ModelInterface, ArrayAccess, \JsonSerializ
         'revenue_high' => 'setRevenueHigh',
         'revenue_low' => 'setRevenueLow',
         'number_analysts' => 'setNumberAnalysts',
-        'period' => 'setPeriod'
+        'period' => 'setPeriod',
+        'year' => 'setYear',
+        'quarter' => 'setQuarter'
     ];
 
     /**
@@ -138,7 +146,9 @@ class RevenueEstimatesInfo implements ModelInterface, ArrayAccess, \JsonSerializ
         'revenue_high' => 'getRevenueHigh',
         'revenue_low' => 'getRevenueLow',
         'number_analysts' => 'getNumberAnalysts',
-        'period' => 'getPeriod'
+        'period' => 'getPeriod',
+        'year' => 'getYear',
+        'quarter' => 'getQuarter'
     ];
 
     /**
@@ -203,6 +213,8 @@ class RevenueEstimatesInfo implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->container['revenue_low'] = $data['revenue_low'] ?? null;
         $this->container['number_analysts'] = $data['number_analysts'] ?? null;
         $this->container['period'] = $data['period'] ?? null;
+        $this->container['year'] = $data['year'] ?? null;
+        $this->container['quarter'] = $data['quarter'] ?? null;
     }
 
     /**
@@ -345,6 +357,54 @@ class RevenueEstimatesInfo implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setPeriod($period)
     {
         $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets year
+     *
+     * @return int|null
+     */
+    public function getYear()
+    {
+        return $this->container['year'];
+    }
+
+    /**
+     * Sets year
+     *
+     * @param int|null $year Fiscal year.
+     *
+     * @return self
+     */
+    public function setYear($year)
+    {
+        $this->container['year'] = $year;
+
+        return $this;
+    }
+
+    /**
+     * Gets quarter
+     *
+     * @return int|null
+     */
+    public function getQuarter()
+    {
+        return $this->container['quarter'];
+    }
+
+    /**
+     * Sets quarter
+     *
+     * @param int|null $quarter Fiscal quarter.
+     *
+     * @return self
+     */
+    public function setQuarter($quarter)
+    {
+        $this->container['quarter'] = $quarter;
 
         return $this;
     }

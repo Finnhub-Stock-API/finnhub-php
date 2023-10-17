@@ -1,6 +1,6 @@
 <?php
 /**
- * IndicesConstituents
+ * IndicesConstituentsBreakdown
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * IndicesConstituents Class Doc Comment
+ * IndicesConstituentsBreakdown Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializable
+class IndicesConstituentsBreakdown implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IndicesConstituents';
+    protected static $openAPIModelName = 'IndicesConstituentsBreakdown';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,11 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'constituents' => 'string[]',
-        'constituents_breakdown' => '\Finnhub\Model\IndicesConstituentsBreakdown[]'
+        'name' => 'string',
+        'isin' => 'string',
+        'cusip' => 'string',
+        'share_class_figi' => 'string',
+        'weight' => 'float'
     ];
 
     /**
@@ -73,8 +76,11 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'constituents' => null,
-        'constituents_breakdown' => null
+        'name' => null,
+        'isin' => null,
+        'cusip' => null,
+        'share_class_figi' => null,
+        'weight' => 'float'
     ];
 
     /**
@@ -105,8 +111,11 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
-        'constituents' => 'constituents',
-        'constituents_breakdown' => 'constituentsBreakdown'
+        'name' => 'name',
+        'isin' => 'isin',
+        'cusip' => 'cusip',
+        'share_class_figi' => 'shareClassFIGI',
+        'weight' => 'weight'
     ];
 
     /**
@@ -116,8 +125,11 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
-        'constituents' => 'setConstituents',
-        'constituents_breakdown' => 'setConstituentsBreakdown'
+        'name' => 'setName',
+        'isin' => 'setIsin',
+        'cusip' => 'setCusip',
+        'share_class_figi' => 'setShareClassFigi',
+        'weight' => 'setWeight'
     ];
 
     /**
@@ -127,8 +139,11 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
-        'constituents' => 'getConstituents',
-        'constituents_breakdown' => 'getConstituentsBreakdown'
+        'name' => 'getName',
+        'isin' => 'getIsin',
+        'cusip' => 'getCusip',
+        'share_class_figi' => 'getShareClassFigi',
+        'weight' => 'getWeight'
     ];
 
     /**
@@ -189,8 +204,11 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['constituents'] = $data['constituents'] ?? null;
-        $this->container['constituents_breakdown'] = $data['constituents_breakdown'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['isin'] = $data['isin'] ?? null;
+        $this->container['cusip'] = $data['cusip'] ?? null;
+        $this->container['share_class_figi'] = $data['share_class_figi'] ?? null;
+        $this->container['weight'] = $data['weight'] ?? null;
     }
 
     /**
@@ -230,7 +248,7 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets symbol
      *
-     * @param string|null $symbol Index's symbol.
+     * @param string|null $symbol Symbol.
      *
      * @return self
      */
@@ -242,49 +260,121 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets constituents
+     * Gets name
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getConstituents()
+    public function getName()
     {
-        return $this->container['constituents'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets constituents
+     * Sets name
      *
-     * @param string[]|null $constituents Array of constituents.
+     * @param string|null $name Name.
      *
      * @return self
      */
-    public function setConstituents($constituents)
+    public function setName($name)
     {
-        $this->container['constituents'] = $constituents;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets constituents_breakdown
+     * Gets isin
      *
-     * @return \Finnhub\Model\IndicesConstituentsBreakdown[]|null
+     * @return string|null
      */
-    public function getConstituentsBreakdown()
+    public function getIsin()
     {
-        return $this->container['constituents_breakdown'];
+        return $this->container['isin'];
     }
 
     /**
-     * Sets constituents_breakdown
+     * Sets isin
      *
-     * @param \Finnhub\Model\IndicesConstituentsBreakdown[]|null $constituents_breakdown Array of constituents' details.
+     * @param string|null $isin ISIN.
      *
      * @return self
      */
-    public function setConstituentsBreakdown($constituents_breakdown)
+    public function setIsin($isin)
     {
-        $this->container['constituents_breakdown'] = $constituents_breakdown;
+        $this->container['isin'] = $isin;
+
+        return $this;
+    }
+
+    /**
+     * Gets cusip
+     *
+     * @return string|null
+     */
+    public function getCusip()
+    {
+        return $this->container['cusip'];
+    }
+
+    /**
+     * Sets cusip
+     *
+     * @param string|null $cusip Cusip.
+     *
+     * @return self
+     */
+    public function setCusip($cusip)
+    {
+        $this->container['cusip'] = $cusip;
+
+        return $this;
+    }
+
+    /**
+     * Gets share_class_figi
+     *
+     * @return string|null
+     */
+    public function getShareClassFigi()
+    {
+        return $this->container['share_class_figi'];
+    }
+
+    /**
+     * Sets share_class_figi
+     *
+     * @param string|null $share_class_figi Global Share Class FIGI.
+     *
+     * @return self
+     */
+    public function setShareClassFigi($share_class_figi)
+    {
+        $this->container['share_class_figi'] = $share_class_figi;
+
+        return $this;
+    }
+
+    /**
+     * Gets weight
+     *
+     * @return float|null
+     */
+    public function getWeight()
+    {
+        return $this->container['weight'];
+    }
+
+    /**
+     * Sets weight
+     *
+     * @param float|null $weight Weight.
+     *
+     * @return self
+     */
+    public function setWeight($weight)
+    {
+        $this->container['weight'] = $weight;
 
         return $this;
     }

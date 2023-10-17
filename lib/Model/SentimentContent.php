@@ -1,6 +1,6 @@
 <?php
 /**
- * IndicesConstituents
+ * SentimentContent
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * IndicesConstituents Class Doc Comment
+ * SentimentContent Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializable
+class SentimentContent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IndicesConstituents';
+    protected static $openAPIModelName = 'SentimentContent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,13 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'constituents' => 'string[]',
-        'constituents_breakdown' => '\Finnhub\Model\IndicesConstituentsBreakdown[]'
+        'mention' => 'int',
+        'positive_mention' => 'int',
+        'negative_mention' => 'int',
+        'positive_score' => 'float',
+        'negative_score' => 'float',
+        'score' => 'float',
+        'at_time' => 'string'
     ];
 
     /**
@@ -72,9 +76,13 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'constituents' => null,
-        'constituents_breakdown' => null
+        'mention' => 'int64',
+        'positive_mention' => 'int64',
+        'negative_mention' => 'int64',
+        'positive_score' => 'float',
+        'negative_score' => 'float',
+        'score' => 'float',
+        'at_time' => null
     ];
 
     /**
@@ -104,9 +112,13 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'constituents' => 'constituents',
-        'constituents_breakdown' => 'constituentsBreakdown'
+        'mention' => 'mention',
+        'positive_mention' => 'positiveMention',
+        'negative_mention' => 'negativeMention',
+        'positive_score' => 'positiveScore',
+        'negative_score' => 'negativeScore',
+        'score' => 'score',
+        'at_time' => 'atTime'
     ];
 
     /**
@@ -115,9 +127,13 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'constituents' => 'setConstituents',
-        'constituents_breakdown' => 'setConstituentsBreakdown'
+        'mention' => 'setMention',
+        'positive_mention' => 'setPositiveMention',
+        'negative_mention' => 'setNegativeMention',
+        'positive_score' => 'setPositiveScore',
+        'negative_score' => 'setNegativeScore',
+        'score' => 'setScore',
+        'at_time' => 'setAtTime'
     ];
 
     /**
@@ -126,9 +142,13 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'constituents' => 'getConstituents',
-        'constituents_breakdown' => 'getConstituentsBreakdown'
+        'mention' => 'getMention',
+        'positive_mention' => 'getPositiveMention',
+        'negative_mention' => 'getNegativeMention',
+        'positive_score' => 'getPositiveScore',
+        'negative_score' => 'getNegativeScore',
+        'score' => 'getScore',
+        'at_time' => 'getAtTime'
     ];
 
     /**
@@ -188,9 +208,13 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['constituents'] = $data['constituents'] ?? null;
-        $this->container['constituents_breakdown'] = $data['constituents_breakdown'] ?? null;
+        $this->container['mention'] = $data['mention'] ?? null;
+        $this->container['positive_mention'] = $data['positive_mention'] ?? null;
+        $this->container['negative_mention'] = $data['negative_mention'] ?? null;
+        $this->container['positive_score'] = $data['positive_score'] ?? null;
+        $this->container['negative_score'] = $data['negative_score'] ?? null;
+        $this->container['score'] = $data['score'] ?? null;
+        $this->container['at_time'] = $data['at_time'] ?? null;
     }
 
     /**
@@ -218,73 +242,169 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets symbol
+     * Gets mention
+     *
+     * @return int|null
+     */
+    public function getMention()
+    {
+        return $this->container['mention'];
+    }
+
+    /**
+     * Sets mention
+     *
+     * @param int|null $mention Number of mentions
+     *
+     * @return self
+     */
+    public function setMention($mention)
+    {
+        $this->container['mention'] = $mention;
+
+        return $this;
+    }
+
+    /**
+     * Gets positive_mention
+     *
+     * @return int|null
+     */
+    public function getPositiveMention()
+    {
+        return $this->container['positive_mention'];
+    }
+
+    /**
+     * Sets positive_mention
+     *
+     * @param int|null $positive_mention Number of positive mentions
+     *
+     * @return self
+     */
+    public function setPositiveMention($positive_mention)
+    {
+        $this->container['positive_mention'] = $positive_mention;
+
+        return $this;
+    }
+
+    /**
+     * Gets negative_mention
+     *
+     * @return int|null
+     */
+    public function getNegativeMention()
+    {
+        return $this->container['negative_mention'];
+    }
+
+    /**
+     * Sets negative_mention
+     *
+     * @param int|null $negative_mention Number of negative mentions
+     *
+     * @return self
+     */
+    public function setNegativeMention($negative_mention)
+    {
+        $this->container['negative_mention'] = $negative_mention;
+
+        return $this;
+    }
+
+    /**
+     * Gets positive_score
+     *
+     * @return float|null
+     */
+    public function getPositiveScore()
+    {
+        return $this->container['positive_score'];
+    }
+
+    /**
+     * Sets positive_score
+     *
+     * @param float|null $positive_score Positive score. Range 0-1
+     *
+     * @return self
+     */
+    public function setPositiveScore($positive_score)
+    {
+        $this->container['positive_score'] = $positive_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets negative_score
+     *
+     * @return float|null
+     */
+    public function getNegativeScore()
+    {
+        return $this->container['negative_score'];
+    }
+
+    /**
+     * Sets negative_score
+     *
+     * @param float|null $negative_score Negative score. Range 0-1
+     *
+     * @return self
+     */
+    public function setNegativeScore($negative_score)
+    {
+        $this->container['negative_score'] = $negative_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets score
+     *
+     * @return float|null
+     */
+    public function getScore()
+    {
+        return $this->container['score'];
+    }
+
+    /**
+     * Sets score
+     *
+     * @param float|null $score Final score. Range: -1 to 1 with 1 is very positive and -1 is very negative
+     *
+     * @return self
+     */
+    public function setScore($score)
+    {
+        $this->container['score'] = $score;
+
+        return $this;
+    }
+
+    /**
+     * Gets at_time
      *
      * @return string|null
      */
-    public function getSymbol()
+    public function getAtTime()
     {
-        return $this->container['symbol'];
+        return $this->container['at_time'];
     }
 
     /**
-     * Sets symbol
+     * Sets at_time
      *
-     * @param string|null $symbol Index's symbol.
+     * @param string|null $at_time Period.
      *
      * @return self
      */
-    public function setSymbol($symbol)
+    public function setAtTime($at_time)
     {
-        $this->container['symbol'] = $symbol;
-
-        return $this;
-    }
-
-    /**
-     * Gets constituents
-     *
-     * @return string[]|null
-     */
-    public function getConstituents()
-    {
-        return $this->container['constituents'];
-    }
-
-    /**
-     * Sets constituents
-     *
-     * @param string[]|null $constituents Array of constituents.
-     *
-     * @return self
-     */
-    public function setConstituents($constituents)
-    {
-        $this->container['constituents'] = $constituents;
-
-        return $this;
-    }
-
-    /**
-     * Gets constituents_breakdown
-     *
-     * @return \Finnhub\Model\IndicesConstituentsBreakdown[]|null
-     */
-    public function getConstituentsBreakdown()
-    {
-        return $this->container['constituents_breakdown'];
-    }
-
-    /**
-     * Sets constituents_breakdown
-     *
-     * @param \Finnhub\Model\IndicesConstituentsBreakdown[]|null $constituents_breakdown Array of constituents' details.
-     *
-     * @return self
-     */
-    public function setConstituentsBreakdown($constituents_breakdown)
-    {
-        $this->container['constituents_breakdown'] = $constituents_breakdown;
+        $this->container['at_time'] = $at_time;
 
         return $this;
     }

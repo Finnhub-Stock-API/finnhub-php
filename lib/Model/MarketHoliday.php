@@ -1,6 +1,6 @@
 <?php
 /**
- * IndicesConstituents
+ * MarketHoliday
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * IndicesConstituents Class Doc Comment
+ * MarketHoliday Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializable
+class MarketHoliday implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IndicesConstituents';
+    protected static $openAPIModelName = 'MarketHoliday';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'constituents' => 'string[]',
-        'constituents_breakdown' => '\Finnhub\Model\IndicesConstituentsBreakdown[]'
+        'timezone' => 'string',
+        'exchange' => 'string',
+        'data' => '\Finnhub\Model\MarketHolidayData[]'
     ];
 
     /**
@@ -72,9 +72,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'constituents' => null,
-        'constituents_breakdown' => null
+        'timezone' => null,
+        'exchange' => null,
+        'data' => null
     ];
 
     /**
@@ -104,9 +104,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'constituents' => 'constituents',
-        'constituents_breakdown' => 'constituentsBreakdown'
+        'timezone' => 'timezone',
+        'exchange' => 'exchange',
+        'data' => 'data'
     ];
 
     /**
@@ -115,9 +115,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'constituents' => 'setConstituents',
-        'constituents_breakdown' => 'setConstituentsBreakdown'
+        'timezone' => 'setTimezone',
+        'exchange' => 'setExchange',
+        'data' => 'setData'
     ];
 
     /**
@@ -126,9 +126,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'constituents' => 'getConstituents',
-        'constituents_breakdown' => 'getConstituentsBreakdown'
+        'timezone' => 'getTimezone',
+        'exchange' => 'getExchange',
+        'data' => 'getData'
     ];
 
     /**
@@ -188,9 +188,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['constituents'] = $data['constituents'] ?? null;
-        $this->container['constituents_breakdown'] = $data['constituents_breakdown'] ?? null;
+        $this->container['timezone'] = $data['timezone'] ?? null;
+        $this->container['exchange'] = $data['exchange'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -218,73 +218,73 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets symbol
+     * Gets timezone
      *
      * @return string|null
      */
-    public function getSymbol()
+    public function getTimezone()
     {
-        return $this->container['symbol'];
+        return $this->container['timezone'];
     }
 
     /**
-     * Sets symbol
+     * Sets timezone
      *
-     * @param string|null $symbol Index's symbol.
+     * @param string|null $timezone Timezone.
      *
      * @return self
      */
-    public function setSymbol($symbol)
+    public function setTimezone($timezone)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['timezone'] = $timezone;
 
         return $this;
     }
 
     /**
-     * Gets constituents
+     * Gets exchange
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getConstituents()
+    public function getExchange()
     {
-        return $this->container['constituents'];
+        return $this->container['exchange'];
     }
 
     /**
-     * Sets constituents
+     * Sets exchange
      *
-     * @param string[]|null $constituents Array of constituents.
+     * @param string|null $exchange Exchange.
      *
      * @return self
      */
-    public function setConstituents($constituents)
+    public function setExchange($exchange)
     {
-        $this->container['constituents'] = $constituents;
+        $this->container['exchange'] = $exchange;
 
         return $this;
     }
 
     /**
-     * Gets constituents_breakdown
+     * Gets data
      *
-     * @return \Finnhub\Model\IndicesConstituentsBreakdown[]|null
+     * @return \Finnhub\Model\MarketHolidayData[]|null
      */
-    public function getConstituentsBreakdown()
+    public function getData()
     {
-        return $this->container['constituents_breakdown'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets constituents_breakdown
+     * Sets data
      *
-     * @param \Finnhub\Model\IndicesConstituentsBreakdown[]|null $constituents_breakdown Array of constituents' details.
+     * @param \Finnhub\Model\MarketHolidayData[]|null $data Array of holidays.
      *
      * @return self
      */
-    public function setConstituentsBreakdown($constituents_breakdown)
+    public function setData($data)
     {
-        $this->container['constituents_breakdown'] = $constituents_breakdown;
+        $this->container['data'] = $data;
 
         return $this;
     }
