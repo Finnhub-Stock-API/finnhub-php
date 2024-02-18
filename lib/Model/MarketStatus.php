@@ -1,6 +1,6 @@
 <?php
 /**
- * IndicesConstituents
+ * MarketStatus
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * IndicesConstituents Class Doc Comment
+ * MarketStatus Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializable
+class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IndicesConstituents';
+    protected static $openAPIModelName = 'MarketStatus';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,12 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'constituents' => 'string[]',
-        'constituents_breakdown' => '\Finnhub\Model\IndicesConstituentsBreakdown[]'
+        'exchange' => 'string',
+        'timezone' => 'string',
+        'session' => 'string',
+        'holiday' => 'string',
+        'is_open' => 'bool',
+        't' => 'int'
     ];
 
     /**
@@ -72,9 +75,12 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'constituents' => null,
-        'constituents_breakdown' => null
+        'exchange' => null,
+        'timezone' => null,
+        'session' => null,
+        'holiday' => null,
+        'is_open' => null,
+        't' => 'int64'
     ];
 
     /**
@@ -104,9 +110,12 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'constituents' => 'constituents',
-        'constituents_breakdown' => 'constituentsBreakdown'
+        'exchange' => 'exchange',
+        'timezone' => 'timezone',
+        'session' => 'session',
+        'holiday' => 'holiday',
+        'is_open' => 'isOpen',
+        't' => 't'
     ];
 
     /**
@@ -115,9 +124,12 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'constituents' => 'setConstituents',
-        'constituents_breakdown' => 'setConstituentsBreakdown'
+        'exchange' => 'setExchange',
+        'timezone' => 'setTimezone',
+        'session' => 'setSession',
+        'holiday' => 'setHoliday',
+        'is_open' => 'setIsOpen',
+        't' => 'setT'
     ];
 
     /**
@@ -126,9 +138,12 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'constituents' => 'getConstituents',
-        'constituents_breakdown' => 'getConstituentsBreakdown'
+        'exchange' => 'getExchange',
+        'timezone' => 'getTimezone',
+        'session' => 'getSession',
+        'holiday' => 'getHoliday',
+        'is_open' => 'getIsOpen',
+        't' => 'getT'
     ];
 
     /**
@@ -188,9 +203,12 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['constituents'] = $data['constituents'] ?? null;
-        $this->container['constituents_breakdown'] = $data['constituents_breakdown'] ?? null;
+        $this->container['exchange'] = $data['exchange'] ?? null;
+        $this->container['timezone'] = $data['timezone'] ?? null;
+        $this->container['session'] = $data['session'] ?? null;
+        $this->container['holiday'] = $data['holiday'] ?? null;
+        $this->container['is_open'] = $data['is_open'] ?? null;
+        $this->container['t'] = $data['t'] ?? null;
     }
 
     /**
@@ -218,73 +236,145 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets symbol
+     * Gets exchange
      *
      * @return string|null
      */
-    public function getSymbol()
+    public function getExchange()
     {
-        return $this->container['symbol'];
+        return $this->container['exchange'];
     }
 
     /**
-     * Sets symbol
+     * Sets exchange
      *
-     * @param string|null $symbol Index's symbol.
+     * @param string|null $exchange Exchange.
      *
      * @return self
      */
-    public function setSymbol($symbol)
+    public function setExchange($exchange)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['exchange'] = $exchange;
 
         return $this;
     }
 
     /**
-     * Gets constituents
+     * Gets timezone
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getConstituents()
+    public function getTimezone()
     {
-        return $this->container['constituents'];
+        return $this->container['timezone'];
     }
 
     /**
-     * Sets constituents
+     * Sets timezone
      *
-     * @param string[]|null $constituents Array of constituents.
+     * @param string|null $timezone Timezone.
      *
      * @return self
      */
-    public function setConstituents($constituents)
+    public function setTimezone($timezone)
     {
-        $this->container['constituents'] = $constituents;
+        $this->container['timezone'] = $timezone;
 
         return $this;
     }
 
     /**
-     * Gets constituents_breakdown
+     * Gets session
      *
-     * @return \Finnhub\Model\IndicesConstituentsBreakdown[]|null
+     * @return string|null
      */
-    public function getConstituentsBreakdown()
+    public function getSession()
     {
-        return $this->container['constituents_breakdown'];
+        return $this->container['session'];
     }
 
     /**
-     * Sets constituents_breakdown
+     * Sets session
      *
-     * @param \Finnhub\Model\IndicesConstituentsBreakdown[]|null $constituents_breakdown Array of constituents' details.
+     * @param string|null $session Market session.
      *
      * @return self
      */
-    public function setConstituentsBreakdown($constituents_breakdown)
+    public function setSession($session)
     {
-        $this->container['constituents_breakdown'] = $constituents_breakdown;
+        $this->container['session'] = $session;
+
+        return $this;
+    }
+
+    /**
+     * Gets holiday
+     *
+     * @return string|null
+     */
+    public function getHoliday()
+    {
+        return $this->container['holiday'];
+    }
+
+    /**
+     * Sets holiday
+     *
+     * @param string|null $holiday Holiday event.
+     *
+     * @return self
+     */
+    public function setHoliday($holiday)
+    {
+        $this->container['holiday'] = $holiday;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_open
+     *
+     * @return bool|null
+     */
+    public function getIsOpen()
+    {
+        return $this->container['is_open'];
+    }
+
+    /**
+     * Sets is_open
+     *
+     * @param bool|null $is_open Whether the market is open at the moment.
+     *
+     * @return self
+     */
+    public function setIsOpen($is_open)
+    {
+        $this->container['is_open'] = $is_open;
+
+        return $this;
+    }
+
+    /**
+     * Gets t
+     *
+     * @return int|null
+     */
+    public function getT()
+    {
+        return $this->container['t'];
+    }
+
+    /**
+     * Sets t
+     *
+     * @param int|null $t Current timestamp.
+     *
+     * @return self
+     */
+    public function setT($t)
+    {
+        $this->container['t'] = $t;
 
         return $this;
     }

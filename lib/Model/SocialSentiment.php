@@ -60,8 +60,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'symbol' => 'string',
-        'reddit' => '\Finnhub\Model\RedditSentimentContent[]',
-        'twitter' => '\Finnhub\Model\TwitterSentimentContent[]'
+        'data' => '\Finnhub\Model\SentimentContent[]'
     ];
 
     /**
@@ -73,8 +72,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'symbol' => null,
-        'reddit' => null,
-        'twitter' => null
+        'data' => null
     ];
 
     /**
@@ -105,8 +103,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'symbol' => 'symbol',
-        'reddit' => 'reddit',
-        'twitter' => 'twitter'
+        'data' => 'data'
     ];
 
     /**
@@ -116,8 +113,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'symbol' => 'setSymbol',
-        'reddit' => 'setReddit',
-        'twitter' => 'setTwitter'
+        'data' => 'setData'
     ];
 
     /**
@@ -127,8 +123,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'symbol' => 'getSymbol',
-        'reddit' => 'getReddit',
-        'twitter' => 'getTwitter'
+        'data' => 'getData'
     ];
 
     /**
@@ -189,8 +184,7 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['reddit'] = $data['reddit'] ?? null;
-        $this->container['twitter'] = $data['twitter'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -242,49 +236,25 @@ class SocialSentiment implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets reddit
+     * Gets data
      *
-     * @return \Finnhub\Model\RedditSentimentContent[]|null
+     * @return \Finnhub\Model\SentimentContent[]|null
      */
-    public function getReddit()
+    public function getData()
     {
-        return $this->container['reddit'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets reddit
+     * Sets data
      *
-     * @param \Finnhub\Model\RedditSentimentContent[]|null $reddit Reddit sentiment.
+     * @param \Finnhub\Model\SentimentContent[]|null $data Sentiment data.
      *
      * @return self
      */
-    public function setReddit($reddit)
+    public function setData($data)
     {
-        $this->container['reddit'] = $reddit;
-
-        return $this;
-    }
-
-    /**
-     * Gets twitter
-     *
-     * @return \Finnhub\Model\TwitterSentimentContent[]|null
-     */
-    public function getTwitter()
-    {
-        return $this->container['twitter'];
-    }
-
-    /**
-     * Sets twitter
-     *
-     * @param \Finnhub\Model\TwitterSentimentContent[]|null $twitter Twitter sentiment.
-     *
-     * @return self
-     */
-    public function setTwitter($twitter)
-    {
-        $this->container['twitter'] = $twitter;
+        $this->container['data'] = $data;
 
         return $this;
     }

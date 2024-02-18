@@ -76,6 +76,7 @@ docs/Model/InFilingSearchBody.md
 docs/Model/IndexHistoricalConstituent.md
 docs/Model/Indicator.md
 docs/Model/IndicesConstituents.md
+docs/Model/IndicesConstituentsBreakdown.md
 docs/Model/IndicesHistoricalConstituents.md
 docs/Model/InsiderSentiments.md
 docs/Model/InsiderSentimentsData.md
@@ -97,7 +98,10 @@ docs/Model/KeyCustomersSuppliers.md
 docs/Model/LastBidAsk.md
 docs/Model/LobbyingData.md
 docs/Model/LobbyingResult.md
+docs/Model/MarketHoliday.md
+docs/Model/MarketHolidayData.md
 docs/Model/MarketNews.md
+docs/Model/MarketStatus.md
 docs/Model/MutualFundCountryExposure.md
 docs/Model/MutualFundCountryExposureData.md
 docs/Model/MutualFundEet.md
@@ -117,7 +121,6 @@ docs/Model/PriceMetrics.md
 docs/Model/PriceTarget.md
 docs/Model/Quote.md
 docs/Model/RecommendationTrend.md
-docs/Model/RedditSentimentContent.md
 docs/Model/Report.md
 docs/Model/RevenueBreakdown.md
 docs/Model/RevenueEstimates.md
@@ -129,6 +132,7 @@ docs/Model/SearchResponse.md
 docs/Model/SectorMetric.md
 docs/Model/SectorMetricData.md
 docs/Model/Sentiment.md
+docs/Model/SentimentContent.md
 docs/Model/SimilarityIndex.md
 docs/Model/SimilarityIndexInfo.md
 docs/Model/SocialSentiment.md
@@ -148,7 +152,6 @@ docs/Model/Transactions.md
 docs/Model/TranscriptContent.md
 docs/Model/TranscriptParticipant.md
 docs/Model/Trend.md
-docs/Model/TwitterSentimentContent.md
 docs/Model/UpgradeDowngrade.md
 docs/Model/UsaSpending.md
 docs/Model/UsaSpendingResult.md
@@ -234,6 +237,7 @@ lib/Model/InFilingSearchBody.php
 lib/Model/IndexHistoricalConstituent.php
 lib/Model/Indicator.php
 lib/Model/IndicesConstituents.php
+lib/Model/IndicesConstituentsBreakdown.php
 lib/Model/IndicesHistoricalConstituents.php
 lib/Model/InsiderSentiments.php
 lib/Model/InsiderSentimentsData.php
@@ -255,7 +259,10 @@ lib/Model/KeyCustomersSuppliers.php
 lib/Model/LastBidAsk.php
 lib/Model/LobbyingData.php
 lib/Model/LobbyingResult.php
+lib/Model/MarketHoliday.php
+lib/Model/MarketHolidayData.php
 lib/Model/MarketNews.php
+lib/Model/MarketStatus.php
 lib/Model/ModelInterface.php
 lib/Model/MutualFundCountryExposure.php
 lib/Model/MutualFundCountryExposureData.php
@@ -276,7 +283,6 @@ lib/Model/PriceMetrics.php
 lib/Model/PriceTarget.php
 lib/Model/Quote.php
 lib/Model/RecommendationTrend.php
-lib/Model/RedditSentimentContent.php
 lib/Model/Report.php
 lib/Model/RevenueBreakdown.php
 lib/Model/RevenueEstimates.php
@@ -288,6 +294,7 @@ lib/Model/SearchResponse.php
 lib/Model/SectorMetric.php
 lib/Model/SectorMetricData.php
 lib/Model/Sentiment.php
+lib/Model/SentimentContent.php
 lib/Model/SimilarityIndex.php
 lib/Model/SimilarityIndexInfo.php
 lib/Model/SocialSentiment.php
@@ -307,7 +314,6 @@ lib/Model/Transactions.php
 lib/Model/TranscriptContent.php
 lib/Model/TranscriptParticipant.php
 lib/Model/Trend.php
-lib/Model/TwitterSentimentContent.php
 lib/Model/UpgradeDowngrade.php
 lib/Model/UsaSpending.php
 lib/Model/UsaSpendingResult.php
@@ -317,17 +323,8 @@ lib/Model/VisaApplication.php
 lib/Model/VisaApplicationResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BondYieldCurveInfoTest.php
-test/Model/BondYieldCurveTest.php
-test/Model/CongressionalTradingTest.php
-test/Model/CongressionalTransactionTest.php
-test/Model/DocumentResponseTest.php
-test/Model/ExcerptResponseTest.php
-test/Model/FilingResponseTest.php
-test/Model/InFilingResponseTest.php
-test/Model/InFilingSearchBodyTest.php
-test/Model/MutualFundEetPaiTest.php
-test/Model/MutualFundEetTest.php
-test/Model/SearchBodyTest.php
-test/Model/SearchFilterTest.php
-test/Model/SearchResponseTest.php
+test/Model/IndicesConstituentsBreakdownTest.php
+test/Model/MarketHolidayDataTest.php
+test/Model/MarketHolidayTest.php
+test/Model/MarketStatusTest.php
+test/Model/SentimentContentTest.php

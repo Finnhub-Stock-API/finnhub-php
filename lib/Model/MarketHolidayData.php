@@ -1,6 +1,6 @@
 <?php
 /**
- * IndicesConstituents
+ * MarketHolidayData
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * IndicesConstituents Class Doc Comment
+ * MarketHolidayData Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializable
+class MarketHolidayData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IndicesConstituents';
+    protected static $openAPIModelName = 'MarketHolidayData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'symbol' => 'string',
-        'constituents' => 'string[]',
-        'constituents_breakdown' => '\Finnhub\Model\IndicesConstituentsBreakdown[]'
+        'event_name' => 'string',
+        'at_date' => 'string',
+        'trading_hour' => 'string'
     ];
 
     /**
@@ -72,9 +72,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'symbol' => null,
-        'constituents' => null,
-        'constituents_breakdown' => null
+        'event_name' => null,
+        'at_date' => null,
+        'trading_hour' => null
     ];
 
     /**
@@ -104,9 +104,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'symbol' => 'symbol',
-        'constituents' => 'constituents',
-        'constituents_breakdown' => 'constituentsBreakdown'
+        'event_name' => 'eventName',
+        'at_date' => 'atDate',
+        'trading_hour' => 'tradingHour'
     ];
 
     /**
@@ -115,9 +115,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'symbol' => 'setSymbol',
-        'constituents' => 'setConstituents',
-        'constituents_breakdown' => 'setConstituentsBreakdown'
+        'event_name' => 'setEventName',
+        'at_date' => 'setAtDate',
+        'trading_hour' => 'setTradingHour'
     ];
 
     /**
@@ -126,9 +126,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'symbol' => 'getSymbol',
-        'constituents' => 'getConstituents',
-        'constituents_breakdown' => 'getConstituentsBreakdown'
+        'event_name' => 'getEventName',
+        'at_date' => 'getAtDate',
+        'trading_hour' => 'getTradingHour'
     ];
 
     /**
@@ -188,9 +188,9 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['symbol'] = $data['symbol'] ?? null;
-        $this->container['constituents'] = $data['constituents'] ?? null;
-        $this->container['constituents_breakdown'] = $data['constituents_breakdown'] ?? null;
+        $this->container['event_name'] = $data['event_name'] ?? null;
+        $this->container['at_date'] = $data['at_date'] ?? null;
+        $this->container['trading_hour'] = $data['trading_hour'] ?? null;
     }
 
     /**
@@ -218,73 +218,73 @@ class IndicesConstituents implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets symbol
+     * Gets event_name
      *
      * @return string|null
      */
-    public function getSymbol()
+    public function getEventName()
     {
-        return $this->container['symbol'];
+        return $this->container['event_name'];
     }
 
     /**
-     * Sets symbol
+     * Sets event_name
      *
-     * @param string|null $symbol Index's symbol.
+     * @param string|null $event_name Holiday's name.
      *
      * @return self
      */
-    public function setSymbol($symbol)
+    public function setEventName($event_name)
     {
-        $this->container['symbol'] = $symbol;
+        $this->container['event_name'] = $event_name;
 
         return $this;
     }
 
     /**
-     * Gets constituents
+     * Gets at_date
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getConstituents()
+    public function getAtDate()
     {
-        return $this->container['constituents'];
+        return $this->container['at_date'];
     }
 
     /**
-     * Sets constituents
+     * Sets at_date
      *
-     * @param string[]|null $constituents Array of constituents.
+     * @param string|null $at_date Date.
      *
      * @return self
      */
-    public function setConstituents($constituents)
+    public function setAtDate($at_date)
     {
-        $this->container['constituents'] = $constituents;
+        $this->container['at_date'] = $at_date;
 
         return $this;
     }
 
     /**
-     * Gets constituents_breakdown
+     * Gets trading_hour
      *
-     * @return \Finnhub\Model\IndicesConstituentsBreakdown[]|null
+     * @return string|null
      */
-    public function getConstituentsBreakdown()
+    public function getTradingHour()
     {
-        return $this->container['constituents_breakdown'];
+        return $this->container['trading_hour'];
     }
 
     /**
-     * Sets constituents_breakdown
+     * Sets trading_hour
      *
-     * @param \Finnhub\Model\IndicesConstituentsBreakdown[]|null $constituents_breakdown Array of constituents' details.
+     * @param string|null $trading_hour Trading hours for this day if the market is partially closed only.
      *
      * @return self
      */
-    public function setConstituentsBreakdown($constituents_breakdown)
+    public function setTradingHour($trading_hour)
     {
-        $this->container['constituents_breakdown'] = $constituents_breakdown;
+        $this->container['trading_hour'] = $trading_hour;
 
         return $this;
     }

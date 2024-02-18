@@ -12,5 +12,9 @@ Name | Type | Description | Notes
 **currency_code** | **string** | Currency code | [optional]
 **region** | **string** | Region | [optional]
 **sub_region** | **string** | Sub-Region | [optional]
+**rating** | **string** | Moody&#39;s credit risk rating. | [optional]
+**default_spread** | **float** | Default spread | [optional]
+**country_risk_premium** | **float** | Country risk premium | [optional]
+**equity_risk_premium** | **float** | Equity risk premium | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

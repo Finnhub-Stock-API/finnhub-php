@@ -404,7 +404,7 @@ class EarningResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets year
      *
-     * @param int|null $year Earnings year.
+     * @param int|null $year Fiscal year.
      *
      * @return self
      */
@@ -428,7 +428,7 @@ class EarningResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quarter
      *
-     * @param int|null $quarter Earnings quarter.
+     * @param int|null $quarter Fiscal quarter.
      *
      * @return self
      */
