@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **domicile** | **string** | ETF domicile. | [optional]
 **inception_date** | [**\DateTime**](\DateTime.md) | Inception date. | [optional]
 **website** | **string** | ETF&#39;s website. | [optional]
+**logo** | **string** | Logo. | [optional]
 **isin** | **string** | ISIN. | [optional]
 **cusip** | **string** | CUSIP. | [optional]
 **price_to_earnings** | **float** | P/E. | [optional]

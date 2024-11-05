@@ -434,7 +434,7 @@ class FilingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets filed_date
      *
-     * @param string|null $filed_date Date the filing is make available to the public
+     * @param string|null $filed_date Date the filing is made available to the public
      *
      * @return self
      */

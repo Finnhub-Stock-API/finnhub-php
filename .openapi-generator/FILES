@@ -4,6 +4,8 @@
 composer.json
 docs/Api/DefaultApi.md
 docs/Model/AggregateIndicators.md
+docs/Model/AirlinePriceIndex.md
+docs/Model/AirlinePriceIndexData.md
 docs/Model/BasicFinancials.md
 docs/Model/BondCandles.md
 docs/Model/BondProfile.md
@@ -13,6 +15,7 @@ docs/Model/BondYieldCurveInfo.md
 docs/Model/BreakdownItem.md
 docs/Model/Company.md
 docs/Model/CompanyESG.md
+docs/Model/CompanyESG2.md
 docs/Model/CompanyEarningsQualityScore.md
 docs/Model/CompanyEarningsQualityScoreData.md
 docs/Model/CompanyExecutive.md
@@ -56,6 +59,7 @@ docs/Model/EconomicCode.md
 docs/Model/EconomicData.md
 docs/Model/EconomicDataInfo.md
 docs/Model/EconomicEvent.md
+docs/Model/EmployeeCount.md
 docs/Model/ExcerptResponse.md
 docs/Model/FDAComitteeMeeting.md
 docs/Model/Filing.md
@@ -68,6 +72,9 @@ docs/Model/ForexSymbol.md
 docs/Model/Forexrates.md
 docs/Model/FundOwnership.md
 docs/Model/FundOwnershipInfo.md
+docs/Model/HistoricalCompanyESG.md
+docs/Model/HistoricalEmployeeCount.md
+docs/Model/HistoricalMarketCapData.md
 docs/Model/HistoricalNBBO.md
 docs/Model/IPOCalendar.md
 docs/Model/IPOEvent.md
@@ -98,6 +105,7 @@ docs/Model/KeyCustomersSuppliers.md
 docs/Model/LastBidAsk.md
 docs/Model/LobbyingData.md
 docs/Model/LobbyingResult.md
+docs/Model/MarketCapData.md
 docs/Model/MarketHoliday.md
 docs/Model/MarketHolidayData.md
 docs/Model/MarketNews.md
@@ -165,6 +173,8 @@ lib/ApiException.php
 lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/AggregateIndicators.php
+lib/Model/AirlinePriceIndex.php
+lib/Model/AirlinePriceIndexData.php
 lib/Model/BasicFinancials.php
 lib/Model/BondCandles.php
 lib/Model/BondProfile.php
@@ -174,6 +184,7 @@ lib/Model/BondYieldCurveInfo.php
 lib/Model/BreakdownItem.php
 lib/Model/Company.php
 lib/Model/CompanyESG.php
+lib/Model/CompanyESG2.php
 lib/Model/CompanyEarningsQualityScore.php
 lib/Model/CompanyEarningsQualityScoreData.php
 lib/Model/CompanyExecutive.php
@@ -217,6 +228,7 @@ lib/Model/EconomicCode.php
 lib/Model/EconomicData.php
 lib/Model/EconomicDataInfo.php
 lib/Model/EconomicEvent.php
+lib/Model/EmployeeCount.php
 lib/Model/ExcerptResponse.php
 lib/Model/FDAComitteeMeeting.php
 lib/Model/Filing.php
@@ -229,6 +241,9 @@ lib/Model/ForexSymbol.php
 lib/Model/Forexrates.php
 lib/Model/FundOwnership.php
 lib/Model/FundOwnershipInfo.php
+lib/Model/HistoricalCompanyESG.php
+lib/Model/HistoricalEmployeeCount.php
+lib/Model/HistoricalMarketCapData.php
 lib/Model/HistoricalNBBO.php
 lib/Model/IPOCalendar.php
 lib/Model/IPOEvent.php
@@ -259,6 +274,7 @@ lib/Model/KeyCustomersSuppliers.php
 lib/Model/LastBidAsk.php
 lib/Model/LobbyingData.php
 lib/Model/LobbyingResult.php
+lib/Model/MarketCapData.php
 lib/Model/MarketHoliday.php
 lib/Model/MarketHolidayData.php
 lib/Model/MarketNews.php
@@ -323,8 +339,11 @@ lib/Model/VisaApplication.php
 lib/Model/VisaApplicationResult.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/IndicesConstituentsBreakdownTest.php
-test/Model/MarketHolidayDataTest.php
-test/Model/MarketHolidayTest.php
-test/Model/MarketStatusTest.php
-test/Model/SentimentContentTest.php
+test/Model/AirlinePriceIndexDataTest.php
+test/Model/AirlinePriceIndexTest.php
+test/Model/CompanyESG2Test.php
+test/Model/EmployeeCountTest.php
+test/Model/HistoricalCompanyESGTest.php
+test/Model/HistoricalEmployeeCountTest.php
+test/Model/HistoricalMarketCapDataTest.php
+test/Model/MarketCapDataTest.php

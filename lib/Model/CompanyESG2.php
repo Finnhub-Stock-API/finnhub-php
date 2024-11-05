@@ -1,6 +1,6 @@
 <?php
 /**
- * MarketStatus
+ * CompanyESG2
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * MarketStatus Class Doc Comment
+ * CompanyESG2 Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class CompanyESG2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarketStatus';
+    protected static $openAPIModelName = 'CompanyESG2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,12 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'exchange' => 'string',
-        'timezone' => 'string',
-        'session' => 'string',
-        'holiday' => 'string',
-        'is_open' => 'bool',
-        't' => 'int'
+        'total_esg_score' => 'float',
+        'environment_score' => 'float',
+        'governance_score' => 'float',
+        'social_score' => 'float',
+        'data' => 'object',
+        'period' => 'string'
     ];
 
     /**
@@ -75,12 +75,12 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'exchange' => null,
-        'timezone' => null,
-        'session' => null,
-        'holiday' => null,
-        'is_open' => null,
-        't' => 'int64'
+        'total_esg_score' => 'float',
+        'environment_score' => 'float',
+        'governance_score' => 'float',
+        'social_score' => 'float',
+        'data' => null,
+        'period' => null
     ];
 
     /**
@@ -110,12 +110,12 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'exchange' => 'exchange',
-        'timezone' => 'timezone',
-        'session' => 'session',
-        'holiday' => 'holiday',
-        'is_open' => 'isOpen',
-        't' => 't'
+        'total_esg_score' => 'totalESGScore',
+        'environment_score' => 'environmentScore',
+        'governance_score' => 'governanceScore',
+        'social_score' => 'socialScore',
+        'data' => 'data',
+        'period' => 'period'
     ];
 
     /**
@@ -124,12 +124,12 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'exchange' => 'setExchange',
-        'timezone' => 'setTimezone',
-        'session' => 'setSession',
-        'holiday' => 'setHoliday',
-        'is_open' => 'setIsOpen',
-        't' => 'setT'
+        'total_esg_score' => 'setTotalEsgScore',
+        'environment_score' => 'setEnvironmentScore',
+        'governance_score' => 'setGovernanceScore',
+        'social_score' => 'setSocialScore',
+        'data' => 'setData',
+        'period' => 'setPeriod'
     ];
 
     /**
@@ -138,12 +138,12 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'exchange' => 'getExchange',
-        'timezone' => 'getTimezone',
-        'session' => 'getSession',
-        'holiday' => 'getHoliday',
-        'is_open' => 'getIsOpen',
-        't' => 'getT'
+        'total_esg_score' => 'getTotalEsgScore',
+        'environment_score' => 'getEnvironmentScore',
+        'governance_score' => 'getGovernanceScore',
+        'social_score' => 'getSocialScore',
+        'data' => 'getData',
+        'period' => 'getPeriod'
     ];
 
     /**
@@ -203,12 +203,12 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['exchange'] = $data['exchange'] ?? null;
-        $this->container['timezone'] = $data['timezone'] ?? null;
-        $this->container['session'] = $data['session'] ?? null;
-        $this->container['holiday'] = $data['holiday'] ?? null;
-        $this->container['is_open'] = $data['is_open'] ?? null;
-        $this->container['t'] = $data['t'] ?? null;
+        $this->container['total_esg_score'] = $data['total_esg_score'] ?? null;
+        $this->container['environment_score'] = $data['environment_score'] ?? null;
+        $this->container['governance_score'] = $data['governance_score'] ?? null;
+        $this->container['social_score'] = $data['social_score'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['period'] = $data['period'] ?? null;
     }
 
     /**
@@ -236,145 +236,145 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets exchange
+     * Gets total_esg_score
+     *
+     * @return float|null
+     */
+    public function getTotalEsgScore()
+    {
+        return $this->container['total_esg_score'];
+    }
+
+    /**
+     * Sets total_esg_score
+     *
+     * @param float|null $total_esg_score Total ESG Score
+     *
+     * @return self
+     */
+    public function setTotalEsgScore($total_esg_score)
+    {
+        $this->container['total_esg_score'] = $total_esg_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets environment_score
+     *
+     * @return float|null
+     */
+    public function getEnvironmentScore()
+    {
+        return $this->container['environment_score'];
+    }
+
+    /**
+     * Sets environment_score
+     *
+     * @param float|null $environment_score Environment Score
+     *
+     * @return self
+     */
+    public function setEnvironmentScore($environment_score)
+    {
+        $this->container['environment_score'] = $environment_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets governance_score
+     *
+     * @return float|null
+     */
+    public function getGovernanceScore()
+    {
+        return $this->container['governance_score'];
+    }
+
+    /**
+     * Sets governance_score
+     *
+     * @param float|null $governance_score Governance Score
+     *
+     * @return self
+     */
+    public function setGovernanceScore($governance_score)
+    {
+        $this->container['governance_score'] = $governance_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets social_score
+     *
+     * @return float|null
+     */
+    public function getSocialScore()
+    {
+        return $this->container['social_score'];
+    }
+
+    /**
+     * Sets social_score
+     *
+     * @param float|null $social_score Social Score
+     *
+     * @return self
+     */
+    public function setSocialScore($social_score)
+    {
+        $this->container['social_score'] = $social_score;
+
+        return $this;
+    }
+
+    /**
+     * Gets data
+     *
+     * @return object|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param object|null $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
      *
      * @return string|null
      */
-    public function getExchange()
+    public function getPeriod()
     {
-        return $this->container['exchange'];
+        return $this->container['period'];
     }
 
     /**
-     * Sets exchange
+     * Sets period
      *
-     * @param string|null $exchange Exchange.
+     * @param string|null $period Period
      *
      * @return self
      */
-    public function setExchange($exchange)
+    public function setPeriod($period)
     {
-        $this->container['exchange'] = $exchange;
-
-        return $this;
-    }
-
-    /**
-     * Gets timezone
-     *
-     * @return string|null
-     */
-    public function getTimezone()
-    {
-        return $this->container['timezone'];
-    }
-
-    /**
-     * Sets timezone
-     *
-     * @param string|null $timezone Timezone.
-     *
-     * @return self
-     */
-    public function setTimezone($timezone)
-    {
-        $this->container['timezone'] = $timezone;
-
-        return $this;
-    }
-
-    /**
-     * Gets session
-     *
-     * @return string|null
-     */
-    public function getSession()
-    {
-        return $this->container['session'];
-    }
-
-    /**
-     * Sets session
-     *
-     * @param string|null $session Market session. Can be 1 of the following values: <code>pre-market</code>,<code>regular</code>,<code>post-market</code> or <code>null</code> if the market is closed.
-     *
-     * @return self
-     */
-    public function setSession($session)
-    {
-        $this->container['session'] = $session;
-
-        return $this;
-    }
-
-    /**
-     * Gets holiday
-     *
-     * @return string|null
-     */
-    public function getHoliday()
-    {
-        return $this->container['holiday'];
-    }
-
-    /**
-     * Sets holiday
-     *
-     * @param string|null $holiday Holiday event.
-     *
-     * @return self
-     */
-    public function setHoliday($holiday)
-    {
-        $this->container['holiday'] = $holiday;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_open
-     *
-     * @return bool|null
-     */
-    public function getIsOpen()
-    {
-        return $this->container['is_open'];
-    }
-
-    /**
-     * Sets is_open
-     *
-     * @param bool|null $is_open Whether the market is open at the moment.
-     *
-     * @return self
-     */
-    public function setIsOpen($is_open)
-    {
-        $this->container['is_open'] = $is_open;
-
-        return $this;
-    }
-
-    /**
-     * Gets t
-     *
-     * @return int|null
-     */
-    public function getT()
-    {
-        return $this->container['t'];
-    }
-
-    /**
-     * Sets t
-     *
-     * @param int|null $t Current timestamp.
-     *
-     * @return self
-     */
-    public function setT($t)
-    {
-        $this->container['t'] = $t;
+        $this->container['period'] = $period;
 
         return $this;
     }

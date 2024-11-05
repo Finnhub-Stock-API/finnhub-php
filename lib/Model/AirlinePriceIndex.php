@@ -1,6 +1,6 @@
 <?php
 /**
- * MarketStatus
+ * AirlinePriceIndex
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * MarketStatus Class Doc Comment
+ * AirlinePriceIndex Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class AirlinePriceIndex implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarketStatus';
+    protected static $openAPIModelName = 'AirlinePriceIndex';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'exchange' => 'string',
-        'timezone' => 'string',
-        'session' => 'string',
-        'holiday' => 'string',
-        'is_open' => 'bool',
-        't' => 'int'
+        'date' => 'string',
+        'price_index' => 'float',
+        'daily_avg_price' => 'float'
     ];
 
     /**
@@ -75,12 +72,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'exchange' => null,
-        'timezone' => null,
-        'session' => null,
-        'holiday' => null,
-        'is_open' => null,
-        't' => 'int64'
+        'date' => null,
+        'price_index' => 'float',
+        'daily_avg_price' => 'float'
     ];
 
     /**
@@ -110,12 +104,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'exchange' => 'exchange',
-        'timezone' => 'timezone',
-        'session' => 'session',
-        'holiday' => 'holiday',
-        'is_open' => 'isOpen',
-        't' => 't'
+        'date' => 'date',
+        'price_index' => 'priceIndex',
+        'daily_avg_price' => 'dailyAvgPrice'
     ];
 
     /**
@@ -124,12 +115,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'exchange' => 'setExchange',
-        'timezone' => 'setTimezone',
-        'session' => 'setSession',
-        'holiday' => 'setHoliday',
-        'is_open' => 'setIsOpen',
-        't' => 'setT'
+        'date' => 'setDate',
+        'price_index' => 'setPriceIndex',
+        'daily_avg_price' => 'setDailyAvgPrice'
     ];
 
     /**
@@ -138,12 +126,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'exchange' => 'getExchange',
-        'timezone' => 'getTimezone',
-        'session' => 'getSession',
-        'holiday' => 'getHoliday',
-        'is_open' => 'getIsOpen',
-        't' => 'getT'
+        'date' => 'getDate',
+        'price_index' => 'getPriceIndex',
+        'daily_avg_price' => 'getDailyAvgPrice'
     ];
 
     /**
@@ -203,12 +188,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['exchange'] = $data['exchange'] ?? null;
-        $this->container['timezone'] = $data['timezone'] ?? null;
-        $this->container['session'] = $data['session'] ?? null;
-        $this->container['holiday'] = $data['holiday'] ?? null;
-        $this->container['is_open'] = $data['is_open'] ?? null;
-        $this->container['t'] = $data['t'] ?? null;
+        $this->container['date'] = $data['date'] ?? null;
+        $this->container['price_index'] = $data['price_index'] ?? null;
+        $this->container['daily_avg_price'] = $data['daily_avg_price'] ?? null;
     }
 
     /**
@@ -236,145 +218,73 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets exchange
+     * Gets date
      *
      * @return string|null
      */
-    public function getExchange()
+    public function getDate()
     {
-        return $this->container['exchange'];
+        return $this->container['date'];
     }
 
     /**
-     * Sets exchange
+     * Sets date
      *
-     * @param string|null $exchange Exchange.
+     * @param string|null $date Date
      *
      * @return self
      */
-    public function setExchange($exchange)
+    public function setDate($date)
     {
-        $this->container['exchange'] = $exchange;
+        $this->container['date'] = $date;
 
         return $this;
     }
 
     /**
-     * Gets timezone
+     * Gets price_index
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTimezone()
+    public function getPriceIndex()
     {
-        return $this->container['timezone'];
+        return $this->container['price_index'];
     }
 
     /**
-     * Sets timezone
+     * Sets price_index
      *
-     * @param string|null $timezone Timezone.
+     * @param float|null $price_index Price Index
      *
      * @return self
      */
-    public function setTimezone($timezone)
+    public function setPriceIndex($price_index)
     {
-        $this->container['timezone'] = $timezone;
+        $this->container['price_index'] = $price_index;
 
         return $this;
     }
 
     /**
-     * Gets session
+     * Gets daily_avg_price
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getSession()
+    public function getDailyAvgPrice()
     {
-        return $this->container['session'];
+        return $this->container['daily_avg_price'];
     }
 
     /**
-     * Sets session
+     * Sets daily_avg_price
      *
-     * @param string|null $session Market session. Can be 1 of the following values: <code>pre-market</code>,<code>regular</code>,<code>post-market</code> or <code>null</code> if the market is closed.
+     * @param float|null $daily_avg_price Daily average ticket price.
      *
      * @return self
      */
-    public function setSession($session)
+    public function setDailyAvgPrice($daily_avg_price)
     {
-        $this->container['session'] = $session;
-
-        return $this;
-    }
-
-    /**
-     * Gets holiday
-     *
-     * @return string|null
-     */
-    public function getHoliday()
-    {
-        return $this->container['holiday'];
-    }
-
-    /**
-     * Sets holiday
-     *
-     * @param string|null $holiday Holiday event.
-     *
-     * @return self
-     */
-    public function setHoliday($holiday)
-    {
-        $this->container['holiday'] = $holiday;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_open
-     *
-     * @return bool|null
-     */
-    public function getIsOpen()
-    {
-        return $this->container['is_open'];
-    }
-
-    /**
-     * Sets is_open
-     *
-     * @param bool|null $is_open Whether the market is open at the moment.
-     *
-     * @return self
-     */
-    public function setIsOpen($is_open)
-    {
-        $this->container['is_open'] = $is_open;
-
-        return $this;
-    }
-
-    /**
-     * Gets t
-     *
-     * @return int|null
-     */
-    public function getT()
-    {
-        return $this->container['t'];
-    }
-
-    /**
-     * Sets t
-     *
-     * @param int|null $t Current timestamp.
-     *
-     * @return self
-     */
-    public function setT($t)
-    {
-        $this->container['t'] = $t;
+        $this->container['daily_avg_price'] = $daily_avg_price;
 
         return $this;
     }

@@ -76,6 +76,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsubind' => 'string',
         'isin' => 'string',
         'lei' => 'string',
+        'ir_url' => 'string',
         'naics_national_industry' => 'string',
         'naics' => 'string',
         'naics_sector' => 'string',
@@ -118,6 +119,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsubind' => null,
         'isin' => null,
         'lei' => null,
+        'ir_url' => null,
         'naics_national_industry' => null,
         'naics' => null,
         'naics_sector' => null,
@@ -179,6 +181,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsubind' => 'gsubind',
         'isin' => 'isin',
         'lei' => 'lei',
+        'ir_url' => 'irUrl',
         'naics_national_industry' => 'naicsNationalIndustry',
         'naics' => 'naics',
         'naics_sector' => 'naicsSector',
@@ -219,6 +222,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsubind' => 'setGsubind',
         'isin' => 'setIsin',
         'lei' => 'setLei',
+        'ir_url' => 'setIrUrl',
         'naics_national_industry' => 'setNaicsNationalIndustry',
         'naics' => 'setNaics',
         'naics_sector' => 'setNaicsSector',
@@ -259,6 +263,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         'gsubind' => 'getGsubind',
         'isin' => 'getIsin',
         'lei' => 'getLei',
+        'ir_url' => 'getIrUrl',
         'naics_national_industry' => 'getNaicsNationalIndustry',
         'naics' => 'getNaics',
         'naics_sector' => 'getNaicsSector',
@@ -350,6 +355,7 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['gsubind'] = $data['gsubind'] ?? null;
         $this->container['isin'] = $data['isin'] ?? null;
         $this->container['lei'] = $data['lei'] ?? null;
+        $this->container['ir_url'] = $data['ir_url'] ?? null;
         $this->container['naics_national_industry'] = $data['naics_national_industry'] ?? null;
         $this->container['naics'] = $data['naics'] ?? null;
         $this->container['naics_sector'] = $data['naics_sector'] ?? null;
@@ -795,6 +801,30 @@ class CompanyProfile implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLei($lei)
     {
         $this->container['lei'] = $lei;
+
+        return $this;
+    }
+
+    /**
+     * Gets ir_url
+     *
+     * @return string|null
+     */
+    public function getIrUrl()
+    {
+        return $this->container['ir_url'];
+    }
+
+    /**
+     * Sets ir_url
+     *
+     * @param string|null $ir_url Investor relations website.
+     *
+     * @return self
+     */
+    public function setIrUrl($ir_url)
+    {
+        $this->container['ir_url'] = $ir_url;
 
         return $this;
     }

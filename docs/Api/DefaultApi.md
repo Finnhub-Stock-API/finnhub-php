@@ -5,6 +5,7 @@ All URIs are relative to https://finnhub.io/api/v1.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**aggregateIndicator()**](DefaultApi.md#aggregateIndicator) | **GET** /scan/technical-indicator | Aggregate Indicators
+[**airlinePriceIndex()**](DefaultApi.md#airlinePriceIndex) | **GET** /airline/price-index | Airline Price Index
 [**bondPrice()**](DefaultApi.md#bondPrice) | **GET** /bond/price | Bond price data
 [**bondProfile()**](DefaultApi.md#bondProfile) | **GET** /bond/profile | Bond Profile
 [**bondTick()**](DefaultApi.md#bondTick) | **GET** /bond/tick | Bond Tick Data
@@ -17,6 +18,7 @@ Method | HTTP request | Description
 [**companyEpsEstimates()**](DefaultApi.md#companyEpsEstimates) | **GET** /stock/eps-estimate | Earnings Estimates
 [**companyEsgScore()**](DefaultApi.md#companyEsgScore) | **GET** /stock/esg | Company ESG Scores
 [**companyExecutive()**](DefaultApi.md#companyExecutive) | **GET** /stock/executive | Company Executive
+[**companyHistoricalEsgScore()**](DefaultApi.md#companyHistoricalEsgScore) | **GET** /stock/historical-esg | Historical ESG Scores
 [**companyNews()**](DefaultApi.md#companyNews) | **GET** /company-news | Company News
 [**companyPeers()**](DefaultApi.md#companyPeers) | **GET** /stock/peers | Peers
 [**companyProfile()**](DefaultApi.md#companyProfile) | **GET** /stock/profile | Company Profile
@@ -47,6 +49,8 @@ Method | HTTP request | Description
 [**forexRates()**](DefaultApi.md#forexRates) | **GET** /forex/rates | Forex rates
 [**forexSymbols()**](DefaultApi.md#forexSymbols) | **GET** /forex/symbol | Forex Symbol
 [**fundOwnership()**](DefaultApi.md#fundOwnership) | **GET** /stock/fund-ownership | Fund Ownership
+[**historicalEmployeeCount()**](DefaultApi.md#historicalEmployeeCount) | **GET** /stock/historical-employee-count | Historical Employee Count
+[**historicalMarketCap()**](DefaultApi.md#historicalMarketCap) | **GET** /stock/historical-market-cap | Historical Market Cap
 [**indicesConstituents()**](DefaultApi.md#indicesConstituents) | **GET** /index/constituents | Indices Constituents
 [**indicesHistoricalConstituents()**](DefaultApi.md#indicesHistoricalConstituents) | **GET** /index/historical-constituents | Indices Historical Constituents
 [**insiderSentiment()**](DefaultApi.md#insiderSentiment) | **GET** /stock/insider-sentiment | Insider Sentiment
@@ -151,6 +155,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\AggregateIndicators**](../Model/AggregateIndicators.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `airlinePriceIndex()`
+
+```php
+airlinePriceIndex($airline, $from, $to): \Finnhub\Model\AirlinePriceIndexData
+```
+
+Airline Price Index
+
+<p>The Flight Ticket Price Index API provides comprehensive data on airline ticket prices, including the average daily ticket price and its percentage change (price index). This data, collected weekly and projected two weeks ahead, aggregates daily prices and indexes from the 50 busiest and largest airports across the USA. The dataset includes detailed information on airlines, dates, and average ticket prices, offering valuable insights for market analysis and pricing strategies.</p><p>The price index is calculated as percentage change of average daily ticket price from the previous weekly reading. Raw ticket prices data is available for Enterprise users. <a href=\"mailto:support@finnhub.io\">Contact us</a> to inquire about the raw price data.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$airline = 'airline_example'; // string | Filter data by airline. Accepted values: <code>united</code>,<code>delta</code>,<code>american_airlines</code>,<code>southwest</code>,<code>southern_airways_express</code>,<code>alaska_airlines</code>,<code>frontier_airlines</code>,<code>jetblue_airways</code>,<code>spirit_airlines</code>,<code>sun_country_airlines</code>,<code>breeze_airways</code>,<code>hawaiian_airlines</code>
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->airlinePriceIndex($airline, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->airlinePriceIndex: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **airline** | **string**| Filter data by airline. Accepted values: &lt;code&gt;united&lt;/code&gt;,&lt;code&gt;delta&lt;/code&gt;,&lt;code&gt;american_airlines&lt;/code&gt;,&lt;code&gt;southwest&lt;/code&gt;,&lt;code&gt;southern_airways_express&lt;/code&gt;,&lt;code&gt;alaska_airlines&lt;/code&gt;,&lt;code&gt;frontier_airlines&lt;/code&gt;,&lt;code&gt;jetblue_airways&lt;/code&gt;,&lt;code&gt;spirit_airlines&lt;/code&gt;,&lt;code&gt;sun_country_airlines&lt;/code&gt;,&lt;code&gt;breeze_airways&lt;/code&gt;,&lt;code&gt;hawaiian_airlines&lt;/code&gt; |
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\AirlinePriceIndexData**](../Model/AirlinePriceIndexData.md)
 
 ### Authorization
 
@@ -821,7 +891,7 @@ companyEsgScore($symbol): \Finnhub\Model\CompanyESG
 
 Company ESG Scores
 
-<p>This endpoint provides ESG scores and important indicators for 7000+ global companies. The data is collected through company's public ESG disclosure and public sources.</p><p>Our ESG scoring models takes into account more than 150 different inputs to calculate the level of ESG risks and how well a company is managing them. A higher score means lower ESG risk or better ESG management. ESG scores are in the the range of 0-100. Some key indicators might contain letter-grade score from C- to A+ with C- is the lowest score and A+ is the highest score.</p><p>Historical ESG data is available for Enterprise users. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>
+<p>This endpoint provides the latest ESG scores and important indicators for 7000+ global companies. The data is collected through company's public ESG disclosure and public sources.</p><p>Our ESG scoring models takes into account more than 150 different inputs to calculate the level of ESG risks and how well a company is managing them. A higher score means lower ESG risk or better ESG management. ESG scores are in the the range of 0-100. Some key indicators might contain letter-grade score from C- to A+ with C- is the lowest score and A+ is the highest score.</p>
 
 ### Example
 
@@ -923,6 +993,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Finnhub\Model\CompanyExecutive**](../Model/CompanyExecutive.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `companyHistoricalEsgScore()`
+
+```php
+companyHistoricalEsgScore($symbol): \Finnhub\Model\HistoricalCompanyESG
+```
+
+Historical ESG Scores
+
+<p>This endpoint provides historical ESG scores and important indicators for 7000+ global companies. The data is collected through company's public ESG disclosure and public sources.</p><p>Our ESG scoring models takes into account more than 150 different inputs to calculate the level of ESG risks and how well a company is managing them. A higher score means lower ESG risk or better ESG management. ESG scores are in the the range of 0-100. Some key indicators might contain letter-grade score from C- to A+ with C- is the lowest score and A+ is the highest score.</p>
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Symbol.
+
+try {
+    $result = $apiInstance->companyHistoricalEsgScore($symbol);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->companyHistoricalEsgScore: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Symbol. |
+
+### Return type
+
+[**\Finnhub\Model\HistoricalCompanyESG**](../Model/HistoricalCompanyESG.md)
 
 ### Authorization
 
@@ -2303,8 +2435,8 @@ $symbol = 'symbol_example'; // string | Symbol. Leave <code>symbol</code>,<code>
 $cik = 'cik_example'; // string | CIK.
 $access_number = 'access_number_example'; // string | Access number of a specific report you want to retrieve data from.
 $form = 'form_example'; // string | Filter by form. You can use this value <code>NT 10-K</code> to find non-timely filings for a company.
-$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date: 2020-03-15.
-$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date: 2020-03-16.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date: 2023-03-15.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date: 2023-03-16.
 
 try {
     $result = $apiInstance->filings($symbol, $cik, $access_number, $form, $from, $to);
@@ -2322,8 +2454,8 @@ Name | Type | Description  | Notes
  **cik** | **string**| CIK. | [optional]
  **access_number** | **string**| Access number of a specific report you want to retrieve data from. | [optional]
  **form** | **string**| Filter by form. You can use this value &lt;code&gt;NT 10-K&lt;/code&gt; to find non-timely filings for a company. | [optional]
- **from** | **\DateTime**| From date: 2020-03-15. | [optional]
- **to** | **\DateTime**| To date: 2020-03-16. | [optional]
+ **from** | **\DateTime**| From date: 2023-03-15. | [optional]
+ **to** | **\DateTime**| To date: 2023-03-16. | [optional]
 
 ### Return type
 
@@ -2859,6 +2991,138 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `historicalEmployeeCount()`
+
+```php
+historicalEmployeeCount($symbol, $from, $to): \Finnhub\Model\HistoricalEmployeeCount
+```
+
+Historical Employee Count
+
+Get historical employee count for global companies.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Company symbol.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->historicalEmployeeCount($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->historicalEmployeeCount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Company symbol. |
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\HistoricalEmployeeCount**](../Model/HistoricalEmployeeCount.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `historicalMarketCap()`
+
+```php
+historicalMarketCap($symbol, $from, $to): \Finnhub\Model\HistoricalMarketCapData
+```
+
+Historical Market Cap
+
+Get historical market cap data for global companies.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: api_key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Finnhub\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+
+
+$apiInstance = new Finnhub\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$symbol = 'symbol_example'; // string | Company symbol.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date <code>YYYY-MM-DD</code>.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date <code>YYYY-MM-DD</code>.
+
+try {
+    $result = $apiInstance->historicalMarketCap($symbol, $from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->historicalMarketCap: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **string**| Company symbol. |
+ **from** | **\DateTime**| From date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+ **to** | **\DateTime**| To date &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. |
+
+### Return type
+
+[**\Finnhub\Model\HistoricalMarketCapData**](../Model/HistoricalMarketCapData.md)
+
+### Authorization
+
+[api_key](../../README.md#api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `indicesConstituents()`
 
 ```php
@@ -3057,7 +3321,7 @@ insiderTransactions($symbol, $from, $to): \Finnhub\Model\InsiderTransactions
 
 Insider Transactions
 
-Company insider transactions data sourced from <code>Form 3,4,5</code>, SEDI and relevant companies' filings. This endpoint covers US, Canada, Australia, and selected EU companies. Limit to 100 transactions per API call.
+Company insider transactions data sourced from <code>Form 3,4,5</code>, SEDI and relevant companies' filings. This endpoint covers US, UK, Canada, Australia, India, and all major EU markets. Limit to 100 transactions per API call.
 
 ### Example
 
@@ -3314,12 +3578,12 @@ Name | Type | Description  | Notes
 ## `internationalFilings()`
 
 ```php
-internationalFilings($symbol, $country): \Finnhub\Model\InternationalFiling[]
+internationalFilings($symbol, $country, $from, $to): \Finnhub\Model\InternationalFiling[]
 ```
 
 International Filings
 
-List filings for international companies. Limit to 250 documents at a time. These are the documents we use to source our fundamental data. Only support SEDAR and UK Companies House for normal usage. Enterprise clients who need access to the full filings for global markets should contact us for the access.
+List filings for international companies. Limit to 500 documents at a time. These are the documents we use to source our fundamental data. Only support SEDAR and UK Companies House for normal usage. Enterprise clients who need access to the full filings for global markets should contact us for the access.
 
 ### Example
 
@@ -3342,9 +3606,11 @@ $apiInstance = new Finnhub\Api\DefaultApi(
 );
 $symbol = 'symbol_example'; // string | Symbol. Leave empty to list latest filings.
 $country = 'country_example'; // string | Filter by country using country's 2-letter code.
+$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | From date: 2023-01-15.
+$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | To date: 2023-12-16.
 
 try {
-    $result = $apiInstance->internationalFilings($symbol, $country);
+    $result = $apiInstance->internationalFilings($symbol, $country, $from, $to);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->internationalFilings: ', $e->getMessage(), PHP_EOL;
@@ -3357,6 +3623,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **string**| Symbol. Leave empty to list latest filings. | [optional]
  **country** | **string**| Filter by country using country&#39;s 2-letter code. | [optional]
+ **from** | **\DateTime**| From date: 2023-01-15. | [optional]
+ **to** | **\DateTime**| To date: 2023-12-16. | [optional]
 
 ### Return type
 
@@ -5433,7 +5701,7 @@ stockTick($symbol, $date, $limit, $skip): \Finnhub\Model\TickData
 
 Tick Data
 
-<p>Get historical tick data for global exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server.</p><p>For more historical tick data, you can visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a> to speed up the download process.</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">US CTA/UTP</th>       <td>Full SIP</td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">TSX</th>       <td><ul><li>TSX</li><li>TSX Venture</li><li>Index</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">LSE</th>       <td><ul><li>London Stock Exchange (L)</li><li>LSE International (L)</li><li>LSE European (L)</li></ul></td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">Euronext</th>       <td><ul> <li>Euronext Paris (PA)</li> <li>Euronext Amsterdam (AS)</li> <li>Euronext Lisbon (LS)</li> <li>Euronext Brussels (BR)</li> <li>Euronext Oslo (OL)</li> <li>Euronext London (LN)</li> <li>Euronext Dublin (IR)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Deutsche Börse</th>       <td><ul> <li>Frankfurt (F)</li> <li>Xetra (DE)</li> <li>Duesseldorf (DU)</li> <li>Hamburg (HM)</li> <li>Berlin (BE)</li> <li>Hanover (HA)</li> <li>Stoxx (SX)</li> <li>TradeGate (TG)</li> <li>Zertifikate (SC)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>   </tbody> </table>
+<p>Get historical tick data for global exchanges.</p><p>For more historical tick data, you can visit our bulk download page in the Dashboard <a target=\"_blank\" href=\"/dashboard/download\",>here</a> to speed up the download process.</p><table class=\"table table-hover\">   <thead>     <tr>       <th>Exchange</th>       <th>Segment</th>       <th>Delay</th>     </tr>   </thead>   <tbody>     <tr>       <td class=\"text-blue\">US CTA/UTP</th>       <td>Full SIP</td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">TSX</th>       <td><ul><li>TSX</li><li>TSX Venture</li><li>Index</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">LSE</th>       <td><ul><li>London Stock Exchange (L)</li><li>LSE International (L)</li><li>LSE European (L)</li></ul></td>       <td>15 minute</td>     </tr>     <tr>       <td class=\"text-blue\">Euronext</th>       <td><ul> <li>Euronext Paris (PA)</li> <li>Euronext Amsterdam (AS)</li> <li>Euronext Lisbon (LS)</li> <li>Euronext Brussels (BR)</li> <li>Euronext Oslo (OL)</li> <li>Euronext London (LN)</li> <li>Euronext Dublin (IR)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>     <tr>       <td class=\"text-blue\">Deutsche Börse</th>       <td><ul> <li>Frankfurt (F)</li> <li>Xetra (DE)</li> <li>Duesseldorf (DU)</li> <li>Hamburg (HM)</li> <li>Berlin (BE)</li> <li>Hanover (HA)</li> <li>Stoxx (SX)</li> <li>TradeGate (TG)</li> <li>Zertifikate (SC)</li> <li>Index</li> <li>Warrant</li></ul></td>       <td>End-of-day</td>     </tr>   </tbody> </table>
 
 ### Example
 
@@ -5884,7 +6152,7 @@ Name | Type | Description  | Notes
 ## `symbolSearch()`
 
 ```php
-symbolSearch($q): \Finnhub\Model\SymbolLookup
+symbolSearch($q, $exchange): \Finnhub\Model\SymbolLookup
 ```
 
 Symbol Lookup
@@ -5911,9 +6179,10 @@ $apiInstance = new Finnhub\Api\DefaultApi(
     $config
 );
 $q = 'q_example'; // string | Query text can be symbol, name, isin, or cusip.
+$exchange = 'exchange_example'; // string | Exchange limit.
 
 try {
-    $result = $apiInstance->symbolSearch($q);
+    $result = $apiInstance->symbolSearch($q, $exchange);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->symbolSearch: ', $e->getMessage(), PHP_EOL;
@@ -5925,6 +6194,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **q** | **string**| Query text can be symbol, name, isin, or cusip. |
+ **exchange** | **string**| Exchange limit. | [optional]
 
 ### Return type
 

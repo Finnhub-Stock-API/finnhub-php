@@ -71,6 +71,7 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'domicile' => 'string',
         'inception_date' => '\DateTime',
         'website' => 'string',
+        'logo' => 'string',
         'isin' => 'string',
         'cusip' => 'string',
         'price_to_earnings' => 'float',
@@ -102,6 +103,7 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'domicile' => null,
         'inception_date' => 'date',
         'website' => null,
+        'logo' => null,
         'isin' => null,
         'cusip' => null,
         'price_to_earnings' => 'float',
@@ -152,6 +154,7 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'domicile' => 'domicile',
         'inception_date' => 'inceptionDate',
         'website' => 'website',
+        'logo' => 'logo',
         'isin' => 'isin',
         'cusip' => 'cusip',
         'price_to_earnings' => 'priceToEarnings',
@@ -181,6 +184,7 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'domicile' => 'setDomicile',
         'inception_date' => 'setInceptionDate',
         'website' => 'setWebsite',
+        'logo' => 'setLogo',
         'isin' => 'setIsin',
         'cusip' => 'setCusip',
         'price_to_earnings' => 'setPriceToEarnings',
@@ -210,6 +214,7 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         'domicile' => 'getDomicile',
         'inception_date' => 'getInceptionDate',
         'website' => 'getWebsite',
+        'logo' => 'getLogo',
         'isin' => 'getIsin',
         'cusip' => 'getCusip',
         'price_to_earnings' => 'getPriceToEarnings',
@@ -290,6 +295,7 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['domicile'] = $data['domicile'] ?? null;
         $this->container['inception_date'] = $data['inception_date'] ?? null;
         $this->container['website'] = $data['website'] ?? null;
+        $this->container['logo'] = $data['logo'] ?? null;
         $this->container['isin'] = $data['isin'] ?? null;
         $this->container['cusip'] = $data['cusip'] ?? null;
         $this->container['price_to_earnings'] = $data['price_to_earnings'] ?? null;
@@ -609,6 +615,30 @@ class ETFProfileData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWebsite($website)
     {
         $this->container['website'] = $website;
+
+        return $this;
+    }
+
+    /**
+     * Gets logo
+     *
+     * @return string|null
+     */
+    public function getLogo()
+    {
+        return $this->container['logo'];
+    }
+
+    /**
+     * Sets logo
+     *
+     * @param string|null $logo Logo.
+     *
+     * @return self
+     */
+    public function setLogo($logo)
+    {
+        $this->container['logo'] = $logo;
 
         return $this;
     }

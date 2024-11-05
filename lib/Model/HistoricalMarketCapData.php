@@ -1,6 +1,6 @@
 <?php
 /**
- * MarketStatus
+ * HistoricalMarketCapData
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * MarketStatus Class Doc Comment
+ * HistoricalMarketCapData Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class HistoricalMarketCapData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarketStatus';
+    protected static $openAPIModelName = 'HistoricalMarketCapData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'exchange' => 'string',
-        'timezone' => 'string',
-        'session' => 'string',
-        'holiday' => 'string',
-        'is_open' => 'bool',
-        't' => 'int'
+        'data' => '\Finnhub\Model\MarketCapData[]',
+        'symbol' => 'string',
+        'currency' => 'string'
     ];
 
     /**
@@ -75,12 +72,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'exchange' => null,
-        'timezone' => null,
-        'session' => null,
-        'holiday' => null,
-        'is_open' => null,
-        't' => 'int64'
+        'data' => null,
+        'symbol' => null,
+        'currency' => null
     ];
 
     /**
@@ -110,12 +104,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'exchange' => 'exchange',
-        'timezone' => 'timezone',
-        'session' => 'session',
-        'holiday' => 'holiday',
-        'is_open' => 'isOpen',
-        't' => 't'
+        'data' => 'data',
+        'symbol' => 'symbol',
+        'currency' => 'currency'
     ];
 
     /**
@@ -124,12 +115,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'exchange' => 'setExchange',
-        'timezone' => 'setTimezone',
-        'session' => 'setSession',
-        'holiday' => 'setHoliday',
-        'is_open' => 'setIsOpen',
-        't' => 'setT'
+        'data' => 'setData',
+        'symbol' => 'setSymbol',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -138,12 +126,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'exchange' => 'getExchange',
-        'timezone' => 'getTimezone',
-        'session' => 'getSession',
-        'holiday' => 'getHoliday',
-        'is_open' => 'getIsOpen',
-        't' => 'getT'
+        'data' => 'getData',
+        'symbol' => 'getSymbol',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -203,12 +188,9 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['exchange'] = $data['exchange'] ?? null;
-        $this->container['timezone'] = $data['timezone'] ?? null;
-        $this->container['session'] = $data['session'] ?? null;
-        $this->container['holiday'] = $data['holiday'] ?? null;
-        $this->container['is_open'] = $data['is_open'] ?? null;
-        $this->container['t'] = $data['t'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['symbol'] = $data['symbol'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
     }
 
     /**
@@ -236,145 +218,73 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets exchange
+     * Gets data
+     *
+     * @return \Finnhub\Model\MarketCapData[]|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \Finnhub\Model\MarketCapData[]|null $data Array of market data.
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbol
      *
      * @return string|null
      */
-    public function getExchange()
+    public function getSymbol()
     {
-        return $this->container['exchange'];
+        return $this->container['symbol'];
     }
 
     /**
-     * Sets exchange
+     * Sets symbol
      *
-     * @param string|null $exchange Exchange.
+     * @param string|null $symbol Symbol
      *
      * @return self
      */
-    public function setExchange($exchange)
+    public function setSymbol($symbol)
     {
-        $this->container['exchange'] = $exchange;
+        $this->container['symbol'] = $symbol;
 
         return $this;
     }
 
     /**
-     * Gets timezone
+     * Gets currency
      *
      * @return string|null
      */
-    public function getTimezone()
+    public function getCurrency()
     {
-        return $this->container['timezone'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets timezone
+     * Sets currency
      *
-     * @param string|null $timezone Timezone.
+     * @param string|null $currency Currency
      *
      * @return self
      */
-    public function setTimezone($timezone)
+    public function setCurrency($currency)
     {
-        $this->container['timezone'] = $timezone;
-
-        return $this;
-    }
-
-    /**
-     * Gets session
-     *
-     * @return string|null
-     */
-    public function getSession()
-    {
-        return $this->container['session'];
-    }
-
-    /**
-     * Sets session
-     *
-     * @param string|null $session Market session. Can be 1 of the following values: <code>pre-market</code>,<code>regular</code>,<code>post-market</code> or <code>null</code> if the market is closed.
-     *
-     * @return self
-     */
-    public function setSession($session)
-    {
-        $this->container['session'] = $session;
-
-        return $this;
-    }
-
-    /**
-     * Gets holiday
-     *
-     * @return string|null
-     */
-    public function getHoliday()
-    {
-        return $this->container['holiday'];
-    }
-
-    /**
-     * Sets holiday
-     *
-     * @param string|null $holiday Holiday event.
-     *
-     * @return self
-     */
-    public function setHoliday($holiday)
-    {
-        $this->container['holiday'] = $holiday;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_open
-     *
-     * @return bool|null
-     */
-    public function getIsOpen()
-    {
-        return $this->container['is_open'];
-    }
-
-    /**
-     * Sets is_open
-     *
-     * @param bool|null $is_open Whether the market is open at the moment.
-     *
-     * @return self
-     */
-    public function setIsOpen($is_open)
-    {
-        $this->container['is_open'] = $is_open;
-
-        return $this;
-    }
-
-    /**
-     * Gets t
-     *
-     * @return int|null
-     */
-    public function getT()
-    {
-        return $this->container['t'];
-    }
-
-    /**
-     * Sets t
-     *
-     * @param int|null $t Current timestamp.
-     *
-     * @return self
-     */
-    public function setT($t)
-    {
-        $this->container['t'] = $t;
+        $this->container['currency'] = $currency;
 
         return $this;
     }

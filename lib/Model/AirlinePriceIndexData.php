@@ -1,6 +1,6 @@
 <?php
 /**
- * MarketStatus
+ * AirlinePriceIndexData
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Finnhub\ObjectSerializer;
 
 /**
- * MarketStatus Class Doc Comment
+ * AirlinePriceIndexData Class Doc Comment
  *
  * @category Class
  * @package  Finnhub
@@ -42,7 +42,7 @@ use \Finnhub\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class AirlinePriceIndexData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'MarketStatus';
+    protected static $openAPIModelName = 'AirlinePriceIndexData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,10 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'exchange' => 'string',
-        'timezone' => 'string',
-        'session' => 'string',
-        'holiday' => 'string',
-        'is_open' => 'bool',
-        't' => 'int'
+        'data' => '\Finnhub\Model\AirlinePriceIndex[]',
+        'airline' => 'string',
+        'from' => 'string',
+        'to' => 'string'
     ];
 
     /**
@@ -75,12 +73,10 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'exchange' => null,
-        'timezone' => null,
-        'session' => null,
-        'holiday' => null,
-        'is_open' => null,
-        't' => 'int64'
+        'data' => null,
+        'airline' => null,
+        'from' => null,
+        'to' => null
     ];
 
     /**
@@ -110,12 +106,10 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'exchange' => 'exchange',
-        'timezone' => 'timezone',
-        'session' => 'session',
-        'holiday' => 'holiday',
-        'is_open' => 'isOpen',
-        't' => 't'
+        'data' => 'data',
+        'airline' => 'airline',
+        'from' => 'from',
+        'to' => 'to'
     ];
 
     /**
@@ -124,12 +118,10 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'exchange' => 'setExchange',
-        'timezone' => 'setTimezone',
-        'session' => 'setSession',
-        'holiday' => 'setHoliday',
-        'is_open' => 'setIsOpen',
-        't' => 'setT'
+        'data' => 'setData',
+        'airline' => 'setAirline',
+        'from' => 'setFrom',
+        'to' => 'setTo'
     ];
 
     /**
@@ -138,12 +130,10 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'exchange' => 'getExchange',
-        'timezone' => 'getTimezone',
-        'session' => 'getSession',
-        'holiday' => 'getHoliday',
-        'is_open' => 'getIsOpen',
-        't' => 'getT'
+        'data' => 'getData',
+        'airline' => 'getAirline',
+        'from' => 'getFrom',
+        'to' => 'getTo'
     ];
 
     /**
@@ -203,12 +193,10 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['exchange'] = $data['exchange'] ?? null;
-        $this->container['timezone'] = $data['timezone'] ?? null;
-        $this->container['session'] = $data['session'] ?? null;
-        $this->container['holiday'] = $data['holiday'] ?? null;
-        $this->container['is_open'] = $data['is_open'] ?? null;
-        $this->container['t'] = $data['t'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
+        $this->container['airline'] = $data['airline'] ?? null;
+        $this->container['from'] = $data['from'] ?? null;
+        $this->container['to'] = $data['to'] ?? null;
     }
 
     /**
@@ -236,145 +224,97 @@ class MarketStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets exchange
+     * Gets data
+     *
+     * @return \Finnhub\Model\AirlinePriceIndex[]|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \Finnhub\Model\AirlinePriceIndex[]|null $data Array of price index.
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets airline
      *
      * @return string|null
      */
-    public function getExchange()
+    public function getAirline()
     {
-        return $this->container['exchange'];
+        return $this->container['airline'];
     }
 
     /**
-     * Sets exchange
+     * Sets airline
      *
-     * @param string|null $exchange Exchange.
+     * @param string|null $airline Airline name
      *
      * @return self
      */
-    public function setExchange($exchange)
+    public function setAirline($airline)
     {
-        $this->container['exchange'] = $exchange;
+        $this->container['airline'] = $airline;
 
         return $this;
     }
 
     /**
-     * Gets timezone
+     * Gets from
      *
      * @return string|null
      */
-    public function getTimezone()
+    public function getFrom()
     {
-        return $this->container['timezone'];
+        return $this->container['from'];
     }
 
     /**
-     * Sets timezone
+     * Sets from
      *
-     * @param string|null $timezone Timezone.
+     * @param string|null $from From date
      *
      * @return self
      */
-    public function setTimezone($timezone)
+    public function setFrom($from)
     {
-        $this->container['timezone'] = $timezone;
+        $this->container['from'] = $from;
 
         return $this;
     }
 
     /**
-     * Gets session
+     * Gets to
      *
      * @return string|null
      */
-    public function getSession()
+    public function getTo()
     {
-        return $this->container['session'];
+        return $this->container['to'];
     }
 
     /**
-     * Sets session
+     * Sets to
      *
-     * @param string|null $session Market session. Can be 1 of the following values: <code>pre-market</code>,<code>regular</code>,<code>post-market</code> or <code>null</code> if the market is closed.
+     * @param string|null $to To date
      *
      * @return self
      */
-    public function setSession($session)
+    public function setTo($to)
     {
-        $this->container['session'] = $session;
-
-        return $this;
-    }
-
-    /**
-     * Gets holiday
-     *
-     * @return string|null
-     */
-    public function getHoliday()
-    {
-        return $this->container['holiday'];
-    }
-
-    /**
-     * Sets holiday
-     *
-     * @param string|null $holiday Holiday event.
-     *
-     * @return self
-     */
-    public function setHoliday($holiday)
-    {
-        $this->container['holiday'] = $holiday;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_open
-     *
-     * @return bool|null
-     */
-    public function getIsOpen()
-    {
-        return $this->container['is_open'];
-    }
-
-    /**
-     * Sets is_open
-     *
-     * @param bool|null $is_open Whether the market is open at the moment.
-     *
-     * @return self
-     */
-    public function setIsOpen($is_open)
-    {
-        $this->container['is_open'] = $is_open;
-
-        return $this;
-    }
-
-    /**
-     * Gets t
-     *
-     * @return int|null
-     */
-    public function getT()
-    {
-        return $this->container['t'];
-    }
-
-    /**
-     * Sets t
-     *
-     * @param int|null $t Current timestamp.
-     *
-     * @return self
-     */
-    public function setT($t)
-    {
-        $this->container['t'] = $t;
+        $this->container['to'] = $to;
 
         return $this;
     }

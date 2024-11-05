@@ -64,6 +64,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'target_low' => 'float',
         'target_mean' => 'float',
         'target_median' => 'float',
+        'number_analysts' => 'int',
         'last_updated' => 'string'
     ];
 
@@ -80,6 +81,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'target_low' => 'float',
         'target_mean' => 'float',
         'target_median' => 'float',
+        'number_analysts' => 'int64',
         'last_updated' => null
     ];
 
@@ -115,6 +117,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'target_low' => 'targetLow',
         'target_mean' => 'targetMean',
         'target_median' => 'targetMedian',
+        'number_analysts' => 'numberAnalysts',
         'last_updated' => 'lastUpdated'
     ];
 
@@ -129,6 +132,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'target_low' => 'setTargetLow',
         'target_mean' => 'setTargetMean',
         'target_median' => 'setTargetMedian',
+        'number_analysts' => 'setNumberAnalysts',
         'last_updated' => 'setLastUpdated'
     ];
 
@@ -143,6 +147,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         'target_low' => 'getTargetLow',
         'target_mean' => 'getTargetMean',
         'target_median' => 'getTargetMedian',
+        'number_analysts' => 'getNumberAnalysts',
         'last_updated' => 'getLastUpdated'
     ];
 
@@ -208,6 +213,7 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['target_low'] = $data['target_low'] ?? null;
         $this->container['target_mean'] = $data['target_mean'] ?? null;
         $this->container['target_median'] = $data['target_median'] ?? null;
+        $this->container['number_analysts'] = $data['number_analysts'] ?? null;
         $this->container['last_updated'] = $data['last_updated'] ?? null;
     }
 
@@ -351,6 +357,30 @@ class PriceTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTargetMedian($target_median)
     {
         $this->container['target_median'] = $target_median;
+
+        return $this;
+    }
+
+    /**
+     * Gets number_analysts
+     *
+     * @return int|null
+     */
+    public function getNumberAnalysts()
+    {
+        return $this->container['number_analysts'];
+    }
+
+    /**
+     * Sets number_analysts
+     *
+     * @param int|null $number_analysts Number of Analysts.
+     *
+     * @return self
+     */
+    public function setNumberAnalysts($number_analysts)
+    {
+        $this->container['number_analysts'] = $number_analysts;
 
         return $this;
     }
