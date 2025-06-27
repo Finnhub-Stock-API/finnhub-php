@@ -26,7 +26,7 @@ class DefaultApi
         $url = self::API_URL . $path;
 
         $queryParams = [
-            'token' => $this->config->getApiKey(),
+            'token' => $this->config->getApiKey("token"),
         ];
 
         if (!empty($params)) {

@@ -7,15 +7,16 @@ class Configuration
     private $apiKey;
     private static $defaultConfiguration;
 
-    public function setApiKey($apiKey)
+    public function setApiKey($apiKeyIdentifier, $key)
     {
-        $this->apiKey = $apiKey;
+        $this->apiKeys[$apiKeyIdentifier] = $key;
         return $this;
     }
 
-    public function getApiKey()
+
+    public function getApiKey($apiKeyIdentifier)
     {
-        return $this->apiKey;
+        return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : null;
     }
 
     public static function getDefaultConfiguration()
