@@ -12,17 +12,9 @@ PHP 5.5 and later
 
 ### Composer
 
-In composer.json:
-
-```json
-{
-  "require": {
-    "finnhub/client": "1.1.17"
-  }
-}
+```bash
+composer require finnhub/client
 ```
-
-Then run `composer install`
 
 ## Getting Started
 
@@ -31,14 +23,16 @@ Then run `composer install`
 
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR API KEY');
+// Configure API key
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token');
+
 $client = new Finnhub\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
 
-// Stock candles
-print_r($client->stockCandles("AAPL", "D", 1590988249, 1591852249));
+// Get a stock's quote
+print_r($client->quote("AAPL"));
 
 // Aggregate Indicators
 print_r($client->aggregateIndicator("AAPL", "D"));
