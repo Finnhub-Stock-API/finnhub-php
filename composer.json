@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Finnhub\\": "src/Finnhub/"
+            "Finnhub\\": "lib/Finnhub/"
         }
     }
 }

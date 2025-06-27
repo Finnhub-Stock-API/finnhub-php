@@ -1,30 +1,13 @@
-# Finnhub
-
-- Finnhub php api clent
-- API version: 1.0.0
-- Package version: 2.0.0
-
-## Requirements
-
-PHP 5.5 and later
-
-## Installation & Usage
-
-### Composer
-
-```bash
-composer require finnhub/client
-```
-
-## Getting Started
-
-```php
 <?php
 
-require_once(__DIR__ . '/vendor/autoload.php');
+require_once 'vendor/autoload.php';
+
+use Finnhub\Api\DefaultApi;
+use Finnhub\Configuration;
+use GuzzleHttp\Client;
 
 // Configure API key
-$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR API KEY');
+$config = Finnhub\Configuration::getDefaultConfiguration()->setApiKey("cvei43pr01ql1jnbj1dgcvei43pr01ql1jnbj1e0");
 
 $client = new Finnhub\Api\DefaultApi(
     new GuzzleHttp\Client(),
@@ -251,7 +234,7 @@ print_r($client->stockVisaApplication("NVDA", "2021-01-01", "2022-01-10"));
 // Bank Branch
 print_r($client->bankBranch("JPM"));
 
-// --- New Endpoints ---
+// --- Tests for newly added endpoints ---
 
 // Bond Tick
 print_r($client->bondTick("US912828U816", "2023-01-03", 10, 0));
@@ -331,9 +314,3 @@ print_r($client->stockInsiderSentiment("AAPL", "2022-01-01", "2022-12-31"));
 // Stock Lobbying
 print_r($client->stockLobbying("AAPL", "2022-01-01", "2022-12-31"));
 
-?>
-```
-
-## License
-
-Apache License

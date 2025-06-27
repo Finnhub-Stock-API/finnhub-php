@@ -604,4 +604,211 @@ class DefaultApi
             'symbol' => $symbol,
         ]);
     }
+
+    public function bondTick($isin, $date, $limit, $skip, $exchange = 'trace', $format = 'json', $extra = [])
+    {
+        $params = array_merge([
+            'isin' => $isin,
+            'date' => $date,
+            'limit' => $limit,
+            'skip' => $skip,
+            'exchange' => $exchange,
+            'format' => $format,
+        ], $extra);
+        return $this->_request('GET', '/bond/tick', $params);
+    }
+
+    public function bondPrice($isin, $from, $to)
+    {
+        return $this->_request('GET', '/bond/price', [
+            'isin' => $isin,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function bondProfile($params = [])
+    {
+        return $this->_request('GET', '/bond/profile', $params);
+    }
+
+    public function bondYieldCurve($code)
+    {
+        return $this->_request('GET', '/bond/yield-curve', [
+            'code' => $code,
+        ]);
+    }
+
+    public function airlinePriceIndex($airline, $from, $to)
+    {
+        return $this->_request('GET', '/airline/price-index', [
+            'airline' => $airline,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function sectorMetric($region)
+    {
+        return $this->_request('GET', '/sector/metrics', [
+            'region' => $region,
+        ]);
+    }
+
+    public function stockUsaSpending($symbol, $from, $to)
+    {
+        return $this->_request('GET', '/stock/usa-spending', [
+            'symbol' => $symbol,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function fdaCalendar()
+    {
+        return $this->_request('GET', '/fda-advisory-committee-calendar');
+    }
+
+    public function stockRevenueBreakdown2($symbol)
+    {
+        return $this->_request('GET', '/stock/revenue-breakdown2', [
+            'symbol' => $symbol,
+        ]);
+    }
+
+    public function marketStatus($exchange)
+    {
+        return $this->_request('GET', '/stock/market-status', [
+            'exchange' => $exchange,
+        ]);
+    }
+
+    public function marketHoliday($exchange)
+    {
+        return $this->_request('GET', '/stock/market-holiday', [
+            'exchange' => $exchange,
+        ]);
+    }
+
+    public function historicalEmployeeCount($symbol, $from, $to)
+    {
+        return $this->_request('GET', '/stock/historical-employee-count', [
+            'symbol' => $symbol,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function earningsCallLive($from, $to, $symbol = '')
+    {
+        return $this->_request('GET', '/stock/earnings-call-live', [
+            'symbol' => $symbol,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function stockPresentation($symbol)
+    {
+        return $this->_request('GET', '/stock/presentation', [
+            'symbol' => $symbol,
+        ]);
+    }
+
+    public function mutualFundEet($isin)
+    {
+        return $this->_request('GET', '/mutual-fund/eet', [
+            'isin' => $isin,
+        ]);
+    }
+
+    public function mutualFundEetPai($isin)
+    {
+        return $this->_request('GET', '/mutual-fund/eet-pai', [
+            'isin' => $isin,
+        ]);
+    }
+
+    public function institutionalProfile($cik = '')
+    {
+        return $this->_request('GET', '/institutional/profile', [
+            'cik' => $cik,
+        ]);
+    }
+
+    public function institutionalPortfolio($cik, $from, $to)
+    {
+        return $this->_request('GET', '/institutional/portfolio', [
+            'cik' => $cik,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function institutionalOwnership($symbol, $cusip, $from, $to)
+    {
+        return $this->_request('GET', '/institutional/ownership', [
+            'symbol' => $symbol,
+            'cusip' => $cusip,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function congressionalTrading($symbol, $from, $to)
+    {
+        return $this->_request('GET', '/stock/congressional-trading', [
+            'symbol' => $symbol,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function symbolChange($from, $to)
+    {
+        return $this->_request('GET', '/ca/symbol-change', [
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function isinChange($from, $to)
+    {
+        return $this->_request('GET', '/ca/isin-change', [
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function companyHistoricalEsgScore($symbol)
+    {
+        return $this->_request('GET', '/stock/historical-esg', [
+            'symbol' => $symbol,
+        ]);
+    }
+
+    public function lastBidAsk($symbol)
+    {
+        return $this->_request('GET', '/stock/bidask', [
+            'symbol' => $symbol,
+        ]);
+    }
+
+    public function stockInsiderSentiment($symbol, $from, $to)
+    {
+        return $this->_request('GET', '/stock/insider-sentiment', [
+            'symbol' => $symbol,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
+
+    public function stockLobbying($symbol, $from, $to)
+    {
+        return $this->_request('GET', '/stock/lobbying', [
+            'symbol' => $symbol,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
 } 
