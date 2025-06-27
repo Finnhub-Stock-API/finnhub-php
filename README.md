@@ -248,6 +248,9 @@ print_r($client->stockUsptoPatent("NVDA", "2021-01-01", "2022-01-10"));
 // Visa Application
 print_r($client->stockVisaApplication("NVDA", "2021-01-01", "2022-01-10"));
 
+// Bank Branch
+print_r($client->bankBranch("JPM"));
+
 ?>
 ```
 
