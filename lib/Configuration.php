@@ -4,7 +4,7 @@ namespace Finnhub;
 
 class Configuration
 {
-    private $apiKey;
+    private $apiKeys = [];
     private static $defaultConfiguration;
 
     public function setApiKey($apiKeyIdentifier, $key)
