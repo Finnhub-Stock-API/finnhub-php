@@ -173,12 +173,13 @@ class DefaultApi
         ]);
     }
 
-    public function financials($symbol, $statement, $freq)
+    public function financials($symbol, $statement, $freq, $preliminary=false)
     {
         return $this->_request('GET', '/stock/financials', [
             'symbol' => $symbol,
             'statement' => $statement,
             'freq' => $freq,
+            'preliminary' => $preliminary,
         ]);
     }
 
