@@ -10809,9 +10809,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \Finnhub\Model\FinancialStatements
      */
-    public function financials($symbol, $statement, $freq)
+    public function financials($symbol, $statement, $freq, $preliminary=null)
     {
-        list($response) = $this->financialsWithHttpInfo($symbol, $statement, $freq);
+        list($response) = $this->financialsWithHttpInfo($symbol, $statement, $freq, $preliminary);
         return $response;
     }
 
@@ -10828,9 +10828,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \Finnhub\Model\FinancialStatements, HTTP status code, HTTP response headers (array of strings)
      */
-    public function financialsWithHttpInfo($symbol, $statement, $freq)
+    public function financialsWithHttpInfo($symbol, $statement, $freq, $preliminary=null)
     {
-        $request = $this->financialsRequest($symbol, $statement, $freq);
+        $request = $this->financialsRequest($symbol, $statement, $freq, $preliminary);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10915,9 +10915,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function financialsAsync($symbol, $statement, $freq)
+    public function financialsAsync($symbol, $statement, $freq, $preliminary=null)
     {
-        return $this->financialsAsyncWithHttpInfo($symbol, $statement, $freq)
+        return $this->financialsAsyncWithHttpInfo($symbol, $statement, $freq, $preliminary)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10937,10 +10937,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function financialsAsyncWithHttpInfo($symbol, $statement, $freq)
+    public function financialsAsyncWithHttpInfo($symbol, $statement, $freq, $preliminary)
     {
         $returnType = '\Finnhub\Model\FinancialStatements';
-        $request = $this->financialsRequest($symbol, $statement, $freq);
+        $request = $this->financialsRequest($symbol, $statement, $freq, $preliminary);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10985,7 +10985,7 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function financialsRequest($symbol, $statement, $freq)
+    public function financialsRequest($symbol, $statement, $freq, $preliminary=null)
     {
         // verify the required parameter 'symbol' is set
         if ($symbol === null || (is_array($symbol) && count($symbol) === 0)) {
@@ -11035,7 +11035,9 @@ class DefaultApi
             $queryParams['freq'] = $freq;
         }
 
-
+        if ($preliminary !== null) {
+            $queryParams['preliminary'] = $preliminary;
+        }
 
 
         if ($multipart) {
