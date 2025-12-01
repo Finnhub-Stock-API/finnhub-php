@@ -812,4 +812,13 @@ class DefaultApi
             'to' => $to,
         ]);
     }
+
+    public function stockNewsroom($symbol, $from, $to)
+    {
+        return $this->_request('GET', '/stock/newsroom', [
+            'symbol' => $symbol,
+            'from' => $from,
+            'to' => $to,
+        ]);
+    }
 } 
