@@ -450,6 +450,14 @@ class DefaultApi
         ]);
     }
 
+    public function etfsAllocation($symbol = null, $isin = null)
+    {
+        return $this->_request('GET', '/etf/allocation', [
+            'symbol' => $symbol,
+            'isin' => $isin,
+        ]);
+    }
+
     public function mutualFundProfile($symbol)
     {
         return $this->_request('GET', '/mutual-fund/profile', [
