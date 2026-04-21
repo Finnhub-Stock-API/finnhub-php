@@ -589,6 +589,38 @@ class DefaultApi
         ]);
     }
 
+    public function companyNetIncomeEstimate($symbol, $freq = 'quarterly')
+    {
+        return $this->_request('GET', '/stock/net-income-estimate', [
+            'symbol' => $symbol,
+            'freq' => $freq,
+        ]);
+    }
+
+    public function companyPretaxIncomeEstimate($symbol, $freq = 'quarterly')
+    {
+        return $this->_request('GET', '/stock/pretax-income-estimate', [
+            'symbol' => $symbol,
+            'freq' => $freq,
+        ]);
+    }
+
+    public function companyGrossIncomeEstimate($symbol, $freq = 'quarterly')
+    {
+        return $this->_request('GET', '/stock/gross-income-estimate', [
+            'symbol' => $symbol,
+            'freq' => $freq,
+        ]);
+    }
+
+    public function companyDpsEstimate($symbol, $freq = 'quarterly')
+    {
+        return $this->_request('GET', '/stock/dps-estimate', [
+            'symbol' => $symbol,
+            'freq' => $freq,
+        ]);
+    }
+
     public function stockUsptoPatent($symbol, $from, $to)
     {
         return $this->_request('GET', '/stock/uspto-patent', [
