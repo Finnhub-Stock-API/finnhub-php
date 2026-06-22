@@ -239,6 +239,15 @@ print_r($client->cryptoProfile("AAPL"));
 // EBITDA Estimates
 print_r($client->companyEbitdaEstimates("AAPL", "quarterly"));
 
+// FCF Estimates
+print_r($client->companyFcfEstimates("AAPL", "annual"));
+
+// CapEx Estimates
+print_r($client->companyCapexEstimates("AAPL", "annual"));
+
+// OCF Estimates
+print_r($client->companyOcfEstimates("AAPL", "annual"));
+
 // EBIT Estimates
 print_r($client->companyEbitEstimates("TSLA", "quarterly"));
 
