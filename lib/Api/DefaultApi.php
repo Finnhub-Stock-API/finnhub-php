@@ -581,6 +581,30 @@ class DefaultApi
         ]);
     }
 
+    public function companyFcfEstimates($symbol, $freq = 'quarterly')
+    {
+        return $this->_request('GET', '/stock/fcf-estimate', [
+            'symbol' => $symbol,
+            'freq' => $freq,
+        ]);
+    }
+
+    public function companyCapexEstimates($symbol, $freq = 'quarterly')
+    {
+        return $this->_request('GET', '/stock/capex-estimate', [
+            'symbol' => $symbol,
+            'freq' => $freq,
+        ]);
+    }
+
+    public function companyOcfEstimates($symbol, $freq = 'quarterly')
+    {
+        return $this->_request('GET', '/stock/ocf-estimate', [
+            'symbol' => $symbol,
+            'freq' => $freq,
+        ]);
+    }
+
     public function companyEbitEstimates($symbol, $freq = 'quarterly')
     {
         return $this->_request('GET', '/stock/ebit-estimates', [
