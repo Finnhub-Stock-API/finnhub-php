@@ -2,7 +2,7 @@
 
 - Finnhub php api clent
 - API version: 1.0.0
-- Package version: 2.0.0
+- Package version: 2.0.13
 
 ## Requirements
 
@@ -119,6 +119,9 @@ print_r($client->patternRecognition("AAPL", "D"));
 
 // Price target
 print_r($client->priceTarget("AAPL"));
+
+// Historical price target
+print_r($client->historicalPriceTarget("AAPL"));
 
 // Quote
 print_r($client->quote("AAPL"));

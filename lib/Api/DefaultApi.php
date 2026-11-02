@@ -273,6 +273,13 @@ class DefaultApi
         ]);
     }
 
+    public function historicalPriceTarget($symbol)
+    {
+        return $this->_request('GET', '/stock/historical-price-target', [
+            'symbol' => $symbol,
+        ]);
+    }
+
     public function quote($symbol)
     {
         return $this->_request('GET', '/quote', [
